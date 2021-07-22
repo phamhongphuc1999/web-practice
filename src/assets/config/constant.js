@@ -1,0 +1,7 @@
+export const FOOD = "food"
+export const RESTAURANT = "restaurant"
+export const FRESH = "fresh"
+export const LIQOR = "liquor"
+export const FLOWERS = "flowers"
+export const MART = "mart"
+export const MEDICIEN = "medicien"
