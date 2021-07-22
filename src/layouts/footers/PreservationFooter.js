@@ -7,8 +7,8 @@ const PreservationFooter = ({ className }) => {
 
   return (
     <div className={className}>
-      <div className="font-semibold">{t("preservationFooterTitle")}</div>
-      <span className="">{t("preservationFooterText")}</span>
+      <div className="font-semibold">{t("footer.preservationTitle")}</div>
+      <span className="">{t("footer.preservationText")}</span>
       <img src={preservationImg} alt="footer preservation" />
     </div>
   )

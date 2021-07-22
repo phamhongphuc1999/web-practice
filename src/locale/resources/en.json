@@ -7,6 +7,30 @@
   "mart": "Mart",
   "medicien": "Medicien",
   "login": "Login",
-  "preservationFooterTitle": "How about your purchase order protection?",
-  "preservationFooterText": "Now will protect your purchase order from the weather by using bag or box during shipping."
+  "foodPage": {
+    "searchTitle": "Order Food, delivery from 20'...",
+    "searchText": "From 54350 Places In HCM City From 00:00 - 23:59",
+    "inputPlaceholder": "Find place, item, address...",
+    "useAppText": "Better experiences with Now App",
+    "category": {
+      "all": "All",
+      "food": "Food",
+      "drink": "Drink",
+      "vege": "Vege",
+      "cakes": "Cakes",
+      "dessert": "Dessert",
+      "homemade": "Homemade",
+      "stressfood": "Stressfood",
+      "pizza/burger": "Pizza/Burger",
+      "chicken": "Chicken",
+      "hotpot": "Hotpot",
+      "sushi": "Sushi",
+      "noodles": "Noodles",
+      "rice": "Rice box"
+    }
+  },
+  "footer": {
+    "preservationTitle": "How about your purchase order protection?",
+    "preservationText": "Now will protect your purchase order from the weather by using bag or box during shipping."
+  }
 }

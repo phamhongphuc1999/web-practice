@@ -7,6 +7,30 @@
   "mart": "Siêu thị",
   "medicien": "Thuốc",
   "login": "Đăng nhập",
-  "preservationFooterTitle": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
-  "preservationFooterText": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
+  "foodPage": {
+    "searchTitle": "Đặt Đồ ăn, giao hàng từ 20'...",
+    "searchText": "Có 54350 Địa Điểm Ở TP. HCM Từ 00:00 - 23:59",
+    "inputPlaceholder": "Tìm địa điểm, món ăn, địa chỉ...",
+    "useAppText": "Sử dụng App Now để có nhiều giảm giá và trải nghiệm tốt hơn",
+    "category": {
+      "all": "Tất cả",
+      "food": "Đồ ăn",
+      "drink": "Đồ uống",
+      "vege": "Đồ chay",
+      "cakes": "Bánh kem",
+      "dessert": "Tráng miệng",
+      "homemade": "Đồ tự làm",
+      "stressfood": "Đồ ăn đường phố",
+      "pizza/burger": "Pizza/Burger",
+      "chicken": "Món gà",
+      "hotpot": "Món lẩu",
+      "sushi": "Sushi",
+      "noodles": "Phở",
+      "rice": "Cơm hộp"
+    }
+  },
+  "footer": {
+    "preservationTitle": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
+    "preservationText": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
+  }
 }
