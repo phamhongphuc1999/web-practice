@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout'
 const Food = () => {
   return (
     <Layout action={FOOD}>
-
+      1234
     </Layout>
   )
 }

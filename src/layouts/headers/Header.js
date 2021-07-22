@@ -4,8 +4,11 @@ import logo from '../../assets/images/nowvn.png'
 import * as styles from '../../assets/css/layouts/header.module.css'
 import { FLOWERS, FOOD, FRESH, LIQOR, MART, MEDICIEN, RESTAURANT } from '../../assets/config/constant'
 import { history } from '../../history'
+import { useTranslation } from 'react-i18next'
 
 const Header = ({ action }) => {
+  const { t } = useTranslation();
+
   const actionClick = (action) => {
     history.push(`/${action}`)
   }
@@ -22,19 +25,19 @@ const Header = ({ action }) => {
           <div className="col-auto"></div>
           <div className="col-start-3 col-end-10 grid grid-cols-7 gap-1">
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === FOOD })}
-              onClick={() => actionClick(FOOD)}>Food</div>
-            <a href="/restaurant" className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === RESTAURANT })}
-              onClick={() => actionClick(RESTAURANT)}>Restaurant</a>
+              onClick={() => actionClick(FOOD)}>{t('food')}</div>
+            <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === RESTAURANT })}
+              onClick={() => actionClick(RESTAURANT)}>{t('restaurant')}</div>
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === FRESH })}
-              onClick={() => actionClick(FRESH)}>Fresh</div>
+              onClick={() => actionClick(FRESH)}>{t('fresh')}</div>
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === LIQOR })}
-              onClick={() => actionClick(LIQOR)}>Liquor</div>
+              onClick={() => actionClick(LIQOR)}>{t('liquor')}</div>
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === FLOWERS })}
-              onClick={() => actionClick(FLOWERS)}>Flowers</div>
+              onClick={() => actionClick(FLOWERS)}>{t('flowers')}</div>
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === MART })}
-              onClick={() => actionClick(MART)}>Mart</div>
+              onClick={() => actionClick(MART)}>{t('mart')}</div>
             <div className={cx(styles.columnContent, "col-1 text-center", { [styles.active]: action === MEDICIEN })}
-              onClick={() => actionClick(MEDICIEN)}>Medicien</div>
+              onClick={() => actionClick(MEDICIEN)}>{t('medicien')}</div>
           </div>
         </div>
       </div>
