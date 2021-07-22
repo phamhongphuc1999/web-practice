@@ -25,3 +25,8 @@
 .active {
   @apply border-b-4 border-blue-400 font-bold text-blue-400
 }
+
+.loginBut {
+  padding: 7px 12px;
+  @apply border rounded border-blue-400 text-blue-400 hover:text-white hover:bg-blue-400
+}

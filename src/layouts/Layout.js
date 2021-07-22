@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './headers/Header'
-import Footer from './footers/Footer'
+import PreservationFooter from './footers/PreservationFooter'
 
 const Layout = ({ action, children }) => {
   return (
@@ -9,7 +9,7 @@ const Layout = ({ action, children }) => {
       <div>
         {children}
       </div>
-      <Footer />
+      <PreservationFooter />
     </div>
   )
 }

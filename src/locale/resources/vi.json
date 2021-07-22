@@ -5,5 +5,8 @@
   "liquor": "Bia",
   "flowers": "Hoa",
   "mart": "Siêu thị",
-  "medicien": "Thuốc"
+  "medicien": "Thuốc",
+  "login": "Đăng nhập",
+  "preservationFooterTitle": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
+  "preservationFooterText": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
 }
