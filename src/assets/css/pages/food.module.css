@@ -32,8 +32,6 @@
   @apply absolute right-0 h-12 bg-blue-500 px-5
 }
 
-.categoryFilter {}
-
 .categoryBtn {
   border: 1px solid;
   @apply px-5 py-2 mr-4 my-2;
@@ -49,4 +47,16 @@
 .mainHome{
  margin-top: 50px;
  width: 670px;
+}
+
+@media (min-width: 1280px) {
+  .nowSearch {
+    transform: translateY(-40%);
+  }
+  .inputSearch {
+    @apply py-5
+  }
+  .categoryBtn {
+    @apply py-1;
+  }
 }
