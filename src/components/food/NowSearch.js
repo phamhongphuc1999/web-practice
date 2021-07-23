@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AiOutlineSearch } from 'react-icons/ai'
+import cx from 'classnames'
 
 import AppStoreEn from '../../assets/images/apps/AppStore.png'
 import AppStoreVi from '../../assets/images/apps/AppStore-vn.png'
@@ -14,7 +15,7 @@ const categoryList = [
   'pizza/burger', 'chicken', 'hotpot', 'sushi', 'noodles', 'rice'
 ]
 
-const NowSearch = () => {
+const NowSearch = ({ className }) => {
   const { t } = useTranslation();
 
   const categoryClick = (category) => {
@@ -22,29 +23,29 @@ const NowSearch = () => {
   }
 
   return (
-    <div className={styles.nowSearch}>
-      <div className={styles.searchTitle}>
-        <div className="font-bold">{t('foodPage.searchTitle')}</div>
-        <div className="">{t('foodPage.searchText')}</div>
-      </div>
+    <div className={cx(styles.nowSearch, className)}>
+      <div className="font-bold text-3xl pb-1">{t('foodPage.searchTitle')}</div>
+      <div className="text-base">{t('foodPage.searchText')}</div>
       <div className={styles.inputSearch}>
-        <input type="text" placeholder={t('foodPage.inputPlaceholder')} />
-        <button>
-          <AiOutlineSearch />
+        <input className={styles.input} type="text" placeholder={t('foodPage.inputPlaceholder')} />
+        <button className={styles.searchBtn}>
+          <AiOutlineSearch size="30px" />
         </button>
       </div>
       <div className={styles.categoryFilter}>
         {categoryList.map((element, index) => {
           return (
-            <button onClick={() => categoryClick(element)}>
+            <button className={styles.categoryBtn} onClick={() => categoryClick(element)}>
               {t(`foodPage.category.${element}`)}
             </button>
           )
         })}
       </div>
-      <div>{t('foodPage.useAppText')}</div>
-      <div className="searchApp">
-
+      <div className="text-lg pt-4">{t('foodPage.useAppText')}</div>
+      <div className="flex mt-5">
+        <img src={AppStoreEn} alt="app store" className={cx(styles.imgApp, 'border border-white rounded-md')} />
+        <img src={PlayStoreEn} alt="play store"
+          className="ml-4" style={{ width: '37%', height: '37%' }} />
       </div>
     </div>
   )
