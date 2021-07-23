@@ -13,8 +13,10 @@ const Food = () => {
           <NowSearch />
         </div>
       </div>
-      <div className={styles.mainHome}>
-        <MainHome />
+      <div style={{ position: 'relative', marginTop: '70px' }}>
+        <div className={styles.container}>
+          <MainHome className="float-right" />
+        </div>
       </div>
     </Layout>
   )

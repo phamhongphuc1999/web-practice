@@ -7,6 +7,13 @@
   "mart": "Mart",
   "medicien": "Medicien",
   "login": "Login",
+  "collection": "Collection",
+  "seeAll": "See all",
+  "location": "Location",
+  "near": "Near",
+  "topSale": "Top sale",
+  "bestRate": "Best rate",
+  "fast": "Fast",
   "foodPage": {
     "searchTitle": "Order Food, delivery from 20'...",
     "searchText": "From 54350 Places In HCM City From 00:00 - 23:59",

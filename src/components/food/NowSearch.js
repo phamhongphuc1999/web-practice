@@ -35,7 +35,7 @@ const NowSearch = ({ className }) => {
       <div className={styles.categoryFilter}>
         {categoryList.map((element, index) => {
           return (
-            <button className={styles.categoryBtn} onClick={() => categoryClick(element)}>
+            <button key={index} className={styles.categoryBtn} onClick={() => categoryClick(element)}>
               {t(`foodPage.category.${element}`)}
             </button>
           )
@@ -43,9 +43,9 @@ const NowSearch = ({ className }) => {
       </div>
       <div className="text-lg pt-4">{t('foodPage.useAppText')}</div>
       <div className="flex mt-5">
-        <img src={AppStoreEn} alt="app store" className={cx(styles.imgApp, 'border border-white rounded-md')} />
+        <img src={AppStoreEn} alt="app store" className={cx(styles.imgApp, 'border border-white rounded-md cursor-pointer')} />
         <img src={PlayStoreEn} alt="play store"
-          className="ml-4" style={{ width: '37%', height: '37%' }} />
+          className="ml-4 cursor-pointer" style={{ width: '37%', height: '37%' }} />
       </div>
     </div>
   )

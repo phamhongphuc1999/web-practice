@@ -5,10 +5,8 @@
 
 .container {
   width: 1200px;
-  @apply pl-3.5 pr-3.5 mx-auto
+  @apply px-3.5 mx-auto
 }
-
-.mainHome {}
 
 /* now search */
 
@@ -48,4 +46,7 @@
 }
 
 /* main home */
-
+.mainHome{
+ margin-top: 50px;
+ width: 670px;
+}
