@@ -17,9 +17,9 @@ const RestaurantList = ({ titles, actions }) => {
           <div className="col-span-4 grid grid-cols-4 gap-1">
             {titles.map((element, index) => (
               <div key={index} onClick={() => actionClick(index)}
-              className={cx('cursor-pointer', {'text-blue-400': active === index})}>
+                className={cx('cursor-pointer', { 'text-blue-400': active === index })}>
                 {element}
-                </div>
+              </div>
             ))}
           </div>
           <div className="col-span-2">

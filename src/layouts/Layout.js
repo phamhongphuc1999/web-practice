@@ -1,16 +1,22 @@
 import React from 'react'
 import Header from './headers/Header'
+import LocalModal from '../components/layouts/LocalModal'
+import SearchModal from '../components/layouts/SearchModal'
 import PreservationFooter from './footers/PreservationFooter'
+import NowControl from '../components/layouts/NowControl'
 
 const Layout = ({ action, children }) => {
   return (
-    <div>
+    <>
       <Header action={action} />
-      <div>
+      <div id="content">
         {children}
       </div>
       <PreservationFooter />
-    </div>
+      <SearchModal />
+      <LocalModal />
+      <NowControl />
+    </>
   )
 }
 

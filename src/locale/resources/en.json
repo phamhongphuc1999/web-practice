@@ -41,5 +41,11 @@
   "footer": {
     "preservationTitle": "How about your purchase order protection?",
     "preservationText": "Now will protect your purchase order from the weather by using bag or box during shipping."
+  },
+  "control": {
+    "backToTop": "Back To Top",
+    "resgister": "Đăng ký để trở thành tài xế của Now.vn ngay",
+    "ios": "Download Ios App",
+    "android": "Download Android App"
   }
 }

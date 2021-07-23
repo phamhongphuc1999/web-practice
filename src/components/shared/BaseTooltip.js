@@ -18,7 +18,7 @@ const BaseTooltip = ({ timeout = 500, children, ...props }) => {
         <Tooltip
             TransitionProps={{ timeout: timeout }}
             classes={classes}
-            placeholder="top"
+            placement="top"
             {...props}
         >
             {children}

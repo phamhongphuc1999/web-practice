@@ -41,5 +41,11 @@
   "footer": {
     "preservationTitle": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
     "preservationText": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
+  },
+  "control": {
+    "backToTop": "Quay lại đầu trang",
+    "resgister": "Đăng ký để trở thành tài xế của Now.vn ngay",
+    "ios": "Tải App trên Ios",
+    "android": "Tải App trên Android"
   }
 }
