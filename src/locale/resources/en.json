@@ -16,6 +16,8 @@
   "fast": "Fast",
   "minimum": "Minimum",
   "price": "Price",
+  "english": "English",
+  "vietnam": "Vietnamese",
   "foodPage": {
     "searchTitle": "Order Food, delivery from 20'...",
     "searchText": "From 54350 Places In HCM City From 00:00 - 23:59",

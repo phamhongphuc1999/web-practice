@@ -1,8 +1,11 @@
+import { Modal } from '@material-ui/core'
 import React from 'react'
 
 const LocalModal = () => {
   return (
-    <div></div>
+    <Modal>
+      
+    </Modal>
   )
 }
 

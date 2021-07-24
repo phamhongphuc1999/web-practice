@@ -8,3 +8,11 @@ export const onScroll = (id) => {
     smooth: "easeInOutQuart"
   });
 }
+
+export const GetItem = (key) => {
+  return localStorage.getItem(key)
+}
+
+export const SetItem = (key, value) => {
+  localStorage.setItem(key, value)
+}
