@@ -4,7 +4,7 @@ import React from 'react'
 const LocalModal = () => {
   return (
     <Modal>
-      
+      <div>123</div>
     </Modal>
   )
 }

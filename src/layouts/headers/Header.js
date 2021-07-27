@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { BsCircleFill } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { CHANGE_SETTING, INIT_SETTING } from '../../config/constant'
+import { initSetting, changeSetting } from '../../redux/slices/SettingSlice'
 
 const Header = ({ action }) => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Header = ({ action }) => {
   const setting = useSelector(state => state.setting);
 
   useEffect(() => {
-    dp({ type: INIT_SETTING })
+    dp(initSetting)
   }, [])
 
   const actionClick = (action) => {
@@ -24,7 +24,7 @@ const Header = ({ action }) => {
   }
 
   const changeLanguage = (language) => {
-    dp({ type: CHANGE_SETTING, action: { language } })
+    dp(changeSetting({ language }))
   }
 
   return (

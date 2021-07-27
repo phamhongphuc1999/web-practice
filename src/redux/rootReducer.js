@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
-import setting from './setting/index'
+import setting from './slices/SettingSlice'
 
 const rootReducer = combineReducers({
-  setting: setting,
+  setting: setting
 })
 
 export default rootReducer
