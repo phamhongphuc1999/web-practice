@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { LANG } from "../../assets/config/constant"
 import { GetItem, SetItem } from "../../utils"
-import { LANG } from '../../config/constant'
+import i18next from 'i18next';
 
 const initialState = { 'language': 'vi' }
 
@@ -13,8 +14,11 @@ const settingSlice = createSlice({
       state.language = lang ? lang : 'vi'
     },
     changeSetting(state, action) {
-      if (action.language) SetItem(action.language)
-      state.language = action.language
+      if (action.payload.language) {
+        SetItem(action.payload.language)
+        i18next.changeLanguage(action.payload.language)
+      }
+      state.language = action.payload
     }
   }
 })

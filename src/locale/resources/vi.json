@@ -19,11 +19,11 @@
   "english": "Tiếng Anh",
   "vietnam": "Tiếng Việt",
   "seeMore": "Xem thêm",
+  "useAppText": "Sử dụng App Now để có nhiều giảm giá và trải nghiệm tốt hơn",
   "foodPage": {
     "searchTitle": "Đặt Đồ ăn, giao hàng từ 20'...",
     "searchText": "Có 54350 Địa Điểm Ở TP. HCM Từ 00:00 - 23:59",
     "inputPlaceholder": "Tìm địa điểm, món ăn, địa chỉ...",
-    "useAppText": "Sử dụng App Now để có nhiều giảm giá và trải nghiệm tốt hơn",
     "category": {
       "all": "Tất cả",
       "food": "Đồ ăn",
@@ -39,6 +39,22 @@
       "sushi": "Sushi",
       "noodles": "Phở",
       "rice": "Cơm hộp"
+    }
+  },
+  "freshPage": {
+    "searchTitle": "Đặt Thực phẩm, giao hàng từ 20'...",
+    "searchText": "Có 3753 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm shop thực phẩm",
+    "category": {
+      "all": "Tất cả",
+      "vege": "Đồ chay",
+      "fruit": "Trái cây",
+      "meat": "Thịt / Trứng",
+      "seafood": "Thủy hải sản",
+      "vegetable": "Rau củ",
+      "rice": "Gạo / Mỳ",
+      "canned": "Đồ hộp / Đồ uống",
+      "spice": "Gia vị"
     }
   },
   "footer": {

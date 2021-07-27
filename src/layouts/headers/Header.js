@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import cx from 'classnames'
 import logo from '../../assets/images/nowvn.png'
 import * as styles from '../../assets/css/layouts/header.module.css'
-import { FLOWERS, FOOD, FRESH, LIQOR, MART, MEDICIEN, RESTAURANT } from '../../assets/config/constant'
 import { history } from '../../history'
 import { useTranslation } from 'react-i18next'
 import { BsCircleFill } from 'react-icons/bs'
@@ -10,7 +9,17 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { initSetting, changeSetting } from '../../redux/slices/SettingSlice'
 
-const Header = ({ action }) => {
+const switchConfig = [
+  { "title": "food", "pathname": "/" },
+  { "title": "restaurant", "pathname": "/table" },
+  { "title": "fresh", "pathname": "/fresh" },
+  { "title": "liquor", "pathname": "/liquor" },
+  { "title": "flowers", "pathname": "/flowers" },
+  { "title": "mart", "pathname": "/mart" },
+  { "title": "medicien", "pathname": "/medicien" }
+]
+
+const Header = ({ pathname }) => {
   const { t } = useTranslation();
   const dp = useDispatch();
   const setting = useSelector(state => state.setting);
@@ -19,8 +28,8 @@ const Header = ({ action }) => {
     dp(initSetting)
   }, [])
 
-  const actionClick = (action) => {
-    history.push(`/${action}`)
+  const actionClick = (pathname) => {
+    history.push(pathname)
   }
 
   const changeLanguage = (language) => {
@@ -38,20 +47,13 @@ const Header = ({ action }) => {
           </div>
           <div className="col-auto"></div>
           <div className="col-start-3 col-end-10 flex">
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === FOOD })}
-              onClick={() => actionClick(FOOD)}>{t('food')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === RESTAURANT })}
-              onClick={() => actionClick(RESTAURANT)}>{t('restaurant')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === FRESH })}
-              onClick={() => actionClick(FRESH)}>{t('fresh')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === LIQOR })}
-              onClick={() => actionClick(LIQOR)}>{t('liquor')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === FLOWERS })}
-              onClick={() => actionClick(FLOWERS)}>{t('flowers')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === MART })}
-              onClick={() => actionClick(MART)}>{t('mart')}</div>
-            <div className={cx(styles.columnContent, "text-center", { [styles.active]: action === MEDICIEN })}
-              onClick={() => actionClick(MEDICIEN)}>{t('medicien')}</div>
+            {switchConfig.map((element, index) => (
+              <div key={index} onClick={() => actionClick(element.pathname)}
+                className={cx(styles.columnContent, "text-center",
+                  { [styles.active]: pathname === element.pathname })}>
+                {t(element.title)}
+              </div>
+            ))}
             <div className={cx(styles.columnContent, "text-center flex items-center")}>
               <BsCircleFill size="5px" color="gray" className="mr-1" />
               <BsCircleFill size="5px" color="gray" className="mr-1" />

@@ -5,10 +5,10 @@ import SearchModal from '../components/layouts/SearchModal'
 import PreservationFooter from './footers/PreservationFooter'
 import NowControl from '../components/layouts/NowControl'
 
-const Layout = ({ action, children }) => {
+const Layout = ({ pathname, children }) => {
   return (
     <>
-      <Header action={action} />
+      <Header pathname={pathname} />
       <div id="content">
         {children}
       </div>

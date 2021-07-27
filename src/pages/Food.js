@@ -1,24 +1,26 @@
 import React from 'react'
-import { FOOD } from '../assets/config/constant'
-import Layout from '../layouts/Layout'
-import * as styles from '../assets/css/pages/food.module.css'
-import NowSearch from '../components/food/NowSearch'
+import NowSearch from '../components/shared/pages/NowSearch'
 import MainHome from '../components/food/MainHome'
+import { FOOD } from '../assets/config/constant'
+
+const categoryList = [
+  'all', 'food', 'drink', 'vege', 'cakes', 'dessert', 'homemade', 'stressfood',
+  'pizza/burger', 'chicken', 'hotpot', 'sushi', 'noodles', 'rice'
+]
 
 const Food = () => {
   return (
-    <Layout action={FOOD}>
-      <div className={styles.nowBanner} style={{ position: 'fixed', top: '70px' }}>
-        <div className={styles.container}>
-          <NowSearch />
-        </div>
-      </div>
+    <>
+      <NowSearch
+        categoryList={categoryList}
+        type={FOOD}
+      />
       <div style={{ position: 'relative', marginTop: '70px' }}>
-        <div className={styles.container}>
+        <div className="now-container">
           <MainHome className="float-right" />
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

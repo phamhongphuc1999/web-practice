@@ -15,3 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.now-container {
+  width: 1200px;
+  @apply px-3.5 mx-auto
+}

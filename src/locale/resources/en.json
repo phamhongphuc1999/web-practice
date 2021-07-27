@@ -19,11 +19,11 @@
   "english": "English",
   "vietnam": "Vietnamese",
   "seeMore": "See more",
+  "useAppText": "Better experiences with Now App",
   "foodPage": {
     "searchTitle": "Order Food, delivery from 20'...",
     "searchText": "From 54350 Places In HCM City From 00:00 - 23:59",
     "inputPlaceholder": "Find place, item, address...",
-    "useAppText": "Better experiences with Now App",
     "category": {
       "all": "All",
       "food": "Food",
@@ -33,12 +33,28 @@
       "dessert": "Dessert",
       "homemade": "Homemade",
       "stressfood": "Stressfood",
-      "pizza/burger": "Pizza/Burger",
+      "pizza/burger": "Pizza / Burger",
       "chicken": "Chicken",
       "hotpot": "Hotpot",
       "sushi": "Sushi",
       "noodles": "Noodles",
       "rice": "Rice box"
+    }
+  },
+  "freshPage": {
+    "searchTitle": "Order Fresh, delivery from 20'...",
+    "searchText": "From 3753 Places In HCM City From 06:00 - 17:00",
+    "inputPlaceholder": "Find groceries shops",
+    "category": {
+      "all": "All",
+      "vege": "Vegan",
+      "fruit": "Fruit",
+      "meat": "Meat / Egg",
+      "seafood": "Seafood",
+      "vegetable": "Vegetables",
+      "rice": "Rice / Noodle",
+      "canned": "Canned Food / Drinks",
+      "spice": "Spice"
     }
   },
   "footer": {
