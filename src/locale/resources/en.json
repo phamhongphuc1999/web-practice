@@ -41,6 +41,11 @@
       "rice": "Rice box"
     }
   },
+  "restaurantPage": {
+    "findRestaurant": "Find restaurants, offers, tables...",
+    "findText": "Find a table",
+    "moreInfo": "603 location at TP. HCM"
+  },
   "freshPage": {
     "searchTitle": "Order Fresh, delivery from 20'...",
     "searchText": "From 3753 Places In HCM City From 06:00 - 17:00",
@@ -55,6 +60,49 @@
       "rice": "Rice / Noodle",
       "canned": "Canned Food / Drinks",
       "spice": "Spice"
+    }
+  },
+  "liquorPage": {
+    "searchTitle": "Order Liquor, delivery from 20'...",
+    "searchText": "From 75 Places In HCM City From 06:00 - 17:00",
+    "inputPlaceholder": "Find shops, product...",
+    "category": {
+      "all": "All",
+      "beer": "Beer"
+    }
+  },
+  "flowersPage": {
+    "searchTitle": "Order Flowers, delivery from 20'...",
+    "searchText": "From 76 Places In HCM City From 06:00 - 17:00",
+    "inputPlaceholder": "Find flower shops",
+    "category": {
+      "all": "All",
+      "congratulatory": "Congratulatory",
+      "condolatory": "Condolatory",
+      "plants": "Plants"
+    }
+  },
+  "martPage": {
+    "searchTitle": "Order Mart, delivery from 20'...",
+    "searchText": "From 188 Places In HCM City From 06:00 - 17:00",
+    "inputPlaceholder": "Find place, shop online",
+    "category": {
+      "all": "All",
+      "cosmetics": "Cosmetics",
+      "mother": "Mother & Baby",
+      "toy": "Toys",
+      "clothers": "Clothers / Shoes",
+      "electronic": "Electronic / Applicanes",
+      "jewelry": "Jewelry / Accessories"
+    }
+  },
+  "medicienPage": {
+    "searchTitle": "Order Medicine, delivery from 20'...",
+    "searchText": "From 40 Places In HCM City From 06:00 - 17:00",
+    "inputPlaceholder": "Find pharmacy, drug stores...",
+    "category": {
+      "all": "All",
+      "pharmacies": "Pharmacies"
     }
   },
   "footer": {

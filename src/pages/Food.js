@@ -1,6 +1,6 @@
 import React from 'react'
 import NowSearch from '../components/shared/pages/NowSearch'
-import MainHome from '../components/food/MainHome'
+import MainFood from '../components/food/MainFood'
 import { FOOD } from '../assets/config/constant'
 
 const categoryList = [
@@ -17,7 +17,7 @@ const Food = () => {
       />
       <div style={{ position: 'relative', marginTop: '70px' }}>
         <div className="now-container">
-          <MainHome className="float-right" />
+          <MainFood className="float-right" />
         </div>
       </div>
     </>

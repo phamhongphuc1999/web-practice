@@ -1,0 +1,23 @@
+/* banner */
+
+.tbnowBanner {
+  background-image: url('../../images/restaurant/main-banner-tb.jpg');
+  background-size: cover;
+  min-height: 400px;
+  opacity: 0.95;
+}
+
+.restauranContainer {
+  @apply pt-20 pb-3 px-48
+}
+
+.logo {
+  background-image: url('../../images/restaurant/table-logo.png');
+  background-size: cover;
+  width: 117px;
+  height: 117px;
+}
+
+.searchInput{
+  
+}

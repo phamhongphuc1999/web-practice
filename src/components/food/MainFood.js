@@ -11,7 +11,7 @@ import { sale } from '../../demo-data/food/topSale'
 
 const titles = ['near', 'topSale', 'bestRate', 'fast']
 
-const MainHome = ({ className }) => {
+const MainFood = ({ className }) => {
   const { t } = useTranslation()
 
   return (
@@ -27,4 +27,4 @@ const MainHome = ({ className }) => {
   )
 }
 
-export default MainHome
+export default MainFood

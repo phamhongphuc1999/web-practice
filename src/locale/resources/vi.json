@@ -41,6 +41,11 @@
       "rice": "Cơm hộp"
     }
   },
+  "restaurantPage": {
+    "findRestaurant": "Tìm nhà hàng, đặt chỗ, khuyến mãi...",
+    "findText": "Tìm kiếm bàn trống",
+    "moreInfo": "Có 603 địa điểm tại TP. HCM"
+  },
   "freshPage": {
     "searchTitle": "Đặt Thực phẩm, giao hàng từ 20'...",
     "searchText": "Có 3753 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
@@ -55,6 +60,49 @@
       "rice": "Gạo / Mỳ",
       "canned": "Đồ hộp / Đồ uống",
       "spice": "Gia vị"
+    }
+  },
+  "liquorPage": {
+    "searchTitle": "Đặt Bia, giao hàng từ 20'...",
+    "searchText": "Có 75 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm shops, sản phẩm...",
+    "category": {
+      "all": "Tất cả",
+      "beer": "Bia"
+    }
+  },
+  "flowersPage": {
+    "searchTitle": "Đặt Hoa, giao hàng từ 20'...",
+    "searchText": "Có 76 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm cửa hàng hoa",
+    "category": {
+      "all": "Tất cả",
+      "congratulatory": "Chúc mừng",
+      "condolatory": "Chia buồn",
+      "plants": "Cây cảnh"
+    }
+  },
+  "martPage": {
+    "searchTitle": "Đặt Siêu thị, giao hàng từ 20'...",
+    "searchText": "Có 188 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm địa điểm, shop online",
+    "category": {
+      "all": "Tất cả",
+      "cosmetics": "Mỹ phẩm",
+      "mother": "Mẹ & Bé",
+      "toy": "Đồ chơi",
+      "clothers": "Quần áo / Giày dép",
+      "electronic": "Điện tử / Điện gia dụng",
+      "jewelry": "Trang sức / Phụ kiện"
+    }
+  },
+  "medicienPage": {
+    "searchTitle": "Đặt Thuốc, giao hàng từ 20'...",
+    "searchText": "Có 40 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm nhà thuốc, cửa hàng hóa mỹ phẩm...",
+    "category": {
+      "all": "Tất cả",
+      "pharmacies": "Nhà thuốc"
     }
   },
   "footer": {
