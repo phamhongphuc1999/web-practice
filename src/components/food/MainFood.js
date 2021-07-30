@@ -8,6 +8,7 @@ import { collection } from '../../demo-data/food/collection'
 import RestaurantList from '../shared/collections/RestaurantList'
 import { near } from '../../demo-data/food/near'
 import { sale } from '../../demo-data/food/topSale'
+import { Container } from '@material-ui/core'
 
 const titles = ['near', 'topSale', 'bestRate', 'fast']
 
@@ -15,15 +16,17 @@ const MainFood = ({ className }) => {
   const { t } = useTranslation()
 
   return (
-    <div className={cx(className, styles.mainHome)}>
-      <HeaderCollection action={t('food')}
-        address="P. Tôn Đức Thắng, Quốc Tử Giám, Đống Đa, Hà Nội, Việt Nam" />
-      <CollectionDetail data={collection} />
-      <RestaurantList
-        titles={titles.map((element, index) => t(element))}
-        actions={[near, sale, near, sale]}
-      />
-    </div>
+    <Container>
+      <div className={cx(className, styles.mainHome)}>
+        <HeaderCollection action={t('food')}
+          address="P. Tôn Đức Thắng, Quốc Tử Giám, Đống Đa, Hà Nội, Việt Nam" />
+        <CollectionDetail data={collection} />
+        <RestaurantList
+          titles={titles.map((element, index) => t(element))}
+          actions={[near, sale, near, sale]}
+        />
+      </div>
+    </Container>
   )
 }
 

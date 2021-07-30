@@ -15,9 +15,7 @@ const Fresh = () => {
         type={FRESH}
       />
       <div style={{ position: 'relative', marginTop: '70px' }}>
-        <div className="now-container">
-          <MainFresh />
-        </div>
+        <MainFresh />
       </div>
     </>
   )

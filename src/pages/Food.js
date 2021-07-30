@@ -16,9 +16,7 @@ const Food = () => {
         type={FOOD}
       />
       <div style={{ position: 'relative', marginTop: '70px' }}>
-        <div className="now-container">
-          <MainFood className="float-right" />
-        </div>
+        <MainFood className="float-right" />
       </div>
     </>
   )

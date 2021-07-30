@@ -9,6 +9,7 @@ import PlayStoreEn from '../../../assets/images/apps/PlayStore.png'
 import PlayStoreVi from '../../../assets/images/apps/PlayStore-vn.png'
 
 import * as styles from '../../../assets/css/shared/page.module.css'
+import { Container } from '@material-ui/core'
 
 const NowSearch = ({ categoryList, type }) => {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ const NowSearch = ({ categoryList, type }) => {
 
   return (
     <div className={styles.nowBanner} style={{ position: 'fixed', top: '70px' }}>
-      <div className="now-container">
+      <Container>
         <div className={styles.nowSearch}>
           <div className="font-bold text-3xl pb-1">{t(`searchTitle`, { entity: t(`${type}.entity`) })}</div>
           <div className="text-base">{t(`${type}.searchText`)}</div>
@@ -55,7 +56,7 @@ const NowSearch = ({ categoryList, type }) => {
               className="ml-4 cursor-pointer" style={{ width: '37%', height: '37%' }} />
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }
