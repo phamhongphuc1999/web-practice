@@ -4,13 +4,14 @@ import * as styles from '../../assets/css/pages/restaurant.module.css'
 import { useTranslation } from 'react-i18next'
 import { AiTwotonePhone, AiOutlineSearch } from 'react-icons/ai'
 import { GrClock } from 'react-icons/gr'
+import { Container } from '@material-ui/core'
 
 const RestaurantBanner = () => {
   const { t } = useTranslation()
 
   return (
     <div className={styles.tbnowBanner}>
-      <div className={cx("grid grid-rows-2 gap-4", styles.restauranContainer)}>
+      <Container maxWidth="lg" className={cx("grid grid-rows-2 gap-4 pt-20 pb-3")}>
         <div className="row-span-1">
           <div className={styles.logo}></div>
         </div>
@@ -32,7 +33,7 @@ const RestaurantBanner = () => {
           </div>
           <div className="text-right">{t('restaurantPage.moreInfo')}</div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

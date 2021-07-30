@@ -7,10 +7,6 @@
   opacity: 0.95;
 }
 
-.restauranContainer {
-  @apply pt-20 pb-3 px-48
-}
-
 .logo {
   background-image: url('../../images/restaurant/table-logo.png');
   background-size: cover;
@@ -18,6 +14,51 @@
   height: 117px;
 }
 
-.searchInput{
-  
+/* Tab */
+
+.restaurantTabContainer {
+  height: 116px;
+  @apply border-t-4 border-yellow-700
+}
+
+.tabElement {
+  border: 0.5px solid;
+  @apply relative flex justify-center items-center cursor-pointer border-gray-300
+}
+
+.activeElement {
+  @apply bg-white
+}
+
+.activeElement::before {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f00;
+}
+
+.inactiveElement {
+  @apply bg-transparent
+}
+
+.tabIcon {
+  @apply rounded-full p-5
+}
+
+.tabTitle {
+  @apply text-3xl font-extrabold ml-5
+}
+
+.list {
+  top: 108px;
+  @apply absolute bg-white w-full
+}
+
+.activeList {
+  @apply block
+}
+
+.inactiveList {
+  @apply hidden
 }

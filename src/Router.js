@@ -10,6 +10,7 @@ const liquor = lazy(() => import('./pages/Liquor'))
 const flower = lazy(() => import('./pages/Flower'))
 const mart = lazy(() => import('./pages/Mart'))
 const medicien = lazy(() => import('./pages/Medicien'))
+const pet = lazy(() => import('./pages/Pet'))
 
 const RouteConfig = ({ component: Component, ...rest }) => (
   <Route
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <RouteConfig exact path="/flowers" component={flower} />
         <RouteConfig exact path="/mart" component={mart} />
         <RouteConfig exact path="/medicien" component={medicien} />
+        <RouteConfig exact path="/pet" component={pet} />
       </Switch>
     </Router>
   )

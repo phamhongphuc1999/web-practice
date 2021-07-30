@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './headers/Header'
 import LocalModal from '../components/layouts/LocalModal'
 import SearchModal from '../components/layouts/SearchModal'
-import PreservationFooter from './footers/PreservationFooter'
+import StandardFooter from './footers'
 import NowControl from '../components/layouts/NowControl'
 
 const Layout = ({ pathname, children }) => {
@@ -12,7 +12,7 @@ const Layout = ({ pathname, children }) => {
       <div id="content">
         {children}
       </div>
-      <PreservationFooter />
+      <StandardFooter />
       <SearchModal />
       <LocalModal />
       <NowControl />

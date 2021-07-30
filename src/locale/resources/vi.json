@@ -20,8 +20,9 @@
   "vietnam": "Tiếng Việt",
   "seeMore": "Xem thêm",
   "useAppText": "Sử dụng App Now để có nhiều giảm giá và trải nghiệm tốt hơn",
+  "searchTitle": "Đặt {{entity}}, giao hàng từ 20'...",
   "foodPage": {
-    "searchTitle": "Đặt Đồ ăn, giao hàng từ 20'...",
+    "entity": "Đồ ăn",
     "searchText": "Có 54350 Địa Điểm Ở TP. HCM Từ 00:00 - 23:59",
     "inputPlaceholder": "Tìm địa điểm, món ăn, địa chỉ...",
     "category": {
@@ -44,7 +45,18 @@
   "restaurantPage": {
     "findRestaurant": "Tìm nhà hàng, đặt chỗ, khuyến mãi...",
     "findText": "Tìm kiếm bàn trống",
-    "moreInfo": "Có 603 địa điểm tại TP. HCM"
+    "moreInfo": "Có 603 địa điểm tại TP. HCM",
+    "tab": {
+      "foodAndDrink": "Ăn uống",
+      "dessert": "Tráng miệng",
+      "entertainment": "Giải trí",
+      "list": {
+        "offer": "Ưu đãi đặc biệt",
+        "collection": "Bộ sưu tập",
+        "location": "Địa điểm",
+        "block": "Bài viết"
+      }
+    }
   },
   "freshPage": {
     "searchTitle": "Đặt Thực phẩm, giao hàng từ 20'...",
@@ -103,6 +115,15 @@
     "category": {
       "all": "Tất cả",
       "pharmacies": "Nhà thuốc"
+    }
+  },
+  "petPage": {
+    "searchTitle": "Đặt Thú cưng, giao hàng từ 20'...",
+    "searchText": "Có 46 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "inputPlaceholder": "Tìm shop mua đồ cho thú cưng",
+    "category": {
+      "all": "Tất cả",
+      "pet": "Thú cưng"
     }
   },
   "footer": {

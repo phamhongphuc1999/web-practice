@@ -29,7 +29,7 @@ const NowSearch = ({ categoryList, type }) => {
     <div className={styles.nowBanner} style={{ position: 'fixed', top: '70px' }}>
       <div className="now-container">
         <div className={styles.nowSearch}>
-          <div className="font-bold text-3xl pb-1">{t(`${type}.searchTitle`)}</div>
+          <div className="font-bold text-3xl pb-1">{t(`searchTitle`, { entity: t(`${type}.entity`) })}</div>
           <div className="text-base">{t(`${type}.searchText`)}</div>
           <div className={styles.inputSearch}>
             <input className={styles.input} type="text" placeholder={t(`${type}.inputPlaceholder`)}
