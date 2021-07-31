@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import cx from 'classnames'
 import * as styles from '../../assets/css/pages/food.module.css'
@@ -12,12 +12,12 @@ import { Container } from '@material-ui/core'
 
 const titles = ['near', 'topSale', 'bestRate', 'fast']
 
-const MainFood = ({ className }) => {
+const MainFood = forwardRef(({ className }, ref) => {
   const { t } = useTranslation()
 
   return (
-    <Container>
-      <div className={cx(className, styles.mainHome)}>
+    <Container style={{ position: 'relative', marginTop: '70px' }}>
+      <div ref={ref} className={cx(className, styles.mainHome)}>
         <HeaderCollection action={t('food')}
           address="P. Tôn Đức Thắng, Quốc Tử Giám, Đống Đa, Hà Nội, Việt Nam" />
         <CollectionDetail data={collection} />
@@ -28,6 +28,6 @@ const MainFood = ({ className }) => {
       </div>
     </Container>
   )
-}
+})
 
 export default MainFood

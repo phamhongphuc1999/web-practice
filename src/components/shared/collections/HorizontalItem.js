@@ -14,7 +14,7 @@ const HorizontalItem = ({ data, ...prop }) => {
 
   return (
     <Card {...prop} onClick={() => itemClick()}
-      className="border-0 bg-transparent" style={{ boxShadow: 'none' }}>
+      className="border-0 bg-transparent cursor-pointer" style={{ boxShadow: 'none' }}>
       <CardContent className="grid grid-cols-12 gap-2">
         <CardMedia
           className="col-span-3 rounded-md"

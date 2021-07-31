@@ -7,10 +7,10 @@ const PreservationFooter = () => {
   const { t } = useTranslation()
 
   return (
-    <Paper>
+    <Paper className="my-10 py-3">
       <Container maxWidth="md">
-        <div className="font-semibold">{t("footer.preservationTitle")}</div>
-        <span className="">{t("footer.preservationText")}</span>
+        <div className="font-semibold">{t("footer.preservation.title")}</div>
+        <span className="">{t("footer.preservation.text")}</span>
         <img src={preservationImg} alt="footer preservation" />
       </Container>
     </Paper>

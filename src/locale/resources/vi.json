@@ -1,11 +1,4 @@
 {
-  "food": "Đồ ăn",
-  "restaurant": "Đặt bàn",
-  "fresh": "Thực phẩm",
-  "liquor": "Bia",
-  "flowers": "Hoa",
-  "mart": "Siêu thị",
-  "medicien": "Thuốc",
   "login": "Đăng nhập",
   "collection": "Bộ sưu tập",
   "seeAll": "Xem tất cả",
@@ -19,11 +12,12 @@
   "english": "Tiếng Anh",
   "vietnam": "Tiếng Việt",
   "seeMore": "Xem thêm",
+  "here": "Đây",
   "useAppText": "Sử dụng App Now để có nhiều giảm giá và trải nghiệm tốt hơn",
   "searchTitle": "Đặt {{entity}}, giao hàng từ 20'...",
+  "searchText": "Có {{locations}} Địa điểm ở {{city}} Từ {{start}} - {{end}}",
   "foodPage": {
     "entity": "Đồ ăn",
-    "searchText": "Có 54350 Địa Điểm Ở TP. HCM Từ 00:00 - 23:59",
     "inputPlaceholder": "Tìm địa điểm, món ăn, địa chỉ...",
     "category": {
       "all": "Tất cả",
@@ -43,6 +37,7 @@
     }
   },
   "restaurantPage": {
+    "entity": "Đặt bàn",
     "findRestaurant": "Tìm nhà hàng, đặt chỗ, khuyến mãi...",
     "findText": "Tìm kiếm bàn trống",
     "moreInfo": "Có 603 địa điểm tại TP. HCM",
@@ -59,8 +54,7 @@
     }
   },
   "freshPage": {
-    "searchTitle": "Đặt Thực phẩm, giao hàng từ 20'...",
-    "searchText": "Có 3753 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Thực phẩm",
     "inputPlaceholder": "Tìm shop thực phẩm",
     "category": {
       "all": "Tất cả",
@@ -75,8 +69,7 @@
     }
   },
   "liquorPage": {
-    "searchTitle": "Đặt Bia, giao hàng từ 20'...",
-    "searchText": "Có 75 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Bia",
     "inputPlaceholder": "Tìm shops, sản phẩm...",
     "category": {
       "all": "Tất cả",
@@ -84,8 +77,7 @@
     }
   },
   "flowersPage": {
-    "searchTitle": "Đặt Hoa, giao hàng từ 20'...",
-    "searchText": "Có 76 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Hoa",
     "inputPlaceholder": "Tìm cửa hàng hoa",
     "category": {
       "all": "Tất cả",
@@ -95,8 +87,7 @@
     }
   },
   "martPage": {
-    "searchTitle": "Đặt Siêu thị, giao hàng từ 20'...",
-    "searchText": "Có 188 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Siêu thị",
     "inputPlaceholder": "Tìm địa điểm, shop online",
     "category": {
       "all": "Tất cả",
@@ -109,8 +100,7 @@
     }
   },
   "medicienPage": {
-    "searchTitle": "Đặt Thuốc, giao hàng từ 20'...",
-    "searchText": "Có 40 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Thuốc",
     "inputPlaceholder": "Tìm nhà thuốc, cửa hàng hóa mỹ phẩm...",
     "category": {
       "all": "Tất cả",
@@ -118,8 +108,7 @@
     }
   },
   "petPage": {
-    "searchTitle": "Đặt Thú cưng, giao hàng từ 20'...",
-    "searchText": "Có 46 Địa Điểm Ở TP. HCM Từ 06:00 - 17:00",
+    "entity": "Thú cưng",
     "inputPlaceholder": "Tìm shop mua đồ cho thú cưng",
     "category": {
       "all": "Tất cả",
@@ -127,8 +116,23 @@
     }
   },
   "footer": {
-    "preservationTitle": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
-    "preservationText": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
+    "preservation": {
+      "title": "Đơn hàng của bạn sẽ được bảo quản như thế nào?",
+      "text": "Now sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường đi một cách tốt nhất."
+    },
+    "merchant": {
+      "text1": "là ứng dụng quản lý đơn hàng cho các nhà hàng đối tác của dịch vụ đặt món tận nơi",
+      "text2": "luôn sẵn sàng hợp tác với các nhà hàng, quán ăn, cafe... để mở rộng kinh doanh cũng như gia tăng khách hàng. Hãy kết nối vào hệ thống đặt và giao hàng để giảm bớt chi phí quản lý, vận hành, marketing, công nghệ...",
+      "text3": "Đăng ký tham gia"
+    },
+    "partner": {
+      "text1": "Hợp tác nhân viên giao nhận - Now Partners",
+      "text2": "Giúp bạn tăng thu nhập trong thời gian rảnh rỗi",
+      "text3": "tìm kiếm hợp tác với các cá nhân để thực hiện việc giao hàng, chúng tôi sẽ cung cấp ứng dụng (app), 1 số dụng cụ cần thiết để bạn có thể tiếp nhận & giao hàng, kiếm thêm thu nhập",
+      "text4": "Đăng ký tham gia",
+      "text5": "hoặc gửi Email qua",
+      "text6": "hoặc gọi qua số điện thoại 0286 656 9769."
+    }
   },
   "control": {
     "backToTop": "Quay lại đầu trang",

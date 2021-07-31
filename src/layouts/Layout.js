@@ -12,7 +12,7 @@ const Layout = ({ pathname, children }) => {
       <div id="content">
         {children}
       </div>
-      <StandardFooter />
+      <StandardFooter pathname={pathname} />
       <SearchModal />
       <LocalModal />
       <NowControl />

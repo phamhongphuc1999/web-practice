@@ -1,11 +1,4 @@
 {
-  "food": "Food",
-  "restaurant": "Restaurant",
-  "fresh": "Fresh",
-  "liquor": "Liquor",
-  "flowers": "Flowers",
-  "mart": "Mart",
-  "medicien": "Medicien",
   "login": "Login",
   "collection": "Collection",
   "seeAll": "See all",
@@ -19,11 +12,12 @@
   "english": "English",
   "vietnam": "Vietnamese",
   "seeMore": "See more",
+  "here": "Here",
   "useAppText": "Better experiences with Now App",
   "searchTitle": "Order {{entity}}, delivery from 20'...",
+  "searchText": "From {{locations}} Places In {{city}} From {{start}} - {{end}}",
   "foodPage": {
     "entity": "Food",
-    "searchText": "From 54350 Places In HCM City From 00:00 - 23:59",
     "inputPlaceholder": "Find place, item, address...",
     "category": {
       "all": "All",
@@ -43,6 +37,7 @@
     }
   },
   "restaurantPage": {
+    "entity": "Restaurant",
     "findRestaurant": "Find restaurants, offers, tables...",
     "findText": "Find a table",
     "moreInfo": "603 location at TP. HCM",
@@ -60,7 +55,6 @@
   },
   "freshPage": {
     "entity": "Fresh",
-    "searchText": "From 3753 Places In HCM City From 06:00 - 17:00",
     "inputPlaceholder": "Find groceries shops",
     "category": {
       "all": "All",
@@ -75,8 +69,7 @@
     }
   },
   "liquorPage": {
-    "searchTitle": "Order Liquor, delivery from 20'...",
-    "searchText": "From 75 Places In HCM City From 06:00 - 17:00",
+    "entity": "Liquor",
     "inputPlaceholder": "Find shops, product...",
     "category": {
       "all": "All",
@@ -84,8 +77,7 @@
     }
   },
   "flowersPage": {
-    "searchTitle": "Order Flowers, delivery from 20'...",
-    "searchText": "From 76 Places In HCM City From 06:00 - 17:00",
+    "entity": "Flowers",
     "inputPlaceholder": "Find flower shops",
     "category": {
       "all": "All",
@@ -95,8 +87,7 @@
     }
   },
   "martPage": {
-    "searchTitle": "Order Mart, delivery from 20'...",
-    "searchText": "From 188 Places In HCM City From 06:00 - 17:00",
+    "entity": "Mart",
     "inputPlaceholder": "Find place, shop online",
     "category": {
       "all": "All",
@@ -109,8 +100,7 @@
     }
   },
   "medicienPage": {
-    "searchTitle": "Order Medicine, delivery from 20'...",
-    "searchText": "From 40 Places In HCM City From 06:00 - 17:00",
+    "entity": "Medicien",
     "inputPlaceholder": "Find pharmacy, drug stores...",
     "category": {
       "all": "All",
@@ -118,8 +108,7 @@
     }
   },
   "petPage": {
-    "searchTitle": "Order Pets, delivery from 20'...",
-    "searchText": "From 46 Places In HCM City From 06:00 - 17:00",
+    "entity": "Pet",
     "inputPlaceholder": "Find shops for pet",
     "category": {
       "all": "All",
@@ -127,8 +116,23 @@
     }
   },
   "footer": {
-    "preservationTitle": "How about your purchase order protection?",
-    "preservationText": "Now will protect your purchase order from the weather by using bag or box during shipping."
+    "preservation": {
+      "title": "How about your purchase order protection?",
+      "text": "Now will protect your purchase order from the weather by using bag or box during shipping."
+    },
+    "merchant": {
+      "text1": "is an order management application for partner restaurants of on-site ordering service",
+      "text2": "is always ready to cooperate with restaurants, cafes, cafes ... to expand business as well as increase customers. Connect to the ordering and delivery system to reduce management, operation, marketing, technology ...",
+      "text3": "Register to join"
+    },
+    "partner": {
+      "text1": "is seeking for Now Partners",
+      "text2": "To help you make money in your Free Time",
+      "text3": "is seeking cooperation with individuals to deliver food from our merchants to our customers, we will provide mobile application, and some necessary tools for you to receive & deliver, make more income in your Free Time",
+      "text4": "Join our Partners network",
+      "text5": "or Email to",
+      "text6": "or call to 0286 656 9769."
+    }
   },
   "control": {
     "backToTop": "Back To Top",

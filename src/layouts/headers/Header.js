@@ -4,7 +4,6 @@ import logo from '../../assets/images/nowvn.png'
 import * as styles from '../../assets/css/layouts/header.module.css'
 import { history } from '../../history'
 import { useTranslation } from 'react-i18next'
-import { BsCircleFill } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { initSetting, changeSetting } from '../../redux/slices/SettingSlice'
@@ -16,7 +15,8 @@ const switchConfig = [
   { "title": "liquor", "pathname": "/liquor" },
   { "title": "flowers", "pathname": "/flowers" },
   { "title": "mart", "pathname": "/mart" },
-  { "title": "medicien", "pathname": "/medicien" }
+  { "title": "medicien", "pathname": "/medicien" },
+  { "title": "pet", "pathname": "/pet" }
 ]
 
 const Header = ({ pathname }) => {
@@ -51,14 +51,9 @@ const Header = ({ pathname }) => {
               <div key={index} onClick={() => actionClick(element.pathname)}
                 className={cx(styles.columnContent, "text-center",
                   { [styles.active]: pathname === element.pathname })}>
-                {t(element.title)}
+                {t(`${element.title}Page.entity`)}
               </div>
             ))}
-            <div className={cx(styles.columnContent, "text-center flex items-center")}>
-              <BsCircleFill size="5px" color="gray" className="mr-1" />
-              <BsCircleFill size="5px" color="gray" className="mr-1" />
-              <BsCircleFill size="5px" color="gray" />
-            </div>
           </div>
           <div className="col-span-2 flex items-center justify-end">
             <AiOutlineSearch size="30px" className="mr-5 cursor-pointer" />
