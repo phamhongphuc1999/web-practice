@@ -1,0 +1,23 @@
+.hTitle {
+  @apply text-3xl font-extrabold pt-4 pb-1
+}
+
+.footerTitle {
+  @apply text-2xl font-bold pb-2
+}
+
+.categoryTitle {
+  @apply text-gray-500 font-bold text-sm uppercase
+}
+
+.mainTitle {
+  @apply font-bold text-base
+}
+
+.content {
+  @apply pb-2
+}
+
+.textDocument {
+  @apply text-base text-justify mb-4
+}

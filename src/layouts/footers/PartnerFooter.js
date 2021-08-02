@@ -1,7 +1,10 @@
 import React from 'react'
-import { Container, Paper } from '@material-ui/core'
+import { Container, Paper, Typography } from '@material-ui/core'
 import partnerImg from '../../assets/images/footer/bg-deliverynow.png'
 import { useTranslation } from 'react-i18next'
+import cx from 'classnames'
+
+import * as styles from '../../assets/css/layouts/footer.module.css'
 
 const PartnerFooter = () => {
   const { t } = useTranslation()
@@ -11,21 +14,23 @@ const PartnerFooter = () => {
       <Container maxWidth="md">
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-9">
-            <div>
-              <a href="#">Now.vn</a>
-              <a href="#">{t('footer.partner.text1')}</a>
-            </div>
-            <div>{t('footer.partner.text2')}</div>
-            <div>
-              <span>Now</span>{t('footer.partner.text3')}
-            </div>
-            <div>
+            <Typography variant="h6" className={styles.footerTitle}>
+              <a className="text-red-600 font-bold" href="#">Now.vn </a>
+              <a className="text-blue-500 font-bold" href="#">{t('footer.partner.text1')}</a>
+            </Typography>
+            <Typography className={cx("text-xs", styles.content)}>
+              {t('footer.partner.text2')}
+            </Typography>
+            <Typography>
+              <span className="font-bold text-red-600">Now </span>{t('footer.partner.text3')}
+            </Typography>
+            <Typography>
               {t('footer.partner.text4')}
-              <a href="#">{t('here')}</a>
+              <a className="text-blue-500 font-bold" href="#"> {t('here')} </a>
               {t('footer.partner.text5')}
-              <a href="#">jobs@gofast.vn</a>
+              <a className="text-blue-500 font-bold" href="#"> jobs@gofast.vn </a>
               {t('footer.partner.text6')}
-            </div>
+            </Typography>
           </div>
           <div className="col-span-3">
             <img src={partnerImg} alt="partner footer" width="170px" />

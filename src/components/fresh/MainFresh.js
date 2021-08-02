@@ -1,12 +1,14 @@
 import { Container } from '@material-ui/core'
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-const MainFresh = () => {
+const MainFresh = forwardRef(({ className }, ref) => {
   return (
-    <Container>
-      
+    <Container style={{ position: 'relative', marginTop: '70px' }}>
+      <div ref={ref}>
+
+      </div>
     </Container>
   )
-}
+})
 
 export default MainFresh

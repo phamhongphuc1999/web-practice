@@ -2,7 +2,9 @@ import { Box } from "@material-ui/core"
 
 const FoodFooter = () => {
   return (
-    <Box></Box>
+    <Box>
+      
+    </Box>
   )
 }
 
