@@ -14,7 +14,7 @@ const MerchantAppFooter = () => {
       <Container maxWidth="md">
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-9">
-            <Typography variant="h6" className={styles.footerTitle}>
+            <Typography variant="div" className={styles.footerTitle}>
               NowMerchant App
             </Typography>
             <Typography className={cx("text-xs", styles.content)}>

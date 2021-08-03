@@ -1,10 +1,11 @@
 import React from 'react'
 import cx from 'classnames'
-import * as styles from '../../assets/css/pages/restaurant.module.css'
 import { useTranslation } from 'react-i18next'
 import { AiTwotonePhone, AiOutlineSearch } from 'react-icons/ai'
 import { BiTime } from 'react-icons/bi'
 import { Container } from '@material-ui/core'
+
+import * as styles from '../../assets/css/pages/restaurant.module.css'
 
 const RestaurantBanner = () => {
   const { t } = useTranslation()

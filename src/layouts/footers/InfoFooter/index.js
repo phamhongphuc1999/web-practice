@@ -6,9 +6,11 @@ import FreshFooter from './FreshFooter'
 const InforFooter = ({ pathname }) => {
   return (
     <Container maxWidth="lg">
-      {pathname.startsWith('/food') && <FoodFooter />}
-      {pathname.startsWith('/table') && <RestaurantFooter />}
-      {pathname.startsWith('/fresh') && <FreshFooter /> } 
+      {(() => {
+        if (pathname.startsWith('/table')) return <RestaurantFooter />
+        else if (pathname.startsWith('/fresh')) return <FreshFooter />
+        else return <FoodFooter />
+      })()}
     </Container>
   )
 }

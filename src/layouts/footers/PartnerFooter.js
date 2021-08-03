@@ -15,20 +15,20 @@ const PartnerFooter = () => {
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-9">
             <Typography variant="h6" className={styles.footerTitle}>
-              <a className="text-red-600 font-bold" href="#">Now.vn </a>
+              <a className="text-red-600 font-bold" href="#">Now.vn</a>&nbsp;
               <a className="text-blue-500 font-bold" href="#">{t('footer.partner.text1')}</a>
             </Typography>
             <Typography className={cx("text-xs", styles.content)}>
               {t('footer.partner.text2')}
             </Typography>
             <Typography>
-              <span className="font-bold text-red-600">Now </span>{t('footer.partner.text3')}
+              <span className="font-bold text-red-600">Now</span>&nbsp;{t('footer.partner.text3')}
             </Typography>
             <Typography>
               {t('footer.partner.text4')}
               <a className="text-blue-500 font-bold" href="#"> {t('here')} </a>
-              {t('footer.partner.text5')}
-              <a className="text-blue-500 font-bold" href="#"> jobs@gofast.vn </a>
+              {t('footer.partner.text5')}&nbsp;
+              <a className="text-blue-500 font-bold" href="#">jobs@gofast.vn</a>&nbsp;
               {t('footer.partner.text6')}
             </Typography>
           </div>

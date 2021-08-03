@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AiOutlineSearch } from 'react-icons/ai'
 import cx from 'classnames'
+import { Container } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 import AppStoreEn from '../../../assets/images/apps/AppStore.png'
 import AppStoreVi from '../../../assets/images/apps/AppStore-vn.png'
@@ -9,11 +11,12 @@ import PlayStoreEn from '../../../assets/images/apps/PlayStore.png'
 import PlayStoreVi from '../../../assets/images/apps/PlayStore-vn.png'
 
 import * as styles from '../../../assets/css/shared/page.module.css'
-import { Container } from '@material-ui/core'
 
 const NowSearch = ({ categoryList, move, type }) => {
   const { t } = useTranslation();
   const [isMove, setMove] = move;
+
+  const language = useSelector(state => state.setting.language)
 
   const categoryClick = (category) => {
 
@@ -54,8 +57,9 @@ const NowSearch = ({ categoryList, move, type }) => {
         </div>
         <div className="text-lg pt-4">{t('useAppText')}</div>
         <div className="flex mt-5">
-          <img src={AppStoreEn} alt="app store" className={cx(styles.imgApp, 'border border-white rounded-md cursor-pointer')} />
-          <img src={PlayStoreEn} alt="play store"
+          <img src={language === 'vi' ? AppStoreVi : AppStoreEn} alt="app store"
+            className={cx(styles.imgApp, 'border border-white rounded-md cursor-pointer')} />
+          <img src={language === 'en' ? PlayStoreVi : PlayStoreEn} alt="play store"
             className="ml-4 cursor-pointer" style={{ width: '37%', height: '37%' }} />
         </div>
       </div>

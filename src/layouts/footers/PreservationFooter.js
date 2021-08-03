@@ -11,7 +11,7 @@ const PreservationFooter = () => {
   return (
     <Paper className="my-10 py-3">
       <Container maxWidth="md">
-        <Typography variant="h6" className={styles.footerTitle}>
+        <Typography variant="div" className={styles.footerTitle}>
           {t("footer.preservation.title")}
         </Typography>
         <Typography className="">{t("footer.preservation.text")}</Typography>

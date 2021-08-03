@@ -9,8 +9,7 @@
 }
 
 .moveBanner {
-  @apply relative
-  /* @apply left-0 right-0 z-0 fixed */
+  @apply left-0 right-0 z-0 absolute
 }
 
 .nowSearch {

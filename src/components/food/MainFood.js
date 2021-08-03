@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import cx from 'classnames'
 import * as styles from '../../assets/css/pages/food.module.css'
@@ -12,8 +12,13 @@ import { Container } from '@material-ui/core'
 
 const titles = ['near', 'topSale', 'bestRate', 'fast']
 
-const MainFood = forwardRef(({ className }, ref) => {
+const MainFood = forwardRef(({ state, className }, ref) => {
   const { t } = useTranslation()
+  const [count, setCount] = state
+
+  useEffect(() => {
+    setCount(count + 1)
+  }, [collection])
 
   return (
     <Container style={{ position: 'relative', marginTop: '70px' }}>

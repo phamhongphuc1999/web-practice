@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
-import NowSearch from '../components/shared/pages/NowSearch'
-import MainFood from '../components/food/MainFood'
-import { FOOD } from '../assets/config/constant'
+import { FRESH } from '../../assets/config/constant'
+import MainFresh from '../../components/fresh/MainFresh'
+import NowSearch from '../../components/shared/pages/NowSearch'
 import cx from 'classnames'
 
-import * as styles from '../assets/css/shared/page.module.css'
+import * as styles from '../../assets/css/shared/page.module.css'
 
 const categoryList = [
-  'all', 'food', 'drink', 'vege', 'cakes', 'dessert', 'homemade', 'stressfood',
-  'pizza/burger', 'chicken', 'hotpot', 'sushi', 'noodles', 'rice'
+  'all', 'vege', 'fruit', 'meat', 'seafood', 'vegetable', 'rice', 'canned', 'spice'
 ]
 
-const Food = () => {
+const Fresh = () => {
   const scrollRef = useRef(null)
   const [limit, setLimit] = useState(0)
   const [isMove, setMove] = useState(false)
@@ -40,12 +39,12 @@ const Food = () => {
         <NowSearch
           move={[isMove, setMove]}
           categoryList={categoryList}
-          type={FOOD}
+          type={FRESH}
         />
       </div>
-      <MainFood ref={scrollRef} className="float-right" />
+      <MainFresh ref={scrollRef} className="float-right" />
     </>
   )
 }
 
-export default Food
+export default Fresh

@@ -1,30 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FRESH } from '../assets/config/constant'
-import MainFresh from '../components/fresh/MainFresh'
-import NowSearch from '../components/shared/pages/NowSearch'
+import NowSearch from '../../components/shared/pages/NowSearch'
+import MainFood from '../../components/food/MainFood'
+import { FOOD } from '../../assets/config/constant'
 import cx from 'classnames'
 
-import * as styles from '../assets/css/shared/page.module.css'
+import * as styles from '../../assets/css/shared/page.module.css'
 
 const categoryList = [
-  'all', 'vege', 'fruit', 'meat', 'seafood', 'vegetable', 'rice', 'canned', 'spice'
+  'all', 'food', 'drink', 'vege', 'cakes', 'dessert', 'homemade', 'stressfood',
+  'pizza/burger', 'chicken', 'hotpot', 'sushi', 'noodles', 'rice'
 ]
 
-const Fresh = () => {
+const Food = () => {
   const scrollRef = useRef(null)
   const [limit, setLimit] = useState(0)
   const [isMove, setMove] = useState(false)
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     window.addEventListener('scroll', listenToScroll)
-  }, [])
-
-  useEffect(() => {
     if (scrollRef != null) {
-      const temp = scrollRef.current.clientHeight - (window.screen.height - 90)
+      const temp = scrollRef['current']['clientHeight'] - (window.screen.height - 90)
       setLimit(temp)
     }
-  }, [scrollRef])
+  }, [scrollRef, count])
 
   const listenToScroll = () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop
@@ -39,12 +38,16 @@ const Fresh = () => {
         <NowSearch
           move={[isMove, setMove]}
           categoryList={categoryList}
-          type={FRESH}
+          type={FOOD}
         />
       </div>
-      <MainFresh ref={scrollRef} className="float-right" />
+      <MainFood
+        state={[count, setCount]}
+        ref={scrollRef}
+        className="float-right"
+      />
     </>
   )
 }
 
-export default Fresh
+export default Food

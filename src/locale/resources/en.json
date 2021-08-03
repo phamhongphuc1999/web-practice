@@ -99,8 +99,8 @@
       "jewelry": "Jewelry / Accessories"
     }
   },
-  "medicienPage": {
-    "entity": "Medicien",
+  "medicinePage": {
+    "entity": "Medicine",
     "inputPlaceholder": "Find pharmacy, drug stores...",
     "category": {
       "all": "All",
@@ -136,7 +136,7 @@
   },
   "control": {
     "backToTop": "Back To Top",
-    "resgister": "Đăng ký để trở thành tài xế của Now.vn ngay",
+    "register": "Đăng ký để trở thành tài xế của Now.vn ngay",
     "ios": "Download Ios App",
     "android": "Download Android App"
   }

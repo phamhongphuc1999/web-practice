@@ -1,5 +1,5 @@
-import { LIQOR } from "../assets/config/constant"
-import NowSearch from "../components/shared/pages/NowSearch"
+import { LIQUOR } from "../../assets/config/constant"
+import NowSearch from "../../components/shared/pages/NowSearch"
 import React from 'react'
 
 const categoryList = [
@@ -11,7 +11,7 @@ const Liquor = () => {
     <>
       <NowSearch
         categoryList={categoryList}
-        type={LIQOR}
+        type={LIQUOR}
       />
     </>
   )

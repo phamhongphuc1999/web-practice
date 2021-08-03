@@ -53,7 +53,7 @@
 
 .dropdownitem {
   padding: 12px 16px;
-  @apply text-black block rounded-2xl no-underline;
+  @apply flex items-center justify-between text-black block rounded-2xl no-underline;
   @apply hover:bg-white hover:text-white hover:text-green-300
 }
 

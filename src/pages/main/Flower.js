@@ -1,5 +1,5 @@
-import { FLOWERS } from "../assets/config/constant"
-import NowSearch from "../components/shared/pages/NowSearch"
+import { FLOWERS } from "../../assets/config/constant"
+import NowSearch from "../../components/shared/pages/NowSearch"
 import React from 'react'
 
 const categoryList = [

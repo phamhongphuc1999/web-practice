@@ -14,12 +14,14 @@ const NowControl = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', listenToScroll)
-  }, [])
+  }, [controlRef])
 
   const listenToScroll = () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-    if (winScroll > 215) controlRef.current.style.transform = 'translateY(0)'
-    else controlRef.current.style.transform = 'translateY(100%)'
+    if (controlRef) {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+      if (winScroll > 215) controlRef.current.style.transform = 'translateY(0)'
+      else controlRef.current.style.transform = 'translateY(100%)'
+    }
   }
 
   return (
@@ -36,8 +38,9 @@ const NowControl = () => {
           </div>
         </BaseTooltip>
       </Button>
-      <Button style={{ borderRadius: '0', width: '40px', padding: '0' }}>
-        <BaseTooltip placement="left" title={t('control.resgister')}>
+      <Button style={{ borderRadius: '0', width: '40px', padding: '0' }}
+        onClick={() => window.open("http://localhost:4000/tuyen-dung", "_blank")}>
+        <BaseTooltip placement="left" title={t('control.register')}>
           <div className="px-3 py-2">
             <GiVineFlower className="font-extrabold text-xl" />
           </div>
