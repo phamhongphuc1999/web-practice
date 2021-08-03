@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "../../assets/images/nowvn.png"
+import logo from "../../assets/images/logo/nowvn.png"
 
 const Spinner = () => {
   return (

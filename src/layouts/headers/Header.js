@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import cx from 'classnames'
-import logo from '../../assets/images/nowvn.png'
+import logo from '../../assets/images/logo/nowvn.png'
 import * as styles from '../../assets/css/layouts/header.module.css'
 import { history } from '../../history'
 import { useTranslation } from 'react-i18next'

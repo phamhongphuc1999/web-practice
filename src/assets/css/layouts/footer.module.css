@@ -6,12 +6,34 @@
   @apply text-2xl font-bold pb-2
 }
 
+.categoryContainer{
+  @apply py-5 border-t-2 border-gray-200
+}
+
 .categoryTitle {
   @apply text-gray-500 font-bold text-sm uppercase
 }
 
+.linkItem {
+  @apply hover:text-blue-400
+}
+
+.linkItemAfter::after {
+  content: '|';
+  padding: 0 3px;
+  @apply text-gray-500 hover:text-blue-400
+}
+
+.mainContainer{
+  @apply pt-10 pb-5 border-t-2 border-gray-200
+}
+
 .mainTitle {
   @apply font-bold text-base
+}
+
+.mainIcon {
+  @apply border rounded-full px-2 py-2 text-white bg-gray-500 flex justify-center items-center
 }
 
 .content {
