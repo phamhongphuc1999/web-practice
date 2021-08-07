@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const RestaurantCollection = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default RestaurantCollection
+export default RestaurantCollection;

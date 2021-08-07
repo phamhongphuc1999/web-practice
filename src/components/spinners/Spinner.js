@@ -1,5 +1,5 @@
-import React from "react"
-import logo from "../../assets/images/logo/nowvn.png"
+import React from "react";
+import logo from "../../assets/images/logo/nowvn.png";
 
 const Spinner = () => {
   return (
@@ -11,7 +11,7 @@ const Spinner = () => {
         <div className="effect-3 effects"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

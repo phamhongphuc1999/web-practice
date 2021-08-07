@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const RestaurantBlock = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default RestaurantBlock
+export default RestaurantBlock;
