@@ -1,49 +1,49 @@
 a {
-  @apply text-blue-400 underline
+  @apply text-blue-400 underline;
 }
 
 .hTitle {
-  @apply text-3xl font-extrabold pt-4 pb-1
+  @apply text-3xl font-extrabold pt-4 pb-1;
 }
 
 .footerTitle {
-  @apply text-2xl font-bold pb-2
+  @apply text-2xl font-bold pb-2;
 }
 
 .categoryContainer {
-  @apply py-5 border-t-2 border-gray-200
+  @apply py-5 border-t-2 border-gray-200;
 }
 
 .categoryTitle {
-  @apply text-gray-500 font-bold text-sm uppercase
+  @apply text-gray-500 font-bold text-sm uppercase;
 }
 
 .linkItem {
-  @apply hover:text-blue-400
+  @apply hover:text-blue-400;
 }
 
 .linkItemAfter::after {
-  content: '|';
+  content: "|";
   padding: 0 3px;
-  @apply text-gray-500 hover:text-blue-400
+  @apply text-gray-500 hover:text-blue-400;
 }
 
 .mainContainer {
-  @apply pt-10 pb-5 border-t-2 border-gray-200
+  @apply pt-10 pb-5 border-t-2 border-gray-200;
 }
 
 .mainTitle {
-  @apply font-bold text-base
+  @apply font-bold text-base;
 }
 
 .mainIcon {
-  @apply border rounded-full px-2 py-2 text-white bg-gray-500 flex justify-center items-center
+  @apply border rounded-full px-2 py-2 text-white bg-gray-500 flex justify-center items-center;
 }
 
 .content {
-  @apply pb-2
+  @apply pb-2;
 }
 
 .textDocument {
-  @apply text-base text-justify mb-4
+  @apply text-base text-justify mb-4;
 }

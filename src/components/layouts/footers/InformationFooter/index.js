@@ -3,7 +3,7 @@ import FoodFooter from "./FoodFooter";
 import RestaurantFooter from "./RestaurantFooter";
 import FreshFooter from "./FreshFooter";
 
-const InforFooter = ({ pathname }) => {
+const InformationFooter = ({ pathname }) => {
   return (
     <Container maxWidth="lg">
       {(() => {
@@ -15,4 +15,4 @@ const InforFooter = ({ pathname }) => {
   );
 };
 
-export default InforFooter;
+export default InformationFooter;

@@ -1,10 +1,10 @@
 import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import bannerPhone from "../../assets/images/footer/merchant.png";
+import bannerPhone from "../../../assets/images/footer/merchant.png";
 import cx from "classnames";
 
-import * as styles from "../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../assets/css/layouts/footer.module.css";
 
 const MerchantAppFooter = () => {
   const { t } = useTranslation();

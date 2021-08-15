@@ -1,9 +1,9 @@
 import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import preservationImg from "../../assets/images/footer/Box-food-preservation-footer.jpg";
+import preservationImg from "../../../assets/images/footer/Box-food-preservation-footer.jpg";
 
-import * as styles from "../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../assets/css/layouts/footer.module.css";
 
 const PreservationFooter = () => {
   const { t } = useTranslation();

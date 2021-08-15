@@ -1,42 +1,42 @@
 .nowBanner {
   top: 70px;
-  background-image: url('../../images/main-banner.jpg');
-  @apply h-screen bg-cover
+  background-image: url("../../images/main-banner.jpg");
+  @apply h-screen bg-cover;
 }
 
 .fixedBanner {
-  @apply left-0 right-0 z-0 fixed
+  @apply left-0 right-0 z-0 fixed;
 }
 
 .moveBanner {
-  @apply left-0 right-0 z-0 absolute
+  @apply left-0 right-0 z-0 absolute;
 }
 
 .nowSearch {
   width: 470px;
   top: 50%;
   transform: translateY(-50%);
-  @apply text-white fixed
+  @apply text-white fixed;
 }
 
 .nowMoveSearch {
   width: 470px;
-  @apply text-white relative
+  @apply text-white relative;
 }
 
 .inputSearch {
-  @apply py-7 relative
+  @apply py-7 relative;
 }
 
 .input {
   border-radius: 6px 10px 10px 6px;
-  @apply text-black text-lg border-0 h-12 w-full pr-20 pl-2.5 focus:outline-none
+  @apply text-black text-lg border-0 h-12 w-full pr-20 pl-2.5 focus:outline-none;
 }
 
 .searchBtn {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 6px;
-  @apply absolute right-0 h-12 bg-blue-500 px-5
+  @apply absolute right-0 h-12 bg-blue-500 px-5;
 }
 
 .categoryBtn {
@@ -47,5 +47,5 @@
 }
 
 .imgApp {
-  @apply w-1/3 h-1/3
+  @apply w-1/3 h-1/3;
 }

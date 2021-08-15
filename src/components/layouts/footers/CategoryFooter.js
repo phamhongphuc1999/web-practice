@@ -2,7 +2,7 @@ import { Box, Container } from "@material-ui/core";
 import React from "react";
 import cx from "classnames";
 
-import * as styles from "../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../assets/css/layouts/footer.module.css";
 
 const Item = ({ title, content }) => (
   <div className="py-3">

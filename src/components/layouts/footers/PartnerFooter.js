@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Paper, Typography } from "@material-ui/core";
-import partnerImg from "../../assets/images/footer/bg-deliverynow.png";
+import partnerImg from "../../../assets/images/footer/bgDeliveryNow.png";
 import { useTranslation } from "react-i18next";
 import cx from "classnames";
 
-import * as styles from "../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../assets/css/layouts/footer.module.css";
 
 const PartnerFooter = () => {
   const { t } = useTranslation();
@@ -15,11 +15,11 @@ const PartnerFooter = () => {
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-9">
             <Typography variant="h6" className={styles.footerTitle}>
-              <a className="text-red-600 font-bold" href="#">
+              <a className="text-red-600 font-bold" href="/">
                 Now.vn
               </a>
               &nbsp;
-              <a className="text-blue-500 font-bold" href="#">
+              <a className="text-blue-500 font-bold" href="/">
                 {t("footer.partner.text1")}
               </a>
             </Typography>
@@ -32,12 +32,12 @@ const PartnerFooter = () => {
             </Typography>
             <Typography>
               {t("footer.partner.text4")}
-              <a className="text-blue-500 font-bold" href="#">
+              <a className="text-blue-500 font-bold" href="/">
                 {" "}
                 {t("here")}{" "}
               </a>
               {t("footer.partner.text5")}&nbsp;
-              <a className="text-blue-500 font-bold" href="#">
+              <a className="text-blue-500 font-bold" href="/">
                 jobs@gofast.vn
               </a>
               &nbsp;

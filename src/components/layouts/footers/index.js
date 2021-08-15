@@ -1,7 +1,7 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 import CategoryFooter from "./CategoryFooter";
-import InforFooter from "./InfoFooter";
+import InformationFooter from "./InformationFooter";
 import MainFooter from "./MainFooter";
 import MerchantAppFooter from "./MerchantAppFooter";
 import PartnerFooter from "./PartnerFooter";
@@ -13,7 +13,7 @@ const StandardFooter = ({ pathname }) => {
       <PreservationFooter />
       <MerchantAppFooter />
       <PartnerFooter />
-      <InforFooter pathname={pathname} />
+      <InformationFooter pathname={pathname} />
       <CategoryFooter />
       <MainFooter />
     </Container>

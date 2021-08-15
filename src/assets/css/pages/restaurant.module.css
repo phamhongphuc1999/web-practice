@@ -1,14 +1,14 @@
 /* banner */
 
-.tbnowBanner {
-  background-image: url('../../images/restaurant/main-banner-tb.jpg');
+.tbNowBanner {
+  background-image: url("../../images/restaurant/main-banner-tb.jpg");
   background-size: cover;
   min-height: 400px;
   opacity: 0.95;
 }
 
 .logo {
-  background-image: url('../../images/restaurant/table-logo.png');
+  background-image: url("../../images/restaurant/table-logo.png");
   background-size: cover;
   width: 117px;
   height: 117px;
@@ -18,16 +18,16 @@
 
 .restaurantTabContainer {
   height: 116px;
-  @apply border-t-4 border-yellow-700
+  @apply border-t-4 border-yellow-700;
 }
 
 .tabElement {
   border: 0.5px solid;
-  @apply relative flex justify-center items-center cursor-pointer border-gray-300
+  @apply relative flex justify-center items-center cursor-pointer border-gray-300;
 }
 
 .activeElement {
-  @apply bg-white
+  @apply bg-white;
 }
 
 .activeElement::before {
@@ -39,26 +39,26 @@
 }
 
 .inactiveElement {
-  @apply bg-transparent
+  @apply bg-transparent;
 }
 
 .tabIcon {
-  @apply rounded-full p-5
+  @apply rounded-full p-5;
 }
 
 .tabTitle {
-  @apply text-3xl font-extrabold ml-5
+  @apply text-3xl font-extrabold ml-5;
 }
 
 .list {
   top: 108px;
-  @apply absolute bg-white w-full
+  @apply absolute bg-white w-full;
 }
 
 .activeList {
-  @apply block
+  @apply block;
 }
 
 .inactiveList {
-  @apply hidden
+  @apply hidden;
 }

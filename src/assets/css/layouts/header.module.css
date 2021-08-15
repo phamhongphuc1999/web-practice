@@ -14,24 +14,24 @@
 
 .content {
   min-height: 42px;
-  @apply justify-between items-center
+  @apply justify-between items-center;
 }
 
 .columnContent {
   padding: 10px 15px 22px;
-  @apply border-transparent hover:text-blue-400 cursor-pointer
+  @apply border-transparent hover:text-blue-400 cursor-pointer;
 }
 
 .active {
-  @apply border-b-4 border-blue-400 font-bold text-blue-400
+  @apply border-b-4 border-blue-400 font-bold text-blue-400;
 }
 
 .loginBut {
   padding: 7px 12px;
-  @apply border rounded border-blue-400 text-blue-400 hover:text-white hover:bg-blue-400
+  @apply border rounded border-blue-400 text-blue-400 hover:text-white hover:bg-blue-400;
 }
 
-.dropbtn {
+.dropBtn {
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -51,12 +51,12 @@
   @apply hidden absolute bg-white z-10 rounded-2xl right-1/4;
 }
 
-.dropdownitem {
+.dropdownItem {
   padding: 12px 16px;
   @apply flex items-center justify-between text-black block rounded-2xl no-underline;
-  @apply hover:bg-white hover:text-white hover:text-green-300
+  @apply hover:bg-white hover:text-white hover:text-green-300;
 }
 
 .dropdown:hover .dropdownContent {
-  @apply block
+  @apply block;
 }

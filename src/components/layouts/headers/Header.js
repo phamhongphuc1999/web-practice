@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import cx from "classnames";
-import logo from "../../assets/images/logo/nowvn.png";
-import { history } from "../../history";
+import logo from "../../../assets/images/logo/nowVn.png";
+import { history } from "../../../history";
 import { useTranslation } from "react-i18next";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { initSetting, changeSetting } from "../../redux/slices/SettingSlice";
-import { EnFlag, ViFlag } from "../../assets/svg";
+import { initSetting, changeSetting } from "../../../redux/slices/SettingSlice";
+import { EnFlag, ViFlag } from "../../../assets/svg";
 
-import * as styles from "../../assets/css/layouts/header.module.css";
+import * as styles from "../../../assets/css/layouts/header.module.css";
 
 const switchConfig = [
   { title: "food", pathname: "/" },
@@ -69,7 +69,7 @@ const Header = ({ pathname }) => {
       </div>
       <div className="inline-block fixed top-4 right-0">
         <div className={styles.dropdown}>
-          <div className="dropbtn">
+          <div className="dropBtn">
             {setting.language === "vi" ? (
               <ViFlag width={30} height={30} />
             ) : (
@@ -78,13 +78,13 @@ const Header = ({ pathname }) => {
           </div>
           <div className={styles.dropdownContent}>
             <div
-              className={styles.dropdownitem}
+              className={styles.dropdownItem}
               onClick={() => changeLanguage("vi")}
             >
               <ViFlag width={20} height={20} /> {t("vietnam")}
             </div>
             <div
-              className={styles.dropdownitem}
+              className={styles.dropdownItem}
               onClick={() => changeLanguage("en")}
             >
               <EnFlag width={20} height={20} /> {t("english")}

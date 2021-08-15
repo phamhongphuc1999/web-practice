@@ -1,5 +1,5 @@
 import { Box } from "@material-ui/core";
-import * as styles from "../../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../../assets/css/layouts/footer.module.css";
 
 const FreshFooter = () => {
   return (

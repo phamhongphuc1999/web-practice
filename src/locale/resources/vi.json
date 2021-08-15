@@ -132,6 +132,17 @@
       "text4": "Đăng ký tham gia",
       "text5": "hoặc gửi Email qua",
       "text6": "hoặc gọi qua số điện thoại 0286 656 9769."
+    },
+    "main": {
+      "aboutUs": "Giới thiệu",
+      "helpCenter": "Trung tâm Trợ giúp",
+      "term": "Quy chế",
+      "termOfService": "Điều khoản sử dụng",
+      "security": "Bảo mật thông tin",
+      "claim": "Giải quyết khiếu nại",
+      "contact": "Liên hệ",
+      "partner": "Hợp tác nhân viên giao nhận",
+      "merchant": "Đăng ký quán"
     }
   },
   "control": {

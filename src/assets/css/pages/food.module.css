@@ -1,6 +1,6 @@
-.mainHome{
- margin-top: 50px;
- width: 670px;
+.mainHome {
+  margin-top: 50px;
+  width: 670px;
 }
 
 @media (min-width: 1280px) {
@@ -8,7 +8,7 @@
     transform: translateY(-40%);
   }
   .inputSearch {
-    @apply py-5
+    @apply py-5;
   }
   .categoryBtn {
     @apply py-1;

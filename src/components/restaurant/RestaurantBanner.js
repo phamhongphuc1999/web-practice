@@ -11,7 +11,7 @@ const RestaurantBanner = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.tbnowBanner}>
+    <div className={styles.tbNowBanner}>
       <Container
         maxWidth="lg"
         className={cx("grid grid-rows-2 gap-4 pt-20 pb-3")}

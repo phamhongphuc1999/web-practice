@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "./headers/Header";
-import LocalModal from "../components/layouts/LocalModal";
-import SearchModal from "../components/layouts/SearchModal";
+import LocalModal from "./other/LocalModal";
+import SearchModal from "./other/SearchModal";
 import StandardFooter from "./footers";
-import NowControl from "../components/layouts/NowControl";
+import NowControl from "./other/NowControl";
 
 const Layout = ({ pathname, children }) => {
   return (

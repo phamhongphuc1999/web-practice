@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import { history } from "./history";
-import Layout from "./layouts/Layout";
+import Layout from "./components/layouts";
 
 const food = lazy(() => import("./pages/main/Food"));
 const restaurant = lazy(() => import("./pages/main/Restaurant"));

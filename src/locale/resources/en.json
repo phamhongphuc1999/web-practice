@@ -132,11 +132,22 @@
       "text4": "Join our Partners network",
       "text5": "or Email to",
       "text6": "or call to 0286 656 9769."
+    },
+    "main": {
+      "aboutUs": "About us",
+      "helpCenter": "Help center",
+      "term": "Term & Condition",
+      "termOfService": "Term of service",
+      "security": "Information Security",
+      "claim": "Adjustment of claims",
+      "contact": "Contact us",
+      "partner": "Partner",
+      "merchant": "Merchant Registration"
     }
   },
   "control": {
     "backToTop": "Back To Top",
-    "register": "Đăng ký để trở thành tài xế của Now.vn ngay",
+    "register": "Register",
     "ios": "Download Ios App",
     "android": "Download Android App"
   }

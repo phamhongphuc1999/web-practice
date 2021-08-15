@@ -1,5 +1,5 @@
 import { Box } from "@material-ui/core";
-import * as styles from "../../../assets/css/layouts/footer.module.css";
+import * as styles from "../../../../assets/css/layouts/footer.module.css";
 
 const FoodFooter = () => {
   return (
@@ -9,7 +9,7 @@ const FoodFooter = () => {
       </div>
       <p className={styles.textDocument}>
         Nếu việc&nbsp;
-        <a href="#">đặt bàn</a>
+        <a href="/">đặt bàn</a>
         &nbsp;và di chuyển tới nhà hàng tốn nhiều thời gian và bạn muốn tận
         hưởng món ăn ngon ngay tại nhà thì đặt đồ ăn online là một trong những
         tiện ích quá quen thuộc với bạn hiện nay. Nếu các ứng dụng/ các trang
@@ -20,7 +20,7 @@ const FoodFooter = () => {
         mang đến nhiều lựa chọn cho người dùng ở 16 tỉnh thành trong cả nước;
         kèm theo nhiều ưu đãi hợp túi tiền như: miễn phí ship đồ ăn trong phạm
         vi bán kính 3km, khuyến mãi cho người dùng mới, các mã khuyến mãi theo
-        &nbsp;<a href="#">bộ sưu tập</a>
+        &nbsp;<a href="/">bộ sưu tập</a>
         &nbsp;mỗi ngày…. để sử dụng ở bất kì thời gian nào cũng có được mức giá
         ổn nhất.
       </p>
@@ -90,8 +90,8 @@ const FoodFooter = () => {
       <p className={styles.textDocument}>
         NowFood đem đến nhiều mô hình ẩm thực cho người dùng ở 16 tỉnh thành
         khác nhau. Danh sách các nhà hàng đủ các thể loại từ cơm, bún, lẩu,
-        &nbsp;<a href="#">đồ chay</a>,&nbsp; bánh kem hay &nbsp;
-        <a href="#">sushi</a>&nbsp; … các bữa ăn đậm chất Việt Nam, Âu hay Hàn.
+        &nbsp;<a href="/">đồ chay</a>,&nbsp; bánh kem hay &nbsp;
+        <a href="/">sushi</a>&nbsp; … các bữa ăn đậm chất Việt Nam, Âu hay Hàn.
         Do đó, chỉ cần ngồi tại chỗ, bạn hoàn toàn có thể mua được cùng lúc các
         món ăn và thức uống như: Trà sữa trân châu đường đen, gà rán, bánh
         trứng, xôi, chè, đồ ăn vặt,...cùng nhiều món ăn độc đáo khác đến từ các
@@ -113,7 +113,7 @@ const FoodFooter = () => {
         thể không tải &nbsp;<b>ứng dụng Now</b>
         &nbsp;về chiếc điện thoại của mình. Trên ứng dụng Now có NowFood - dịch
         vụ ship đồ ăn cung cấp đến khách hàng cùng vô số những dịch vụ tiện ích
-        khác: NowTable - Đặt bàn, &nbsp;<a href="#">NowFresh</a>&nbsp; - Đi chợ,
+        khác: NowTable - Đặt bàn, &nbsp;<a href="/">NowFresh</a>&nbsp; - Đi chợ,
         ...
       </p>
       <p className={styles.textDocument}>

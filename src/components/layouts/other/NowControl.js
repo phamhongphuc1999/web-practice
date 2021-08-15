@@ -4,9 +4,9 @@ import { BsChevronUp } from "react-icons/bs";
 import { GiVineFlower } from "react-icons/gi";
 import { DiApple } from "react-icons/di";
 import { AiFillAndroid } from "react-icons/ai";
-import BaseTooltip from "../shared/BaseTooltip";
+import BaseTooltip from "../../shared/BaseTooltip";
 import { useTranslation } from "react-i18next";
-import { onScroll } from "../../utils";
+import { onScroll } from "../../../utils";
 
 const NowControl = () => {
   const { t } = useTranslation();
