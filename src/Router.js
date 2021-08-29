@@ -40,7 +40,8 @@ const AppRouter = () => {
         <RouteConfig exact path="/mart" component={mart} />
         <RouteConfig exact path="/medicine" component={medicine} />
         <RouteConfig exact path="/pet" component={pet} />
-        <RouteConfig exact path="/tuyen-dung" component={recruitment} />
+
+        <Route exact path="/tuyen-dung" component={recruitment} />
       </Switch>
     </Router>
   );

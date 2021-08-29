@@ -7,6 +7,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { initSetting, changeSetting } from "../../redux/slices/SettingSlice";
 import { EnFlag, ViFlag } from "../../assets/svg";
+import { Container } from "@material-ui/core";
 
 import * as styles from "./header.module.css";
 
@@ -40,7 +41,7 @@ const Header = ({ pathname }) => {
 
   return (
     <div className={styles.containerHeader}>
-      <div className={styles.containerContent}>
+      <Container>
         <div className={cx(styles.content, "grid grid-cols-12 gap1")}>
           <div className="col-auto w-auto">
             <a href="/">
@@ -66,7 +67,7 @@ const Header = ({ pathname }) => {
             <button className={styles.loginBut}>{t("login")}</button>
           </div>
         </div>
-      </div>
+      </Container>
       <div className="inline-block fixed top-4 right-0">
         <div className={styles.dropdown}>
           <div className="dropBtn">

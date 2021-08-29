@@ -13,13 +13,13 @@ import * as styles from "../page.module.css";
 
 const titles = ["near", "topSale", "bestRate", "fast"];
 
-const MainFlower = forwardRef(({ state, className }, ref) => {
+const MainMedicine = forwardRef(({ state, className }, ref) => {
   const { t } = useTranslation();
   const [count, setCount] = state;
 
   useEffect(() => {
     setCount(count + 1);
-  }, [near, sale, collection]);
+  }, [near, sale]);
 
   return (
     <Container style={{ position: "relative", marginTop: "70px" }}>
@@ -38,4 +38,4 @@ const MainFlower = forwardRef(({ state, className }, ref) => {
   );
 });
 
-export default MainFlower;
+export default MainMedicine;
