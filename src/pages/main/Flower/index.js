@@ -1,5 +1,5 @@
 import { FLOWERS } from "../../../assets/config/constant";
-import NowSearch from "../../../components/pages/NowSearch";
+import NowSearch from "../components/NowSearch";
 import React from "react";
 
 const categoryList = ["all", "congratulatory", "condolatory", "plants"];

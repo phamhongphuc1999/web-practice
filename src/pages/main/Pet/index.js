@@ -1,5 +1,5 @@
 import React from "react";
-import NowSearch from "../../../components/pages/NowSearch";
+import NowSearch from "../components/NowSearch";
 import { PET } from "../../../assets/config/constant";
 
 const categoryList = ["all", "pet"];

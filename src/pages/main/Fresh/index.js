@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FRESH } from "../../../assets/config/constant";
 import MainFresh from "./MainFresh";
-import NowSearch from "../../../components/pages/NowSearch";
+import NowSearch from "../components/NowSearch";
 import cx from "classnames";
 
-import * as styles from "../../../assets/css/shared/page.module.css";
+import * as styles from "../page.module.css";
+import { useScroll } from "../components/hook";
 
 const categoryList = [
   "all",
@@ -20,26 +21,9 @@ const categoryList = [
 
 const Fresh = () => {
   const scrollRef = useRef(null);
-  const [limit, setLimit] = useState(0);
-  const [isMove, setMove] = useState(false);
+  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScroll);
-  }, []);
-
-  useEffect(() => {
-    if (scrollRef != null) {
-      const temp = scrollRef.current.clientHeight - (window.screen.height - 90);
-      setLimit(temp);
-    }
-  }, [scrollRef]);
-
-  const listenToScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    if (winScroll > limit) setMove(true);
-    else setMove(false);
-  };
+  const { limit, isMove } = useScroll(scrollRef, count);
 
   return (
     <>
@@ -50,13 +34,13 @@ const Fresh = () => {
         })}
         style={isMove ? { top: limit } : {}}
       >
-        <NowSearch
-          move={[isMove, setMove]}
-          categoryList={categoryList}
-          type={FRESH}
-        />
+        <NowSearch isMove={isMove} categoryList={categoryList} type={FRESH} />
       </div>
-      <MainFresh ref={scrollRef} className="float-right" />
+      <MainFresh
+        state={[count, setCount]}
+        ref={scrollRef}
+        className="float-right"
+      />
     </>
   );
 };

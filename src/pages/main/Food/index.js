@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import NowSearch from "../../../components/pages/NowSearch";
+import React, { useRef, useState } from "react";
+import NowSearch from "../components/NowSearch";
 import MainFood from "./MainFood";
 import { FOOD } from "../../../assets/config/constant";
+import { useScroll } from "../components/hook";
 import cx from "classnames";
 
-import * as styles from "../../../assets/css/shared/page.module.css";
+import * as styles from "../page.module.css";
 
 const categoryList = [
   "all",
@@ -25,25 +26,9 @@ const categoryList = [
 
 const Food = () => {
   const scrollRef = useRef(null);
-  const [limit, setLimit] = useState(0);
-  const [isMove, setMove] = useState(false);
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScroll);
-    if (scrollRef != null) {
-      const temp =
-        scrollRef["current"]["clientHeight"] - (window.screen.height - 90);
-      setLimit(temp);
-    }
-  }, [scrollRef, count]);
-
-  const listenToScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    if (winScroll > limit) setMove(true);
-    else setMove(false);
-  };
+  const { limit, isMove } = useScroll(scrollRef, count);
 
   return (
     <>
@@ -54,11 +39,7 @@ const Food = () => {
         })}
         style={isMove ? { top: limit } : {}}
       >
-        <NowSearch
-          move={[isMove, setMove]}
-          categoryList={categoryList}
-          type={FOOD}
-        />
+        <NowSearch isMove={isMove} categoryList={categoryList} type={FOOD} />
       </div>
       <MainFood
         state={[count, setCount]}

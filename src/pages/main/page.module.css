@@ -1,15 +1,15 @@
 .nowBanner {
   top: 70px;
-  background-image: url("../../images/main-banner.jpg");
-  @apply h-screen bg-cover;
+  background-image: url("../../assets/images/main-banner.jpg");
+  @apply h-screen bg-cover left-0 right-0 z-0;
 }
 
 .fixedBanner {
-  @apply left-0 right-0 z-0 fixed;
+  @apply fixed;
 }
 
 .moveBanner {
-  @apply left-0 right-0 z-0 absolute;
+  @apply absolute;
 }
 
 .nowSearch {

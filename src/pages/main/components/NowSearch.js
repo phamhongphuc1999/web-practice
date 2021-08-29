@@ -5,16 +5,15 @@ import cx from "classnames";
 import { Container } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
-import AppStoreEn from "../../assets/images/apps/AppStore.png";
-import AppStoreVi from "../../assets/images/apps/AppStore-vn.png";
-import PlayStoreEn from "../../assets/images/apps/PlayStore.png";
-import PlayStoreVi from "../../assets/images/apps/PlayStore-vn.png";
+import AppStoreEn from "../../../assets/images/apps/AppStore.png";
+import AppStoreVi from "../../../assets/images/apps/AppStore-vn.png";
+import PlayStoreEn from "../../../assets/images/apps/PlayStore.png";
+import PlayStoreVi from "../../../assets/images/apps/PlayStore-vn.png";
 
-import * as styles from "../../assets/css/shared/page.module.css";
+import * as styles from "../page.module.css";
 
-const NowSearch = ({ categoryList, move, type }) => {
+const NowSearch = ({ categoryList, isMove, type }) => {
   const { t } = useTranslation();
-  const [isMove, setMove] = move;
 
   const language = useSelector((state) => state.setting.language);
 
