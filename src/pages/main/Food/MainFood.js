@@ -9,7 +9,7 @@ import { near } from "../../../demo-data/food/near";
 import { sale } from "../../../demo-data/food/topSale";
 import { Container } from "@material-ui/core";
 
-import * as styles from "./food.module.css";
+import * as styles from "../page.module.css";
 
 const titles = ["near", "topSale", "bestRate", "fast"];
 
@@ -19,14 +19,14 @@ const MainFood = forwardRef(({ state, className }, ref) => {
 
   useEffect(() => {
     setCount(count + 1);
-  }, [collection]);
+  }, [collection, near, sale]);
 
   return (
     <Container style={{ position: "relative", marginTop: "70px" }}>
       <div ref={ref} className={cx(className, styles.mainHome)}>
         <HeaderCollection
-          action={t("food")}
-          address="P. Tôn Đức Thắng, Quốc Tử Giám, Đống Đa, Hà Nội, Việt Nam"
+          action={t("foodPage.entity")}
+          address={t("chooseLocation")}
         />
         <CollectionDetail data={collection} />
         <RestaurantList

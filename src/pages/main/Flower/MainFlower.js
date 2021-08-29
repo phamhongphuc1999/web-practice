@@ -1,17 +1,14 @@
 import { Container } from "@material-ui/core";
-import React, { forwardRef, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { forwardRef, useEffect } from "react";
 import cx from "classnames";
 import { near } from "../../../demo-data/liquor/near";
 import { sale } from "../../../demo-data/liquor/topSale";
 import HeaderCollection from "../../../components/collections/HeaderCollection";
-import RestaurantList from "../../../components/collections/RestaurantList";
+import { useTranslation } from "react-i18next";
 
 import * as styles from "../page.module.css";
 
-const titles = ["near", "topSale", "bestRate", "fast"];
-
-const MainLiquor = forwardRef(({ state, className }, ref) => {
+const MainFlower = forwardRef(({ state, className }, ref) => {
   const { t } = useTranslation();
   const [count, setCount] = state;
 
@@ -23,16 +20,12 @@ const MainLiquor = forwardRef(({ state, className }, ref) => {
     <Container style={{ position: "relative", marginTop: "70px" }}>
       <div ref={ref} className={cx(className, styles.mainHome)}>
         <HeaderCollection
-          action={t("liquorPage.entity")}
+          action={t("flowersPage.entity")}
           address={t("chooseLocation")}
-        />
-        <RestaurantList
-          titles={titles.map((element, index) => t(element))}
-          actions={[near, sale, near, sale]}
         />
       </div>
     </Container>
   );
 });
 
-export default MainLiquor;
+export default MainFlower;

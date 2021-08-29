@@ -6,7 +6,7 @@ export const useScroll = (scrollRef, count) => {
 
   useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
-    if (scrollRef != null) setLimit(scrollRef.current.clientHeight - 90);
+    if (scrollRef != null) setLimit(scrollRef.current.clientHeight - 180);
   }, [scrollRef, count]);
 
   const listenToScroll = () => {

@@ -14,6 +14,7 @@
   "seeMore": "See more",
   "here": "Here",
   "useAppText": "Better experiences with Now App",
+  "chooseLocation": "Choose your location",
   "searchTitle": "Order {{entity}}, delivery from 20'...",
   "searchText": "From {{locations}} Places In {{city}} From {{start}} - {{end}}",
   "foodPage": {
