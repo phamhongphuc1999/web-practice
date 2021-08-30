@@ -19,6 +19,7 @@ const MainFood = forwardRef(({ state, className }, ref) => {
 
   useEffect(() => {
     setCount(count + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collection, near, sale]);
 
   return (

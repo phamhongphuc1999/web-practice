@@ -29,6 +29,7 @@ const Header = ({ pathname }) => {
 
   useEffect(() => {
     dp(initSetting);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const actionClick = (pathname) => {

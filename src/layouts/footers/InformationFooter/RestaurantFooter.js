@@ -22,7 +22,7 @@ const RestaurantFooter = () => {
         Vì sao bạn nên đặt bàn trực tuyến trước khi đến tại NowTable trên Now?
       </div>
       <p className={styles.textDocument}>
-        Ngoài lựa chọn <a href="#">đặt đồ ăn online</a>, Now còn cung cấp dịch
+        Ngoài lựa chọn <a href="/">đặt đồ ăn online</a>, Now còn cung cấp dịch
         vụ So với việc phải tìm kiếm trên các cổng thông tin online, thì việc
         đặt bàn giữ chỗ tại NowTable trên Now có nhiều ưu điểm nổi bật hơn như:
       </p>
@@ -41,7 +41,7 @@ const RestaurantFooter = () => {
             <p className={styles.textDocument}>
               Thoải mái tìm kiếm và lựa chọn được nhà hàng phổ biến, thuận tiện
               và phù hợp với nhu cầu của bạn với
-              <a href="#">danh sách bộ sưu tập</a>
+              <a href="/">danh sách bộ sưu tập</a>
               các nhà hàng nổi bật. NowTable đã hợp tác với hơn 4000 nhà
               hàng/quán ăn trên khắp các tỉnh thành phố lớn: Hà Nội, Hồ Chí
               Minh, Đà Nẵng, Hải Phòng, Huế, Khánh Hòa... Bạn sẽ dễ dàng tận

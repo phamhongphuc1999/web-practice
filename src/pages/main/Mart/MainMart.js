@@ -19,13 +19,14 @@ const MainMart = forwardRef(({ state, className }, ref) => {
 
   useEffect(() => {
     setCount(count + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [near, sale]);
 
   return (
     <Container style={{ position: "relative", marginTop: "70px" }}>
       <div ref={ref} className={cx(className, styles.mainHome)}>
         <HeaderCollection
-          action={t("flowersPage.entity")}
+          action={t("martPage.entity")}
           address={t("chooseLocation")}
         />
         <CollectionDetail data={collection} />

@@ -1,17 +1,22 @@
 import { Container } from "@material-ui/core";
 import cx from "classnames";
+import { forwardRef, useEffect, useState } from "react";
 import logo from "../../../../assets/images/logo/nowVn.png";
 
 import * as styles from "./header.module.css";
 
-const switchConfig = [
-  { title: "Đăng ký", pathname: "#register" },
-  { title: "Tiêu chí lựa chọn", pathname: "#criteria" },
-  { title: "Quy trình đăng ký", pathname: "#process" },
-  { title: "Các câu hỏi thường gặp", pathname: "#question" },
-];
+const Header = forwardRef((ref1, ref2, ref3, ref4) => {
+  const [config, setConfig] = useState([]);
 
-const Header = () => {
+  useEffect(() => {
+    setConfig([
+      { title: "Đăng ký", pathname: ref1 },
+      { title: "Tiêu chí lựa chọn", pathname: ref2 },
+      { title: "Quy trình đăng ký", pathname: ref3 },
+      { title: "Các câu hỏi thường gặp", pathname: ref4 },
+    ]);
+  }, [ref1, ref2, ref3, ref4]);
+
   return (
     <div className={styles.containerHeader}>
       <Container>
@@ -23,12 +28,13 @@ const Header = () => {
           </div>
           <div className="col-auto"></div>
           <div className="col-start-3 col-end-10 flex">
-            {switchConfig.map((element, index) => (
+            {config.map((element, index) => (
               <div
                 key={index}
+                onClick={() => element.pathname.current.scrollIntoView()}
                 className={cx(styles.columnContent, "text-center")}
               >
-                <a href={element.pathname}>{element.title}</a>
+                {element.title}
               </div>
             ))}
             <div className={cx(styles.columnContent, "text-center")}></div>
@@ -40,6 +46,6 @@ const Header = () => {
       </Container>
     </div>
   );
-};
+});
 
 export default Header;

@@ -7,6 +7,7 @@ export const useScroll = (scrollRef, count) => {
   useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
     if (scrollRef != null) setLimit(scrollRef.current.clientHeight - 180);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollRef, count]);
 
   const listenToScroll = () => {
