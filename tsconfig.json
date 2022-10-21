@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": ".",
+    "rootDir": "src/",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "src/global.d.ts"],
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +20,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowUmdGlobalAccess": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "exclude": ["build", "node_modules"]
 }
