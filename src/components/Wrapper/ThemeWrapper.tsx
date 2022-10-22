@@ -1,9 +1,9 @@
-import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material';
+import { createTheme, darken, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { THEME_MODE } from 'src/configs/constances';
-import { RootState } from 'src/reduxs/store';
+import { THEME_MODE } from 'src/configs/constance';
+import { RootState } from 'src/redux/store';
 
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
@@ -159,7 +159,285 @@ export default function ThemeWrapper({ children }: Props) {
     });
   }, [mode]);
 
-  const baseStyle = useMemo(() => ({}), [theme]);
+  const baseStyle = useMemo(
+    () => ({
+      components: {
+        MuiCssBaseline: {
+          styleOverrides: {
+            '.SnackbarItem-wrappedRoot .SnackbarItem-contentRoot .SnackbarItem-message': {
+              ...theme.typography.body3,
+            },
+            // disable arrow from input number
+            // Chrome, Safari, Edge, Opera
+            'input::-webkit-outer-spin-button,input::-webkit-inner-spin-button': {
+              WebkitAppearance: 'none',
+              margin: 0,
+            },
+            // Firefox
+            'input[type=number]': {
+              MozAppearance: 'textfield',
+            },
+          },
+        },
+        MuiBackdrop: {
+          styleOverrides: {
+            root: {
+              backdropFilter: 'blur(3px)',
+            },
+          },
+        },
+        MuiButton: {
+          defaultProps: {
+            disableElevation: true,
+          },
+          styleOverrides: {
+            root: {
+              textTransform: 'capitalize',
+              borderRadius: 6,
+            },
+            sizeMedium: {
+              ...theme.typography.button,
+              lineHeight: 1,
+              padding: '8px 16px',
+            },
+            sizeLarge: {
+              padding: '10px 22px',
+            },
+            sizeSmall: {
+              padding: '4px 10px',
+            },
+            containedSecondary: {
+              backgroundColor: theme.palette.secondary.dark,
+              color: theme.palette.mode === 'dark' ? '#949EA6' : '#566474',
+              '&:hover, &.Mui-focusVisible': {
+                backgroundColor: darken(theme.palette.secondary.dark, 0.2),
+              },
+            },
+          },
+          variants: [
+            {
+              props: { variant: 'gradient' },
+              style: {
+                color: theme.palette.common.white,
+                background: theme.palette.gradient.main,
+                transition: 'all 250ms ease',
+                '&:hover, &.Mui-focusVisible': {
+                  opacity: 0.9,
+                },
+              },
+            },
+          ],
+        },
+        MuiTypography: {
+          defaultProps: {
+            variant: 'body1',
+            variantMapping: {
+              h1: 'h1',
+              h2: 'h2',
+              h3: 'h3',
+              h4: 'h4',
+              h5: 'p',
+              h6: 'p',
+              body1: 'p',
+              body2: 'p',
+              body3: 'p',
+              subtitle1: 'p',
+              subtitle2: 'p',
+              button: 'p',
+            },
+          },
+        },
+        MuiSvgIcon: {
+          styleOverrides: {
+            root: {
+              fontSize: pxToRem(20),
+            },
+            fontSizeSmall: {
+              fontSize: pxToRem(16),
+            },
+            fontSizeLarge: {
+              fontSize: pxToRem(24),
+            },
+          },
+        },
+        MuiPaper: {
+          defaultProps: {
+            elevation: 0,
+          },
+          styleOverrides: {
+            root: {
+              borderRadius: 6,
+            },
+          },
+        },
+        MuiTableContainer: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+            },
+          },
+        },
+        MuiDialog: {
+          defaultProps: {
+            scroll: 'body',
+            PaperProps: {
+              elevation: 0,
+            },
+          },
+        },
+        MuiDialogContent: {
+          styleOverrides: {
+            root: {
+              padding: theme.spacing(2.5),
+            },
+          },
+        },
+        MuiDialogTitle: {
+          styleOverrides: {
+            root: {
+              padding: theme.spacing(2, 2.5),
+              backgroundColor: theme.palette.background.primary,
+              '&.MuiDialogTitle-root+.MuiDialogContent-root': {
+                paddingTop: theme.spacing(2.5),
+              },
+            },
+          },
+        },
+        MuiUseMediaQuery: {
+          defaultProps: {
+            noSsr: true,
+          },
+        },
+        MuiTooltip: {
+          defaultProps: {
+            arrow: true,
+            placement: 'top',
+          },
+          styleOverrides: {
+            tooltip: {
+              ...theme.typography.body3,
+              boxShadow:
+                theme.palette.mode === 'light'
+                  ? 'rgb(0 0 0 / 20%) 0px 0px 2px, rgb(0 0 0 / 10%) 0px 2px 10px'
+                  : 'rgb(255 255 255 / 20%) 0px 0px 2px, rgb(185 185 185 / 10%) 0px 2px 10px',
+              backgroundColor: theme.palette.background.default,
+              padding: theme.spacing(1.5, 2),
+              maxWidth: 400,
+              color: theme.palette.mode === 'dark' ? '#fff' : '#000',
+            },
+            arrow: {
+              '&:before': {
+                boxShadow:
+                  theme.palette.mode === 'light'
+                    ? 'rgb(0 0 0 / 20%) 0px 0px 2px, rgb(0 0 0 / 10%) 0px 2px 10px'
+                    : 'rgb(255 255 255 / 20%) 0px 0px 2px, rgb(185 185 185 / 10%) 0px 2px 10px',
+              },
+              color: theme.palette.background.default,
+            },
+          },
+        },
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+              '&:not(.Mui-focused):hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: theme.palette.secondary.dark,
+                borderWidth: 2,
+              },
+            },
+            focused: {
+              '& .MuiOutlinedInput-notchedOutline, &:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: theme.palette.primary.main,
+              },
+            },
+            input: {
+              // padding: theme.spacing(1.5, 2),
+            },
+            notchedOutline: {
+              borderColor: theme.palette.secondary.dark,
+            },
+          },
+        },
+        MuiAccordion: {
+          styleOverrides: {
+            root: {
+              overflow: 'hidden',
+              borderRadius: 6,
+              '&:first-of-type': {
+                borderRadius: 6,
+              },
+              '&:before': {
+                display: 'none',
+              },
+              '&.Mui-expanded': {
+                backgroundColor: theme.palette.background.secondary,
+              },
+            },
+          },
+        },
+        MuiAccordionSummary: {
+          styleOverrides: {
+            root: {
+              padding: theme.spacing(1, 2.5),
+              '&.Mui-expanded': {
+                backgroundColor: theme.palette.action.selected,
+              },
+            },
+          },
+        },
+        MuiAccordionDetails: {
+          styleOverrides: {
+            root: {
+              padding: theme.spacing(3, 2.5),
+            },
+          },
+        },
+        MuiButtonGroup: {
+          styleOverrides: {
+            grouped: {
+              '&:not(:last-of-type)': {
+                borderTopRightRadius: 6,
+                borderBottomRightRadius: 6,
+                borderRightColor: 'inherit',
+              },
+              '&:not(:first-of-type)': {
+                borderTopLeftRadius: 6,
+                borderBottomLeftRadius: 6,
+              },
+            },
+          },
+        },
+        MuiPopover: {
+          styleOverrides: {
+            root: {
+              '& .MuiBackdrop-root': {
+                backdropFilter: 'none',
+              },
+            },
+          },
+        },
+        MuiPagination: {
+          defaultProps: {
+            color: 'primary',
+            shape: 'rounded',
+          },
+        },
+        MuiPaginationItem: {
+          styleOverrides: {
+            root: {
+              '&.Mui-selected': {
+                boxShadow: '0px 0px 10px 1px rgba(196, 196, 196, 0.5)',
+              },
+            },
+            text: {
+              fontWeight: 400,
+            },
+          },
+        },
+      },
+    }),
+    [theme]
+  );
 
   return <ThemeProvider theme={responsiveFontSizes(deepmerge(theme, baseStyle))}>{children}</ThemeProvider>;
 }

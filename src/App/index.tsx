@@ -5,7 +5,7 @@ import { SnackbarKey, SnackbarProvider } from 'notistack';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
-import store from 'src/reduxs/store';
+import store from 'src/redux/store';
 import RouteApp from './RouteApp';
 import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
 
@@ -18,22 +18,22 @@ export default function App() {
   return (
     <Provider store={store}>
       <Router>
-        <ThemeWrapper>
-          <LayoutWrapper>
-            <SnackbarProvider
-              maxSnack={3}
-              ref={notistackRef}
-              preventDuplicate
-              action={(key) => (
-                <IconButton size="small" color="inherit" onClick={onClickDismiss(key)}>
-                  <CloseIcon style={{ cursor: 'pointer' }} />
-                </IconButton>
-              )}
-            >
+        <SnackbarProvider
+          maxSnack={3}
+          ref={notistackRef}
+          preventDuplicate
+          action={(key) => (
+            <IconButton size="small" color="inherit" onClick={onClickDismiss(key)}>
+              <CloseIcon style={{ cursor: 'pointer' }} />
+            </IconButton>
+          )}
+        >
+          <ThemeWrapper>
+            <LayoutWrapper>
               <RouteApp />
-            </SnackbarProvider>
-          </LayoutWrapper>
-        </ThemeWrapper>
+            </LayoutWrapper>
+          </ThemeWrapper>
+        </SnackbarProvider>
       </Router>
     </Provider>
   );

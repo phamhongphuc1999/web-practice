@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { LS, THEME_MODE } from 'src/configs/constances';
+import { LS, THEME_MODE } from 'src/configs/constance';
 
 export interface themeInitialState {
   theme: {
