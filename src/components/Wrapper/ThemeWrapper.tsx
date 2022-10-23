@@ -1,9 +1,10 @@
-import { createTheme, darken, responsiveFontSizes, ThemeProvider } from '@mui/material';
+import { createTheme, CssBaseline, darken, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { THEME_MODE } from 'src/configs/constance';
 import { RootState } from 'src/redux/store';
+import BaseChartStyle from '../Charts/BaseChartStyle';
 
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
@@ -439,5 +440,11 @@ export default function ThemeWrapper({ children }: Props) {
     [theme]
   );
 
-  return <ThemeProvider theme={responsiveFontSizes(deepmerge(theme, baseStyle))}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={responsiveFontSizes(deepmerge(theme, baseStyle))}>
+      <CssBaseline />
+      <BaseChartStyle />
+      {children}
+    </ThemeProvider>
+  );
 }

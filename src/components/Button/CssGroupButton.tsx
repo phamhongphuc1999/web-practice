@@ -1,14 +1,24 @@
-import { Button, ButtonGroup, ButtonGroupProps, ButtonProps, Theme, useTheme } from '@mui/material';
+import { Button, ButtonGroup, ButtonGroupProps, ButtonProps, styled } from '@mui/material';
 import React, { useState } from 'react';
 
-const useStyle = (theme: Theme) => ({
-  root: {
-    border: `1px solid ${theme.palette.mode === 'dark' ? '#263343' : '#7994C1'}`,
-    backgroundColor: theme.palette.mode === 'dark' ? '#131C23' : '#E6EBF4',
-    borderRadius: '6px',
-    overflow: 'hidden',
+const CssButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+  border: `1px solid ${theme.palette.mode === 'dark' ? '#263343' : '#7994C1'}`,
+  backgroundColor: theme.palette.mode === 'dark' ? '#131C23' : '#E6EBF4',
+  borderRadius: '6px',
+  overflow: 'hidden',
+}));
+
+const CssButton = styled(Button)(() => ({
+  border: 'none',
+}));
+
+const ActiveButton = styled(CssButton)(() => ({
+  color: '#FFFFFF',
+  backgroundColor: '#7994C1',
+  '&:hover': {
+    backgroundColor: '#7994C1',
   },
-});
+}));
 
 interface Props {
   config: Array<string>;
@@ -20,8 +30,6 @@ interface Props {
 }
 
 export default function CssGroupButton({ config, defaultActive, onClick, activeBut, but, props }: Props) {
-  const theme = useTheme();
-  const cls = useStyle(theme);
   const [active, setActive] = useState<number>(defaultActive ?? 0);
 
   function onButtonClick(event: React.MouseEvent, element: string, index: number) {
@@ -30,29 +38,18 @@ export default function CssGroupButton({ config, defaultActive, onClick, activeB
   }
 
   return (
-    <ButtonGroup {...props} sx={[cls.root]}>
+    <CssButtonGroup {...props}>
       {config.map((element, index) => {
         return active == index ? (
-          <Button
-            {...{ ...but, ...activeBut }}
-            sx={{
-              border: 'none',
-              color: '#FFFFFF',
-              backgroundColor: '#7994C1',
-              '&:hover': {
-                backgroundColor: '#7994C1',
-              },
-            }}
-            onClick={(event) => onButtonClick(event, element, index)}
-          >
+          <ActiveButton {...{ ...but, ...activeBut }} onClick={(event) => onButtonClick(event, element, index)}>
             {element}
-          </Button>
+          </ActiveButton>
         ) : (
-          <Button {...but} sx={{ border: 'none' }} onClick={(event) => onButtonClick(event, element, index)}>
+          <CssButton {...but} onClick={(event) => onButtonClick(event, element, index)}>
             {element}
-          </Button>
+          </CssButton>
         );
       })}
-    </ButtonGroup>
+    </CssButtonGroup>
   );
 }

@@ -1,7 +1,9 @@
 import { Theme, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { ReactNode } from 'react';
+import Footer from '../Footer';
 import Header from '../Header';
+import ScrollToTop from '../ScrollToTop';
 import Sidebar from '../Sidebar';
 
 interface Props {
@@ -15,7 +17,7 @@ const useStyle = (theme: Theme) => ({
   },
   mainContainer: {
     marginLeft: '220px',
-    minHeight: 'calc(100vh - 70px)',
+    minHeight: 'calc(100vh - 80px)',
     height: '100%',
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(0, 1),
@@ -40,9 +42,11 @@ export default function LayoutWrapper({ children }: Props) {
       <Box sx={cls.container}>
         {!onlyXs && <Sidebar />}
         <Box display="flex" justifyContent="space-between" flexDirection="column" sx={cls.mainContainer}>
-          {children}
+          <Box>{children}</Box>
+          <Footer />
         </Box>
       </Box>
+      <ScrollToTop />
     </Box>
   );
 }
