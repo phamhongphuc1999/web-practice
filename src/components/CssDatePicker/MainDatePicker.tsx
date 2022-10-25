@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, BoxProps, Theme } from '@mui/material';
 import { useMemo } from 'react';
 import ReactDatePicker from 'react-datepicker';
@@ -70,16 +71,16 @@ const datepicker = (theme: Theme) => ({
 export type DateType = Date | null | undefined;
 
 interface Props {
-  startDate?: DateType;
+  start?: DateType;
   setStart: (date: DateType) => void;
-  endDate?: DateType;
+  end?: DateType;
   setEnd: (date: DateType) => void;
   monthsShow?: number;
   props?: BoxProps;
 }
 
-export default function MainDatePicker({ startDate, setStart, endDate, setEnd, monthsShow = 24, props }: Props) {
-  function onChange(date: DateType | [DateType, DateType]) {
+export default function MainDatePicker({ start, setStart, end, setEnd, monthsShow = 24, props }: Props) {
+  function onChange(date: DateType | [DateType, DateType], _: React.SyntheticEvent<any> | undefined) {
     if (Array.isArray(date)) {
       const [start, end] = date;
       setStart(start);
@@ -100,14 +101,14 @@ export default function MainDatePicker({ startDate, setStart, endDate, setEnd, m
   return (
     <Box {...props} sx={datepicker}>
       <ReactDatePicker
-        selected={startDate}
-        onChange={(date, _) => onChange(date)}
-        startDate={startDate}
-        endDate={endDate}
+        selected={start}
+        onChange={onChange}
+        startDate={start}
+        endDate={end}
         minDate={minDate}
         maxDate={maxDate}
-        selectsRange
-        inline
+        selectsRange={true}
+        inline={true}
       />
     </Box>
   );

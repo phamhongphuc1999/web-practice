@@ -1,3 +1,9 @@
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+
 export default function SvgPage() {
-  return <></>;
+  return (
+    <>
+      <CssBreadcrumbs configs={[{ label: 'Svg' }]} props={{ mb: 2 }} />
+    </>
+  );
 }

@@ -1,9 +1,9 @@
-import { Box, Typography } from '@mui/material';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 
 export default function ConfigPage() {
   return (
-    <Box>
-      <Typography>config</Typography>
-    </Box>
+    <>
+      <CssBreadcrumbs configs={[{ label: 'config' }]} props={{ mb: 2 }} />
+    </>
   );
 }
