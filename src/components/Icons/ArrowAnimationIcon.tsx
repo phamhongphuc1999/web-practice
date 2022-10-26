@@ -1,18 +1,18 @@
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { SvgIconProps } from '@mui/material';
 
 interface Props {
   isTransform: boolean;
-  props: SvgIconProps;
+  props?: SvgIconProps;
 }
 
 export default function ArrowAnimationIcon({ isTransform, props }: Props) {
   return (
-    <ArrowBackIosIcon
+    <ExpandLessIcon
       {...props}
       sx={[
-        isTransform && { transform: 'rotate(90deg)', transition: '0.5s' },
-        !isTransform && { transform: 'rotate(-90deg)', transition: '0.5s' },
+        isTransform && { transform: 'rotate(180deg)', transition: '0.5s' },
+        !isTransform && { transform: 'rotate(0deg)', transition: '0.5s' },
       ]}
     />
   );

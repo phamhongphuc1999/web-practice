@@ -23,21 +23,21 @@ const ItemBox = styled(Box)(({ theme }) => ({
   margin: '0.175rem 0rem 0.175rem 0.25rem',
 }));
 
-interface Item {
+interface MultipleSelectorItem {
   id: string;
   label: string;
 }
 
-interface ItemProps {
-  item: Item;
+interface ItemProps<T> {
+  item: T;
 }
 
-interface Props {
-  items: Array<Item>;
-  defaultSelectedItems?: Array<Item>;
+interface Props<T> {
+  items: Array<T>;
+  defaultSelectedItems?: Array<T>;
   events?: {
-    onSelectItem?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: Item, items: Array<Item>) => void;
-    onRemoveItem?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>, item: Item, items: Array<Item>) => void;
+    onSelectItem?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T, items: Array<T>) => void;
+    onRemoveItem?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>, item: T, items: Array<T>) => void;
   };
   Component?: {
     start?: ReactNode;
@@ -49,7 +49,7 @@ interface Props {
   props?: BoxProps;
 }
 
-export default function MultipleSelector(params: Props) {
+export default function MultipleSelector<T extends MultipleSelectorItem>(params: Props<T>) {
   const { items, defaultSelectedItems, events, Component, config, props } = params;
   const rootRef = useRef<HTMLDivElement>(null);
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined);
@@ -69,7 +69,7 @@ export default function MultipleSelector(params: Props) {
 
   const selectedLabel = selectedItems.map((item) => item.label);
 
-  function onSelectItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: Item) {
+  function onSelectItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) {
     if (config?.maxItem) {
       if (selectedItems.length >= config.maxItem) {
         setAnchorEl(undefined);
@@ -83,7 +83,7 @@ export default function MultipleSelector(params: Props) {
     setAnchorEl(undefined);
   }
 
-  function onRemoveItem(e: React.MouseEvent<SVGSVGElement, MouseEvent>, item: Item) {
+  function onRemoveItem(e: React.MouseEvent<SVGSVGElement, MouseEvent>, item: T) {
     e.stopPropagation();
     const _temp = [...selectedItems];
     const index = _temp.indexOf(item);
@@ -92,7 +92,7 @@ export default function MultipleSelector(params: Props) {
     if (events?.onRemoveItem) events.onRemoveItem(e, item, _temp);
   }
 
-  function Item({ item }: ItemProps) {
+  function Item({ item }: ItemProps<T>) {
     return (
       <ItemBox display="inline-flex" justifyContent="flex-start" alignItems="center">
         <Typography>{item.label}</Typography>
@@ -121,7 +121,7 @@ export default function MultipleSelector(params: Props) {
         <List sx={{ width: rootWidth, paddingX: '1rem' }}>
           {items
             .filter((item) => !selectedLabel.includes(item.label))
-            .map((item: Item) => {
+            .map((item) => {
               return (
                 <ListItem key={item.id} button onClick={(e) => onSelectItem(e, item)} sx={{ borderRadius: '6px' }}>
                   {item.label}

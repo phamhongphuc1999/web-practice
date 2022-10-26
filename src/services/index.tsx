@@ -48,3 +48,11 @@ export function decimalAdjust(type: 'ceil' | 'round' | 'floor', value: any, exp?
   value = value.toString().split('e');
   return +(value[0] + 'e' + (value[1] ? +value[1] + exp : exp));
 }
+
+export function formatAddress(address: string, fractionDigits?: number) {
+  try {
+    return address.slice(0, fractionDigits ?? 3) + '...' + address.slice(-(fractionDigits ?? 3));
+  } catch (error) {
+    return undefined;
+  }
+}

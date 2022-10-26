@@ -24,17 +24,17 @@ interface Props {
   config: Array<string>;
   defaultActive?: number;
   onClick?: (event: React.MouseEvent, element: string, active: number) => void;
-  activeBut: ButtonProps;
-  but: ButtonProps;
-  props: ButtonGroupProps;
+  activeBut?: ButtonProps;
+  but?: ButtonProps;
+  props?: ButtonGroupProps;
 }
 
 export default function CssGroupButton({ config, defaultActive, onClick, activeBut, but, props }: Props) {
   const [active, setActive] = useState<number>(defaultActive ?? 0);
 
   function onButtonClick(event: React.MouseEvent, element: string, index: number) {
-    if (onClick) onClick(event, element, active);
     setActive(index);
+    if (onClick) onClick(event, element, index);
   }
 
   return (

@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
-import SvgPage from 'src/Pages/SvgPage';
+import ContractPage from 'src/Pages/ContractPage';
 import UtilElement from 'src/Pages/UtilElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
@@ -12,8 +12,8 @@ export default function RouteApp() {
       <Route path="/charts" exact={true}>
         <Overview />
       </Route>
-      <Route path="/svg" exact={true}>
-        <SvgPage />
+      <Route path="/contract" exact={true}>
+        <ContractPage />
       </Route>
       <Route path="/utils" exact={true}>
         <UtilElement />
