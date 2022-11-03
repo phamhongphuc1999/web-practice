@@ -3,6 +3,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssGroupButton from 'src/components/Button/CssGroupButton';
 import useQueryUrl from 'src/hooks/useQueryUrl';
 import Bep20Contract from './Bep20Contract';
+import CustomContract from './CustomContract';
 
 export default function ContractPage() {
   const { action } = useQueryUrl();
@@ -20,7 +21,7 @@ export default function ContractPage() {
     <>
       <CssBreadcrumbs configs={[{ label: 'contract' }]} props={{ mb: 2 }} />
       <CssGroupButton config={['Bep20', 'Custom']} defaultActive={defaultActive} onClick={onClick} />
-      {defaultActive == 0 ? <Bep20Contract /> : <></>}
+      {defaultActive == 0 ? <Bep20Contract /> : <CustomContract />}
     </>
   );
 }
