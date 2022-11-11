@@ -1,4 +1,5 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
+import AnimationPage from 'src/Pages/AnimationPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
@@ -9,6 +10,9 @@ import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
 export default function RouteApp() {
   return (
     <Switch>
+      <Route path="/animation" exact={true}>
+        <AnimationPage />
+      </Route>
       <Route path="/charts" exact={true}>
         <Overview />
       </Route>
@@ -27,7 +31,7 @@ export default function RouteApp() {
       <Route path="/theme" exact>
         <ConfigPage />
       </Route>
-      <Redirect from="/" to="/charts" />
+      <Redirect from="/" to="/animation" />
     </Switch>
   );
 }
