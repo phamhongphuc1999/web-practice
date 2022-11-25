@@ -34,6 +34,12 @@ Một đường link thú vị để test với Metamask ở [đây](https://met
 
 #### 3. Tìm hiểu về thư viện [Eth keyring controller](https://www.npmjs.com/package/eth-keyring-controller) <a name="section3"></a>
 
+- Là một module cho việc quản lý các nhóm các tài khoản ethereum
+- Module có ba chức năng chính
+  - Khởi tạo và sử dụng các nhóm tài khoản ethereum
+  - Theo dõi các `local nicknames` cho từng tài khoản
+  - Cung cấp các giải thuật mã hoá và lấy lại các dữ liệu bí mật
+
 ---
 
 ### 4. Các hàm ký message <a name="section4"></a>

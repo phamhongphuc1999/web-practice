@@ -17,6 +17,7 @@
    1. [cryptography](#section6_1)
    2. [Hệ mật mã khóa đối xứng](#section6_2)
    3. [Hệ mật mã khóa bất đối xứng](#section6_3)
+7. [Elliptic Curve Digital Signature Algorithm](#section7)
 
 ---
 
@@ -35,13 +36,17 @@
 
 ### 3. What is a public key <a name="section3"></a>
 
-- public key cho phép bạn nhận giao dịch. Nó là một mật mã bắt cặp với private key. Tất cả mọi người có thể gửi giao dịch bằng public key, bạn cần private key để "mở khoá(unlock)" chúng và chứng minh bạn là chủ của tài sản được nhận trong giao dịch. Public key có thể nhận giao dịch thường là [address](https://www.gemini.com/cryptopedia/glossary#public-address)
+- public key cho phép bạn nhận giao dịch. Nó là một mật mã bắt cặp với private key. Tất cả mọi người có thể gửi giao dịch bằng public key, bạn cần private key để "mở khoá(unlock)" chúng và chứng minh bạn là chủ của tài sản được nhận trong giao dịch. Public key có thể nhận giao dịch thường là [address](https://www.gemini.com/cryptopedia/glossary#public-address)(address này có thể được coi là một dạng rút gọn của public key)
+- public key được tạo ra bởi phép nhân với private key trong đường cong [Elliptic](#section7)
+- Phép nhân đường cong Elliptic là một phép toán trap door (cửa lật), có nghĩa là nó dễ tính theo một chiều (phép nhân) và không thể tính được theo chiều ngược lại (phép chia).
+- Do đó người sở hữu private key có thể dễ dàng tạo ra khoá công khai và yên tâm chia sẻ với mọi người mà không lo lắng rằng ai đó có thể đảo ngược public key để chiếm lấy private key của mình.
 
 ---
 
 ### 4. What is a private key? <a name="section4"></a>
 
-- private key giúp bạn chứng minh quyền sở hữu hoặc chi tiêu tài sản liên kết với public address. Private key có thể có những dạng sau
+- Private key về bản chất là một số được chọn ngẫu nhiên
+- Private key giúp bạn chứng minh quyền sở hữu hoặc chi tiêu tài sản liên kết với public address. Private key có thể có những dạng sau
   - 256 character long binary code
   - 64 digit hexadecimal code
   - QR code
@@ -78,9 +83,19 @@
 ### 6.2. Hệ mật mã khóa đối xứng <a name="section6_2"></a>
 
 - Là những hệ mật chỉ sử dụng chung 1 khóa trong quá trình mã hóa và mã hóa. Do đó khóa phải được giữ bí mật tuyện đối.
+
   <image src="./doi_xung.webp" />
 
 ### 6.3. Hệ mật mã khóa bất đối xứng <a name="section6_3"></a>
 
 - Ở hệ mật này thay vì nguời dùng dùng chung 1 khóa như ở hệ mật mã khóa đối xứng thì ở đây sẽ dùng 1 cặp khóa có tên là public key và private key.
+
   <image src="./bat_doi_xung.webp" />
+
+---
+
+### 7. Elliptic Curve Digital Signature Algorithm <a name="section7"></a>
+
+- tham khảo tại [đây](https://viblo.asia/p/ecdsa-he-mat-dua-tren-duong-cong-elliptic-va-ung-dung-trong-blockchain-XL6lA4oDZek)
+- Elliptic Curve Digital Signature Algorithm(ECDSA) - thuật toán sinh chữ ký số dựa trên đường cong Elliptic. ECDSA là thuật toán mã hoá bất đối xứng.
+- ECDSA có một cặp key private key và public key. Private key dùng để mã hoá, public key dùng để xác nhận (verify) tính đúng đắn của dữ liệu đã được mã hoá này. Public key không thể giải mã được dữ liệu đã được mã hoá, do đó dữ liệu gốc luôn luôn được an toàn.

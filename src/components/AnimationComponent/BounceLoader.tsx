@@ -1,5 +1,5 @@
-import { Box, BoxProps, keyframes, styled } from '@mui/material';
-import { AnimationComponentProps } from 'src/global';
+import { Box, keyframes, styled } from '@mui/material';
+import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const bounce1 = keyframes`
   from {width: 100%; height: 100%; opacity: 0.1;};
@@ -50,12 +50,7 @@ BounceLoader.defaultProps = {
   color: 'primary.main',
 };
 
-interface BounceLoaderBoxProps {
-  iconProps?: AnimationComponentProps;
-  props?: BoxProps;
-}
-
-export function BounceLoaderBox({ iconProps, props }: BounceLoaderBoxProps) {
+export function BounceLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <BounceLoader {...iconProps} />

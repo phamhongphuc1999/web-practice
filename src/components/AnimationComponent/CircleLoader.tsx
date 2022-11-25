@@ -1,8 +1,44 @@
-import { Box, BoxProps, keyframes, styled } from '@mui/material';
-import { AnimationComponentProps } from 'src/global';
+import { Box, keyframes, styled } from '@mui/material';
+import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const circle1 = keyframes`
+    0% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+    }
 
+    100% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
+    }
+`;
+
+const circle2 = keyframes`
+    0% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
+    }
+`;
+
+const circle3 = keyframes`
+    0% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
+    }
+`;
+
+const circle4 = keyframes`
+    0% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
+    }
 `;
 
 const Circle = styled('div')`
@@ -14,7 +50,45 @@ const Circle = styled('div')`
 export default function CircleLoader({ color, size }: AnimationComponentProps) {
   return (
     <Box sx={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', perspective: 800 }}>
-      <Circle sx={{ borderColor: color, animation: `${circle1} 1.2s linear infinite` }} />
+      <Circle
+        sx={{
+          width: '100%',
+          height: '100%',
+          animation: `${circle1} 1.2s linear infinite`,
+          borderBottom: '1px solid',
+          borderColor: color,
+        }}
+      />
+      <Circle
+        sx={{
+          width: '80%',
+          height: '80%',
+          animation: `${circle2} 1.2s linear infinite`,
+          borderRight: '1px solid',
+          borderColor: color,
+          right: '10%',
+        }}
+      />
+      <Circle
+        sx={{
+          width: '60%',
+          height: '60%',
+          animation: `${circle3} 1.2s linear infinite`,
+          borderTop: '1px solid',
+          borderColor: color,
+          right: '25%',
+        }}
+      />
+      <Circle
+        sx={{
+          width: '40%',
+          height: '40%',
+          animation: `${circle4} 1.4s linear infinite`,
+          borderLeft: '1px solid',
+          borderColor: color,
+          right: '35%',
+        }}
+      />
     </Box>
   );
 }
@@ -24,12 +98,7 @@ CircleLoader.defaultProps = {
   color: 'primary.main',
 };
 
-interface CircleLoaderBoxProps {
-  iconProps?: AnimationComponentProps;
-  props?: BoxProps;
-}
-
-export function CircleLoaderBox({ iconProps, props }: CircleLoaderBoxProps) {
+export function CircleLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <CircleLoader {...iconProps} />

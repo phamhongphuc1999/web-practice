@@ -1,6 +1,6 @@
-import { Box, BoxProps } from '@mui/material';
-import { styled, keyframes } from '@mui/system';
-import { AnimationComponentProps } from 'src/global';
+import { Box } from '@mui/material';
+import { keyframes, styled } from '@mui/system';
+import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const rotate1 = keyframes`
   0% {
@@ -75,12 +75,7 @@ LoadingIcon.defaultProps = {
   color: 'primary.main',
 };
 
-interface LoadingIconBoxProps {
-  iconProps?: AnimationComponentProps;
-  props?: BoxProps;
-}
-
-export function LoadingIconBox({ iconProps, props }: LoadingIconBoxProps) {
+export function LoadingIconBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <LoadingIcon {...iconProps} />

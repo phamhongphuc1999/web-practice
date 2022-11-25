@@ -1,6 +1,6 @@
-import { Box, BoxProps } from '@mui/material';
-import { styled, keyframes } from '@mui/system';
-import { AnimationComponentProps } from 'src/global';
+import { Box } from '@mui/material';
+import { keyframes, styled } from '@mui/system';
+import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const ellipsis1 = keyframes`
   from { top: 50%; height: 0; width: 0; };
@@ -57,12 +57,7 @@ EllipsisIcon.defaultProps = {
   color: 'primary.main',
 };
 
-interface EllipsisIconBoxProps {
-  iconProps?: AnimationComponentProps;
-  props?: BoxProps;
-}
-
-export function EllipsisIconBox({ iconProps, props }: EllipsisIconBoxProps) {
+export function EllipsisIconBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <EllipsisIcon {...iconProps} />
