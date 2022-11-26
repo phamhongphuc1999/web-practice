@@ -25,7 +25,7 @@ const Ellipsis = styled('div')`
   border-radius: 50%;
 `;
 
-export default function EllipsisIcon({ size, color }: AnimationComponentProps) {
+export default function EllipsisLoader({ size, color }: AnimationComponentProps) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-block', boxSizing: 'border-box', height: size, width: size }}>
       <Ellipsis sx={{ backgroundColor: color, left: '10%', animation: `${ellipsis1} 0.6s linear infinite` }} />
@@ -52,15 +52,15 @@ export default function EllipsisIcon({ size, color }: AnimationComponentProps) {
   );
 }
 
-EllipsisIcon.defaultProps = {
+EllipsisLoader.defaultProps = {
   size: 80,
   color: 'primary.main',
 };
 
-export function EllipsisIconBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function EllipsisLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
-      <EllipsisIcon {...iconProps} />
+      <EllipsisLoader {...iconProps} />
     </Box>
   );
 }

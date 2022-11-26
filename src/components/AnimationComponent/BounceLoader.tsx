@@ -5,7 +5,6 @@ const bounce1 = keyframes`
   from {width: 100%; height: 100%; opacity: 0.1;};
   to {width: 0%; height: 0%; opacity: 1;};
 `;
-
 const bounce2 = keyframes`
   from {width: 0%; height: 0%; opacity: 1;}
   to {width: 100%; height: 100%; opacity: 0.1;}

@@ -1,12 +1,13 @@
-import { ReactElement } from 'react';
 import { Box, Theme, Typography, useTheme } from '@mui/material';
+import { ReactElement } from 'react';
 import { BounceLoaderBox } from 'src/components/AnimationComponent/BounceLoader';
 import { CircleLoaderBox } from 'src/components/AnimationComponent/CircleLoader';
-import { EllipsisIconBox } from 'src/components/AnimationComponent/EllipsisIcon';
-import { FadeLoaderBox } from 'src/components/AnimationComponent/FadeLoader';
-import { LoadingIconBox } from 'src/components/AnimationComponent/LoadingIcon';
 import { ClockLoaderBox } from 'src/components/AnimationComponent/ClockLoader';
-import { RiseLoaderBox } from 'src/components/AnimationComponent/RiseLoader';
+import { EllipsisLoaderBox } from 'src/components/AnimationComponent/EllipsisLoader';
+import { FadeLoaderBox } from 'src/components/AnimationComponent/FadeLoader';
+import { GridLoaderBox } from 'src/components/AnimationComponent/GridLoader';
+import { PuffLoaderBox } from 'src/components/AnimationComponent/PuffLoader';
+import { ZCircleLoaderBox } from 'src/components/AnimationComponent/ZCircleLoader';
 
 function useStyle(theme: Theme) {
   return {
@@ -45,7 +46,9 @@ function Item({ label, Icon }: ItemProps) {
     <Box sx={cls.box}>
       <Box sx={cls.itemBox}>
         <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
-        {Icon}
+        <Box mt={5} mb={2}>
+          {Icon}
+        </Box>
       </Box>
     </Box>
   );
@@ -54,13 +57,14 @@ function Item({ label, Icon }: ItemProps) {
 export default function AnimationPage() {
   return (
     <Box display="flex" flexWrap="wrap">
-      <Item label="Loading" Icon={<LoadingIconBox props={{ mt: 2 }} />} />
-      <Item label="Ellipsis Icon" Icon={<EllipsisIconBox props={{ mt: 2 }} />} />
+      <Item label="3D Circle Loader" Icon={<ZCircleLoaderBox props={{ mt: 2 }} />} />
+      <Item label="Ellipsis Loader" Icon={<EllipsisLoaderBox props={{ mt: 2 }} />} />
       <Item label="Bounce Loader" Icon={<BounceLoaderBox props={{ mt: 2 }} />} />
       <Item label="Circle Loader" Icon={<CircleLoaderBox props={{ mt: 2 }} />} />
       <Item label="Fade Loader" Icon={<FadeLoaderBox props={{ mt: 2 }} />} />
       <Item label="Clock Loader" Icon={<ClockLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Rise Loader" Icon={<RiseLoaderBox props={{ mt: 2 }} />} />
+      <Item label="Grid Loader" Icon={<GridLoaderBox props={{ mt: 2 }} />} />
+      <Item label="Puff Loader" Icon={<PuffLoaderBox props={{ mt: 2 }} />} />
     </Box>
   );
 }

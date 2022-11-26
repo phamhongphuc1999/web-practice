@@ -2,13 +2,8 @@ import { Box, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 `;
 
 const Clock = styled('div')`
@@ -49,12 +44,21 @@ export default function ClockLoader({ color, size }: AnimationComponentProps) {
           right: '50%',
         }}
       />
+      <Clock
+        sx={{
+          animation: `${rotate} 20s linear infinite`,
+          height: '25%',
+          backgroundColor: color,
+          top: '25%',
+          right: '50%',
+        }}
+      />
     </Box>
   );
 }
 
 ClockLoader.defaultProps = {
-  size: 64,
+  size: 80,
   color: 'primary.main',
 };
 

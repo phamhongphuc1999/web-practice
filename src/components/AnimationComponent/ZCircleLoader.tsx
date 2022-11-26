@@ -3,29 +3,16 @@ import { keyframes, styled } from '@mui/system';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const rotate1 = keyframes`
-  0% {
-    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
-  }
-
-  100% {
-    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
-  }
+  0% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); }
+  100% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); }
 `;
 const rotate2 = keyframes`
-  0% {
-    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
-  }
-  100% {
-    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
-  }
+  0% { transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); }
+  100% { transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); }
 `;
 const rotate3 = keyframes`
-  0% {
-    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
-  }
-  100% {
-    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
-  }
+  0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
+  100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
 `;
 
 const Inner = styled('div')`
@@ -36,7 +23,7 @@ const Inner = styled('div')`
   border-radius: 50%;
 `;
 
-export default function LoadingIcon({ color, size }: AnimationComponentProps) {
+export default function ZCircleLoader({ color, size }: AnimationComponentProps) {
   return (
     <Box sx={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', perspective: 800 }}>
       <Inner
@@ -70,15 +57,15 @@ export default function LoadingIcon({ color, size }: AnimationComponentProps) {
   );
 }
 
-LoadingIcon.defaultProps = {
-  size: 64,
+ZCircleLoader.defaultProps = {
+  size: 80,
   color: 'primary.main',
 };
 
-export function LoadingIconBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function ZCircleLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
-      <LoadingIcon {...iconProps} />
+      <ZCircleLoader {...iconProps} />
     </Box>
   );
 }

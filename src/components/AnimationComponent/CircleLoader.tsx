@@ -2,43 +2,20 @@ import { Box, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const circle1 = keyframes`
-    0% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
-    }
-
-    100% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
-    }
+  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
 `;
-
 const circle2 = keyframes`
-    0% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
-    }
-
-    100% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
-    }
+  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
 `;
-
 const circle3 = keyframes`
-    0% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
-    }
-
-    100% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
-    }
+  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
 `;
-
 const circle4 = keyframes`
-    0% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
-    }
-
-    100% {
-      transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg);
-    }
+  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
 `;
 
 const Circle = styled('div')`
