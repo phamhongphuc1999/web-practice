@@ -1,10 +1,10 @@
 import { Theme, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { ReactNode } from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
-import ScrollToTop from '../ScrollToTop';
-import Sidebar from '../Sidebar';
+import Footer from './Footer';
+import Header from './Header';
+import ScrollToTop from '../../ScrollToTop';
+import Sidebar from './Sidebar';
 
 interface Props {
   children: ReactNode;

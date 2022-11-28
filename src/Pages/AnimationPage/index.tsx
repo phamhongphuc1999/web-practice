@@ -8,6 +8,7 @@ import { FadeLoaderBox } from 'src/components/AnimationComponent/FadeLoader';
 import { GridLoaderBox } from 'src/components/AnimationComponent/GridLoader';
 import { PuffLoaderBox } from 'src/components/AnimationComponent/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/AnimationComponent/ZCircleLoader';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 
 function useStyle(theme: Theme) {
   return {
@@ -56,15 +57,18 @@ function Item({ label, Icon }: ItemProps) {
 
 export default function AnimationPage() {
   return (
-    <Box display="flex" flexWrap="wrap">
-      <Item label="3D Circle Loader" Icon={<ZCircleLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Ellipsis Loader" Icon={<EllipsisLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Bounce Loader" Icon={<BounceLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Circle Loader" Icon={<CircleLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Fade Loader" Icon={<FadeLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Clock Loader" Icon={<ClockLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Grid Loader" Icon={<GridLoaderBox props={{ mt: 2 }} />} />
-      <Item label="Puff Loader" Icon={<PuffLoaderBox props={{ mt: 2 }} />} />
-    </Box>
+    <>
+      <CssBreadcrumbs configs={[{ label: 'animation' }]} props={{ mb: 2 }} />
+      <Box display="flex" flexWrap="wrap">
+        <Item label="3D Circle Loader" Icon={<ZCircleLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Ellipsis Loader" Icon={<EllipsisLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Bounce Loader" Icon={<BounceLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Circle Loader" Icon={<CircleLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Fade Loader" Icon={<FadeLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Clock Loader" Icon={<ClockLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Grid Loader" Icon={<GridLoaderBox props={{ mt: 2 }} />} />
+        <Item label="Puff Loader" Icon={<PuffLoaderBox props={{ mt: 2 }} />} />
+      </Box>
+    </>
   );
 }

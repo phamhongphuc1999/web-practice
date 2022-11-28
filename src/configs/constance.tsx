@@ -1,19 +1,18 @@
-import BarChartIcon from '@mui/icons-material/BarChart';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AnimationIcon from '@mui/icons-material/Animation';
+import { Wallet, Animation, Settings, TaskAlt, CurrencyBitcoin, BarChart } from '@mui/icons-material';
 
 export const LS = {
   THEME: 'theme',
+  CONNECTOR: 'connector',
+  CHAIN_ID: 'chain_id',
 };
 
 export type THEME_MODE = 'dark' | 'light';
 
 export const Layout = [
-  { label: 'Animation', link: '/animation', icon: AnimationIcon },
-  { label: 'Chart', link: '/charts', icon: BarChartIcon },
-  { label: 'Contract', link: '/contract', icon: CurrencyBitcoinIcon },
-  { label: 'Utils', link: '/utils', icon: TaskAltIcon },
-  { label: 'Config', link: '/theme', icon: SettingsIcon },
+  { label: 'Animation', link: '/animation', icon: Animation },
+  { label: 'Metamask', link: '/metamask', icon: Wallet },
+  { label: 'Contract', link: '/contract', icon: CurrencyBitcoin },
+  { label: 'Chart', link: '/charts', icon: BarChart },
+  { label: 'Utils', link: '/utils', icon: TaskAlt },
+  { label: 'Config', link: '/theme', icon: Settings },
 ];

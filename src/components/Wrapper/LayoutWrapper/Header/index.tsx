@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { THEME_MODE } from 'src/configs/constance';
 import { RootState } from 'src/redux/store';
 import { toggleMode } from 'src/redux/userConfigSlice';
-import { MoonIcon, SunIcon } from '../Icons';
+import { MoonIcon, SunIcon } from '../../../Icons';
 
 export default function Header() {
   const mode = useSelector<RootState, THEME_MODE>((state: RootState) => state.userConfigSlice.theme.mode);
