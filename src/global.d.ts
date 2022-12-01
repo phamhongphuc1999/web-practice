@@ -17,3 +17,21 @@ export interface AnimationComponentBoxProps {
   iconProps?: AnimationComponentProps;
   props?: BoxProps;
 }
+
+export interface NativeToken {
+  name: string;
+  symbol: string;
+  decimals: number;
+}
+
+export interface Chain {
+  name: string;
+  image: string;
+  blockExplorerUrls: Array<string>;
+  nativeCurrency: NativeToken;
+  urls: Array<string>;
+}
+
+export interface ChainType {
+  [chain: number]: Chain;
+}

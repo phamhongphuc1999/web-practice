@@ -1,10 +1,14 @@
-import { ethers } from 'ethers';
-import { ConnectionInfo } from 'ethers/lib/utils';
+import {
+  ExternalProvider,
+  JsonRpcProvider,
+  StaticJsonRpcProvider,
+  Web3Provider as Web3EthereumProvider,
+} from '@ethersproject/providers';
 import { LS } from 'src/configs/constance';
 import { CHAINS, CHAIN_ALIASES } from 'src/configs/networkConfig';
 
-let web3Reader: ethers.providers.JsonRpcProvider | null;
-let web3Sender: ethers.providers.JsonRpcProvider | null;
+let web3Reader: JsonRpcProvider | null;
+let web3Sender: Web3EthereumProvider | null;
 
 export function getConnectedWallet() {
   return window.localStorage.getItem(LS.CONNECTOR);
@@ -28,16 +32,16 @@ export async function setWeb3Reader(chainId: number) {
   if (!chainId) chainId = Number(getChainId());
   const chain = CHAINS[chainId];
   const promises = chain.urls.map(async (rpc) => {
-    const web3 = new ethers.providers.JsonRpcProvider(rpc);
+    const web3 = new StaticJsonRpcProvider(rpc);
     await web3.getBlockNumber();
     return web3;
   });
   web3Reader = await Promise.any(promises);
 }
 
-export function setWeb3Sender(provider: ConnectionInfo | string) {
+export function setWeb3Sender(provider: ExternalProvider) {
   if (!provider) web3Sender = null;
-  else web3Sender = new ethers.providers.JsonRpcProvider(provider);
+  else web3Sender = new Web3EthereumProvider(provider);
 }
 
 export { web3Reader, web3Sender };

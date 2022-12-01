@@ -1,0 +1,6 @@
+- Main-in-the-Middle
+- full-node wallets
+- Simplified Payment Verification (SPV)
+- encryption wallet
+- ARM processor
+- Normal Execution Environment, secure execution environment

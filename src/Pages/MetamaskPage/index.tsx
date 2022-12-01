@@ -4,12 +4,14 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ConnectedButton from 'src/components/Button/ConnectedButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import { RootState } from 'src/redux/store';
+import { walletInitialState } from 'src/redux/walletSlice';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {
-  const { chainId, accountAddress } = useSelector<RootState, { chainId: string; accountAddress: string }>(
+  const { chainId, hexChainId, accountAddress } = useSelector<RootState, walletInitialState>(
     (state) => state.walletSlice
   );
+
   return (
     <>
       <CssBreadcrumbs configs={[{ label: 'metamask' }]} props={{ mb: 2 }} />
@@ -17,9 +19,10 @@ export default function MetamaskPage() {
       <Box mt={2}>
         <Typography>Data</Typography>
         <Box display="flex" alignItems="center" flexWrap="wrap">
-          <Typography>ChainId: {chainId}</Typography>
+          <Typography>ChainId: {hexChainId},</Typography>
+          <Typography>Network: {chainId},</Typography>
           <Box display="flex" alignItems="center">
-            <Typography sx={{ marginLeft: '0.5rem' }}>Account address: {formatAddress(accountAddress, 5)}</Typography>
+            <Typography>Account address: {formatAddress(accountAddress, 5)}</Typography>
             <CopyIcon copyText={accountAddress} defaultText="Copy address" successText="Copied address!" />
           </Box>
         </Box>

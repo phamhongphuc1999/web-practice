@@ -1,20 +1,21 @@
 import BscImage from 'src/assets/images/BSC.svg';
 import FtmImage from 'src/assets/images/FTM.svg';
 import EthImage from 'src/assets/images/ETH.png';
+import { ChainType, NativeToken } from 'src/global';
 
-const ETH = {
+const ETH: NativeToken = {
   name: 'Ethereum',
   symbol: 'ETH',
   decimals: 18,
 };
 
-const BNB = {
+const BNB: NativeToken = {
   name: 'BNB',
   symbol: 'BNB',
   decimals: 18,
 };
 
-const FTM = {
+const FTM: NativeToken = {
   name: 'Fantom',
   symbol: 'FTM',
   decimals: 18,
@@ -34,7 +35,7 @@ export const CHAIN_ALIASES = {
   ETH_TESTNET: 42,
 };
 
-export const CHAINS = {
+export const CHAINS: ChainType = {
   [CHAIN_ALIASES.BSC_MAINNET]: {
     name: 'BSC Mainnet',
     image: BscImage,

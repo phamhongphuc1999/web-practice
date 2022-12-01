@@ -35,6 +35,7 @@ Một đường link thú vị để test với Metamask ở [đây](https://met
 #### 3. Tìm hiểu về thư viện [Eth keyring controller](https://www.npmjs.com/package/eth-keyring-controller) <a name="section3"></a>
 
 - Là một module cho việc quản lý các nhóm các tài khoản ethereum
+- Để thêm một loại account mới vào `KeyringController`, ta chỉ cần đảm bảo nó tuân theo [The keyring class protocol](https://github.com/MetaMask/KeyringController/blob/HEAD/docs/keyring.md)
 - Module có ba chức năng chính
   - Khởi tạo và sử dụng các nhóm tài khoản ethereum
   - Theo dõi các `local nicknames` cho từng tài khoản
