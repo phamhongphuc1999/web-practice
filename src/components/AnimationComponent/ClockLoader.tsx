@@ -13,7 +13,11 @@ const Clock = styled('div')`
   transform-origin: bottom;
 `;
 
-export default function ClockLoader({ color, size }: AnimationComponentProps) {
+interface ClockLoaderProps extends AnimationComponentProps {
+  isReverse?: boolean;
+}
+
+export default function ClockLoader({ color, size, isReverse }: ClockLoaderProps) {
   return (
     <Box
       sx={{
@@ -33,6 +37,7 @@ export default function ClockLoader({ color, size }: AnimationComponentProps) {
           backgroundColor: color,
           top: '5%',
           right: '50%',
+          animationDirection: isReverse ? 'reverse' : 'normal',
         }}
       />
       <Clock
@@ -42,6 +47,7 @@ export default function ClockLoader({ color, size }: AnimationComponentProps) {
           backgroundColor: color,
           top: '15%',
           right: '50%',
+          animationDirection: isReverse ? 'reverse' : 'normal',
         }}
       />
       <Clock
@@ -51,6 +57,7 @@ export default function ClockLoader({ color, size }: AnimationComponentProps) {
           backgroundColor: color,
           top: '25%',
           right: '50%',
+          animationDirection: isReverse ? 'reverse' : 'normal',
         }}
       />
     </Box>
@@ -60,9 +67,10 @@ export default function ClockLoader({ color, size }: AnimationComponentProps) {
 ClockLoader.defaultProps = {
   size: 80,
   color: 'primary.main',
+  isReverse: false,
 };
 
-export function ClockLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function ClockLoaderBox({ iconProps, props }: AnimationComponentBoxProps<ClockLoaderProps>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <ClockLoader {...iconProps} />

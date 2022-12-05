@@ -9,12 +9,12 @@ export interface EtherFragment extends Fragment {
 }
 
 export interface AnimationComponentProps {
-  size: number | string;
-  color: string;
+  size?: number | string;
+  color?: string;
 }
 
-export interface AnimationComponentBoxProps {
-  iconProps?: AnimationComponentProps;
+export interface AnimationComponentBoxProps<T = AnimationComponentProps> {
+  iconProps?: T;
   props?: BoxProps;
 }
 
