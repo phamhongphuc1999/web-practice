@@ -72,6 +72,7 @@ const ComponentList = [
   { label: 'Fade Loader', icon: <FadeLoaderBox props={{ mt: 2 }} /> },
   { label: 'Clock Loader', icon: <ClockLoaderBox props={{ mt: 2 }} /> },
   { label: 'Grid Loader', icon: <GridLoaderBox props={{ mt: 2 }} /> },
+  { label: 'Grid Square Loader', icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ isBlock: true }} /> },
   { label: 'Puff Loader', icon: <PuffLoaderBox props={{ mt: 2 }} /> },
   { label: 'Gooey', icon: <GooeyBox props={{ mt: 2 }} iconProps={{ opposite: false }} /> },
   { label: 'Contained gooey', icon: <GooeyBox type="contained" props={{ mt: 2 }} /> },
@@ -82,7 +83,7 @@ const ComponentList = [
 ];
 
 export default function AnimationPage() {
-  const { data, jump, maxPage, currentPage } = usePagination(ComponentList);
+  const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 9 });
 
   function onPageChange(page: number) {
     jump(page);
@@ -96,13 +97,15 @@ export default function AnimationPage() {
           return <Item key={index} label={item.label} Icon={item.icon} />;
         })}
       </Box>
-      <Pagination
-        page={currentPage}
-        count={maxPage}
-        showFirstButton
-        showLastButton
-        onChange={(_, page) => onPageChange(page)}
-      />
+      <Box display="flex" justifyContent="flex-end" mb={2}>
+        <Pagination
+          page={currentPage}
+          count={maxPage}
+          showFirstButton
+          showLastButton
+          onChange={(_, page) => onPageChange(page)}
+        />
+      </Box>
     </>
   );
 }

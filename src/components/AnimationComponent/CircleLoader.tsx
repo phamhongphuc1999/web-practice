@@ -1,19 +1,7 @@
 import { Box, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
-const circle1 = keyframes`
-  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
-  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
-`;
-const circle2 = keyframes`
-  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
-  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
-`;
-const circle3 = keyframes`
-  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
-  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
-`;
-const circle4 = keyframes`
+const circle = keyframes`
   0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
   100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
 `;
@@ -31,7 +19,7 @@ export default function CircleLoader({ color, size }: AnimationComponentProps) {
         sx={{
           width: '100%',
           height: '100%',
-          animation: `${circle1} 1.2s linear infinite`,
+          animation: `${circle} 1.2s linear infinite`,
           borderBottom: '1px solid',
           borderColor: color,
         }}
@@ -40,7 +28,7 @@ export default function CircleLoader({ color, size }: AnimationComponentProps) {
         sx={{
           width: '80%',
           height: '80%',
-          animation: `${circle2} 1.2s linear infinite`,
+          animation: `${circle} 1.2s linear infinite`,
           borderRight: '1px solid',
           borderColor: color,
           right: '10%',
@@ -50,7 +38,7 @@ export default function CircleLoader({ color, size }: AnimationComponentProps) {
         sx={{
           width: '60%',
           height: '60%',
-          animation: `${circle3} 1.2s linear infinite`,
+          animation: `${circle} 1.2s linear infinite`,
           borderTop: '1px solid',
           borderColor: color,
           right: '25%',
@@ -60,7 +48,7 @@ export default function CircleLoader({ color, size }: AnimationComponentProps) {
         sx={{
           width: '40%',
           height: '40%',
-          animation: `${circle4} 1.4s linear infinite`,
+          animation: `${circle} 1.4s linear infinite`,
           borderLeft: '1px solid',
           borderColor: color,
           right: '35%',
