@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userConfigSlice, { themeInitialState } from './userConfigSlice';
-import walletSlice, { walletInitialState } from './walletSlice';
+import userConfigSlice from './userConfigSlice';
+import walletSlice from './walletSlice';
 
 const store = configureStore({
   reducer: {
@@ -8,9 +8,6 @@ const store = configureStore({
     walletSlice,
   },
 });
-export type RootState = {
-  userConfigSlice: themeInitialState;
-  walletSlice: walletInitialState;
-};
 
+export type RootState = ReturnType<typeof store.getState>;
 export default store;

@@ -1,16 +1,13 @@
 import { Box, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ConnectedButton from 'src/components/Button/ConnectedButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
-import { RootState } from 'src/redux/store';
+import { useAppSelector } from 'src/redux/hook';
 import { walletInitialState } from 'src/redux/walletSlice';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {
-  const { chainId, hexChainId, accountAddress } = useSelector<RootState, walletInitialState>(
-    (state) => state.walletSlice
-  );
+  const { chainId, hexChainId, accountAddress } = useAppSelector<walletInitialState>((state) => state.walletSlice);
 
   return (
     <>

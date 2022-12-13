@@ -126,11 +126,11 @@ export function getBasicLineChart() {
   const line2 = [];
   const line3 = [];
   for (const item of Object.entries(BasicLineChart)) {
-    const timestamp = item[0];
+    const timestamp = Number(item[0]) * 1000;
     const data = item[1];
-    line1.push([timestamp, data.line1]);
-    line2.push([timestamp, data.line2]);
-    line3.push([timestamp, data.line3]);
+    line1.push({ x: timestamp, y: data.line1 });
+    line2.push({ x: timestamp, y: data.line2 });
+    line3.push({ x: timestamp, y: data.line3 });
   }
   return [
     { name: 'Line1', data: line1 },

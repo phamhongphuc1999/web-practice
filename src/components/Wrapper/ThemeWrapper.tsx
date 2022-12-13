@@ -1,9 +1,8 @@
 import { createTheme, CssBaseline, darken, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { THEME_MODE } from 'src/configs/constance';
-import { RootState } from 'src/redux/store';
+import { useAppSelector } from 'src/redux/hook';
 import BaseChartStyle from '../Charts/BaseChartStyle';
 
 declare module '@mui/material/styles/createPalette' {
@@ -89,7 +88,7 @@ const buildVariant = (fontWeight: number, size: number, lineHeight: number, lett
 });
 
 export default function ThemeWrapper({ children }: Props) {
-  const mode = useSelector<RootState, THEME_MODE>((state: RootState) => state.userConfigSlice.theme.mode);
+  const mode = useAppSelector<THEME_MODE>((state) => state.userConfigSlice.theme.mode);
 
   const theme = useMemo(() => {
     return createTheme({

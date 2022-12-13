@@ -1,12 +1,12 @@
 import { alpha, Box, IconButton } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { THEME_MODE } from 'src/configs/constance';
-import { RootState } from 'src/redux/store';
+import { useAppSelector } from 'src/redux/hook';
 import { toggleMode } from 'src/redux/userConfigSlice';
 import { MoonIcon, SunIcon } from '../../../Icons';
 
 export default function Header() {
-  const mode = useSelector<RootState, THEME_MODE>((state: RootState) => state.userConfigSlice.theme.mode);
+  const mode = useAppSelector<THEME_MODE>((state) => state.userConfigSlice.theme.mode);
   const dispatch = useDispatch();
 
   return (

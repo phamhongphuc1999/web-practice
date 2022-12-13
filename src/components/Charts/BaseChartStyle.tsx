@@ -3,6 +3,9 @@ import Highcharts from 'highcharts';
 import { COLOR_ARRAY } from 'src/configs/styleConfig';
 
 const defaultOption = (theme: Theme) => ({
+  credits: {
+    enabled: false,
+  },
   chart: {
     backgroundColor: 'transparent',
     style: {
