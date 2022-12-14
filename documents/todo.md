@@ -11,3 +11,12 @@
 - Tiếp tục tìm hiểu về Metamask
   - tìm hiểu chi tiết các lưu khoá, các ký transaction, ký message
   - cách metamask khôi phục tài khoản, khoá. Cách khôi phục lại tất cả dữ liệu khi bị xoá rồi cài lại(cách lưu trữ dữ liệu)
+
+##### Một số tìm hiểu về đồ án đề xuất
+
+###### Xây dựng một ví blockchain dựa vào TrustZone
+
+- Open Portable Trusted Execution Environment(OT-TEE), ARM architecture, ARM TrustZone technology
+  - OT-TEE là một hệ thống mã nguồn mở dựa vào TrustZone, nó tạo ra một môi trường thực khi bảo mật cách ly với môi trường bình thường
+- Triển khai giống một ví hardware hoặc một ví desktop.(chưa có hướng nếu muốn triển khai một web browser wallet).
+-

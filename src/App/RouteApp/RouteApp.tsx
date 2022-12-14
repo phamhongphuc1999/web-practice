@@ -35,7 +35,7 @@ export default function RouteApp() {
       <Route path="/theme" exact>
         <ConfigPage />
       </Route>
-      <Redirect from="/" to="/animation" />
+      <Redirect exact from="/" to="/animation" />
     </Switch>
   );
 }

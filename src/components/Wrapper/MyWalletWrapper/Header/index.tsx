@@ -1,4 +1,4 @@
-import { alpha, Box, Button } from '@mui/material';
+import { alpha, Box } from '@mui/material';
 import ThemeButton from 'src/components/Button/ThemeButton';
 
 export default function Header() {
@@ -16,9 +16,6 @@ export default function Header() {
     >
       <Box display="flex" alignItems="center" height="100%">
         <ThemeButton />
-        <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
-          Launch Wallet
-        </Button>
       </Box>
     </Box>
   );

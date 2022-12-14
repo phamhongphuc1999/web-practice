@@ -3,11 +3,30 @@ import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 import { SnackbarKey, SnackbarProvider } from 'notistack';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
 import store from 'src/redux/store';
-import RouteApp from './RouteApp';
+import RouteApp from './RouteApp/RouteApp';
 import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
+import MyWalletRouteApp from './RouteApp/MyWalletRouteApp';
+import MyWalletWrapper from 'src/components/Wrapper/MyWalletWrapper';
+
+function WrapperApp() {
+  const location = useLocation();
+  const isWallet = location.pathname.includes('/my-wallet');
+
+  return isWallet ? (
+    <MyWalletWrapper>
+      <MyWalletRouteApp />
+      <RouteApp />
+    </MyWalletWrapper>
+  ) : (
+    <LayoutWrapper>
+      <MyWalletRouteApp />
+      <RouteApp />
+    </LayoutWrapper>
+  );
+}
 
 export default function App() {
   const notistackRef = React.createRef<SnackbarProvider>();
@@ -29,9 +48,7 @@ export default function App() {
           )}
         >
           <ThemeWrapper>
-            <LayoutWrapper>
-              <RouteApp />
-            </LayoutWrapper>
+            <WrapperApp />
           </ThemeWrapper>
         </SnackbarProvider>
       </Router>
