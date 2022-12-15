@@ -21,13 +21,13 @@ export default function CssBreadcrumbs({ configs, props }: Props) {
         {configs.map((item, index) => {
           const formatter = item?.formatter;
           return item.link ? (
-            <Link key={index} component={RouterLink} to={item.link}>
+            <Link key={index} component={RouterLink} to={item.link} style={{ textDecoration: 'none' }}>
               <Typography color="textSecondary">
                 {formatter ? formatter(item.label) : DefaultFormatter(item.label)}
               </Typography>
             </Link>
           ) : (
-            <Typography color="textSecondary">
+            <Typography color="textSecondary" key={index}>
               {formatter ? formatter(item.label) : DefaultFormatter(item.label)}
             </Typography>
           );

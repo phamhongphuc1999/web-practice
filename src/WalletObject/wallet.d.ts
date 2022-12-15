@@ -17,5 +17,8 @@ export interface StoreType {
 export interface OptionType {
   initState: StoreType;
   keyringTypes?: Array<typeof BaseKeyring>;
-  mnemonic?: boolean;
+  mnemonic?: string;
+  numberOfAccounts?: number;
+  hdPath?: string;
+  withAppKeyOrigin?: string;
 }

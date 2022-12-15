@@ -1,14 +1,20 @@
-import { bufferToHex, publicToAddress } from '@ethereumjs/util';
+import { arrToBufArr, bufferToHex, privateToPublic, publicToAddress } from '@ethereumjs/util';
 import * as bip39 from '@scure/bip39';
 import { wordlist } from '@scure/bip39/wordlists/english';
 import { HDKey } from 'ethereum-cryptography/hdkey';
 import { OptionType } from '../wallet';
 import { BaseKeyring } from './base-keyring';
+import { normalize } from '@metamask/eth-sig-util';
+import { keccak256 } from 'ethereum-cryptography/keccak';
+import { bytesToHex } from 'ethereum-cryptography/utils';
+
+// eslint-disable-next-line quotes
+const hdPathString = "m/44'/60'/0'/0";
 
 export class HDKeyring extends BaseKeyring {
   static type = 'HD Key Tree';
   root: HDKey | null;
-  mnemonic: Uint8Array | null;
+  mnemonic: string;
   hdWallet: HDKey | null;
   hdPath: string;
   private wallets: HDKey[];
@@ -16,10 +22,9 @@ export class HDKeyring extends BaseKeyring {
   constructor(options?: OptionType) {
     super(options);
     this.root = null;
-    this.mnemonic = null;
+    this.mnemonic = '';
     this.hdWallet = null;
-    // eslint-disable-next-line quotes
-    this.hdPath = "m/44'/60'/0'/0";
+    this.hdPath = hdPathString;
     this.wallets = [];
   }
 
@@ -27,8 +32,9 @@ export class HDKeyring extends BaseKeyring {
     this._initFromMnemonic(bip39.generateMnemonic(wordlist));
   }
 
-  _uint8ArrayToString() {
-    ///
+  _uint8ArrayToString(mnemonic: number) {
+    const recoveredIndices = Array.from(new Uint16Array(new Uint8Array(mnemonic).buffer));
+    return recoveredIndices.map((i) => wordlist[i]).join(' ');
   }
 
   private _stringToUint8Array(mnemonic: string) {
@@ -36,21 +42,38 @@ export class HDKeyring extends BaseKeyring {
     return new Uint8Array(new Uint16Array(indices).buffer);
   }
 
-  private _mnemonicToUint8Array(mnemonic: string | Array<number> | Buffer) {
+  _mnemonicToUint8Array(mnemonic: string | Buffer | Array<number> | object) {
     const mnemonicData = mnemonic;
-    if (Array.isArray(mnemonicData)) {
-      return this._stringToUint8Array(Buffer.from(mnemonicData).toString());
-    } else if (Buffer.isBuffer(mnemonicData)) {
-      return this._stringToUint8Array(mnemonicData.toString());
-    } else return this._stringToUint8Array(mnemonicData);
+    if (typeof mnemonicData === 'string' || Buffer.isBuffer(mnemonicData) || Array.isArray(mnemonicData)) {
+      let mnemonicAsString = mnemonicData;
+      if (Array.isArray(mnemonicData)) mnemonicAsString = Buffer.from(mnemonicData).toString();
+      else if (Buffer.isBuffer(mnemonicData)) mnemonicAsString = mnemonicData.toString();
+      return this._stringToUint8Array(mnemonicAsString.toString());
+    } else if (mnemonicData instanceof Object && !(mnemonicData instanceof Uint8Array)) {
+      return Uint8Array.from(Object.values(mnemonicData));
+    }
+    return mnemonicData;
   }
 
   serialize() {
-    ///
+    if (this.mnemonic) return { mnemonic: this.mnemonic, numberOfAccounts: this.wallets.length, hdPath: this.hdPath };
+    return undefined;
   }
 
-  deserialize() {
-    ///
+  deserialize(options: OptionType) {
+    if (options.numberOfAccounts && !options.mnemonic)
+      throw new Error(
+        'Eth-Hd-Keyring: Deserialize method cannot be called with an opts value for numberOfAccounts and no menmonic'
+      );
+    if (this.root) throw new Error('Eth-Hd-Keyring: Secret recovery phrase already provided');
+    this.options = options;
+    this.wallets = [];
+    this.mnemonic = '';
+    this.root = null;
+    this.hdPath = options.hdPath ?? hdPathString;
+    if (options.mnemonic) this._initFromMnemonic(options.mnemonic);
+    if (options.numberOfAccounts) return this.addAccounts(options.numberOfAccounts);
+    return Promise.resolve([]);
   }
 
   addAccounts(numberOfAccounts = 1): string[] {
@@ -63,7 +86,7 @@ export class HDKeyring extends BaseKeyring {
       this.wallets.push(wallet);
     }
     const hexWallets = newWallets.map((w) => {
-      if (w.publicKey) return this._addressfromPublicKey(w.publicKey);
+      if (w.publicKey) return this._addressFromPublicKey(w.publicKey);
       else return '';
     });
     return hexWallets.filter((value) => value.length > 0);
@@ -72,7 +95,7 @@ export class HDKeyring extends BaseKeyring {
   getAccounts() {
     return this.wallets
       .map((w) => {
-        if (w.publicKey) return this._addressfromPublicKey(w.publicKey);
+        if (w.publicKey) return this._addressFromPublicKey(w.publicKey);
         else return '';
       })
       .filter((value) => value.length > 0);
@@ -82,8 +105,10 @@ export class HDKeyring extends BaseKeyring {
     ///
   }
 
-  async exportAccount() {
-    ///
+  exportAccount(address: string, options?: OptionType) {
+    const wallet = this._getWalletForAccount(address, options);
+    if (wallet.privateKey) return bytesToHex(wallet.privateKey);
+    return undefined;
   }
 
   async signTransaction() {
@@ -118,21 +143,37 @@ export class HDKeyring extends BaseKeyring {
     ///
   }
 
-  private _getWalletForAccount() {
-    ///
+  private _getWalletForAccount(account: string, options?: OptionType) {
+    const address = normalize(account);
+    const wallet = this.wallets.find(({ publicKey }) => {
+      if (publicKey) return this._addressFromPublicKey(publicKey) === address;
+      else return false;
+    });
+    if (!wallet) throw new Error('HD Keyring - Unable to find matching address.');
+    if (options?.withAppKeyOrigin) {
+      const { privateKey } = wallet;
+      if (privateKey) {
+        const appKeyOriginBuffer = Buffer.from(options.withAppKeyOrigin, 'utf8');
+        const appKeyBuffer = Buffer.concat([privateKey, appKeyOriginBuffer]);
+        const appKeyPrivateKey = arrToBufArr(keccak256(appKeyBuffer));
+        const appKeyPublicKey = privateToPublic(appKeyPrivateKey);
+        return { privateKey: appKeyPrivateKey, publicKey: appKeyPublicKey };
+      }
+    }
+    return wallet;
   }
 
-  private _initFromMnemonic(mnemonic: string | Array<number> | Buffer) {
+  private _initFromMnemonic(mnemonic: string) {
     if (this.root) throw new Error('Eth-Hd-Keyring: Secret recovery phrase already provided');
-    this.mnemonic = this._mnemonicToUint8Array(mnemonic);
-    const isValid = bip39.validateMnemonic(this.mnemonic.toString(), wordlist);
+    this.mnemonic = mnemonic;
+    const isValid = bip39.validateMnemonic(mnemonic, wordlist);
     if (!isValid) throw new Error('Eth-Hd-Keyring: Invalid secret recovery phrase provided');
-    const seed = bip39.mnemonicToSeedSync(this.mnemonic.toString(), wordlist.toString());
+    const seed = bip39.mnemonicToSeedSync(mnemonic, wordlist.toString());
     this.hdWallet = HDKey.fromMasterSeed(seed);
     this.root = this.hdWallet.derive(this.hdPath);
   }
 
-  _addressfromPublicKey(publicKey: Uint8Array) {
+  private _addressFromPublicKey(publicKey: Uint8Array) {
     return bufferToHex(publicToAddress(Buffer.from(publicKey), true)).toLowerCase();
   }
 }

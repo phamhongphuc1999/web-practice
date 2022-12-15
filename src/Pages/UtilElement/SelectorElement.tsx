@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import MultipleSelector from 'src/components/Selector/MultipleSelector';
+import { ROUTE } from 'src/configs/constance';
 import { CHAINS } from 'src/configs/networkConfig';
 import usePagination from 'src/hooks/usePagination';
 
@@ -32,7 +33,7 @@ export default function MultipleSelectorElement() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: 'Utils', link: '/utils' }, { label: 'selector' }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: 'Utils', link: ROUTE.UTILS }, { label: 'selector' }]} props={{ mb: 2 }} />
       <Box>
         <Typography sx={{ marginBottom: 1 }}>Multiple selector</Typography>
         <MultipleSelector

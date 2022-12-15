@@ -16,3 +16,17 @@ export const Layout = [
   { label: 'Utils', link: '/utils', icon: TaskAlt },
   { label: 'Config', link: '/theme', icon: Settings },
 ];
+
+export const ROUTE = {
+  ANIMATION: '/animation',
+  METAMASK: '/metamask',
+  CONTRACT: '/contract',
+  CHART: '/charts',
+  UTILS: '/utils',
+  UTIL_DATE_PICKER: '/utils/date-picker',
+  UTIL_SELECTOR: '/utils/selector',
+  THEME: '/theme',
+  WALLET_OVERVIEW: '/my-wallet',
+  WALLET_UTILS: '/my-wallet/utils',
+  WALLET_MNEMONIC: '/my-wallet/utils/mnemonic',
+};

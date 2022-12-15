@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssDatePicker from 'src/components/CssDatePicker';
 import { DateType } from 'src/components/CssDatePicker/MainDatePicker';
+import { ROUTE } from 'src/configs/constance';
 
 export default function DatePickerElement() {
   const [start, setStart] = useState<DateType>(undefined);
@@ -25,7 +26,7 @@ export default function DatePickerElement() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: 'Utils', link: '/utils' }, { label: 'date picker' }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: 'Utils', link: ROUTE.UTILS }, { label: 'date picker' }]} props={{ mb: 2 }} />
       <Grid container>
         <Grid item sm={6} xs={12}>
           <CssDatePicker props={{ maxWidth: '450px' }} events={{ onPredefinedClick, onCancelClick, onContinueClick }} />

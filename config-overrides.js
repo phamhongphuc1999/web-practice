@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 
 module.exports = function override(config) {
+  config.ignoreWarnings = [/Failed to parse source map/];
   config.resolve.fallback = {
     url: require.resolve('url'),
     assert: require.resolve('assert'),
@@ -13,6 +14,12 @@ module.exports = function override(config) {
       Buffer: ['buffer', 'Buffer'],
     })
   );
+  config.module.rules.push({
+    test: /\.m?js/,
+    resolve: {
+      fullySpecified: false,
+    },
+  });
 
   return config;
 };

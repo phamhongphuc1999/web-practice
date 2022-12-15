@@ -1,4 +1,5 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { ROUTE } from 'src/configs/constance';
 import AnimationPage from 'src/Pages/AnimationPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
@@ -11,31 +12,31 @@ import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
 export default function RouteApp() {
   return (
     <Switch>
-      <Route path="/animation" exact={true}>
+      <Route path={ROUTE.ANIMATION} exact={true}>
         <AnimationPage />
       </Route>
-      <Route path="/metamask" exact={true}>
+      <Route path={ROUTE.METAMASK} exact={true}>
         <MetamaskPage />
       </Route>
-      <Route path="/contract" exact={true}>
+      <Route path={ROUTE.CONTRACT} exact={true}>
         <ContractPage />
       </Route>
-      <Route path="/charts" exact={true}>
+      <Route path={ROUTE.CHART} exact={true}>
         <Overview />
       </Route>
-      <Route path="/utils" exact={true}>
+      <Route path={ROUTE.UTILS} exact={true}>
         <UtilElement />
       </Route>
-      <Route path="/utils/date-picker" exact={true}>
+      <Route path={ROUTE.UTIL_DATE_PICKER} exact={true}>
         <DatePickerElement />
       </Route>
-      <Route path="/utils/selector" exact={true}>
+      <Route path={ROUTE.UTIL_SELECTOR} exact={true}>
         <SelectorElement />
       </Route>
-      <Route path="/theme" exact>
+      <Route path={ROUTE.THEME} exact>
         <ConfigPage />
       </Route>
-      <Redirect exact from="/" to="/animation" />
+      <Redirect exact from="/" to={ROUTE.ANIMATION} />
     </Switch>
   );
 }

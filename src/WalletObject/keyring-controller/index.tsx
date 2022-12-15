@@ -4,6 +4,8 @@ import { SimpleKeyring } from '../keyring-object/simple-keyring';
 import { BaseKeyring } from '../keyring-object/base-keyring';
 import { MemStoreType, OptionType, StoreType } from '../wallet';
 import { HDKeyring } from '../keyring-object/hd-keyring';
+import { normalize as normalizeAddress } from '@metamask/eth-sig-util';
+import { stripHexPrefix } from '@ethereumjs/util';
 
 const keyringTypes: typeof BaseKeyring[] = [SimpleKeyring, HDKeyring];
 
@@ -37,8 +39,38 @@ export class KeyringController extends EventEmitter {
     return this.memStore.getState();
   }
 
+  setUnlocked() {
+    this.memStore.updateState({ isUnlocked: true });
+    this.emit('unlock');
+  }
+
   getKeyringClassForType(type: string) {
     return this.keyringTypes.find((keyring) => keyring.type === type);
+  }
+
+  async getAccounts() {
+    const keyrings = this.keyrings || [];
+    const keyringArrays = await Promise.all(keyrings.map((keyring) => keyring.getAccounts()));
+    const addresses = keyringArrays.reduce((res, arr) => {
+      return res.concat(arr);
+    }, []);
+    return addresses.map(normalizeAddress);
+  }
+
+  async checkForDuplicate(type: string, newAccountArray: Array<string>) {
+    const accounts = await this.getAccounts();
+    switch (type) {
+      case KEYRINGS_TYPE_MAP.SIMPLE_KEYRING: {
+        const isIncluded = Boolean(
+          accounts.find((key) => key === newAccountArray[0] || key === stripHexPrefix(newAccountArray[0]))
+        );
+        if (isIncluded) throw new Error('The account you are trying to import is a duplicate');
+        return newAccountArray;
+      }
+      default: {
+        return newAccountArray;
+      }
+    }
   }
 
   async addNewKeyring(type: string, options?: OptionType) {
@@ -50,7 +82,8 @@ export class KeyringController extends EventEmitter {
         _keyring.generateRandomMnemonic();
         _keyring.addAccounts();
       }
-      // const accounts = keyring.getAccounts();
+      const accounts = keyring.getAccounts();
+      await this.checkForDuplicate(type, accounts);
       this.keyrings.push(keyring);
       return keyring;
     }
@@ -58,6 +91,7 @@ export class KeyringController extends EventEmitter {
   }
 
   async clearKeyrings() {
+    this.keyrings = [];
     const _state = { keyrings: [] } as Partial<MemStoreType>;
     this.memStore.updateState(_state);
   }
@@ -66,11 +100,18 @@ export class KeyringController extends EventEmitter {
     this.clearKeyrings();
     const keyring = await this.addNewKeyring(KEYRINGS_TYPE_MAP.HD_KEYRING);
     if (keyring) {
-      // const [firstAccount] = await keyring.getAccounts();
+      const [firstAccount] = await keyring.getAccounts();
+      if (!firstAccount) throw new Error('KeyringController - No account found on keychain.');
+      const hexAccount = normalizeAddress(firstAccount);
+      this.emit('newVault', hexAccount);
+      return null;
     }
   }
 
   async createNewVaultAndKeychain(password: string) {
     this.password = password;
+    await this.createFirstKeyTree();
+    this.setUnlocked();
+    return this.fullUpdate();
   }
 }
