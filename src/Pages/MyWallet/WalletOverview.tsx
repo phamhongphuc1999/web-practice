@@ -1,16 +1,8 @@
-import { Button } from '@mui/material';
-import { useHistory } from 'react-router-dom';
-import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import { useAppSelector } from 'src/redux/hook';
+import InitWallet from './InitWallet';
 
 export default function WalletOverview() {
-  const history = useHistory();
+  const { status } = useAppSelector((state) => state.myWalletSlice);
 
-  return (
-    <>
-      <CssBreadcrumbs configs={[{ label: 'Wallet Overview' }]} props={{ mb: 2 }} />
-      <Button variant="outlined" onClick={() => history.push('/my-wallet/utils')}>
-        Test utils
-      </Button>
-    </>
-  );
+  return <>{['init', 'create_wallet', 'import_wallet'].includes(status) && <InitWallet />}</>;
 }

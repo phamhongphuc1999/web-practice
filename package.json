@@ -5,8 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@ethereumjs/util": "8.0.0",
+    "@ethereumjs/util": "^8.0.2",
     "@ethersproject/providers": "^5.7.2",
+    "@metamask/browser-passworder": "^4.0.2",
     "@metamask/detect-provider": "^2.0.0",
     "@metamask/eth-sig-util": "^5.0.2",
     "@metamask/obs-store": "^7.0.0",

@@ -5,6 +5,7 @@ import { BaseKeyring } from './base-keyring';
 
 export class SimpleKeyring extends BaseKeyring {
   static type = 'Simple Key Pair';
+  type = 'Simple Key Pair';
   private wallets: Wallet[];
 
   constructor(options?: OptionType) {
@@ -12,12 +13,12 @@ export class SimpleKeyring extends BaseKeyring {
     this.wallets = [];
   }
 
-  async serialize() {
-    //
+  serialize() {
+    return undefined;
   }
 
-  async deserialize() {
-    //
+  deserialize() {
+    return ['123'];
   }
 
   addAccounts(numberOfAccounts = 1) {

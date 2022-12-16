@@ -13,8 +13,11 @@ export default function WalletUtils() {
         props={{ mb: 2 }}
       />
       <Box mt={2}>
-        <Button variant="outlined" onClick={() => history.push(ROUTE.WALLET_MNEMONIC)}>
+        <Button variant="outlined" sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_MNEMONIC)}>
           Create mnemonic
+        </Button>
+        <Button variant="contained" onClick={() => history.push(ROUTE.WALLET_BROWSER_PASSWORD)}>
+          Browser password
         </Button>
       </Box>
     </>

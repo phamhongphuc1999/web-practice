@@ -1,15 +1,14 @@
-import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 import { SnackbarKey, SnackbarProvider } from 'notistack';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
+import MyWalletWrapper from 'src/components/Wrapper/MyWalletWrapper';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
 import store from 'src/redux/store';
-import RouteApp from './RouteApp/RouteApp';
-import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
-import MyWalletRouteApp from './RouteApp/MyWalletRouteApp';
-import MyWalletWrapper from 'src/components/Wrapper/MyWalletWrapper';
+import RouteApp from './RouteApp';
 
 function WrapperApp() {
   const location = useLocation();
@@ -17,12 +16,10 @@ function WrapperApp() {
 
   return isWallet ? (
     <MyWalletWrapper>
-      <MyWalletRouteApp />
       <RouteApp />
     </MyWalletWrapper>
   ) : (
     <LayoutWrapper>
-      <MyWalletRouteApp />
       <RouteApp />
     </LayoutWrapper>
   );

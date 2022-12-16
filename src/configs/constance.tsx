@@ -7,6 +7,7 @@ export const LS = {
 };
 
 export type THEME_MODE = 'dark' | 'light';
+export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet';
 
 export const Layout = [
   { label: 'Animation', link: '/animation', icon: Animation },
@@ -29,4 +30,5 @@ export const ROUTE = {
   WALLET_OVERVIEW: '/my-wallet',
   WALLET_UTILS: '/my-wallet/utils',
   WALLET_MNEMONIC: '/my-wallet/utils/mnemonic',
+  WALLET_BROWSER_PASSWORD: '/my-wallet/utils/browser-password',
 };

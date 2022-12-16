@@ -3,11 +3,26 @@ import { OptionType } from '../wallet';
 
 export class BaseKeyring extends EventEmitter {
   static type = 'Base Keyring';
+  type = 'Base Keyring';
   options?: OptionType = undefined;
 
   constructor(options?: OptionType) {
     super();
     this.options = options;
+  }
+
+  serialize():
+    | {
+        mnemonic: string;
+        numberOfAccounts: number;
+        hdPath: string;
+      }
+    | undefined {
+    return undefined;
+  }
+
+  deserialize(options: OptionType): string[] | Promise<never[]> {
+    return [options.mnemonic ?? ''];
   }
 
   addAccounts(numberOfAccounts = 1): string[] {

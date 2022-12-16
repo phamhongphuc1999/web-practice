@@ -1,11 +1,12 @@
-import EventEmitter from 'events';
-import { ObservableStore } from '@metamask/obs-store';
-import { SimpleKeyring } from '../keyring-object/simple-keyring';
-import { BaseKeyring } from '../keyring-object/base-keyring';
-import { MemStoreType, OptionType, StoreType } from '../wallet';
-import { HDKeyring } from '../keyring-object/hd-keyring';
-import { normalize as normalizeAddress } from '@metamask/eth-sig-util';
 import { stripHexPrefix } from '@ethereumjs/util';
+import * as encryptor from '@metamask/browser-passworder';
+import { normalize as normalizeAddress } from '@metamask/eth-sig-util';
+import { ObservableStore } from '@metamask/obs-store';
+import EventEmitter from 'events';
+import { BaseKeyring } from '../keyring-object/base-keyring';
+import { HDKeyring } from '../keyring-object/hd-keyring';
+import { SimpleKeyring } from '../keyring-object/simple-keyring';
+import { MemStoreType, OptionType, RestoreKeyringType, StoreType } from '../wallet';
 
 const keyringTypes: typeof BaseKeyring[] = [SimpleKeyring, HDKeyring];
 
@@ -20,6 +21,8 @@ export class KeyringController extends EventEmitter {
   password: string | undefined;
   keyringTypes: Array<typeof BaseKeyring> = [];
   keyrings: Array<BaseKeyring>;
+  encryptor: typeof encryptor;
+  cacheEncryptionKey: boolean;
 
   constructor(options: OptionType) {
     super();
@@ -29,9 +32,25 @@ export class KeyringController extends EventEmitter {
       isUnlocked: false,
       keyringTypes: this.keyringTypes.map((keyringType) => keyringType.type),
       keyrings: [],
-      encryptionKey: null,
+      encryptionKey: undefined,
+      encryptionSalt: undefined,
     });
+    this.encryptor = options.encryptor || encryptor;
     this.keyrings = [];
+    this.cacheEncryptionKey = Boolean(options.cacheEncryptionKey);
+  }
+
+  private async _updateMemStoreKeyrings() {
+    const keyrings = await Promise.all(this.keyrings.map(this.displayForKeyring));
+    return this.memStore.updateState({ keyrings });
+  }
+
+  async displayForKeyring(keyring: BaseKeyring) {
+    const accounts = await keyring.getAccounts();
+    return {
+      type: keyring.type,
+      accounts: accounts.map(normalizeAddress),
+    };
   }
 
   fullUpdate() {
@@ -73,6 +92,39 @@ export class KeyringController extends EventEmitter {
     }
   }
 
+  async persistAllKeyrings() {
+    const { encryptionKey, encryptionSalt } = this.memStore.getState();
+    if (!this.password && !encryptionKey) throw new Error('Cannot persist vault without password and encryption key');
+    const serializedKeyrings = await Promise.all(
+      this.keyrings.map(async (keyring) => {
+        const [type, data] = await Promise.all([keyring.type, keyring.serialize()]);
+        return { type, data };
+      })
+    );
+    let vault;
+    let newEncryptionKey;
+    if (this.cacheEncryptionKey) {
+      if (this.password) {
+        const { vault: newVault, exportedKeyString } = await this.encryptor.encryptWithDetail(
+          this.password,
+          serializedKeyrings
+        );
+        vault = newVault;
+        newEncryptionKey = exportedKeyString;
+      } else if (encryptionKey) {
+        const key = await this.encryptor.importKey(encryptionKey);
+        const vaultJSON = await this.encryptor.encryptWithKey(key, serializedKeyrings);
+        vaultJSON.salt = encryptionSalt;
+        vault = JSON.stringify(vaultJSON);
+      }
+    } else if (this.password) vault = await this.encryptor.encrypt(this.password, serializedKeyrings);
+    if (!vault) throw new Error('Cannot persist vault without vault information');
+    this.store.updateState({ vault });
+    await this._updateMemStoreKeyrings();
+    if (newEncryptionKey) this.memStore.updateState({ encryptionKey: newEncryptionKey });
+    return true;
+  }
+
   async addNewKeyring(type: string, options?: OptionType) {
     const _Keyring = this.getKeyringClassForType(type);
     if (_Keyring) {
@@ -85,6 +137,8 @@ export class KeyringController extends EventEmitter {
       const accounts = keyring.getAccounts();
       await this.checkForDuplicate(type, accounts);
       this.keyrings.push(keyring);
+      await this.persistAllKeyrings();
+      this.fullUpdate();
       return keyring;
     }
     return undefined;
@@ -111,6 +165,67 @@ export class KeyringController extends EventEmitter {
   async createNewVaultAndKeychain(password: string) {
     this.password = password;
     await this.createFirstKeyTree();
+    this.setUnlocked();
+    return this.fullUpdate();
+  }
+
+  async _restoreKeyring(serialized: RestoreKeyringType) {
+    const { type, data } = serialized;
+
+    const Keyring = this.getKeyringClassForType(type);
+    if (Keyring) {
+      const keyring = new Keyring();
+      await keyring.deserialize(data);
+      await keyring.getAccounts();
+      this.keyrings.push(keyring);
+      return keyring;
+    }
+  }
+
+  async restoreKeyring(serialized: RestoreKeyringType) {
+    const keyring = await this._restoreKeyring(serialized);
+    await this._updateMemStoreKeyrings();
+    return keyring;
+  }
+
+  async unlockKeyrings(password: string, encryptionKey?: string, encryptionSalt?: string) {
+    const encryptedVault = this.store.getState().vault;
+    if (!encryptedVault) throw new Error('Cannot unlock without a previous vault.');
+    await this.clearKeyrings();
+
+    let vault;
+    if (this.cacheEncryptionKey) {
+      if (password) {
+        const result = await this.encryptor.decryptWithDetail(password, encryptedVault);
+        vault = result.vault;
+        this.password = password;
+
+        this.memStore.updateState({
+          encryptionKey: result.exportedKeyString,
+          encryptionSalt: result.salt,
+        });
+      } else {
+        const parsedEncryptedVault = JSON.parse(encryptedVault);
+        if (encryptionSalt !== parsedEncryptedVault.salt)
+          throw new Error('Encryption key and salt provided are expired');
+        if (encryptionKey) {
+          const key = await this.encryptor.importKey(encryptionKey);
+          vault = await this.encryptor.decryptWithKey(key, parsedEncryptedVault);
+        }
+        this.memStore.updateState({ encryptionKey, encryptionSalt });
+      }
+    } else {
+      vault = await this.encryptor.decrypt(password, encryptedVault);
+      this.password = password;
+    }
+
+    await Promise.all((vault as RestoreKeyringType[]).map(this._restoreKeyring.bind(this)));
+    await this._updateMemStoreKeyrings();
+    return this.keyrings;
+  }
+
+  async submitPassword(password: string) {
+    this.keyrings = await this.unlockKeyrings(password);
     this.setUnlocked();
     return this.fullUpdate();
   }

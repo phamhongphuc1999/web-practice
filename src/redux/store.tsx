@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userConfigSlice from './userConfigSlice';
 import walletSlice from './walletSlice';
+import myWalletSlice from './myWalletSlice';
 
 const store = configureStore({
   reducer: {
     userConfigSlice,
     walletSlice,
+    myWalletSlice,
   },
 });
 

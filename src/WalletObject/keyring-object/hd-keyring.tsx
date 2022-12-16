@@ -13,6 +13,7 @@ const hdPathString = "m/44'/60'/0'/0";
 
 export class HDKeyring extends BaseKeyring {
   static type = 'HD Key Tree';
+  type = 'HD Key Tree';
   root: HDKey | null;
   mnemonic: string;
   hdWallet: HDKey | null;
