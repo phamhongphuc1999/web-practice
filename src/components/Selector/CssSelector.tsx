@@ -63,7 +63,7 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
       <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(undefined)}>
         <List sx={{ width: rootWidth }}>
           {items.map((item, _) => (
-            <ListItem key={item.id} button onClick={(e) => onItemClick(e, item)}>
+            <ListItem key={item.id} button={true} onClick={(e) => onItemClick(e, item)}>
               {item.label}
             </ListItem>
           ))}

@@ -1,11 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { LS, THEME_MODE } from 'src/configs/constance';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LanguageType, LS, THEME_MODE } from 'src/configs/constance';
 
 export interface themeInitialState {
   theme: {
     mode: THEME_MODE;
     label: string;
   };
+  language: LanguageType;
 }
 
 const initialThemeMode = localStorage.getItem(LS.THEME);
@@ -15,6 +16,7 @@ const initialState: themeInitialState = {
     mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as THEME_MODE,
     label: initialThemeMode == null ? 'Dark mode' : 'Light mode',
   },
+  language: 'en',
 };
 
 const userConfigSlice = createSlice({
@@ -27,8 +29,11 @@ const userConfigSlice = createSlice({
       state.theme = { mode: themeMode, label: themeLabel };
       localStorage.setItem(LS.THEME, themeMode);
     },
+    setLanguage: (state: themeInitialState, actions: PayloadAction<LanguageType>) => {
+      state.language = actions.payload;
+    },
   },
 });
 
 export default userConfigSlice.reducer;
-export const { toggleMode } = userConfigSlice.actions;
+export const { toggleMode, setLanguage } = userConfigSlice.actions;

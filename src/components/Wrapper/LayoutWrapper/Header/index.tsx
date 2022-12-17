@@ -1,7 +1,19 @@
 import { alpha, Box, Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import ThemeButton from 'src/components/Button/ThemeButton';
+import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
+import { languageConfig, LanguageType } from 'src/configs/constance';
+import { useAppSelector } from 'src/redux/hook';
+import { setLanguage } from 'src/redux/userConfigSlice';
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const { language } = useAppSelector((state) => state.userConfigSlice);
+
+  function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
+    dispatch(setLanguage(item.id as LanguageType));
+  }
+
   return (
     <Box
       position="fixed"
@@ -14,11 +26,18 @@ export default function Header() {
         padding: theme.spacing(0, 2),
       })}
     >
-      <Box display="flex" alignItems="center" height="100%">
-        <ThemeButton />
-        <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
-          Launch Wallet
-        </Button>
+      <Box display="flex" alignItems="center" justifyContent="space-between" height="100%">
+        <Box display="flex" alignItems="center">
+          <ThemeButton />
+          <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
+            Launch Wallet
+          </Button>
+        </Box>
+        <CssSelector
+          items={Object.values(languageConfig)}
+          defaultSelectedItem={languageConfig[language]}
+          events={{ onChooseItem }}
+        />
       </Box>
     </Box>
   );

@@ -10,12 +10,12 @@ export type THEME_MODE = 'dark' | 'light';
 export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet';
 
 export const Layout = [
-  { label: 'Animation', link: '/animation', icon: Animation },
-  { label: 'Metamask', link: '/metamask', icon: Wallet },
-  { label: 'Contract', link: '/contract', icon: CurrencyBitcoin },
-  { label: 'Chart', link: '/charts', icon: BarChart },
-  { label: 'Utils', link: '/utils', icon: TaskAlt },
-  { label: 'Config', link: '/theme', icon: Settings },
+  { label: 'animation', link: '/animation', icon: Animation },
+  { label: 'metamask', link: '/metamask', icon: Wallet },
+  { label: 'contract', link: '/contract', icon: CurrencyBitcoin },
+  { label: 'chart', link: '/charts', icon: BarChart },
+  { label: 'utils', link: '/utils', icon: TaskAlt },
+  { label: 'config', link: '/theme', icon: Settings },
 ];
 
 export const ROUTE = {
@@ -31,4 +31,10 @@ export const ROUTE = {
   WALLET_UTILS: '/my-wallet/utils',
   WALLET_MNEMONIC: '/my-wallet/utils/mnemonic',
   WALLET_BROWSER_PASSWORD: '/my-wallet/utils/browser-password',
+};
+
+export type LanguageType = 'en' | 'vi';
+export const languageConfig = {
+  en: { id: 'en', label: 'English' },
+  vi: { id: 'vi', label: 'Vietnamese' },
 };

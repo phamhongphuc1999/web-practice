@@ -1,6 +1,7 @@
 import { alpha, Box, Drawer, List, ListItem, styled, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { Layout } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
 
 const useStyle = (theme: Theme) => ({
   drawer: {
@@ -44,6 +45,7 @@ export default function Sidebar() {
   const theme = useTheme();
   const mdUp = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'));
   const cls = useStyle(theme);
+  const { t } = useTranslate();
 
   return (
     <Drawer open variant="permanent" anchor="left" PaperProps={{ sx: cls.drawer }}>
@@ -56,7 +58,7 @@ export default function Sidebar() {
               <CssNavLink to={element.link} sx={cls.navLink}>
                 <Box display="flex" alignItems="center" justifyContent={mdUp ? 'flex-start' : 'center'}>
                   <Icon fontSize="small" sx={{ marginRight: '0.5rem' }} />
-                  {mdUp && <Typography>{element.label}</Typography>}
+                  {mdUp && <Typography>{t(element.label)}</Typography>}
                 </Box>
               </CssNavLink>
             </ListItem>
