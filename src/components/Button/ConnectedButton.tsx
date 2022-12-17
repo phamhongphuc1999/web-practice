@@ -1,8 +1,10 @@
 import { Button, ButtonProps } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useDispatch } from 'react-redux';
+import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
 import { connectMetamask, disconnect } from 'src/wallet-connection/action';
+import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
 
 interface Props {
   props?: ButtonProps;
@@ -11,6 +13,7 @@ interface Props {
 export default function ConnectedButton({ props }: Props) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslate();
   const accountAddress = useAppSelector<string>((state) => state.walletSlice.accountAddress);
 
   function onClick() {
@@ -19,8 +22,12 @@ export default function ConnectedButton({ props }: Props) {
   }
 
   return (
-    <Button {...props} onClick={() => onClick()}>
-      {accountAddress ? 'Disconnect' : 'Connect'}
+    <Button
+      {...props}
+      onClick={() => onClick()}
+      startIcon={accountAddress ? <ConnectedWalletIcon /> : <DisconnectedWalletIcon />}
+    >
+      {accountAddress ? t('disconnect') : t('connect')}
     </Button>
   );
 }

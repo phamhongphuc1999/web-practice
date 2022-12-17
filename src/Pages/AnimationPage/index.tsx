@@ -12,6 +12,7 @@ import { PuffLoaderBox } from 'src/components/AnimationComponent/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/AnimationComponent/ZCircleLoader';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import usePagination from 'src/hooks/usePagination';
+import useTranslate from 'src/hooks/useTranslate';
 
 function useStyle(theme: Theme) {
   return {
@@ -83,6 +84,7 @@ const ComponentList = [
 ];
 
 export default function AnimationPage() {
+  const { t } = useTranslate();
   const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 9 });
 
   function onPageChange(page: number) {
@@ -91,7 +93,7 @@ export default function AnimationPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: 'animation' }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('animation') }]} props={{ mb: 2 }} />
       <Box display="flex" flexWrap="wrap">
         {data.map((item, index) => {
           return <Item key={index} label={item.label} Icon={item.icon} />;

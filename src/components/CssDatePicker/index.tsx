@@ -11,6 +11,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { useMemo, useState } from 'react';
+import useTranslate from 'src/hooks/useTranslate';
 import { toFixed } from 'src/services';
 import MainDatePicker, { DateType } from './MainDatePicker';
 
@@ -54,6 +55,7 @@ interface Props {
 export default function CssDatePicker({ events, props }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
+  const { t } = useTranslate();
   const [start, setStart] = useState<DateType>(null);
   const [end, setEnd] = useState<DateType>(null);
   const [selected, setSelected] = useState(-1);
@@ -92,7 +94,7 @@ export default function CssDatePicker({ events, props }: Props) {
       <Box display="flex" mb={2}>
         <MainDatePicker {...{ start, setStart, end, setEnd }} />
         <Box pt={1} pr={1} pl={1}>
-          <Typography>Predefined dates</Typography>
+          <Typography>{t('datePicker.predefinedDates')}</Typography>
           <List>
             {DATE_PICKER_PREDEFINED.map((element, index) => {
               return (
@@ -101,7 +103,7 @@ export default function CssDatePicker({ events, props }: Props) {
                   key={index}
                   onClick={() => onPredefinedClick(index, element.value)}
                 >
-                  <Typography>{element['text']}</Typography>
+                  <Typography>{t('datePicker.lastDays', { days: element.value.toString() })}</Typography>
                 </ListItem>
               );
             })}
@@ -110,7 +112,7 @@ export default function CssDatePicker({ events, props }: Props) {
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Button variant="outlined" color="primary" onClick={() => onCancelClick()}>
-          Cancel
+          {t('cancel')}
         </Button>
         <Box display="flex" justifyContent="flex-end" alignItems="center">
           {!match && (
@@ -119,7 +121,7 @@ export default function CssDatePicker({ events, props }: Props) {
             </Typography>
           )}
           <Button variant="contained" color="primary" onClick={() => onContinueClick()}>
-            Continue
+            {t('continue')}
           </Button>
         </Box>
       </Box>

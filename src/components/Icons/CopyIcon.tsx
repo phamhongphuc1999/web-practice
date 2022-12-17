@@ -2,6 +2,7 @@ import { IconButton, IconButtonProps, SvgIconProps, Tooltip } from '@mui/materia
 import { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import useTranslate from 'src/hooks/useTranslate';
 
 interface Props {
   copyText?: string;
@@ -12,7 +13,8 @@ interface Props {
 }
 
 export default function CopyIcon(params: Props) {
-  const { copyText = '', defaultText = 'Copy', successText = 'Copied!', iconProps, props } = params;
+  const { t } = useTranslate();
+  const { copyText = '', defaultText = t('copy'), successText = t('copied'), iconProps, props } = params;
   const [tooltip, setTooltip] = useState(defaultText);
 
   return (

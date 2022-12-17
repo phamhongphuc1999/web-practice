@@ -2,6 +2,7 @@ import { Wallet, Animation, Settings, TaskAlt, CurrencyBitcoin, BarChart } from 
 
 export const LS = {
   THEME: 'theme',
+  LANGUAGE: 'la',
   CONNECTOR: 'connector',
   CHAIN_ID: 'chain_id',
 };

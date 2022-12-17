@@ -10,13 +10,14 @@ export interface themeInitialState {
 }
 
 const initialThemeMode = localStorage.getItem(LS.THEME);
+const initialLanguage = localStorage.getItem(LS.LANGUAGE);
 
 const initialState: themeInitialState = {
   theme: {
     mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as THEME_MODE,
     label: initialThemeMode == null ? 'Dark mode' : 'Light mode',
   },
-  language: 'en',
+  language: (initialLanguage == null ? 'en' : initialLanguage) as LanguageType,
 };
 
 const userConfigSlice = createSlice({
@@ -31,6 +32,7 @@ const userConfigSlice = createSlice({
     },
     setLanguage: (state: themeInitialState, actions: PayloadAction<LanguageType>) => {
       state.language = actions.payload;
+      localStorage.setItem(LS.LANGUAGE, actions.payload);
     },
   },
 });
