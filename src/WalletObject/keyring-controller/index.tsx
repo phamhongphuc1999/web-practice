@@ -27,7 +27,7 @@ export class KeyringController extends EventEmitter {
   constructor(options: OptionType) {
     super();
     this.keyringTypes = options.keyringTypes ? keyringTypes.concat(options.keyringTypes) : keyringTypes;
-    this.store = new ObservableStore(options.initState);
+    this.store = new ObservableStore(options.initState ?? { vault: '' });
     this.memStore = new ObservableStore({
       isUnlocked: false,
       keyringTypes: this.keyringTypes.map((keyringType) => keyringType.type),
@@ -65,6 +65,10 @@ export class KeyringController extends EventEmitter {
 
   getKeyringClassForType(type: string) {
     return this.keyringTypes.find((keyring) => keyring.type === type);
+  }
+
+  getKeyringsByType(type: string) {
+    return this.keyrings.filter((keyring) => keyring.type === type);
   }
 
   async getAccounts() {

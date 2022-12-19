@@ -1,6 +1,7 @@
 import { Box, Theme, useTheme } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import ScrollToTop from 'src/components/ScrollToTop';
+import { actionController, setActionController } from 'src/WalletObject/background';
 import Header from './Header';
 
 const useStyle = (theme: Theme) => ({
@@ -30,6 +31,10 @@ interface Props {
 export default function MyWalletWrapper({ children }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
+
+  useEffect(() => {
+    if (!actionController) setActionController();
+  }, []);
 
   return (
     <Box position="relative" sx={{ backgroundColor: theme.palette.background.primary }}>

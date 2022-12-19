@@ -8,6 +8,7 @@ import CopyIcon from 'src/components/Icons/CopyIcon';
 import ExploreIcon from 'src/components/Icons/ExploreIcon';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import { CHAINS, CHAIN_ALIASES } from 'src/configs/networkConfig';
+import useTranslate from 'src/hooks/useTranslate';
 import { formatAddress, numberWithCommas } from 'src/services';
 import { useImmer } from 'use-immer';
 import ReadMethods from './ReadMethods';
@@ -28,6 +29,7 @@ export default function Bep20Contract() {
     owner: '',
     totalSupply: '',
   });
+  const { t } = useTranslate();
 
   const NetworkList = Object.values(CHAIN_ALIASES).map((element, _) => ({
     id: element.toString(),
@@ -78,10 +80,10 @@ export default function Bep20Contract() {
     <>
       <Box display="flex" alignItems="center" mt={2} mb={1}>
         <Box display="flex" alignItems="center" width="60%">
-          <Typography sx={{ pr: 2 }}>Address</Typography>
+          <Typography sx={{ pr: 2 }}>{t('address')}</Typography>
           <TextField
             size="small"
-            placeholder="contract address"
+            placeholder={t('contractAddress')}
             value={address}
             onChange={(e) => onAddressChange(e.target.value)}
             error={Boolean(addressTextHelper)}
@@ -101,11 +103,11 @@ export default function Bep20Contract() {
           variant="outlined"
           onClick={onConfirmClick}
         >
-          Confirm
+          {t('confirm')}
         </Button>
       </Box>
       <Typography color="secondary" sx={{ fontSize: '12px', marginBottom: '4px' }}>
-        Example: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3
+        {t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3
       </Typography>
       {loading && <CircularProgress />}
       {addressTextHelper == '' && (
@@ -116,9 +118,9 @@ export default function Bep20Contract() {
             <ExploreIcon hash={address} config={{ chainId: network.chainId }} />
           </Box>
           <Box>
-            <Typography>{`Name: ${tokenData.name}, Symbol: ${tokenData.symbol}, Decimal: ${
+            <Typography>{`${t('name')}: ${tokenData.name}, ${t('symbol')}: ${tokenData.symbol}, Decimal: ${
               tokenData.decimal
-            }, Total Supply: ${numberWithCommas(tokenData.totalSupply, 2)}`}</Typography>
+            }, ${t('totalSupply')}: ${numberWithCommas(tokenData.totalSupply, 2)}`}</Typography>
             <Box display="flex" alignItems="center">
               <Typography>Owner: {formatAddress(tokenData.owner)}</Typography>
               <CopyIcon copyText={tokenData.owner} />

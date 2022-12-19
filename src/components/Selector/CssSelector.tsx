@@ -22,6 +22,7 @@ export interface CssSelectItem {
 interface Props<T> {
   items: Array<T>;
   defaultSelectedItem?: T;
+  width?: number;
   events?: {
     onChooseItem: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) => void;
   };
@@ -30,7 +31,7 @@ interface Props<T> {
 }
 
 export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
-  const { items, defaultSelectedItem, events, value, props } = param;
+  const { items, defaultSelectedItem, width, events, value, props } = param;
 
   const rootRef = useRef<HTMLDivElement>(null);
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined);
@@ -56,7 +57,7 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
 
   return (
     <>
-      <CssBox {...props} ref={rootRef} onClick={(event) => setAnchorEl(event.currentTarget)}>
+      <CssBox width={width ?? 'auto'} {...props} ref={rootRef} onClick={(event) => setAnchorEl(event.currentTarget)}>
         <Typography>{value ?? defaultSelectedItem?.label}</Typography>
         <ArrowAnimationIcon isTransform={open} props={{ fontSize: 'small', sx: { ml: 1 } }} />
       </CssBox>

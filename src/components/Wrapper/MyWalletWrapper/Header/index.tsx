@@ -40,6 +40,7 @@ export default function Header() {
           </Button>
         )}
         <CssSelector
+          width={120}
           props={{ sx: { ml: 1 } }}
           items={Object.values(languageConfig)}
           defaultSelectedItem={languageConfig[language]}

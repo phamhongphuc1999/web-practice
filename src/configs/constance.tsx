@@ -8,7 +8,7 @@ export const LS = {
 };
 
 export type THEME_MODE = 'dark' | 'light';
-export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet';
+export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet' | 'login' | 'logout';
 
 export const Layout = [
   { label: 'animation', link: '/animation', icon: Animation },

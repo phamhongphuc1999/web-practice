@@ -1,21 +1,31 @@
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { Box, Button, styled, Typography } from '@mui/material';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import useTranslate from 'src/hooks/useTranslate';
+import { actionController } from 'src/WalletObject/background';
 
 interface Props {
   setStep: (step: number) => void;
   password: string | undefined;
   setPassword: (password: string | undefined) => void;
+  setAccounts: (accounts: string[]) => void;
+  setMnemonic: (mnemonic: string) => void;
 }
 
 const CssForm = styled('form')(() => ({}));
 
-export default function CreatePassword({ setStep, password, setPassword }: Props) {
+export default function CreatePassword({ setStep, password, setPassword, setAccounts, setMnemonic }: Props) {
   const [confirm, setConfirm] = useState(false);
   const { t } = useTranslate();
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    if (actionController && password) {
+      const vault = await actionController.createNewVaultAndKeychain(password);
+      if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
+      const _mnemonic = await actionController.verifySeedPhrase();
+      if (_mnemonic) setMnemonic(_mnemonic);
+    }
     setStep(2);
   }
 
@@ -33,18 +43,16 @@ export default function CreatePassword({ setStep, password, setPassword }: Props
     <Box>
       <Typography>{`${t('step')} 1: ${t('createPassword')}`}</Typography>
       <CssForm onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
-        <TextField
-          type="password"
-          placeholder={t('enterPassword')}
-          name="password"
-          onChange={(event) => onPasswordChange(event)}
+        <PasswordTextField
+          props={{ placeholder: t('enterPassword'), name: 'password', onChange: (event) => onPasswordChange(event) }}
         />
-        <TextField
-          type="password"
-          placeholder={t('confirmPassword')}
-          name="confirm"
-          onChange={(event) => onConfirmChange(event)}
-          sx={{ mt: 1 }}
+        <PasswordTextField
+          props={{
+            placeholder: t('confirmPassword'),
+            name: 'confirm',
+            onChange: (event) => onConfirmChange(event),
+            sx: { mt: 2 },
+          }}
         />
         <Button disabled={!confirm} variant="contained" type="submit" sx={{ mt: 1 }}>
           {t('next')}

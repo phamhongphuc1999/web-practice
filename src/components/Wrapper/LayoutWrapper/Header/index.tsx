@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import { languageConfig, LanguageType } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
 import { setLanguage } from 'src/redux/userConfigSlice';
 
 export default function Header() {
   const dispatch = useDispatch();
+  const { t } = useTranslate();
   const { language } = useAppSelector((state) => state.userConfigSlice);
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
@@ -30,7 +32,7 @@ export default function Header() {
         <Box display="flex" alignItems="center">
           <ThemeButton />
           <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
-            Launch Wallet
+            {t('launchWallet')}
           </Button>
         </Box>
         <CssSelector

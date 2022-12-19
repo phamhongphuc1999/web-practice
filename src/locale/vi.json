@@ -50,5 +50,17 @@
   "endDate": "Ngày kết thúc",
   "event": "Sự kiện",
   "continue": "Tiếp tục",
-  "cancel": "Huỷ"
+  "cancel": "Huỷ",
+  "address": "Địa chỉ",
+  "contractAddress": "Địa chỉ hợp đồng",
+  "confirm": "Xác nhận",
+  "name": "Tên",
+  "symbol": "Ký hiệu",
+  "totalSupply": "Tổng cung",
+  "example": "Ví dụ",
+  "launchWallet": "Đi đến ví",
+  "saveYourMnemonic": "Lưu chuỗi mnemonic của bạn",
+  "verifyYourMnemonic": "Xác thực chuỗi mnemonic của bạn",
+  "successCreateWallet": "Tạo thành công ví",
+  "enterMnemonic": "Nhập mnemonic của bạn"
 }

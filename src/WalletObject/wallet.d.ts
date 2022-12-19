@@ -23,7 +23,7 @@ export interface StoreType {
 }
 
 export interface OptionType {
-  initState: StoreType;
+  initState?: StoreType;
   keyringTypes?: Array<typeof BaseKeyring>;
   mnemonic?: string;
   numberOfAccounts?: number;
@@ -31,6 +31,13 @@ export interface OptionType {
   withAppKeyOrigin?: string;
   encryptor?: typeof encryptor;
   cacheEncryptionKey?: boolean;
+}
+
+export interface ActionOptionType {
+  initState?: {
+    keyringController?: StoreType;
+  };
+  encryptor?: typeof encryptor;
 }
 
 export interface RestoreKeyringType {

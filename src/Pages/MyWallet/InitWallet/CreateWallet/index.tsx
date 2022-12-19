@@ -1,17 +1,21 @@
-import { Box, IconButton, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useDispatch } from 'react-redux';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { Box, IconButton, Typography } from '@mui/material';
 import { useState } from 'react';
-import CreatePassword from './CreatePassword';
-import CreateMnemonic from './CreateMnemonic';
+import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
+import { updateStatus } from 'src/redux/myWalletSlice';
+import CreatePassword from './CreatePassword';
+import ShowMnemonic from './ShowMnemonic';
+import SuccessCreateWallet from './SuccessCreateWallet';
+import VerifyMnemonic from './VerifyMnemonic';
 
 export default function CreateWallet() {
   const dispatch = useDispatch();
   const { t } = useTranslate();
   const [step, setStep] = useState(1);
   const [password, setPassword] = useState<string | undefined>(undefined);
+  const [accounts, setAccounts] = useState<string[]>([]);
+  const [mnemonic, setMnemonic] = useState('');
 
   return (
     <>
@@ -21,8 +25,18 @@ export default function CreateWallet() {
         </IconButton>
         <Typography>{t('createWallet')}</Typography>
       </Box>
-      {step === 1 && <CreatePassword setStep={setStep} password={password} setPassword={setPassword} />}
-      {step === 2 && <CreateMnemonic />}
+      {step === 1 && (
+        <CreatePassword
+          setStep={setStep}
+          password={password}
+          setPassword={setPassword}
+          setAccounts={setAccounts}
+          setMnemonic={setMnemonic}
+        />
+      )}
+      {step === 2 && <ShowMnemonic setStep={setStep} mnemonic={mnemonic} />}
+      {step === 3 && <VerifyMnemonic setStep={setStep} mnemonic={mnemonic} />}
+      {step === 4 && <SuccessCreateWallet accounts={accounts} />}
     </>
   );
 }

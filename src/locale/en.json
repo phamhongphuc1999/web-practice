@@ -50,5 +50,17 @@
   "endDate": "Selected end date",
   "event": "Event",
   "continue": "Continue",
-  "cancel": "cancel"
+  "cancel": "cancel",
+  "address": "Address",
+  "contractAddress": "Contract address",
+  "confirm": "Confirm",
+  "name": "Name",
+  "symbol": "Symbol",
+  "totalSupply": "Total supply",
+  "example": "Example",
+  "launchWallet": "Launch wallet",
+  "saveYourMnemonic": "Save your mnemonic",
+  "verifyYourMnemonic": "Verify your mnemonic",
+  "successCreateWallet": "Create wallet successfully",
+  "enterMnemonic": "Enter mnemonic"
 }
