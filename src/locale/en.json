@@ -62,5 +62,8 @@
   "saveYourMnemonic": "Save your mnemonic",
   "verifyYourMnemonic": "Verify your mnemonic",
   "successCreateWallet": "Create wallet successfully",
-  "enterMnemonic": "Enter mnemonic"
+  "enterMnemonic": "Enter mnemonic",
+  "loginWallet": "Login wallet",
+  "theme": "Theme",
+  "language": "Language"
 }

@@ -1,6 +1,7 @@
-import { Box, Button, styled, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
+import { CssForm } from 'src/components/utils';
 import useTranslate from 'src/hooks/useTranslate';
 import { actionController } from 'src/WalletObject/background';
 
@@ -11,8 +12,6 @@ interface Props {
   setAccounts: (accounts: string[]) => void;
   setMnemonic: (mnemonic: string) => void;
 }
-
-const CssForm = styled('form')(() => ({}));
 
 export default function CreatePassword({ setStep, password, setPassword, setAccounts, setMnemonic }: Props) {
   const [confirm, setConfirm] = useState(false);

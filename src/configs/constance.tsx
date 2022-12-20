@@ -7,6 +7,11 @@ export const LS = {
   CHAIN_ID: 'chain_id',
 };
 
+export const WALLET_LS = {
+  SEED: 'seed',
+  STATUS: 'status',
+};
+
 export type THEME_MODE = 'dark' | 'light';
 export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet' | 'login' | 'logout';
 
@@ -29,6 +34,7 @@ export const ROUTE = {
   UTIL_SELECTOR: '/utils/selector',
   THEME: '/theme',
   WALLET_OVERVIEW: '/my-wallet',
+  WALLET_SETTING: '/my-wallet/setting',
   WALLET_UTILS: '/my-wallet/utils',
   WALLET_MNEMONIC: '/my-wallet/utils/mnemonic',
   WALLET_BROWSER_PASSWORD: '/my-wallet/utils/browser-password',

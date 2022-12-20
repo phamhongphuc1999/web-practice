@@ -5,6 +5,7 @@ import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
 import MetamaskPage from 'src/Pages/MetamaskPage';
+import SettingWallet from 'src/Pages/MyWallet/SettingWallet';
 import WalletOverview from 'src/Pages/MyWallet/WalletOverview';
 import WalletUtils from 'src/Pages/MyWallet/WalletUtils';
 import BrowserPassword from 'src/Pages/MyWallet/WalletUtils/BrowserPassword';
@@ -18,6 +19,9 @@ export default function RouteApp() {
     <Switch>
       <Route path={ROUTE.WALLET_OVERVIEW} exact={true}>
         <WalletOverview />
+      </Route>
+      <Route path={ROUTE.WALLET_SETTING} exact={true}>
+        <SettingWallet />
       </Route>
       <Route path={ROUTE.WALLET_UTILS} exact={true}>
         <WalletUtils />

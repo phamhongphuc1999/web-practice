@@ -62,5 +62,8 @@
   "saveYourMnemonic": "Lưu chuỗi mnemonic của bạn",
   "verifyYourMnemonic": "Xác thực chuỗi mnemonic của bạn",
   "successCreateWallet": "Tạo thành công ví",
-  "enterMnemonic": "Nhập mnemonic của bạn"
+  "enterMnemonic": "Nhập mnemonic của bạn",
+  "loginWallet": "Ví đã đăng nhập",
+  "theme": "Chủ đề",
+  "language": "Ngôn ngữ"
 }

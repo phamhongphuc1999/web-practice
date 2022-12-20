@@ -7,6 +7,8 @@ import { BaseKeyring } from '../keyring-object/base-keyring';
 import { HDKeyring } from '../keyring-object/hd-keyring';
 import { SimpleKeyring } from '../keyring-object/simple-keyring';
 import { MemStoreType, OptionType, RestoreKeyringType, StoreType } from '../wallet';
+import * as bip39 from '@scure/bip39';
+import { wordlist } from '@scure/bip39/wordlists/english';
 
 const keyringTypes: typeof BaseKeyring[] = [SimpleKeyring, HDKeyring];
 
@@ -170,6 +172,22 @@ export class KeyringController extends EventEmitter {
     this.password = password;
     await this.createFirstKeyTree();
     this.setUnlocked();
+    return this.fullUpdate();
+  }
+
+  async createNewVaultAndRestore(password: string, seedPhrase: string) {
+    if (!bip39.validateMnemonic(seedPhrase, wordlist)) throw new Error('Seed phrase is invalid.');
+    this.password = password;
+    this.clearKeyrings();
+    const firstKeyring = await this.addNewKeyring(KEYRINGS_TYPE_MAP.HD_KEYRING, {
+      mnemonic: seedPhrase,
+      numberOfAccounts: 1,
+    });
+    if (firstKeyring) {
+      const [firstAccount] = await firstKeyring.getAccounts();
+      if (!firstAccount) throw new Error('KeyringController - First Account not found.');
+      this.setUnlocked();
+    }
     return this.fullUpdate();
   }
 

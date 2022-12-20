@@ -27,13 +27,14 @@ export class HDKeyring extends BaseKeyring {
     this.hdWallet = null;
     this.hdPath = hdPathString;
     this.wallets = [];
+    if (options) this.deserialize(options);
   }
 
   generateRandomMnemonic() {
     this._initFromMnemonic(bip39.generateMnemonic(wordlist));
   }
 
-  _uint8ArrayToString(mnemonic: number) {
+  private _uint8ArrayToString(mnemonic: number) {
     const recoveredIndices = Array.from(new Uint16Array(new Uint8Array(mnemonic).buffer));
     return recoveredIndices.map((i) => wordlist[i]).join(' ');
   }
@@ -43,7 +44,7 @@ export class HDKeyring extends BaseKeyring {
     return new Uint8Array(new Uint16Array(indices).buffer);
   }
 
-  _mnemonicToUint8Array(mnemonic: string | Buffer | Array<number> | object) {
+  private _mnemonicToUint8Array(mnemonic: string | Buffer | Array<number> | object) {
     const mnemonicData = mnemonic;
     if (typeof mnemonicData === 'string' || Buffer.isBuffer(mnemonicData) || Array.isArray(mnemonicData)) {
       let mnemonicAsString = mnemonicData;

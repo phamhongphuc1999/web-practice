@@ -1,10 +1,9 @@
 import * as encryptor from '@metamask/browser-passworder';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { FormEvent, useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import { CssForm } from 'src/components/utils';
 import { ROUTE } from 'src/configs/constance';
-
-const CssForm = styled('form')(() => ({}));
 
 export default function BrowserPassword() {
   const [encryptionKey, setEncryptionKey] = useState('');

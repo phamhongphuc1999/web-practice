@@ -1,6 +1,10 @@
 import { Box, Theme, useTheme } from '@mui/material';
 import { ReactNode, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import ScrollToTop from 'src/components/ScrollToTop';
+import { ROUTE, WALLET_LS } from 'src/configs/constance';
+import { updateStatus } from 'src/redux/myWalletSlice';
 import { actionController, setActionController } from 'src/WalletObject/background';
 import Header from './Header';
 
@@ -31,9 +35,24 @@ interface Props {
 export default function MyWalletWrapper({ children }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  function _backToInitWallet() {
+    dispatch(updateStatus('init'));
+    history.push(ROUTE.WALLET_OVERVIEW);
+  }
+
+  function _initWallet() {
+    if (!actionController) setActionController();
+    if (actionController) {
+      const seedPhrase = localStorage.getItem(WALLET_LS.SEED);
+      if (!seedPhrase) _backToInitWallet();
+    } else _backToInitWallet();
+  }
 
   useEffect(() => {
-    if (!actionController) setActionController();
+    _initWallet();
   }, []);
 
   return (
