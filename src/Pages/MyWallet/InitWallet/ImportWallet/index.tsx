@@ -1,7 +1,7 @@
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useDispatch } from 'react-redux';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { savePassword, updateStatus } from 'src/redux/myWalletSlice';
 import useTranslate from 'src/hooks/useTranslate';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { CssForm } from 'src/components/utils';
@@ -36,6 +36,7 @@ export default function ImportWallet() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (actionController && password.length > 0) {
+      dispatch(savePassword(password));
       const vault = await actionController.createNewVaultAndRestore(password, seedPhrase);
       if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
     }

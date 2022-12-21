@@ -1,5 +1,6 @@
 import { Box, Pagination, Theme, Typography, useTheme } from '@mui/material';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { BlockLoaderBox } from 'src/components/AnimationComponent/BlockLoader';
 import { BounceLoaderBox } from 'src/components/AnimationComponent/BounceLoader';
 import { CircleLoaderBox } from 'src/components/AnimationComponent/CircleLoader';
@@ -11,6 +12,7 @@ import { GridLoaderBox } from 'src/components/AnimationComponent/GridLoader';
 import { PuffLoaderBox } from 'src/components/AnimationComponent/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/AnimationComponent/ZCircleLoader';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import { ROUTE } from 'src/configs/constance';
 import usePagination from 'src/hooks/usePagination';
 import useTranslate from 'src/hooks/useTranslate';
 
@@ -85,10 +87,16 @@ const ComponentList = [
 
 export default function AnimationPage() {
   const { t } = useTranslate();
+  const history = useHistory();
+  const { page } = useParams<{ page?: string }>();
   const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 9 });
 
+  useEffect(() => {
+    jump(Number(page));
+  }, [page]);
+
   function onPageChange(page: number) {
-    jump(page);
+    history.push(`${ROUTE.ANIMATION}/${page}`);
   }
 
   return (

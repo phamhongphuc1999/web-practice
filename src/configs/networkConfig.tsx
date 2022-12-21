@@ -38,6 +38,8 @@ export const CHAIN_ALIASES = {
 export const CHAINS: ChainType = {
   [CHAIN_ALIASES.BSC_MAINNET]: {
     name: 'BSC Mainnet',
+    isMainnet: true,
+    translate: 'BSC',
     image: BscImage,
     blockExplorerUrls: ['https://bscscan.com'],
     nativeCurrency: BNB,
@@ -52,6 +54,8 @@ export const CHAINS: ChainType = {
   },
   [CHAIN_ALIASES.FTM_MAINNET]: {
     name: 'FTM Mainnet',
+    isMainnet: true,
+    translate: 'FTM',
     image: FtmImage,
     blockExplorerUrls: ['https://ftmscan.com/'],
     nativeCurrency: FTM,
@@ -59,6 +63,8 @@ export const CHAINS: ChainType = {
   },
   [CHAIN_ALIASES.ETH_MAINNET]: {
     name: 'ETH Mainnet',
+    isMainnet: true,
+    translate: 'ETH',
     image: EthImage,
     blockExplorerUrls: ['https://etherscan.io'],
     nativeCurrency: ETH,
@@ -66,6 +72,8 @@ export const CHAINS: ChainType = {
   },
   [CHAIN_ALIASES.BSC_TESTNET]: {
     name: 'BSC Testnet',
+    isMainnet: false,
+    translate: 'BSC',
     image: BscImage,
     blockExplorerUrls: ['https://testnet.bscscan.com'],
     nativeCurrency: BNB,
@@ -73,6 +81,8 @@ export const CHAINS: ChainType = {
   },
   [CHAIN_ALIASES.FTM_TESTNET]: {
     name: 'FTM Testnet',
+    isMainnet: false,
+    translate: 'FTM',
     image: FtmImage,
     blockExplorerUrls: ['https://testnet.ftmscan.com/'],
     nativeCurrency: FTM,
@@ -80,6 +90,8 @@ export const CHAINS: ChainType = {
   },
   [CHAIN_ALIASES.ETH_TESTNET]: {
     name: 'ETH Testnet',
+    isMainnet: false,
+    translate: 'ETH',
     image: EthImage,
     blockExplorerUrls: ['https://kovan.etherscan.io'],
     nativeCurrency: ETH,

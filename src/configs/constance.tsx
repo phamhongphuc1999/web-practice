@@ -9,6 +9,7 @@ export const LS = {
 
 export const WALLET_LS = {
   SEED: 'seed',
+  PASSWORD: 'password',
   STATUS: 'status',
 };
 

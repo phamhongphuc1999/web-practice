@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { SimpleItem } from 'src/global';
+
 export const isNumeric = (num: number) => {
   return !isNaN(num) && !isNaN(parseFloat(num.toString()));
 };
@@ -15,36 +16,22 @@ export function numberWithCommas(x: string, fractionDigits: number) {
   const [naturalPart, decimalPart] = x.split('.');
   let out = naturalPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   if (decimalPart) {
-    if (!isNumeric(fractionDigits)) {
-      out += '.' + decimalPart;
-    } else if (decimalPart.length >= fractionDigits) {
-      out += '.' + decimalPart.substr(0, fractionDigits);
-    } else {
-      out += '.' + decimalPart + '0'.repeat(fractionDigits - decimalPart.length);
-    }
+    if (!isNumeric(fractionDigits)) out += '.' + decimalPart;
+    else if (decimalPart.length >= fractionDigits) out += '.' + decimalPart.substr(0, fractionDigits);
+    else out += '.' + decimalPart + '0'.repeat(fractionDigits - decimalPart.length);
   }
   return out;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function decimalAdjust(type: 'ceil' | 'round' | 'floor', value: any, exp?: any): any {
-  // If the exp is undefined or zero...
-  if (typeof exp === 'undefined' || +exp === 0) {
-    return Math[type](value);
-  }
+  if (typeof exp === 'undefined' || +exp === 0) return Math[type](value);
   value = +value;
   exp = +exp;
-  // If the value is not a number or the exp is not an integer...
-  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-    return NaN;
-  }
-  // If the value is negative...
-  if (value < 0) {
-    return -decimalAdjust(type, -value, exp);
-  }
-  // Shift
+  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) return NaN;
+  if (value < 0) return -decimalAdjust(type, -value, exp);
   value = value.toString().split('e');
   value = Math[type](+(value[0] + 'e' + (value[1] ? +value[1] - exp : -exp)));
-  // Shift back
   value = value.toString().split('e');
   return +(value[0] + 'e' + (value[1] ? +value[1] + exp : exp));
 }
@@ -55,4 +42,17 @@ export function formatAddress(address: string, fractionDigits?: number) {
   } catch (error) {
     return undefined;
   }
+}
+
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+export function extend<T>(target: SimpleItem<T>, ...args: SimpleItem<T>[]) {
+  for (let i = 1; i < args.length; i++) {
+    const source = args[i];
+    for (const key in source) {
+      if (hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+  return target;
 }

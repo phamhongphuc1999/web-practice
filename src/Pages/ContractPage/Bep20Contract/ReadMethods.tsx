@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
+import useTranslate from 'src/hooks/useTranslate';
 
 interface Props {
   decimal: number;
@@ -15,6 +16,7 @@ export default function ReadMethods({ decimal, contract }: Props) {
   const [address, setAddress] = useState('');
   const [balance, setBalance] = useState('');
   const [addressTextHelper, setAddressTextHelper] = useState<string | undefined>(undefined);
+  const { t } = useTranslate();
 
   function onAddressChange(value: string) {
     setAddress(value);
@@ -32,9 +34,9 @@ export default function ReadMethods({ decimal, contract }: Props) {
   return (
     <Box>
       <Box mb={1}>
-        <Button variant="outlined">Expand all</Button>
+        <Button variant="outlined">{t('expandAll')}</Button>
         <Button sx={{ marginLeft: '1rem' }} variant="outlined">
-          Reset
+          {t('reset')}
         </Button>
       </Box>
       <Paper onClick={() => setOpen(!open)} sx={{ cursor: 'pointer' }}>
@@ -46,7 +48,7 @@ export default function ReadMethods({ decimal, contract }: Props) {
       <Collapse in={open}>
         <Typography sx={{ marginBottom: '0.25rem' }}>account(address)</Typography>
         <Typography color="secondary" sx={{ fontSize: '12px', marginBottom: '4px' }}>
-          Example: 0x68a6c841040B05D60434d81000f523Bf6355b31D
+          {t('example')}: 0x68a6c841040B05D60434d81000f523Bf6355b31D
         </Typography>
         <TextField
           size="small"

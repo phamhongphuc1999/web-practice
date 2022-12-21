@@ -32,9 +32,10 @@ export default function RouteApp() {
       <Route path={ROUTE.WALLET_BROWSER_PASSWORD}>
         <BrowserPassword />
       </Route>
-      <Route path={ROUTE.ANIMATION} exact={true}>
+      <Route path={`${ROUTE.ANIMATION}/:page`} exact={true}>
         <AnimationPage />
       </Route>
+      <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.METAMASK} exact={true}>
         <MetamaskPage />
       </Route>

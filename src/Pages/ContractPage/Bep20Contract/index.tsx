@@ -34,7 +34,9 @@ export default function Bep20Contract() {
   const NetworkList = Object.values(CHAIN_ALIASES).map((element, _) => ({
     id: element.toString(),
     chainId: element,
-    label: CHAINS[element].name,
+    label: CHAINS[element].isMainnet
+      ? t('mainnet', { network: CHAINS[element].translate })
+      : t('testnet', { network: CHAINS[element].translate }),
     url: CHAINS[element].urls[0],
   }));
   const [network, setNetwork] = useState(NetworkList[0]);
@@ -113,7 +115,9 @@ export default function Bep20Contract() {
       {addressTextHelper == '' && (
         <>
           <Box display="flex" alignItems="center">
-            <Typography>Address: {formatAddress(address)}</Typography>
+            <Typography>
+              {t('address')}: {formatAddress(address)}
+            </Typography>
             <CopyIcon copyText={address} />
             <ExploreIcon hash={address} config={{ chainId: network.chainId }} />
           </Box>
@@ -122,7 +126,9 @@ export default function Bep20Contract() {
               tokenData.decimal
             }, ${t('totalSupply')}: ${numberWithCommas(tokenData.totalSupply, 2)}`}</Typography>
             <Box display="flex" alignItems="center">
-              <Typography>Owner: {formatAddress(tokenData.owner)}</Typography>
+              <Typography>
+                {t('owner')}: {formatAddress(tokenData.owner)}
+              </Typography>
               <CopyIcon copyText={tokenData.owner} />
               <ExploreIcon hash={tokenData.owner} config={{ chainId: network.chainId }} />
             </Box>

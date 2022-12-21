@@ -2,11 +2,13 @@ import { Mutex } from 'await-semaphore';
 import EventEmitter from 'events';
 import { KeyringController } from '../keyring-controller';
 import { ActionOptionType, MemStoreType } from '../wallet';
+import { AccountController } from './account-controller';
 import { StorageController } from './storage-controller';
 
 export class ActionController extends EventEmitter {
   options: ActionOptionType | undefined;
   keyringController: KeyringController;
+  accountController: AccountController;
   storageController: StorageController;
   createVaultMutex: Mutex;
 
@@ -20,6 +22,7 @@ export class ActionController extends EventEmitter {
     this.keyringController.memStore.subscribe((state) => this._onKeyringControllerUpdate(state));
     this.keyringController.on('unlock', () => this._onUnlock());
     this.keyringController.on('lock', () => this._onLock());
+    this.accountController = new AccountController();
     this.storageController = new StorageController();
     this.createVaultMutex = new Mutex();
   }
@@ -70,6 +73,14 @@ export class ActionController extends EventEmitter {
     } finally {
       releaseLock();
     }
+  }
+
+  async addNewAccount() {
+    const [primaryKeyring] = this.keyringController.getKeyringsByType('HD Key Tree');
+    if (!primaryKeyring) throw new Error('ActionController - No HD Key Tree found');
+    const keyState = await this.keyringController.addNewAccount(primaryKeyring);
+    await this.verifySeedPhrase();
+    return keyState;
   }
 
   async verifySeedPhrase() {

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ScrollToTop from 'src/components/ScrollToTop';
 import { ROUTE, WALLET_LS } from 'src/configs/constance';
+import { useAppSelector } from 'src/redux/hook';
 import { updateStatus } from 'src/redux/myWalletSlice';
 import { actionController, setActionController } from 'src/WalletObject/background';
 import Header from './Header';
@@ -37,6 +38,7 @@ export default function MyWalletWrapper({ children }: Props) {
   const cls = useStyle(theme);
   const dispatch = useDispatch();
   const history = useHistory();
+  const { password } = useAppSelector((state) => state.myWalletSlice);
 
   function _backToInitWallet() {
     dispatch(updateStatus('init'));
@@ -47,7 +49,11 @@ export default function MyWalletWrapper({ children }: Props) {
     if (!actionController) setActionController();
     if (actionController) {
       const seedPhrase = localStorage.getItem(WALLET_LS.SEED);
-      if (!seedPhrase) _backToInitWallet();
+      if (!seedPhrase || !password) _backToInitWallet();
+      else {
+        dispatch(updateStatus('login'));
+        actionController.createNewVaultAndRestore(password, seedPhrase);
+      }
     } else _backToInitWallet();
   }
 

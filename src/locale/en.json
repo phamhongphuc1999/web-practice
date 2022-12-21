@@ -65,5 +65,16 @@
   "enterMnemonic": "Enter mnemonic",
   "loginWallet": "Login wallet",
   "theme": "Theme",
-  "language": "Language"
+  "language": "Language",
+  "mainnet": "%{network} mainnet",
+  "testnet": "%{network} testnet",
+  "token": "%{token} token",
+  "owner": "Owner",
+  "reset": "Reset",
+  "expandAll": "Expand all",
+  "themeMode": {
+    "light": "Light Mode",
+    "dark": "Dark mode"
+  },
+  "walletInfo": "Wallet information"
 }

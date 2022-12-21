@@ -36,6 +36,7 @@ export default function Header() {
           </Button>
         </Box>
         <CssSelector
+          width={120}
           items={Object.values(languageConfig)}
           defaultSelectedItem={languageConfig[language]}
           events={{ onChooseItem }}

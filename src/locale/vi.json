@@ -65,5 +65,16 @@
   "enterMnemonic": "Nhập mnemonic của bạn",
   "loginWallet": "Ví đã đăng nhập",
   "theme": "Chủ đề",
-  "language": "Ngôn ngữ"
+  "language": "Ngôn ngữ",
+  "mainnet": "Mạng chính %{network}",
+  "testnet": "Mạng thử nghiệm %{network}",
+  "token": "Đồng %{token}",
+  "owner": "Chủ sở hữu",
+  "reset": "Đặt lại",
+  "expandAll": "Mở hết",
+  "themeMode": {
+    "light": "Chủ đề sáng",
+    "dark": "Chủ đề tối"
+  },
+  "walletInfo": "Thông tin ví"
 }

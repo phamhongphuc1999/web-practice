@@ -156,6 +156,15 @@ export class KeyringController extends EventEmitter {
     this.memStore.updateState(_state);
   }
 
+  async addNewAccount(keyring: BaseKeyring) {
+    const accounts = await keyring.addAccounts();
+    accounts.forEach((hexAccount) => {
+      this.emit('newAccount', hexAccount);
+    });
+    await this.persistAllKeyrings();
+    return this.fullUpdate();
+  }
+
   async createFirstKeyTree() {
     this.clearKeyrings();
     const keyring = await this.addNewKeyring(KEYRINGS_TYPE_MAP.HD_KEYRING);

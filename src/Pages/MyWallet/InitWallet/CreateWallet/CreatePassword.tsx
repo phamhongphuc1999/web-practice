@@ -1,8 +1,10 @@
 import { Box, Button, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import { CssForm } from 'src/components/utils';
 import useTranslate from 'src/hooks/useTranslate';
+import { savePassword } from 'src/redux/myWalletSlice';
 import { actionController } from 'src/WalletObject/background';
 
 interface Props {
@@ -14,12 +16,14 @@ interface Props {
 }
 
 export default function CreatePassword({ setStep, password, setPassword, setAccounts, setMnemonic }: Props) {
+  const dispatch = useDispatch();
   const [confirm, setConfirm] = useState(false);
   const { t } = useTranslate();
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (actionController && password) {
+      dispatch(savePassword(password));
       const vault = await actionController.createNewVaultAndKeychain(password);
       if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
       const _mnemonic = await actionController.verifySeedPhrase();
