@@ -26,13 +26,16 @@ export interface NativeToken {
   decimals: number;
 }
 
-export interface Chain {
+export interface BaseChain {
   name: string;
   isMainnet: boolean;
   translate: string;
   image: string;
-  blockExplorerUrls: Array<string>;
   nativeCurrency: NativeToken;
+}
+
+export interface Chain extends BaseChain {
+  blockExplorerUrls: Array<string>;
   urls: Array<string>;
 }
 

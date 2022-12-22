@@ -3,19 +3,19 @@ import FtmImage from 'src/assets/images/FTM.svg';
 import EthImage from 'src/assets/images/ETH.png';
 import { ChainType, NativeToken } from 'src/global';
 
-const ETH: NativeToken = {
+export const ETH: NativeToken = {
   name: 'Ethereum',
   symbol: 'ETH',
   decimals: 18,
 };
 
-const BNB: NativeToken = {
+export const BNB: NativeToken = {
   name: 'BNB',
   symbol: 'BNB',
   decimals: 18,
 };
 
-const FTM: NativeToken = {
+export const FTM: NativeToken = {
   name: 'Fantom',
   symbol: 'FTM',
   decimals: 18,
