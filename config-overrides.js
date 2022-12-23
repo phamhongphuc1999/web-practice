@@ -24,5 +24,7 @@ module.exports = function override(config) {
     },
   });
 
+  config.target = ['web'];
+
   return config;
 };

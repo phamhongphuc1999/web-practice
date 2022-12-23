@@ -7,7 +7,7 @@ import { PollingBlockTracker } from 'eth-block-tracker';
 
 export interface TransactionParam {
   to: string;
-  data: any;
+  data: string;
   nonce: string;
   gas: string;
   from: string;
@@ -48,13 +48,14 @@ export interface FormattedTransactionMetadata {
   type?: string;
 }
 
+type ProcessTypedMessage = (
+  msgParams: TypedMessageParams,
+  req: JsonRpcRequest<unknown>,
+  version: string
+) => Promise<Record<string, unknown>>;
+
 export interface WalletMiddlewareOptions {
-  getAccounts: (
-    req: JsonRpcRequest<unknown>,
-    options?: {
-      suppressUnauthorized?: boolean;
-    }
-  ) => Promise<string[]>;
+  getAccounts: (req: JsonRpcRequest<unknown>, options?: { suppressUnauthorized?: boolean }) => Promise<string[]>;
   processDecryptMessage?: (msgParams: MessageParams, req: JsonRpcRequest<unknown>) => Promise<Record<string, unknown>>;
   processEncryptionPublicKey?: (address: string, req: JsonRpcRequest<unknown>) => Promise<Record<string, unknown>>;
   processEthSignMessage?: (msgParams: MessageParams, req: JsonRpcRequest<unknown>) => Promise<Record<string, unknown>>;
@@ -62,16 +63,8 @@ export interface WalletMiddlewareOptions {
   processTransaction?: (txParams: TransactionParams, req: JsonRpcRequest<unknown>) => Promise<string>;
   processSignTransaction?: (txParams: TransactionParams, req: JsonRpcRequest<unknown>) => Promise<string>;
   processTypedMessage?: (msgParams: MessageParams, req: JsonRpcRequest<unknown>, version: string) => Promise<string>;
-  processTypedMessageV3?: (
-    msgParams: TypedMessageParams,
-    req: JsonRpcRequest<unknown>,
-    version: string
-  ) => Promise<Record<string, unknown>>;
-  processTypedMessageV4?: (
-    msgParams: TypedMessageParams,
-    req: JsonRpcRequest<unknown>,
-    version: string
-  ) => Promise<Record<string, unknown>>;
+  processTypedMessageV3?: ProcessTypedMessage;
+  processTypedMessageV4?: ProcessTypedMessage;
 }
 
 export interface StandardClientMiddleware {

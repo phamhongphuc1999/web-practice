@@ -28,10 +28,15 @@ export class NetworkController {
     this._infuraProjectId = '';
   }
 
-  initializeProvider(providerParams: MiddlewareParam) {
-    this._baseProviderParams = providerParams;
+  getProviderConfig() {
     const { chainId, provider } = this.currentNetwork;
     const { type, rpcUrl } = provider;
+    return { chainId, type, rpcUrl };
+  }
+
+  initializeProvider(providerParams: MiddlewareParam) {
+    this._baseProviderParams = providerParams;
+    const { chainId, type, rpcUrl } = this.getProviderConfig();
     this._configureProvider(type, rpcUrl, chainId);
   }
 

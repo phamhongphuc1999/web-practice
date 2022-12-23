@@ -2,8 +2,21 @@
 
 ### Usage
 
+1. Cài đặt thư viện
+
 ```shell
 yarn install
+```
+
+2. Nếu đây là lần chạy đầu tiên thì chạy tiếp lệnh
+
+```shell
+yarn run dev
+```
+
+3. Khởi chạy chương trình
+
+```shell
 yarn start
 ```
 

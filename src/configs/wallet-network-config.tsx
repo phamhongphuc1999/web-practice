@@ -40,7 +40,7 @@ export const NetworkConfigOptions: MyWalletChainType = {
     image: EthImage,
     nativeCurrency: ETH,
     provider: {
-      type: NETWORK_TYPES.MAINNET,
+      type: NETWORK_TYPES.RPC,
       rpcUrl: 'https://nd-867-350-180.p2pify.com/783c7718e05463aa0828656842db85a7',
     },
   },
@@ -51,7 +51,7 @@ export const NetworkConfigOptions: MyWalletChainType = {
     chainId: CHAIN_ALIASES.BSC_MAINNET,
     image: BscImage,
     nativeCurrency: BNB,
-    provider: { type: NETWORK_TYPES.MAINNET, rpcUrl: 'https://bsc-dataseed.binance.org' },
+    provider: { type: NETWORK_TYPES.RPC, rpcUrl: 'https://bsc-dataseed.binance.org' },
   },
   [CHAIN_ALIASES.BSC_TESTNET]: {
     name: 'BSC Testnet',
@@ -60,6 +60,6 @@ export const NetworkConfigOptions: MyWalletChainType = {
     chainId: CHAIN_ALIASES.BSC_TESTNET,
     image: BscImage,
     nativeCurrency: BNB,
-    provider: { type: NETWORK_TYPES.MAINNET, rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/' },
+    provider: { type: NETWORK_TYPES.RPC, rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/' },
   },
 };

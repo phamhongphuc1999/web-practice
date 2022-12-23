@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+/*
+  This package base on https://github.com/ethereumjs/eth-query
+*/
 import { SafeEventEmitterProvider } from 'eth-json-rpc-middleware';
-import { JsonRpcRequest, JsonRpcFailure, JsonRpcSuccess } from 'json-rpc-engine';
+import { JsonRpcFailure, JsonRpcRequest, JsonRpcSuccess } from 'json-rpc-engine';
 import { SimpleItem } from 'src/global';
 import { extend } from 'src/services';
 
