@@ -18,8 +18,11 @@ export default function WalletUtils() {
         <Button variant="outlined" sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_MNEMONIC)}>
           Create mnemonic
         </Button>
-        <Button variant="contained" onClick={() => history.push(ROUTE.WALLET_BROWSER_PASSWORD)}>
+        <Button variant="contained" sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_BROWSER_PASSWORD)}>
           Browser password
+        </Button>
+        <Button variant="contained" color="error" onClick={() => history.push(ROUTE.WALLET_RPC)}>
+          RPC Request
         </Button>
       </Box>
     </>

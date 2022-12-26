@@ -4,8 +4,10 @@ import { FormEvent, useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { CssForm } from 'src/components/utils';
 import { ROUTE } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
 
 export default function BrowserPassword() {
+  const { t } = useTranslate();
   const [encryptionKey, setEncryptionKey] = useState('');
   const [encryptedVault, setEnCryptedVault] = useState('');
 
@@ -21,8 +23,8 @@ export default function BrowserPassword() {
     <>
       <CssBreadcrumbs
         configs={[
-          { label: 'Wallet', link: ROUTE.WALLET_OVERVIEW },
-          { label: 'Wallet Utils', link: ROUTE.WALLET_UTILS },
+          { label: t('wallet'), link: ROUTE.WALLET_OVERVIEW },
+          { label: t('walletUtils'), link: ROUTE.WALLET_UTILS },
           { label: 'Wallet browser password' },
         ]}
         props={{ mb: 2 }}

@@ -8,16 +8,10 @@
 yarn install
 ```
 
-2. Nếu đây là lần chạy đầu tiên thì chạy tiếp lệnh
+2. Khởi chạy chương trình
 
 ```shell
 yarn run dev
-```
-
-3. Khởi chạy chương trình
-
-```shell
-yarn start
 ```
 
 ### Các thư viện quan trọng
@@ -25,6 +19,7 @@ yarn start
 - [webextension-polyfill](https://www.npmjs.com/package/webextension-polyfill)
 - [eth-json-rpc-filters](https://www.npmjs.com/package/eth-json-rpc-filters)
 - [eth-json-rpc-middleware](https://www.npmjs.com/package/eth-json-rpc-middleware)
+- [json-rpc-engine](https://github.com/MetaMask/json-rpc-engine)
 
 ### Các đường link quan trọng
 

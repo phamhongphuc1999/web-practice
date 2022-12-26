@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { TransactionMetadata } from '../wallet';
 
 export class TransactionController {

@@ -43,7 +43,7 @@ export default function MyWalletWrapper({ children }: Props) {
 
   function _backToInitWallet() {
     dispatch(updateStatus('init'));
-    history.push(ROUTE.WALLET_OVERVIEW);
+    if (!history.location.pathname.includes('/my-wallet-utils')) history.push(ROUTE.WALLET_OVERVIEW);
   }
 
   function _initWallet() {

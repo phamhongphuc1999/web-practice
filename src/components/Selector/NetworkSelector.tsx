@@ -16,6 +16,7 @@ export default function NetworkSelector() {
   const { t } = useTranslate();
   const dispatch = useDispatch();
   const { currentNetwork } = useAppSelector((state) => state.myWalletStateSlice);
+  const { language } = useAppSelector((state) => state.userConfigSlice);
   const actionController = useActionController();
 
   const networkConfig = useMemo(() => {
@@ -46,7 +47,7 @@ export default function NetworkSelector() {
       };
     }
     return defaultItem;
-  }, [currentNetwork]);
+  }, [currentNetwork, language]);
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: ProviderSelectItem) {
     if (actionController?.networkController) {

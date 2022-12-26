@@ -10,6 +10,7 @@ import WalletOverview from 'src/Pages/MyWallet/WalletOverview';
 import WalletUtils from 'src/Pages/MyWallet/WalletUtils';
 import BrowserPassword from 'src/Pages/MyWallet/WalletUtils/BrowserPassword';
 import CreateMnemonic from 'src/Pages/MyWallet/WalletUtils/CreateMnemonic';
+import RpcRequest from 'src/Pages/MyWallet/WalletUtils/RpcRequest';
 import UtilElement from 'src/Pages/UtilElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
@@ -29,8 +30,11 @@ export default function RouteApp() {
       <Route path={ROUTE.WALLET_MNEMONIC} exact={true}>
         <CreateMnemonic />
       </Route>
-      <Route path={ROUTE.WALLET_BROWSER_PASSWORD}>
+      <Route path={ROUTE.WALLET_BROWSER_PASSWORD} exact={true}>
         <BrowserPassword />
+      </Route>
+      <Route path={ROUTE.WALLET_RPC} exact={true}>
+        <RpcRequest />
       </Route>
       <Route path={`${ROUTE.ANIMATION}/:page`} exact={true}>
         <AnimationPage />
