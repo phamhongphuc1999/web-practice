@@ -26,7 +26,7 @@ export interface MyWalletChain extends BaseChain {
 }
 
 export interface MyWalletChainType {
-  [chain: number]: MyWalletChain;
+  [chain: string]: MyWalletChain;
 }
 
 export const INFURA_PROVIDER_TYPES = [NETWORK_TYPES.MAINNET, NETWORK_TYPES.GOERLI, NETWORK_TYPES.SEPOLIA];

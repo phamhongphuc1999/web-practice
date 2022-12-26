@@ -5,6 +5,7 @@ import ThemeButton from 'src/components/Button/ThemeButton';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
+import NetworkSelector from '../../../Selector/NetworkSelector';
 
 export default function Header() {
   const history = useHistory();
@@ -21,12 +22,12 @@ export default function Header() {
         width: '100%',
         height: 55,
         borderBottom: `1px solid ${alpha(theme.palette.mode === 'dark' ? '#fff' : '#000', 0.12)}`,
-        padding: theme.spacing(0, 2),
       })}
     >
       <Box display="flex" alignItems="center" justifyContent="space-between" height="100%">
         <Box>
           <ThemeButton />
+          <NetworkSelector />
           {location.pathname === '/my-wallet' && status === 'init' && (
             <Button variant="outlined" onClick={() => history.push(ROUTE.WALLET_UTILS)}>
               {t('testWalletUtils')}

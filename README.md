@@ -26,6 +26,10 @@ yarn start
 - [eth-json-rpc-filters](https://www.npmjs.com/package/eth-json-rpc-filters)
 - [eth-json-rpc-middleware](https://www.npmjs.com/package/eth-json-rpc-middleware)
 
+### Các đường link quan trọng
+
+- https://ethereum.github.io/execution-apis/api-documentation/
+
 ### Các việc cần làm
 
 - Tuần này(20-24/12) -> phần tạo ví và ký thông điệp(message)

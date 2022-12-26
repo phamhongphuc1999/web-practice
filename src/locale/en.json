@@ -76,5 +76,6 @@
     "light": "Light Mode",
     "dark": "Dark mode"
   },
-  "walletInfo": "Wallet information"
+  "walletInfo": "Wallet information",
+  "type": "Type"
 }

@@ -11,6 +11,7 @@ export default function LanguageSelector() {
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
     dispatch(setLanguage(item.id as LanguageType));
   }
+
   return (
     <CssSelector
       width={120}

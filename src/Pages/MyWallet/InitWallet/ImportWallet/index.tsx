@@ -1,7 +1,7 @@
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useDispatch } from 'react-redux';
-import { savePassword, updateStatus } from 'src/redux/myWalletSlice';
+import { savePassword, updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import useTranslate from 'src/hooks/useTranslate';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { CssForm } from 'src/components/utils';

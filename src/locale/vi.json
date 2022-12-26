@@ -76,5 +76,6 @@
     "light": "Chủ đề sáng",
     "dark": "Chủ đề tối"
   },
-  "walletInfo": "Thông tin ví"
+  "walletInfo": "Thông tin ví",
+  "type": "Kiểu"
 }

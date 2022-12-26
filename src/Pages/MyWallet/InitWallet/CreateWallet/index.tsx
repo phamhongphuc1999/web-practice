@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import CreatePassword from './CreatePassword';
 import ShowMnemonic from './ShowMnemonic';
 import SuccessCreateWallet from './SuccessCreateWallet';

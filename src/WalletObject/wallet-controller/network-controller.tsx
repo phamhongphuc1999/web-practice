@@ -5,6 +5,7 @@ import { CHAIN_ALIASES } from 'src/configs/networkConfig';
 import {
   INFURA_PROVIDER_TYPES,
   MyWalletChain,
+  MyWalletChainType,
   NetworkConfigOptions,
   NETWORK_TYPES,
 } from 'src/configs/wallet-network-config';
@@ -14,6 +15,7 @@ import { MiddlewareParam, NetworkOptionType, StandardClientMiddleware } from '..
 
 export class NetworkController {
   options: NetworkOptionType | undefined;
+  networkConfig: MyWalletChainType;
   currentNetwork: MyWalletChain;
   private _baseProviderParams: MiddlewareParam | undefined;
   private _infuraProjectId: string;
@@ -22,10 +24,16 @@ export class NetworkController {
 
   constructor(options?: NetworkOptionType) {
     this.options = options;
+    this.networkConfig = NetworkConfigOptions;
     this.currentNetwork = this.options?.currentNetwork
       ? this.options.currentNetwork
       : NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
     this._infuraProjectId = '';
+  }
+
+  switchNetwork(type: string, rpcUrl: string, chainId: number) {
+    this._configureProvider(type, rpcUrl, chainId);
+    this.currentNetwork = NetworkConfigOptions[chainId];
   }
 
   getProviderConfig() {

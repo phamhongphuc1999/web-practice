@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 import ScrollToTop from 'src/components/ScrollToTop';
 import { ROUTE, WALLET_LS } from 'src/configs/constance';
 import { useAppSelector } from 'src/redux/hook';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
+import { updateCurrentNetwork } from 'src/redux/my-wallet/myWalletStateSlice';
 import { actionController, setActionController } from 'src/WalletObject/background';
 import Header from './Header';
 
@@ -48,6 +49,8 @@ export default function MyWalletWrapper({ children }: Props) {
   function _initWallet() {
     if (!actionController) setActionController();
     if (actionController) {
+      const _network = actionController.networkController.currentNetwork;
+      dispatch(updateCurrentNetwork(_network));
       const seedPhrase = localStorage.getItem(WALLET_LS.SEED);
       if (!seedPhrase || !password) _backToInitWallet();
       else {

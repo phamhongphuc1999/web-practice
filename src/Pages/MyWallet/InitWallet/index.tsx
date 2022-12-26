@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import CreateWallet from './CreateWallet';
 import ImportWallet from './ImportWallet';
 

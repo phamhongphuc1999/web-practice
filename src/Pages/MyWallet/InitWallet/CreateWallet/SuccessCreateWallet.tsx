@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import useTranslate from 'src/hooks/useTranslate';
-import { updateStatus } from 'src/redux/myWalletSlice';
+import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { formatAddress } from 'src/services';
 
 interface Props {

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import { CssForm } from 'src/components/utils';
 import useTranslate from 'src/hooks/useTranslate';
-import { savePassword } from 'src/redux/myWalletSlice';
+import { savePassword } from 'src/redux/my-wallet/myWalletSlice';
 import { actionController } from 'src/WalletObject/background';
 
 interface Props {
