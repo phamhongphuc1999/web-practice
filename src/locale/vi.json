@@ -79,5 +79,7 @@
   "walletInfo": "Thông tin ví",
   "type": "Kiểu",
   "rpcRequest": "Yêu cầu RPC",
-  "submit": "Xác nhận"
+  "submit": "Xác nhận",
+  "properties": "Thuộc tính",
+  "delete": "Xoá"
 }

@@ -9,18 +9,18 @@ interface DataType {
   example?: string;
 }
 
-interface Props {
+export interface PropertiesListProps {
   data?: Array<DataType>;
 }
 
-export default function PropertiesList({ data }: Props) {
+export default function PropertiesList({ data }: PropertiesListProps) {
   const { t } = useTranslate();
   const [open, setOpen] = useState(false);
 
   return data ? (
     <Box>
       <Box sx={{ cursor: 'pointer' }} display="flex" alignItems="center" onClick={() => setOpen(!open)}>
-        <Typography>Properties</Typography>
+        <Typography>{t('properties')}</Typography>
         <IconButton>
           <ArrowAnimationIcon isTransform={open} />
         </IconButton>

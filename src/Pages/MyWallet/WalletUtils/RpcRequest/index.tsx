@@ -1,16 +1,40 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import CopyIcon from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { EthQuery } from 'src/packages/network-interaction/eth-query';
-import PropertiesList from './PropertiesList';
+import { EthBlock } from 'src/packages/network-interaction/network-interaction';
+import BlockResult from './components/BlockResult';
+import RpcForm from './RpcForm';
+
+const defaultAddressParam = { name: 'address', type: 'string', example: '0x871DBcE2b9923A35716e7E83ee402B535298538E' };
+const defaultBlockParam = {
+  name: 'block',
+  type: 'string or earliest | finalized | safe | latest | pending',
+  example: 'latest',
+};
 
 export default function RpcRequest() {
   const { t } = useTranslate();
   const [rpcUrl, setRpcUrl] = useState<string | undefined>(undefined);
+
+  //eth_getBalance
   const [balanceParam, setBalanceParam] = useState('');
   const [balanceResult, setBalanceResult] = useState('');
+
+  //eth_getBlockByHash
+  const [blockByHashParam, setBlockByHashParam] = useState('');
+  const [blockByHashResult, setBlockByHashResult] = useState<EthBlock | null>(null);
+
+  //eth_getBlockByNumber
+  const [blockByNumberParam, setBlockByNumberParam] = useState('');
+  const [blockByNumberResult, setBlockByNumberResult] = useState<EthBlock | null>(null);
+
+  //eth_getTransactionCount
+  const [transactionCountParam, setTransactionCountParam] = useState('');
+  const [transactionCountResult, setTransactionCountResult] = useState('');
 
   const ethQuery = useMemo(() => {
     if (rpcUrl) return new EthQuery(rpcUrl);
@@ -22,6 +46,30 @@ export default function RpcRequest() {
     if (ethQuery) {
       const _result = await ethQuery.getBalance(_balance[0]);
       if (_result) setBalanceResult(_result.toString());
+    }
+  }
+
+  async function onBlockByHashClick() {
+    const _blockByHash = blockByHashParam.split(',') as [string, string];
+    if (ethQuery) {
+      const _result = await ethQuery.getBlockByHash(_blockByHash[0], Boolean(_blockByHash[1]));
+      setBlockByHashResult(_result);
+    }
+  }
+
+  async function onBlockByNumberClick() {
+    const _blockByNumber = blockByNumberParam.split(',') as [string, string];
+    if (ethQuery) {
+      const _result = await ethQuery.getBlockByNumber(_blockByNumber[0], Boolean(_blockByNumber[1]));
+      setBlockByHashResult(_result);
+    }
+  }
+
+  async function onTransactionCountClick() {
+    const _transactionCount = transactionCountParam.split(',') as [string, string];
+    if (ethQuery) {
+      const _result = await ethQuery.getTransactionCount(_transactionCount[0]);
+      if (_result) setTransactionCountResult(_result.toString());
     }
   }
 
@@ -40,32 +88,69 @@ export default function RpcRequest() {
         </Box>
         <Box sx={{ width: '90%' }}>
           <TextField fullWidth onChange={(e) => setRpcUrl(e.target.value)} />
-          <Typography color="secondary" sx={{ fontSize: '12px' }}>{`${t(
-            'example'
-          )}: https://bsc-dataseed.binance.org`}</Typography>
+          <Box display="flex" alignItems="center">
+            <Typography color="secondary" sx={{ fontSize: '12px' }}>{`${t(
+              'example'
+            )}: https://bsc-dataseed.binance.org`}</Typography>
+            <CopyIcon
+              copyText="https://bsc-dataseed.binance.org"
+              iconProps={{ color: 'secondary', fontSize: 'small' }}
+            />
+          </Box>
         </Box>
       </Box>
       <Box mt={1}>
-        <Box sx={{ borderTop: '1px solid', pt: 1 }}>
-          <Typography variant="h4">getBalance</Typography>
-          <PropertiesList
-            data={[
-              { name: 'address', type: 'string', example: '0x871DBcE2b9923A35716e7E83ee402B535298538E' },
-              { name: 'block', type: 'string or earliest | finalized | safe | latest | pending', example: 'latest' },
-            ]}
-          />
-          <TextField
-            fullWidth
-            placeholder="Enter balance param"
-            onChange={(e) => setBalanceParam(e.currentTarget.value)}
-          />
-          <Box display="flex" alignItems="center">
-            <Button sx={{ mt: 1, mr: 1 }} variant="outlined" onClick={() => onBalanceClick()}>
-              {t('submit')}
-            </Button>
-            {balanceResult.length > 0 && <Typography>{`${t('result')}: ${balanceResult}`}</Typography>}
-          </Box>
-        </Box>
+        <RpcForm
+          requestName="getBalance"
+          listProps={{ data: [defaultAddressParam, defaultBlockParam] }}
+          events={{
+            onChange: (value) => setBalanceParam(value),
+            onSubmitClick: onBalanceClick,
+            onDeleteClick: () => setBalanceResult(''),
+          }}
+          result={balanceResult}
+        />
+        <RpcForm
+          requestName="getBlockByHash"
+          listProps={{
+            data: [
+              {
+                name: 'Block hash',
+                type: 'string',
+                example: '0x8cd1a03b8c66629026515d500467b54c3c0f0fba5e5db35dbcc871f449f1e511',
+              },
+              { name: 'Hydrated transactions', type: 'boolean' },
+            ],
+          }}
+          events={{
+            onChange: (value) => setBlockByHashParam(value),
+            onSubmitClick: onBlockByHashClick,
+            onDeleteClick: () => setBlockByHashResult(null),
+          }}
+          Components={{ ResultComponent: <BlockResult blockData={blockByHashResult} /> }}
+        />
+        <RpcForm
+          requestName="getBlockByNumber"
+          listProps={{
+            data: [defaultBlockParam, { name: 'Hydrated transactions', type: 'boolean' }],
+          }}
+          events={{
+            onChange: (value) => setBlockByNumberParam(value),
+            onSubmitClick: onBlockByNumberClick,
+            onDeleteClick: () => setBlockByNumberResult(null),
+          }}
+          Components={{ ResultComponent: <BlockResult blockData={blockByNumberResult} /> }}
+        />
+        <RpcForm
+          requestName="getTransactionCount"
+          listProps={{ data: [defaultAddressParam, defaultBlockParam] }}
+          events={{
+            onChange: (value) => setTransactionCountParam(value),
+            onSubmitClick: onTransactionCountClick,
+            onDeleteClick: () => setTransactionCountResult(''),
+          }}
+          result={transactionCountResult}
+        />
       </Box>
     </>
   );

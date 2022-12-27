@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+/*
+  This class base on https://github.com/MetaMask/json-rpc-engine/blob/main/src/JsonRpcEngine.ts
+*/
 import { JsonRpcRequest, JsonRpcResponse } from './network-interaction';
 import { btoa, checkForHttpErrors, normalizeUrlFromParsed } from './utils';
 

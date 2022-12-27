@@ -79,5 +79,7 @@
   "walletInfo": "Wallet information",
   "type": "Type",
   "rpcRequest": "RPC request",
-  "submit": "Submit"
+  "submit": "Submit",
+  "properties": "Properties",
+  "delete": "Delete"
 }
