@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { EthBlock } from 'src/packages/network-interaction/network-interaction';
+import { EthBlock } from 'src/packages/network-interaction/type';
 
 interface Props {
   blockData: EthBlock | null;

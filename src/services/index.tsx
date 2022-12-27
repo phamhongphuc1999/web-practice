@@ -1,5 +1,3 @@
-import { SimpleItem } from 'src/global';
-
 export const isNumeric = (num: number) => {
   return !isNaN(num) && !isNaN(parseFloat(num.toString()));
 };
@@ -42,17 +40,4 @@ export function formatAddress(address: string, fractionDigits?: number) {
   } catch (error) {
     return undefined;
   }
-}
-
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-export function extend<T>(target: SimpleItem<T>, ...args: SimpleItem<T>[]) {
-  for (let i = 1; i < args.length; i++) {
-    const source = args[i];
-    for (const key in source) {
-      if (hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-  return target;
 }

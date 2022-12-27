@@ -1,6 +1,3 @@
-import { PollingBlockTracker } from 'eth-block-tracker';
-import { providerFromEngine, SafeEventEmitterProvider } from 'eth-json-rpc-middleware';
-import { JsonRpcEngine } from 'json-rpc-engine';
 import { CHAIN_ALIASES } from 'src/configs/networkConfig';
 import {
   INFURA_PROVIDER_TYPES,
@@ -9,18 +6,15 @@ import {
   NetworkConfigOptions,
   NETWORK_TYPES,
 } from 'src/configs/wallet-network-config';
-import createJsonRpcClient from '../CreateClient/createJsonRpcClient';
-import createMyWalletMiddleware from '../CreateClient/createMyWalletMiddleware';
-import { MiddlewareParam, NetworkOptionType, StandardClientMiddleware } from '../wallet';
+import { EthQuery } from 'src/packages/network-interaction/eth-query';
+import { NetworkOptionType } from '../wallet';
 
 export class NetworkController {
   options: NetworkOptionType | undefined;
   networkConfig: MyWalletChainType;
   currentNetwork: MyWalletChain;
-  private _baseProviderParams: MiddlewareParam | undefined;
   private _infuraProjectId: string;
-  private _provider: SafeEventEmitterProvider | undefined;
-  private _blockTracker: PollingBlockTracker | undefined;
+  private _provider: EthQuery | undefined;
 
   constructor(options?: NetworkOptionType) {
     this.options = options;
@@ -32,7 +26,7 @@ export class NetworkController {
   }
 
   switchNetwork(type: string, rpcUrl: string, chainId: number) {
-    this._configureProvider(type, rpcUrl, chainId);
+    this._configureProvider(type, rpcUrl);
     this.currentNetwork = NetworkConfigOptions[chainId];
   }
 
@@ -42,44 +36,35 @@ export class NetworkController {
     return { chainId, type, rpcUrl };
   }
 
-  initializeProvider(providerParams: MiddlewareParam) {
-    this._baseProviderParams = providerParams;
-    const { chainId, type, rpcUrl } = this.getProviderConfig();
-    this._configureProvider(type, rpcUrl, chainId);
+  initializeProvider() {
+    const { type, rpcUrl } = this.getProviderConfig();
+    this._configureProvider(type, rpcUrl);
   }
 
   setInfuraProjectId(projectId: string) {
     this._infuraProjectId = projectId;
   }
 
-  private _configureProvider(type: string, rpcUrl: string, chainId: number) {
+  private _configureProvider(type: string, rpcUrl: string) {
     const isInfura = INFURA_PROVIDER_TYPES.includes(type);
     if (isInfura) this._configureInfuraProvider(type, this._infuraProjectId);
-    else if (type === NETWORK_TYPES.RPC) this._configureStandardProvider(rpcUrl, chainId);
+    else if (type === NETWORK_TYPES.RPC) this._configureStandardProvider(rpcUrl);
     else throw new Error(`NetworkController - _configureProvider - unknown type "${type}"`);
   }
 
   private _configureInfuraProvider(type: string, infuraProjectId: string) {
     console.warn(type, infuraProjectId);
   }
-  private _configureStandardProvider(rpcUrl: string, chainId: number) {
-    const networkClient = createJsonRpcClient(rpcUrl, chainId);
-    this._setNetworkClient(networkClient);
+  private _configureStandardProvider(rpcUrl: string) {
+    this._setNetworkClient(rpcUrl);
   }
 
-  private _setNetworkClient(networkMiddleware: StandardClientMiddleware) {
-    if (this._baseProviderParams) {
-      const _walletMiddleware = createMyWalletMiddleware(this._baseProviderParams);
-      const engine = new JsonRpcEngine();
-      engine.push(_walletMiddleware);
-      engine.push(networkMiddleware.networkMiddleware);
-      const _provider = providerFromEngine(engine);
-      this._setProviderAndBlockTracker(_provider, networkMiddleware.blockTracker);
-    }
+  private _setNetworkClient(rpcUrl: string) {
+    const ethQuery = new EthQuery(rpcUrl);
+    this._setProviderAndBlockTracker(ethQuery);
   }
 
-  private _setProviderAndBlockTracker(provider: SafeEventEmitterProvider, blockTracker: PollingBlockTracker) {
+  private _setProviderAndBlockTracker(provider: EthQuery) {
     this._provider = provider;
-    this._blockTracker = blockTracker;
   }
 }

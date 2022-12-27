@@ -3,7 +3,8 @@
 /*
   This class base on https://github.com/MetaMask/json-rpc-engine/blob/main/src/JsonRpcEngine.ts
 */
-import { JsonRpcRequest, JsonRpcResponse } from './network-interaction';
+import { ethErrors } from './eth-rpc-errors/errors';
+import { JsonRpcRequest, JsonRpcResponse } from './type';
 import { btoa, checkForHttpErrors, normalizeUrlFromParsed } from './utils';
 
 const fetch = global.fetch;
@@ -32,7 +33,11 @@ export class JsonRpcEngine {
   private rpcUrl: URL;
 
   constructor(rpcUrl: string) {
-    this.rpcUrl = new URL(rpcUrl);
+    try {
+      this.rpcUrl = new URL(rpcUrl);
+    } catch (_) {
+      throw new Error('Invalid RPC');
+    }
   }
 
   async handle<Params, Result = unknown>(
@@ -60,8 +65,7 @@ export class JsonRpcEngine {
       const result: Block = this._parseResponse(fetchRes, fetchBody);
       return result;
     } catch (err: any) {
-      const errMsg: string = err.toString();
-      const isRetriable: boolean = RETRIABLE_ERRORS.some((phrase) => errMsg.includes(phrase));
+      const isRetriable: boolean = RETRIABLE_ERRORS.some((phrase) => JSON.stringify(err).includes(phrase));
       if (!isRetriable) throw err;
     }
   }
@@ -92,8 +96,15 @@ export class JsonRpcEngine {
   }
 
   private _parseResponse(fetchRes: Response, body: Record<string, Block>): Block {
-    if (fetchRes.status !== 200) throw new Error();
-    if (body.error) throw new Error();
+    if (fetchRes.status !== 200)
+      throw ethErrors.rpc.internal({
+        message: `Non-200 status code: '${fetchRes.status}'`,
+        data: body,
+      });
+    if (body.error)
+      throw ethErrors.rpc.internal({
+        data: body.error,
+      });
     return body.result;
   }
 }
