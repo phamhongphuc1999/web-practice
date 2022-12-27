@@ -1,6 +1,5 @@
 import { Mutex } from 'await-semaphore';
 import EventEmitter from 'events';
-import { JsonRpcRequest } from 'json-rpc-engine';
 import { KeyringController } from '../keyring-controller';
 import { ActionOptionType, MemStoreType } from '../wallet';
 import { AccountController } from './account-controller';
@@ -36,29 +35,8 @@ export class ActionController extends EventEmitter {
     this.initializeProvider();
   }
 
-  // Initial provider params
-  private async _getPendingNonce(address: string) {
-    console.warn(address);
-    return 0;
-  }
-
-  private _getPendingTransactionByHash(hash: string) {
-    console.warn(hash);
-    return this.transactionController.getTransactions();
-  }
-
-  private async _getAccounts(req: JsonRpcRequest<unknown>, options?: { suppressUnauthorized?: boolean }) {
-    console.warn(req, options);
-    return await this.keyringController.getAccounts();
-  }
-
   private initializeProvider() {
-    this.networkController.initializeProvider({
-      version: '0.0.0',
-      getPendingNonce: this._getPendingNonce,
-      getPendingTransactionByHash: this._getPendingTransactionByHash,
-      getAccounts: this._getAccounts,
-    });
+    this.networkController.initializeProvider();
   }
 
   private _onKeyringControllerUpdate(state: MemStoreType) {
