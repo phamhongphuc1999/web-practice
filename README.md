@@ -11,7 +11,7 @@ yarn install
 2. Khởi chạy chương trình
 
 ```shell
-yarn run dev
+yarn start
 ```
 
 ### Các thư viện quan trọng

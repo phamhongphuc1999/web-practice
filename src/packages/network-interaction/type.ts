@@ -1,4 +1,10 @@
 export type SimpleItem<T> = { [key: string]: T };
+
+export type PlainObject = Record<number | string | symbol, unknown>;
+export type RuntimeObject = Record<number | string | symbol, unknown>;
+
+export type Json = null | boolean | number | string | Json[] | { [prop: string]: Json };
+
 export type BlockTag = 'earliest' | 'finalized' | 'safe' | 'latest' | 'pending';
 
 export type OptionType = { max: number; start: number };
