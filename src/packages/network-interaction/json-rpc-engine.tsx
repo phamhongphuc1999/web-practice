@@ -4,7 +4,16 @@
   This class base on https://github.com/MetaMask/json-rpc-engine/blob/main/src/JsonRpcEngine.ts
 */
 import { ethErrors } from './eth-rpc-errors/errors';
-import { JsonRpcRequest, JsonRpcResponse } from './type';
+import { JsonRpcMiddleware } from './json-rpc-middleware';
+import {
+  Json,
+  JsonRpcFailure,
+  JsonRpcRequest,
+  JsonRpcResponse,
+  JsonRpcSuccess,
+  RequestRpcMiddleware,
+  ResponseRpcMiddleware,
+} from './type';
 import { btoa, checkForHttpErrors, normalizeUrlFromParsed } from './utils';
 
 const fetch = global.fetch;
@@ -31,6 +40,8 @@ export type Block = Record<string, BlockData>;
 
 export class JsonRpcEngine {
   private rpcUrl: URL;
+  private _request_middleware: Array<RequestRpcMiddleware<unknown>>;
+  private _response_middleware: Array<ResponseRpcMiddleware<unknown, unknown>>;
 
   constructor(rpcUrl: string) {
     try {
@@ -38,16 +49,40 @@ export class JsonRpcEngine {
     } catch (_) {
       throw new Error('Invalid RPC');
     }
+    this._request_middleware = [];
+    this._response_middleware = [];
+  }
+
+  addRequestMiddleware<Params>(middleware: RequestRpcMiddleware<Params>) {
+    this._request_middleware.push(middleware as RequestRpcMiddleware<unknown>);
+  }
+
+  addResponseMiddleware<Params, Result>(middleware: ResponseRpcMiddleware<Params, Result>) {
+    this._response_middleware.push(middleware as ResponseRpcMiddleware<unknown, unknown>);
   }
 
   async handle<Params, Result = unknown>(
     request: JsonRpcRequest<Params>,
-    callback?: (error: unknown, response: JsonRpcResponse<Result>) => void
+    callback?: (response: JsonRpcResponse<Result>) => void
   ) {
     if (callback)
       if (callback && typeof callback !== 'function') throw new Error('"callback" must be a function if provided.');
-    const _result = await this._fetch(request);
-    return _result;
+    const { request: finalRequest, error } = JsonRpcMiddleware.runRequestMiddlewareList(
+      request,
+      this._request_middleware
+    );
+    if (error) throw new Error(`RPC engine fail: ${error.message}`);
+    const _result = await this._fetch(finalRequest);
+    if (_result) {
+      const { response: finalResponse } = JsonRpcMiddleware.runResponseMiddlewareList(
+        request,
+        _result,
+        this._response_middleware
+      );
+      if (callback) callback(finalResponse as JsonRpcResponse<Result>);
+      return (finalResponse as JsonRpcSuccess<Result>).result;
+    }
+    return null;
   }
 
   private async _fetch<Params>(request: JsonRpcRequest<Params>) {
@@ -56,14 +91,23 @@ export class JsonRpcEngine {
       const fetchRes: Response = await fetch(fetchUrl, fetchParams);
       checkForHttpErrors(fetchRes);
       const rawBody: string = await fetchRes.text();
-      let fetchBody: Record<string, Block>;
+      let fetchBody: JsonRpcResponse;
       try {
         fetchBody = JSON.parse(rawBody);
       } catch (_) {
         throw new Error(`FetchMiddleware - failed to parse response body: "${rawBody}"`);
       }
-      const result: Block = this._parseResponse(fetchRes, fetchBody);
-      return result;
+      if (fetchRes.status !== 200)
+        throw ethErrors.rpc.internal({
+          message: `Non-200 status code: '${fetchRes.status}'`,
+          data: fetchBody as Json,
+        });
+      const checkType = fetchBody as JsonRpcFailure;
+      if (checkType.error)
+        throw ethErrors.rpc.internal({
+          data: checkType.error as Json,
+        });
+      return fetchBody;
     } catch (err: any) {
       const isRetriable: boolean = RETRIABLE_ERRORS.some((phrase) => JSON.stringify(err).includes(phrase));
       if (!isRetriable) throw err;
@@ -93,18 +137,5 @@ export class JsonRpcEngine {
       fetchParams.headers.Authorization = `Basic ${encodedAuth}`;
     }
     return { fetchUrl, fetchParams };
-  }
-
-  private _parseResponse(fetchRes: Response, body: Record<string, Block>): Block {
-    if (fetchRes.status !== 200)
-      throw ethErrors.rpc.internal({
-        message: `Non-200 status code: '${fetchRes.status}'`,
-        data: body,
-      });
-    if (body.error)
-      throw ethErrors.rpc.internal({
-        data: body.error,
-      });
-    return body.result;
   }
 }

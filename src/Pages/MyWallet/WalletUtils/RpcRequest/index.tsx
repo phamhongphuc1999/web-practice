@@ -49,7 +49,11 @@ export default function RpcRequest() {
   const ethQuery = useMemo(() => {
     if (rpcUrl) {
       try {
-        return new EthQuery(rpcUrl);
+        const _ethQuery = new EthQuery(rpcUrl);
+        _ethQuery.addRequestMiddleware((request) => {
+          return { request };
+        });
+        return _ethQuery;
       } catch (_) {
         return undefined;
       }

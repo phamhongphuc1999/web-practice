@@ -17,11 +17,11 @@ export declare type JsonRpcError = {
   stack?: string;
 };
 
-export type JsonRpcRequest<Param> = {
+export type JsonRpcRequest<Params> = {
   id: JsonRpcId;
   jsonrpc: JsonRpcVersion2;
   method: string;
-  params?: Param;
+  params?: Params;
 };
 
 export type JsonRpcSuccess<Result> = {
@@ -37,6 +37,23 @@ export type JsonRpcFailure = {
 };
 
 export type JsonRpcResponse<Result = unknown> = JsonRpcSuccess<Result> | JsonRpcFailure;
+
+export type RequestRpcMiddlewareReturn<Params> = {
+  request: JsonRpcRequest<Params>;
+  error?: JsonRpcError;
+};
+
+export type RequestRpcMiddleware<Params> = (request: JsonRpcRequest<Params>) => RequestRpcMiddlewareReturn<Params>;
+
+export type ResponseRpcMiddlewareReturn<Params, Result> = {
+  request: JsonRpcRequest<Params>;
+  response: JsonRpcResponse<Result>;
+};
+
+export type ResponseRpcMiddleware<Params, Result> = (
+  request: JsonRpcRequest<Params>,
+  response: JsonRpcResponse<Result>
+) => ResponseRpcMiddlewareReturn<Params, Result>;
 
 export type EthTransaction = {
   blockHash: string;
