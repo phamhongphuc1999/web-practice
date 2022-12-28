@@ -6,7 +6,7 @@ import {
   NetworkConfigOptions,
   NETWORK_TYPES,
 } from 'src/configs/wallet-network-config';
-import { EthQuery } from 'src/packages/network-interaction/eth-query';
+import { EthQuery } from 'src/blockchain-interaction/eth-query';
 import { NetworkOptionType } from '../wallet';
 import { StorageController } from './storage-controller';
 

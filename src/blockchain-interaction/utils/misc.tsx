@@ -4,9 +4,7 @@ export const hasProperty = (object: RuntimeObject, name: string | number | symbo
   Object.hasOwnProperty.call(object, name);
 
 export function isPlainObject(value: unknown): value is PlainObject {
-  if (typeof value !== 'object' || value === null) {
-    return false;
-  }
+  if (typeof value !== 'object' || value === null) return false;
   try {
     let proto = value;
     while (Object.getPrototypeOf(proto) !== null) {

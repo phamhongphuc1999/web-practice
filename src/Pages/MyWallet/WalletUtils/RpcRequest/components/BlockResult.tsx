@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { EthBlock, EthTransaction } from 'src/packages/network-interaction/type';
+import { EthBlock, EthTransaction } from 'src/blockchain-interaction/type';
 
 interface TransactionResultProps {
   transactionData: EthTransaction | null;

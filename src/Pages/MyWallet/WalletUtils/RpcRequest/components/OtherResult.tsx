@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { SyncingObject, SyncingType } from 'src/packages/network-interaction/type';
+import { SyncingObject, SyncingType } from 'src/blockchain-interaction/type';
 
 interface AccountsResultProps {
   accounts: Array<string>;
