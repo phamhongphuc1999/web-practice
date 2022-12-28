@@ -81,5 +81,6 @@
   "rpcRequest": "RPC request",
   "submit": "Submit",
   "properties": "Properties",
-  "delete": "Delete"
+  "delete": "Delete",
+  "openOn": "Open on %{location}"
 }

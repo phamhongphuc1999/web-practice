@@ -18,7 +18,7 @@ export const NETWORK_TYPES = {
 };
 
 export interface MyWalletChain extends BaseChain {
-  chainId: number;
+  chainId: string;
   provider: {
     type: string;
     rpcUrl: string;
@@ -36,7 +36,7 @@ export const NetworkConfigOptions: MyWalletChainType = {
     name: 'Eth Mainnet',
     isMainnet: true,
     translate: 'ETH',
-    chainId: CHAIN_ALIASES.ETH_MAINNET,
+    chainId: CHAIN_ALIASES.ETH_MAINNET.toString(),
     image: EthImage,
     nativeCurrency: ETH,
     provider: {
@@ -48,7 +48,7 @@ export const NetworkConfigOptions: MyWalletChainType = {
     name: 'BSC Mainnet',
     isMainnet: true,
     translate: 'BSC',
-    chainId: CHAIN_ALIASES.BSC_MAINNET,
+    chainId: CHAIN_ALIASES.BSC_MAINNET.toString(),
     image: BscImage,
     nativeCurrency: BNB,
     provider: { type: NETWORK_TYPES.RPC, rpcUrl: 'https://bsc-dataseed.binance.org' },
@@ -57,7 +57,7 @@ export const NetworkConfigOptions: MyWalletChainType = {
     name: 'BSC Testnet',
     isMainnet: false,
     translate: 'BSC',
-    chainId: CHAIN_ALIASES.BSC_TESTNET,
+    chainId: CHAIN_ALIASES.BSC_TESTNET.toString(),
     image: BscImage,
     nativeCurrency: BNB,
     provider: { type: NETWORK_TYPES.RPC, rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/' },

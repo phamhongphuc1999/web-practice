@@ -5,8 +5,9 @@ import CopyIcon from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { EthQuery } from 'src/packages/network-interaction/eth-query';
-import { EthBlock } from 'src/packages/network-interaction/type';
-import BlockResult from './components/BlockResult';
+import { EthBlock, EthTransaction, SyncingType } from 'src/packages/network-interaction/type';
+import { BlockResult, TransactionResult } from './components/BlockResult';
+import { AccountsResult, SyncingResult } from './components/OtherResult';
 import RpcForm from './RpcForm';
 
 const defaultAddressParam = { name: 'address', type: 'string', example: '0x871DBcE2b9923A35716e7E83ee402B535298538E' };
@@ -19,6 +20,11 @@ const defaultBlockHashParam = {
   name: 'Block hash',
   type: 'string',
   example: '0x8cd1a03b8c66629026515d500467b54c3c0f0fba5e5db35dbcc871f449f1e511',
+};
+const defaultTransactionHashParam = {
+  name: 'Transaction hash',
+  type: 'string',
+  example: '0x2052b408ed3257733016c200345eb58eb005f4be0ac44197e618895b7e444d2f',
 };
 
 export default function RpcRequest() {
@@ -38,6 +44,33 @@ export default function RpcRequest() {
   const [blockTransactionCountByHashParam, setBlockTransactionCountByHashParam] = useState('');
   const [blockTransactionCountByHashResult, setBlockTransactionCountByHashResult] = useState('');
 
+  //eth_getBlockTransactionCountByNumber
+  const [blockTransactionCountByNumberParam, setBlockTransactionCountByNumberParam] = useState('');
+  const [blockTransactionCountByNumberResult, setBlockTransactionCountByNumberResult] = useState('');
+
+  //eth_getUncleCountByBlockHash
+  const [uncleCountByBlockHashParam, setUncleCountByBlockHashParam] = useState('');
+  const [uncleCountByBlockHashResult, setUncleCountByBlockHashResult] = useState('');
+
+  //eth_getUncleCountByBlockNumber
+  const [uncleCountByBlockNumberParam, setUncleCountByBlockNumberParam] = useState('');
+  const [uncleCountByBlockNumberResult, setUncleCountByBlockNumberResult] = useState('');
+
+  //eth_chainId
+  const [chainIdResult, setChainIdResult] = useState('');
+
+  //eth_syncing
+  const [syncingResult, setSyncingResult] = useState<SyncingType | null>(null);
+
+  //eth_coinbase
+  const [coinbaseResult, setCoinbaseResult] = useState('');
+
+  //eh_accounts
+  const [accountsResult, setAccountsResult] = useState<Array<string>>([]);
+
+  //eth_blockNumber
+  const [blockNumberResult, setBlockNumberResult] = useState('');
+
   //eth_getBalance
   const [balanceParam, setBalanceParam] = useState('');
   const [balanceResult, setBalanceResult] = useState('');
@@ -45,6 +78,10 @@ export default function RpcRequest() {
   //eth_getTransactionCount
   const [transactionCountParam, setTransactionCountParam] = useState('');
   const [transactionCountResult, setTransactionCountResult] = useState('');
+
+  //eth_getTransactionByHash
+  const [transactionByHashParam, setTransactionByHashParam] = useState('');
+  const [transactionByHashResult, setTransactionByHashResult] = useState<EthTransaction | null>(null);
 
   const ethQuery = useMemo(() => {
     if (rpcUrl) {
@@ -68,6 +105,14 @@ export default function RpcRequest() {
     }
   }
 
+  async function onBlockByNumberClick() {
+    const _blockByNumber = blockByNumberParam.split(',') as [string, string];
+    if (ethQuery) {
+      const _result = await ethQuery.getBlockByNumber(_blockByNumber[0], Boolean(_blockByNumber[1]));
+      setBlockByNumberResult(_result);
+    }
+  }
+
   async function onBlockTransactionCountByHashClick() {
     if (ethQuery) {
       const _result = await ethQuery.getBlockTransactionCountByHash(blockTransactionCountByHashParam);
@@ -75,11 +120,59 @@ export default function RpcRequest() {
     }
   }
 
-  async function onBlockByNumberClick() {
-    const _blockByNumber = blockByNumberParam.split(',') as [string, string];
+  async function onBlockTransactionCountByNumberClick() {
     if (ethQuery) {
-      const _result = await ethQuery.getBlockByNumber(_blockByNumber[0], Boolean(_blockByNumber[1]));
-      setBlockByHashResult(_result);
+      const _result = await ethQuery.getBlockTransactionCountByNumber(blockTransactionCountByNumberParam);
+      if (_result) setBlockTransactionCountByNumberResult(_result);
+    }
+  }
+
+  async function onUncleCountByBlockHashClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.getUncleCountByBlockHash(uncleCountByBlockHashParam);
+      if (_result) setUncleCountByBlockHashResult(_result);
+    }
+  }
+
+  async function onUncleCountByBlockNumberClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.getUncleCountByBlockNumber(uncleCountByBlockNumberParam);
+      if (_result) setUncleCountByBlockNumberResult(_result);
+    }
+  }
+
+  async function onChainIdClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.chainId();
+      if (_result) setChainIdResult(_result);
+    }
+  }
+
+  async function onSyncingClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.syncing();
+      if (_result) setSyncingResult(_result);
+    }
+  }
+
+  async function onCoinbaseClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.coinbase();
+      if (_result) setCoinbaseResult(_result);
+    }
+  }
+
+  async function onAccountsClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.accounts();
+      if (_result) setAccountsResult(_result);
+    }
+  }
+
+  async function onBlockNumberClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.blockNumber();
+      if (_result) setBlockNumberResult(_result);
     }
   }
 
@@ -98,6 +191,13 @@ export default function RpcRequest() {
     if (ethQuery) {
       const _result = await ethQuery.getTransactionCount(_transactionCount[0]);
       if (_result) setTransactionCountResult(_result);
+    }
+  }
+
+  async function onTransactionByHashClick() {
+    if (ethQuery) {
+      const _result = await ethQuery.getTransactionByHash(transactionByHashParam);
+      if (_result) setTransactionByHashResult(_result);
     }
   }
 
@@ -129,7 +229,7 @@ export default function RpcRequest() {
       </Box>
       <Box mt={1}>
         <RpcForm
-          requestName="getBlockByHash"
+          requestName="eth_getBlockByHash"
           isSubmitDisable={isDisable}
           listProps={{
             data: [defaultBlockHashParam, { name: 'Hydrated transactions', type: 'boolean' }],
@@ -142,7 +242,7 @@ export default function RpcRequest() {
           Components={{ ResultComponent: <BlockResult blockData={blockByHashResult} /> }}
         />
         <RpcForm
-          requestName="getBlockByNumber"
+          requestName="eth_getBlockByNumber"
           isSubmitDisable={isDisable}
           listProps={{
             data: [defaultBlockParam, { name: 'Hydrated transactions', type: 'boolean' }],
@@ -155,7 +255,7 @@ export default function RpcRequest() {
           Components={{ ResultComponent: <BlockResult blockData={blockByNumberResult} /> }}
         />
         <RpcForm
-          requestName="getBlockTransactionCountByHash"
+          requestName="eth_getBlockTransactionCountByHash"
           isSubmitDisable={isDisable}
           listProps={{ data: [defaultBlockHashParam] }}
           events={{
@@ -166,7 +266,70 @@ export default function RpcRequest() {
           result={blockTransactionCountByHashResult}
         />
         <RpcForm
-          requestName="getBalance"
+          requestName="eth_getBlockTransactionCountByNumber"
+          isSubmitDisable={isDisable}
+          listProps={{ data: [defaultBlockParam] }}
+          events={{
+            onChange: (value) => setBlockTransactionCountByNumberParam(value),
+            onSubmitClick: onBlockTransactionCountByNumberClick,
+            onDeleteClick: () => setBlockTransactionCountByNumberResult(''),
+          }}
+          result={blockTransactionCountByNumberResult}
+        />
+        <RpcForm
+          requestName="eth_getUncleCountByBlockHash"
+          isSubmitDisable={isDisable}
+          listProps={{ data: [defaultBlockHashParam] }}
+          events={{
+            onChange: (value) => setUncleCountByBlockHashParam(value),
+            onSubmitClick: onUncleCountByBlockHashClick,
+            onDeleteClick: () => setUncleCountByBlockHashResult(''),
+          }}
+          result={uncleCountByBlockHashResult}
+        />
+        <RpcForm
+          requestName="eth_getUncleCountByBlockNumber"
+          isSubmitDisable={isDisable}
+          listProps={{ data: [defaultBlockParam] }}
+          events={{
+            onChange: (value) => setUncleCountByBlockNumberParam(value),
+            onSubmitClick: onUncleCountByBlockNumberClick,
+            onDeleteClick: () => setUncleCountByBlockNumberResult(''),
+          }}
+          result={uncleCountByBlockNumberResult}
+        />
+        <RpcForm
+          requestName="eth_chainId"
+          isSubmitDisable={isDisable}
+          events={{ onSubmitClick: onChainIdClick, onDeleteClick: () => setChainIdResult('') }}
+          result={chainIdResult}
+        />
+        <RpcForm
+          requestName="eth_syncing"
+          isSubmitDisable={isDisable}
+          events={{ onSubmitClick: onSyncingClick, onDeleteClick: () => setSyncingResult(null) }}
+          Components={{ ResultComponent: <SyncingResult data={syncingResult} /> }}
+        />
+        <RpcForm
+          requestName="eth_coinbase"
+          isSubmitDisable={isDisable}
+          events={{ onSubmitClick: onCoinbaseClick, onDeleteClick: () => setCoinbaseResult('') }}
+          result={coinbaseResult}
+        />
+        <RpcForm
+          requestName="eth_accounts"
+          isSubmitDisable={isDisable}
+          events={{ onSubmitClick: onAccountsClick, onDeleteClick: () => setAccountsResult([]) }}
+          Components={{ ResultComponent: <AccountsResult accounts={accountsResult} /> }}
+        />
+        <RpcForm
+          requestName="eth_blockNumber"
+          isSubmitDisable={isDisable}
+          events={{ onSubmitClick: onBlockNumberClick, onDeleteClick: () => setBlockNumberResult('') }}
+          result={blockNumberResult}
+        />
+        <RpcForm
+          requestName="eth_getBalance"
           isSubmitDisable={isDisable}
           listProps={{ data: [defaultAddressParam, defaultBlockParam] }}
           events={{
@@ -177,7 +340,7 @@ export default function RpcRequest() {
           result={balanceResult}
         />
         <RpcForm
-          requestName="getTransactionCount"
+          requestName="eth_getTransactionCount"
           isSubmitDisable={isDisable}
           listProps={{ data: [defaultAddressParam, defaultBlockParam] }}
           events={{
@@ -186,6 +349,17 @@ export default function RpcRequest() {
             onDeleteClick: () => setTransactionCountResult(''),
           }}
           result={transactionCountResult}
+        />
+        <RpcForm
+          requestName="eth_getTransactionByHash"
+          isSubmitDisable={isDisable}
+          listProps={{ data: [defaultTransactionHashParam] }}
+          events={{
+            onChange: (value) => setTransactionByHashParam(value),
+            onSubmitClick: onTransactionByHashClick,
+            onDeleteClick: () => setTransactionByHashResult(null),
+          }}
+          Components={{ ResultComponent: <TransactionResult transactionData={transactionByHashResult} /> }}
         />
       </Box>
     </>

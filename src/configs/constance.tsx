@@ -11,6 +11,7 @@ export const WALLET_LS = {
   SEED: 'seed',
   PASSWORD: 'password',
   STATUS: 'status',
+  CHAIN_ID: 'wallet_chain_id',
 };
 
 export type THEME_MODE = 'dark' | 'light';

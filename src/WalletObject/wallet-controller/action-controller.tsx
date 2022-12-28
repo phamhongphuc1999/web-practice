@@ -11,7 +11,6 @@ export class ActionController extends EventEmitter {
   options: ActionOptionType | undefined;
   keyringController: KeyringController;
   accountController: AccountController;
-  storageController: StorageController;
   networkController: NetworkController;
   transactionController: TransactionController;
   createVaultMutex: Mutex;
@@ -27,7 +26,6 @@ export class ActionController extends EventEmitter {
     this.keyringController.on('unlock', () => this._onUnlock());
     this.keyringController.on('lock', () => this._onLock());
     this.accountController = new AccountController();
-    this.storageController = new StorageController();
     this.networkController = new NetworkController(options?.initState?.networkController);
     this.transactionController = new TransactionController();
     this.createVaultMutex = new Mutex();
@@ -56,7 +54,7 @@ export class ActionController extends EventEmitter {
 
   private async _save() {
     const _mnemonic = await this.verifySeedPhrase();
-    if (_mnemonic) this.storageController.saveSeedPhrase(_mnemonic);
+    if (_mnemonic) StorageController.saveSeedPhrase(_mnemonic);
   }
 
   async createNewVaultAndKeychain(password: string) {

@@ -1,4 +1,4 @@
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { SvgIconProps } from '@mui/material';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 export default function ArrowAnimationIcon({ isTransform, props }: Props) {
   return (
-    <ExpandLessIcon
+    <ExpandMoreIcon
       {...props}
       sx={[
         isTransform && { transform: 'rotate(180deg)', transition: '0.5s' },

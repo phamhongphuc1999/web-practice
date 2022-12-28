@@ -1,15 +1,17 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import useTranslate from 'src/hooks/useTranslate';
+import { Box, Button, IconButton, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import { ROUTE } from 'src/configs/constance';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
+import { ROUTE } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
+import { useAppSelector } from 'src/redux/hook';
 import NetworkConfig from './NetworkConfig';
 
 export default function SettingWallet() {
   const { t } = useTranslate();
   const history = useHistory();
+  const { label } = useAppSelector((state) => state.userConfigSlice.theme);
 
   return (
     <>
@@ -24,7 +26,7 @@ export default function SettingWallet() {
       </Box>
       <Box>
         <Box display="flex" alignItems="center" mt={1}>
-          <Typography>{t('theme')}</Typography>
+          <Typography>{t(label)}</Typography>
           <ThemeButton />
         </Box>
         <Box display="flex" alignItems="center" mt={1} sx={{ borderTop: '1px solid', pt: 1 }}>

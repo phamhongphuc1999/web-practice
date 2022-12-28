@@ -26,7 +26,7 @@ const userConfigSlice = createSlice({
   reducers: {
     toggleMode: (state: themeInitialState) => {
       const themeMode = state.theme.mode === 'dark' ? 'light' : 'dark';
-      const themeLabel = themeMode === 'dark' ? 'Dark mode' : 'Light mode';
+      const themeLabel = themeMode === 'dark' ? 'themeMode.dark' : 'themeMode.light';
       state.theme = { mode: themeMode, label: themeLabel };
       localStorage.setItem(LS.THEME, themeMode);
     },

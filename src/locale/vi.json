@@ -81,5 +81,6 @@
   "rpcRequest": "Yêu cầu RPC",
   "submit": "Xác nhận",
   "properties": "Thuộc tính",
-  "delete": "Xoá"
+  "delete": "Xoá",
+  "openOn": "Đi đến %{location}"
 }

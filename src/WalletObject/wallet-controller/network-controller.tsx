@@ -8,6 +8,7 @@ import {
 } from 'src/configs/wallet-network-config';
 import { EthQuery } from 'src/packages/network-interaction/eth-query';
 import { NetworkOptionType } from '../wallet';
+import { StorageController } from './storage-controller';
 
 export class NetworkController {
   options: NetworkOptionType | undefined;
@@ -19,15 +20,21 @@ export class NetworkController {
   constructor(options?: NetworkOptionType) {
     this.options = options;
     this.networkConfig = NetworkConfigOptions;
-    this.currentNetwork = this.options?.currentNetwork
-      ? this.options.currentNetwork
-      : NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
+    if (options?.currentNetwork) {
+      if (typeof options.currentNetwork == 'string') {
+        const _networkConfig = NetworkConfigOptions[options.currentNetwork];
+        if (_networkConfig) this.currentNetwork = _networkConfig;
+        else this.currentNetwork = NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
+      } else this.currentNetwork = options.currentNetwork;
+    } else this.currentNetwork = NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
     this._infuraProjectId = '';
   }
 
-  switchNetwork(type: string, rpcUrl: string, chainId: number) {
-    this._configureProvider(type, rpcUrl);
+  switchNetwork(chainId: string) {
     this.currentNetwork = NetworkConfigOptions[chainId];
+    const { provider } = this.currentNetwork;
+    this._configureProvider(provider.type, provider.rpcUrl);
+    StorageController.saveChainId(chainId);
   }
 
   getProviderConfig() {
@@ -37,8 +44,9 @@ export class NetworkController {
   }
 
   initializeProvider() {
-    const { type, rpcUrl } = this.getProviderConfig();
+    const { type, rpcUrl, chainId } = this.getProviderConfig();
     this._configureProvider(type, rpcUrl);
+    StorageController.saveChainId(chainId);
   }
 
   setInfuraProjectId(projectId: string) {

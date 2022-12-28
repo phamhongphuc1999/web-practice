@@ -13,7 +13,7 @@ import Header from './Header';
 const useStyle = (theme: Theme) => ({
   container: {
     transition: 'margin 0.5s linear',
-    padding: theme.spacing(10, 2, 0, 2),
+    padding: theme.spacing(10, 2, 10, 2),
   },
   mainContainer: {
     minHeight: 'calc(100vh - 80px)',
@@ -43,7 +43,10 @@ export default function MyWalletWrapper({ children }: Props) {
 
   function _backToInitWallet() {
     dispatch(updateStatus('init'));
-    if (!history.location.pathname.includes('/my-wallet-utils')) history.push(ROUTE.WALLET_OVERVIEW);
+    const _check =
+      history.location.pathname.includes('/my-wallet-utils') ||
+      history.location.pathname.includes('/my-wallet-setting');
+    if (!_check) history.push(ROUTE.WALLET_OVERVIEW);
   }
 
   function _initWallet() {

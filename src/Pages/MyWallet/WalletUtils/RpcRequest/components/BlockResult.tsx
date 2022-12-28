@@ -1,11 +1,39 @@
 import { Box, Typography } from '@mui/material';
-import { EthBlock } from 'src/packages/network-interaction/type';
+import { EthBlock, EthTransaction } from 'src/packages/network-interaction/type';
 
-interface Props {
+interface TransactionResultProps {
+  transactionData: EthTransaction | null;
+}
+
+export function TransactionResult({ transactionData }: TransactionResultProps) {
+  return transactionData ? (
+    <Box>
+      <Typography>{`Hash: ${transactionData.hash}`}</Typography>
+      <Typography>{`Type: ${transactionData.type}`}</Typography>
+      <Typography>{`Nonce: ${transactionData.nonce}`}</Typography>
+      <Typography>{`From: ${transactionData.from}`}</Typography>
+      <Typography>{`To: ${transactionData.to}`}</Typography>
+      <Typography>{`Gas: ${transactionData.gas}`}</Typography>
+      <Typography>{`Value: ${transactionData.value}`}</Typography>
+      <Typography>{`maxPriorityFeePerGas: ${transactionData.maxPriorityFeePerGas}`}</Typography>
+      <Typography>{`maxFeePerGas: ${transactionData.maxFeePerGas}`}</Typography>
+      <Typography>{`gasPrice: ${transactionData.gasPrice}`}</Typography>
+      <Typography>{`chainId: ${transactionData.chainId}`}</Typography>
+      <Typography>{`yParity: ${transactionData.yParity}`}</Typography>
+      <Typography>{`v: ${transactionData.v}`}</Typography>
+      <Typography>{`r: ${transactionData.r}`}</Typography>
+      <Typography>{`s: ${transactionData.s}`}</Typography>
+    </Box>
+  ) : (
+    <></>
+  );
+}
+
+interface BlockResultProps {
   blockData: EthBlock | null;
 }
 
-export default function BlockResult({ blockData }: Props) {
+export function BlockResult({ blockData }: BlockResultProps) {
   return blockData ? (
     <Box>
       <Typography>{`Difficulty: ${blockData.difficulty}`}</Typography>

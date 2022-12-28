@@ -6,11 +6,11 @@ import PropertiesList, { PropertiesListProps } from './PropertiesList';
 
 interface Props {
   requestName: string;
-  listProps: PropertiesListProps;
+  listProps?: PropertiesListProps;
   placeholder?: string;
   isSubmitDisable?: boolean;
   events: {
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
     onSubmitClick: () => void;
     onDeleteClick: () => void;
   };
@@ -33,7 +33,15 @@ export default function RpcForm(props: Props) {
       </Box>
       <Collapse in={open}>
         <PropertiesList {...listProps} />
-        <TextField fullWidth placeholder={placeholder} onChange={(e) => events.onChange(e.currentTarget.value)} />
+        {events.onChange && (
+          <TextField
+            fullWidth
+            placeholder={placeholder}
+            onChange={(e) => {
+              if (events.onChange) events.onChange(e.currentTarget.value);
+            }}
+          />
+        )}
         <Box display="flex" alignItems="center">
           <Button
             sx={{ mt: 1, mr: 1 }}

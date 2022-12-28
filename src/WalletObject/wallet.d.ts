@@ -36,7 +36,7 @@ export interface OptionType {
 }
 
 export interface NetworkOptionType {
-  currentNetwork?: MyWalletChain;
+  currentNetwork?: MyWalletChain | string;
 }
 
 export interface ActionOptionType {
