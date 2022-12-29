@@ -4,6 +4,7 @@ import AnimationPage from 'src/Pages/AnimationPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
+import MyContract from 'src/Pages/ContractPage/MyContract';
 import MetamaskPage from 'src/Pages/MetamaskPage';
 import SettingWallet from 'src/Pages/MyWallet/SettingWallet';
 import WalletOverview from 'src/Pages/MyWallet/WalletOverview';
@@ -45,6 +46,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.CONTRACT} exact={true}>
         <ContractPage />
+      </Route>
+      <Route path={ROUTE.MY_CONTRACT} exact={true}>
+        <MyContract />
       </Route>
       <Route path={ROUTE.CHART} exact={true}>
         <Overview />

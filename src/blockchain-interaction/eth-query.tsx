@@ -7,9 +7,11 @@ import {
   EthTransaction,
   FeeHistoryResult,
   Filter,
+  GasUsed,
   JsonRpcRequest,
   LogType,
   OptionType,
+  RawTransaction,
   RequestRpcMiddleware,
   ResponseRpcMiddleware,
   SimpleItem,
@@ -143,6 +145,30 @@ export class EthQuery {
     return data;
   }
 
+  async call(rawTransaction: RawTransaction, block: string | BlockTag = 'latest') {
+    const data = this._createPayload({ method: 'eth_call', params: [rawTransaction, block] }) as JsonRpcRequest<any>;
+    const result = await this._sendAsync<any, string>(data);
+    return result;
+  }
+
+  async estimateGas(rawTransaction: RawTransaction, block: string | BlockTag = 'latest') {
+    const data = this._createPayload({
+      method: 'eth_estimateGas',
+      params: [rawTransaction, block],
+    }) as JsonRpcRequest<any>;
+    const result = await this._sendAsync<any, string>(data);
+    return result;
+  }
+
+  async createAccessList(rawTransaction: RawTransaction, block: string | BlockTag = 'latest') {
+    const data = this._createPayload({
+      method: 'eth_createAccessList',
+      params: [rawTransaction, block],
+    }) as JsonRpcRequest<any>;
+    const result = await this._sendAsync<any, GasUsed>(data);
+    return result;
+  }
+
   async gasPrice() {
     const data = await this._sendAsync<any, string>(
       this._createPayload({ method: 'eth_gasPrice', params: [] }) as JsonRpcRequest<any>
@@ -186,9 +212,9 @@ export class EthQuery {
     return data;
   }
 
-  async newUninstallFilter(filterIdentifier: string) {
+  async uninstallFilter(filterIdentifier: string) {
     const data = await this._sendAsync<any, boolean>(
-      this._createPayload({ method: 'eth_newUninstallFilter', params: [filterIdentifier] }) as JsonRpcRequest<any>
+      this._createPayload({ method: 'eth_uninstallFilter', params: [filterIdentifier] }) as JsonRpcRequest<any>
     );
     return data;
   }
@@ -260,6 +286,13 @@ export class EthQuery {
     return result;
   }
 
+  async signTransaction(rawTransaction: RawTransaction) {
+    const data = await this._sendAsync<any, string>(
+      this._createPayload({ method: 'eth_signTransaction', params: [rawTransaction] }) as JsonRpcRequest<any>
+    );
+    return data;
+  }
+
   async getBalance(address: string, block: string | BlockTag = 'latest') {
     const _address = getAddress(address);
     if (!_address) throw new Error('EthQuery-invalid address');
@@ -308,6 +341,20 @@ export class EthQuery {
     return data;
   }
 
+  async sendTransaction(rawTransaction: RawTransaction) {
+    const data = await this._sendAsync<any, string>(
+      this._createPayload({ method: 'eth_sendTransaction', params: [rawTransaction] }) as JsonRpcRequest<any>
+    );
+    return data;
+  }
+
+  async sendRawTransaction(encodedTransaction: string) {
+    const data = await this._sendAsync<any, string>(
+      this._createPayload({ method: 'eth_sendRawTransaction', params: [encodedTransaction] }) as JsonRpcRequest<any>
+    );
+    return data;
+  }
+
   async getTransactionByHash(transactionHash: string) {
     const data = this._createPayload({
       method: 'eth_getTransactionByHash',
@@ -317,16 +364,27 @@ export class EthQuery {
     return result;
   }
 
+  async getTransactionByBlockHashAndIndex(blockHash: string, transactionIndex: string) {
+    const data = this._createPayload({
+      method: 'eth_getTransactionByBlockHashAndIndex',
+      params: [blockHash, transactionIndex],
+    }) as JsonRpcRequest<any>;
+    const result = await this._sendAsync<any, EthTransaction>(data);
+    return result;
+  }
+
+  async getTransactionByBlockNumberAndIndex(blockHash: string, transactionIndex: string) {
+    const data = this._createPayload({
+      method: 'eth_getTransactionByBlockNumberAndIndex',
+      params: [blockHash, transactionIndex],
+    }) as JsonRpcRequest<any>;
+    const result = await this._sendAsync<any, EthTransaction>(data);
+    return result;
+  }
+
   async getTransactionReceipt(transactionHash: string) {
     const data = await this._sendAsync<any, TransactionReceipt>(
       this._createPayload({ method: 'eth_getTransactionReceipt', params: [transactionHash] }) as JsonRpcRequest<any>
-    );
-    return data;
-  }
-
-  async getRawTransaction(transactionHash: string) {
-    const data = await this._sendAsync<any, string>(
-      this._createPayload({ method: 'eth_getRawTransaction', params: [transactionHash] }) as JsonRpcRequest<any>
     );
     return data;
   }

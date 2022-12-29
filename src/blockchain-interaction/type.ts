@@ -1,3 +1,17 @@
+export const TRANSACTION_ENVELOPE_TYPES = {
+  LEGACY: '0x0',
+  ACCESS_LIST: '0x1',
+  FEE_MARKET: '0x2',
+};
+
+export const NETWORK_TYPES = {
+  GOERLI: 'goerli',
+  LOCALHOST: 'localhost',
+  MAINNET: 'mainnet',
+  RPC: 'rpc',
+  SEPOLIA: 'sepolia',
+};
+
 export type SimpleItem<T> = { [key: string]: T };
 
 export type PlainObject = Record<number | string | symbol, unknown>;
@@ -73,6 +87,21 @@ export type LogType = {
   address?: string;
   data?: string;
   topics?: Array<string>;
+};
+
+export type RawTransaction = {
+  type?: string;
+  nonce?: string;
+  to?: string;
+  from?: string;
+  gas?: string;
+  value?: string;
+  data?: string;
+  gasPrice?: string;
+  maxPriorityFeePerGas?: string;
+  maxFeePerGas?: string;
+  accessList?: Array<{ address: string; storageKeys: Array<string> }>;
+  chainId?: string;
 };
 
 export type EthTransaction = {
@@ -158,4 +187,10 @@ export type AccountProofType = {
   nonce: string;
   storageHash: string;
   storageProof: Array<{ key: string; value: string; proof: Array<string> }>;
+};
+
+export type GasUsed = {
+  accessList?: Array<{ address: string; storageKeys: Array<string> }>;
+  error?: string;
+  gasUsed?: string;
 };

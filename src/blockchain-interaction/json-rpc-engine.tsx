@@ -95,7 +95,7 @@ export class JsonRpcEngine {
       try {
         fetchBody = JSON.parse(rawBody);
       } catch (_) {
-        throw new Error(`FetchMiddleware - failed to parse response body: "${rawBody}"`);
+        throw new Error(`RPC - failed to parse response body: "${rawBody}"`);
       }
       if (fetchRes.status !== 200)
         throw ethErrors.rpc.internal({

@@ -30,6 +30,7 @@ export const ROUTE = {
   ANIMATION: '/animation',
   METAMASK: '/metamask',
   CONTRACT: '/contract',
+  MY_CONTRACT: '/contract/my-contract',
   CHART: '/charts',
   UTILS: '/utils',
   UTIL_DATE_PICKER: '/utils/date-picker',

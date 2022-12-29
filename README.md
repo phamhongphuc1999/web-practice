@@ -24,6 +24,7 @@ yarn start
 ### Các đường link quan trọng
 
 - https://ethereum.github.io/execution-apis/api-documentation/
+- https://docs.soliditylang.org/en/v0.8.17/abi-spec.html?highlight=compile
 
 ### Các việc cần làm
 

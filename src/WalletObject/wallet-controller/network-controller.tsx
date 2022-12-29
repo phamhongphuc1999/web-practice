@@ -1,12 +1,12 @@
+import { EthQuery } from 'src/blockchain-interaction/eth-query';
+import { NETWORK_TYPES } from 'src/blockchain-interaction/type';
 import { CHAIN_ALIASES } from 'src/configs/networkConfig';
 import {
   INFURA_PROVIDER_TYPES,
   MyWalletChain,
   MyWalletChainType,
   NetworkConfigOptions,
-  NETWORK_TYPES,
 } from 'src/configs/wallet-network-config';
-import { EthQuery } from 'src/blockchain-interaction/eth-query';
 import { NetworkOptionType } from '../wallet';
 import { StorageController } from './storage-controller';
 

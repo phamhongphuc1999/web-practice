@@ -108,9 +108,12 @@ export default function Bep20Contract() {
           {t('confirm')}
         </Button>
       </Box>
-      <Typography color="secondary" sx={{ fontSize: '12px', marginBottom: '4px' }}>
-        {t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3
-      </Typography>
+      <Box display="flex" alignItems="center">
+        <Typography color="secondary" sx={{ fontSize: '12px', marginBottom: '4px' }}>
+          {t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3
+        </Typography>
+        <CopyIcon iconProps={{ color: 'secondary' }} copyText="0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3" />
+      </Box>
       {loading && <CircularProgress />}
       {addressTextHelper == '' && (
         <>

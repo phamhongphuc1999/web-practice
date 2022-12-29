@@ -1,12 +1,12 @@
 import { arrToBufArr, bufferToHex, privateToPublic, publicToAddress } from '@ethereumjs/util';
+import { normalize } from '@metamask/eth-sig-util';
 import * as bip39 from '@scure/bip39';
 import { wordlist } from '@scure/bip39/wordlists/english';
 import { HDKey } from 'ethereum-cryptography/hdkey';
-import { OptionType } from '../wallet';
-import { BaseKeyring } from './base-keyring';
-import { normalize } from '@metamask/eth-sig-util';
 import { keccak256 } from 'ethereum-cryptography/keccak';
 import { bytesToHex } from 'ethereum-cryptography/utils';
+import { OptionType } from '../wallet';
+import { BaseKeyring } from './base-keyring';
 
 // eslint-disable-next-line quotes
 const hdPathString = "m/44'/60'/0'/0";

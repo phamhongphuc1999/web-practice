@@ -2,13 +2,13 @@ import { stripHexPrefix } from '@ethereumjs/util';
 import * as encryptor from '@metamask/browser-passworder';
 import { normalize as normalizeAddress } from '@metamask/eth-sig-util';
 import { ObservableStore } from '@metamask/obs-store';
+import * as bip39 from '@scure/bip39';
+import { wordlist } from '@scure/bip39/wordlists/english';
 import EventEmitter from 'events';
 import { BaseKeyring } from '../keyring-object/base-keyring';
 import { HDKeyring } from '../keyring-object/hd-keyring';
 import { SimpleKeyring } from '../keyring-object/simple-keyring';
 import { MemStoreType, OptionType, RestoreKeyringType, StoreType } from '../wallet';
-import * as bip39 from '@scure/bip39';
-import { wordlist } from '@scure/bip39/wordlists/english';
 
 const keyringTypes: typeof BaseKeyring[] = [SimpleKeyring, HDKeyring];
 

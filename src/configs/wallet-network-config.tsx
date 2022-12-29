@@ -2,20 +2,7 @@ import { BNB, CHAIN_ALIASES, ETH } from './networkConfig';
 import BscImage from 'src/assets/images/BSC.svg';
 import EthImage from 'src/assets/images/ETH.png';
 import { BaseChain } from 'src/global';
-
-export const TRANSACTION_ENVELOPE_TYPES = {
-  LEGACY: '0x0',
-  ACCESS_LIST: '0x1',
-  FEE_MARKET: '0x2',
-};
-
-export const NETWORK_TYPES = {
-  GOERLI: 'goerli',
-  LOCALHOST: 'localhost',
-  MAINNET: 'mainnet',
-  RPC: 'rpc',
-  SEPOLIA: 'sepolia',
-};
+import { NETWORK_TYPES } from 'src/blockchain-interaction/type';
 
 export interface MyWalletChain extends BaseChain {
   chainId: string;
