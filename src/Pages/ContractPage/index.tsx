@@ -27,7 +27,7 @@ export default function ContractPage() {
       <Box display="flex" alignItems="center">
         <CssGroupButton config={['Bep20', t('custom')]} defaultActive={defaultActive} onClick={onClick} />
         <Button variant="outlined" sx={{ ml: 2 }} onClick={() => history.push(ROUTE.MY_CONTRACT)}>
-          My Contract
+          {t('myContract')}
         </Button>
       </Box>
       {defaultActive == 0 ? <Bep20Contract /> : <CustomContract />}

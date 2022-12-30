@@ -3,10 +3,12 @@ import { ethers } from 'ethers';
 import { useMemo, useState } from 'react';
 import CssGroupButton from 'src/components/Button/CssGroupButton';
 import { EtherFragment } from 'src/global';
+import useTranslate from 'src/hooks/useTranslate';
 import ReadFunction from './ReadFunction';
 import WriteFunction from './WriteFunction';
 
 export default function CustomContract() {
+  const { t } = useTranslate();
   const [active, setActive] = useState(0);
   const [abi, setAbi] = useState('');
 
@@ -29,14 +31,14 @@ export default function CustomContract() {
     <Box mt={2}>
       <TextField
         fullWidth
-        placeholder="enter your abi"
+        placeholder={t('enterYourAbi')}
         multiline
         rows={6}
         maxRows={8}
         onChange={(e) => setAbi(e.target.value)}
       />
       <CssGroupButton
-        config={['Read Function', 'Write Function']}
+        config={[t('viewFunction'), t('sendFunction')]}
         onClick={(e, element, active) => setActive(active)}
       />
       {active == 0 ? <ReadFunction fragment={fragments[0]} /> : <WriteFunction fragment={fragments[1]} />}

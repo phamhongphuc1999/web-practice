@@ -2,6 +2,7 @@ import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/materi
 import { Fragment } from 'ethers/lib/utils';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
+import useTranslate from 'src/hooks/useTranslate';
 
 interface Props {
   fragment: Array<Fragment> | undefined;
@@ -14,10 +15,11 @@ interface ReadItemProps {
 }
 
 function ReadItem({ index, isOpen = false, item }: ReadItemProps) {
+  const { t } = useTranslate();
   const [open, setOpen] = useState(isOpen);
 
   return (
-    <>
+    <Box my={1}>
       <Paper onClick={() => setOpen(!open)} sx={{ cursor: 'pointer' }}>
         <Box mb={1} p="1rem" display="flex" alignItems="center" justifyContent="space-between">
           <Typography>{`${index}. ${item.name}`}</Typography>
@@ -32,20 +34,22 @@ function ReadItem({ index, isOpen = false, item }: ReadItemProps) {
             </Box>
           );
         })}
+        <Button variant="contained">{t('submit')}</Button>
       </Collapse>
-    </>
+    </Box>
   );
 }
 
 export default function ReadFunction(param: Props) {
   const { fragment } = param;
+  const { t } = useTranslate();
 
   return (
     <Box>
-      <Box mb={1}>
-        <Button variant="outlined">Expand all</Button>
+      <Box mb={1} mt={1}>
+        <Button variant="outlined">{t('expandAll')}</Button>
         <Button sx={{ marginLeft: '1rem' }} variant="outlined">
-          Reset
+          {t('reset')}
         </Button>
       </Box>
       {fragment && (

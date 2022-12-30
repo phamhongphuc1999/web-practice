@@ -82,5 +82,13 @@
   "submit": "Xác nhận",
   "properties": "Thuộc tính",
   "delete": "Xoá",
-  "openOn": "Đi đến %{location}"
+  "openOn": "Đi đến %{location}",
+  "viewFunction": "Hàm đọc",
+  "sendFunction": "Hàm ghi",
+  "myContract": "Hợp đồng của tôi",
+  "enterYourAbi": "Nhập abi",
+  "orUseBep20Default": "Hoặc dùng mặc định BEP20",
+  "useBep20": "Sử dụng bep20",
+  "useCustom": "Sử dụng tuỳ chỉnh",
+  "signature": "Chữ ký"
 }

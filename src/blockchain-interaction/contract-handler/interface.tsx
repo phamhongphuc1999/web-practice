@@ -9,9 +9,11 @@ import {
   JsonContractAbi,
 } from './type';
 
+type Filter = 'all' | 'view' | 'write';
+
 export class Interface {
   private rawAbi: Json[];
-  abi: JsonContractAbi;
+  private abi: JsonContractAbi;
 
   constructor(abi: Json) {
     if (abi == null) throw new Error('Abi invalid: null type');
@@ -40,28 +42,31 @@ export class Interface {
     }
   }
 
-  getFunctions() {
-    return this.abi.functions;
+  getFunctions(filter: Filter = 'all') {
+    const functions = this.abi.functions;
+    if (filter === 'all') return Object.freeze(functions);
+    else if (filter === 'view') return Object.freeze(functions.filter((func) => func.stateMutability === 'view'));
+    else return Object.freeze(functions.filter((func) => func.stateMutability !== 'view'));
   }
 
   getFunction(functionName: string) {
-    return this.abi.functions.find((item) => item.name === functionName);
+    return Object.freeze(this.abi.functions.find((item) => item.name === functionName));
   }
 
   getEvents() {
-    return this.abi.events;
+    return Object.freeze(this.abi.events);
   }
 
   getEvent(eventName: string) {
-    return this.abi.events.find((item) => item.name === eventName);
+    return Object.freeze(this.abi.events.find((item) => item.name === eventName));
   }
 
   getErrors() {
-    return this.abi.errors;
+    return Object.freeze(this.abi.errors);
   }
 
   getError(eventName: string) {
-    return this.abi.errors.find((item) => item.name === eventName);
+    return Object.freeze(this.abi.errors.find((item) => item.name === eventName));
   }
 
   findByName(fragmentName: string) {
@@ -72,7 +77,7 @@ export class Interface {
     if (_function) result.push(_function);
     if (_event) result.push(_event);
     if (_error) result.push(_error);
-    return result;
+    return Object.freeze(result);
   }
 
   getFunctionFormat(fragment: FunctionFragment) {

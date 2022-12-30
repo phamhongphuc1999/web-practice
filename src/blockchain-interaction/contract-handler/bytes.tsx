@@ -6,31 +6,27 @@ export function getId(text: string) {
   return keccak256(toUtf8Bytes(text));
 }
 
-export class InputEncoder {
-  static expand32bytes(text: string) {
+export class Encoder {
+  private static expand32bytes(text: string) {
     let result = text;
     while (result.length < 64) result = '0' + result;
     return result;
   }
 
-  static encodeNumber(num: number) {
-    return InputEncoder.expand32bytes(num.toString(16));
+  private static encodeNumber(num: number) {
+    return Encoder.expand32bytes(num.toString(16));
   }
 
-  static encodeBool(bool: boolean) {
-    return InputEncoder.expand32bytes(Number(bool).toString(16));
-  }
-
-  static encodeAddress(address: string) {
+  private static encodeAddress(address: string) {
     address = address.toLowerCase();
-    if (address.slice(0, 2) == '0x') return InputEncoder.expand32bytes(address.slice(2));
-    else return InputEncoder.expand32bytes(address);
+    if (address.slice(0, 2) == '0x') return Encoder.expand32bytes(address.slice(2));
+    else return Encoder.expand32bytes(address);
   }
 
   private static encodeSwitch(param: any, type: string) {
-    if (type === 'address') return InputEncoder.encodeAddress(param as string);
-    else if (type === 'number') return InputEncoder.encodeNumber(param as number);
-    else if (type === 'boolean') return InputEncoder.encodeBool(param as boolean);
+    if (type === 'address') return Encoder.encodeAddress(param as string);
+    else if (type === 'number') return Encoder.encodeNumber(param as number);
+    else if (type === 'boolean') return Encoder.encodeNumber(Number(param));
     else return undefined;
   }
 
@@ -42,7 +38,7 @@ export class InputEncoder {
       for (let i = 0; i < _len; i++) {
         const _param = params[i];
         const _type = types[i];
-        const _encode = InputEncoder.encodeSwitch(_param, _type);
+        const _encode = Encoder.encodeSwitch(_param, _type);
         if (_encode) result += _encode;
         else return undefined;
       }
@@ -50,3 +46,5 @@ export class InputEncoder {
     }
   }
 }
+
+export class Decoder {}

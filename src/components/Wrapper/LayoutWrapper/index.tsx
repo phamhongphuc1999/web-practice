@@ -13,7 +13,7 @@ interface Props {
 const useStyle = (theme: Theme) => ({
   container: {
     transition: 'margin 0.5s linear',
-    padding: theme.spacing(10, 2, 0, 2),
+    padding: theme.spacing(10, 2, 5, 2),
   },
   mainContainer: {
     marginLeft: '220px',

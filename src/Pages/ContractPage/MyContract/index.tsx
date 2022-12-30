@@ -1,59 +1,82 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
-import { useMemo, useState } from 'react';
-import { Contract } from 'src/blockchain-interaction/contract-handler/contract';
-import { Interface } from 'src/blockchain-interaction/contract-handler/interface';
+import { useEffect, useState } from 'react';
+import bep20 from 'src/assets/abis/BEP20.json';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import CopyIcon from 'src/components/Icons/CopyIcon';
+import { ROUTE } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
+import { formatAddress } from 'src/services';
+import USeContract from './UseContract';
 
 export default function MyContract() {
+  const { t } = useTranslate();
+  const [autoMode, setAutoMode] = useState(true);
   const [abi, setAbi] = useState('');
+  const [contractAddress, setContractAddress] = useState('');
+  const [provider, setProvider] = useState('');
 
-  const inter = useMemo(() => {
-    try {
-      return new Interface(abi);
-    } catch {
-      return undefined;
+  useEffect(() => {
+    if (autoMode) {
+      setAbi(JSON.stringify(bep20));
+      setContractAddress('0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56');
+      setProvider('https://bsc-dataseed.binance.org');
+    } else {
+      setAbi('');
+      setContractAddress('');
+      setProvider('');
     }
-  }, [abi]);
-
-  const contract = useMemo(() => {
-    try {
-      return new Contract('0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', abi, 'https://bsc-dataseed.binance.org');
-    } catch {
-      return undefined;
-    }
-  }, [abi]);
-
-  async function onClick() {
-    // if (contract) {
-    //   const abc = await contract.viewFunction('balanceOf', ['0x871DBcE2b9923A35716e7E83ee402B535298538E']);
-    // }
-  }
+  }, [autoMode]);
 
   return (
-    <Box mt={2}>
-      <TextField
-        fullWidth
-        placeholder="enter your abi"
-        multiline
-        rows={6}
-        maxRows={8}
-        onChange={(e) => setAbi(e.target.value)}
+    <>
+      <CssBreadcrumbs
+        configs={[{ label: t('contract'), link: ROUTE.CONTRACT }, { label: t('myContract') }]}
+        props={{ mb: 2 }}
       />
-      {inter && (
-        <Box>
-          <Typography variant="h4">Function</Typography>
-          {inter.abi.functions.map((item, index) => {
-            const funcString = inter.getFunctionFormat(item);
-            const _sign = inter.getSignature(item);
-
-            return <Typography key={index}>{`${funcString} - ${_sign}`}</Typography>;
-          })}
+      {!autoMode && (
+        <Box mt={2}>
+          <TextField
+            fullWidth
+            placeholder={t('enterYourAbi')}
+            multiline
+            rows={6}
+            maxRows={8}
+            onChange={(e) => setAbi(e.target.value)}
+          />
+          <TextField
+            sx={{ mt: 1 }}
+            fullWidth
+            placeholder={t('contractAddress')}
+            onChange={(e) => setContractAddress(e.target.value)}
+          />
+          <TextField
+            sx={{ mt: 1 }}
+            fullWidth
+            placeholder={t('provider')}
+            onChange={(e) => setProvider(e.target.value)}
+          />
+          <Typography sx={{ mt: 1 }}>{t('orUseBep20Default')}</Typography>
         </Box>
       )}
-      {contract && (
-        <Button variant="contained" onClick={() => onClick()}>
-          Test
+      <Box display="flex" alignItems="center">
+        <Button
+          variant="outlined"
+          sx={{ mt: 1 }}
+          onClick={() => {
+            if (autoMode) setAutoMode(false);
+            else setAutoMode(true);
+          }}
+        >
+          {autoMode ? t('useCustom') : t('useBep20')}
         </Button>
-      )}
-    </Box>
+        {autoMode && (
+          <>
+            <Typography sx={{ ml: 1 }}>{formatAddress(contractAddress, 5)}</Typography>
+            <CopyIcon copyText={contractAddress} />
+          </>
+        )}
+      </Box>
+      <USeContract abi={abi} contractAddress={contractAddress} provider={provider} />
+    </>
   );
 }

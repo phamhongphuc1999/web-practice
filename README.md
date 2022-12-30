@@ -20,6 +20,7 @@ yarn start
 - [eth-json-rpc-filters](https://www.npmjs.com/package/eth-json-rpc-filters)
 - [eth-json-rpc-middleware](https://www.npmjs.com/package/eth-json-rpc-middleware)
 - [json-rpc-engine](https://github.com/MetaMask/json-rpc-engine)
+- [Các thư viện @ethersproject](https://github.com/ethers-io/ethers.js)
 
 ### Các đường link quan trọng
 
