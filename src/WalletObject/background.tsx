@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { ActionOptionType } from './wallet';
-import { ActionController } from './wallet-controller/action-controller';
-import { StorageController } from './wallet-controller/storage-controller';
+import ActionController from './wallet-controller/action-controller';
+import StorageController from './wallet-controller/storage-controller';
 
 let actionController: ActionController | null = null;
 

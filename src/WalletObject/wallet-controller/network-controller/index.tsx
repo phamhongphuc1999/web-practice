@@ -1,4 +1,4 @@
-import { EthQuery } from 'src/blockchain-interaction/eth-query';
+import EthQuery from 'src/blockchain-interaction/eth-query';
 import { NETWORK_TYPES } from 'src/blockchain-interaction/type';
 import { CHAIN_ALIASES } from 'src/configs/networkConfig';
 import {
@@ -7,13 +7,15 @@ import {
   MyWalletChainType,
   NetworkConfigOptions,
 } from 'src/configs/wallet-network-config';
-import { NetworkOptionType } from '../wallet';
-import { StorageController } from './storage-controller';
+import { NetworkOptionType } from '../../wallet';
+import StorageController from '../storage-controller';
+import TokenController from './token-controller';
 
-export class NetworkController {
+export default class NetworkController {
   options: NetworkOptionType | undefined;
   networkConfig: MyWalletChainType;
   currentNetwork: MyWalletChain;
+  tokenController: TokenController;
   private _infuraProjectId: string;
   private _provider: EthQuery | undefined;
 
@@ -28,6 +30,9 @@ export class NetworkController {
       } else this.currentNetwork = options.currentNetwork;
     } else this.currentNetwork = NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
     this._infuraProjectId = '';
+
+    this.tokenController = new TokenController();
+    this.tokenController.updateTokens(this.currentNetwork);
   }
 
   switchNetwork(chainId: string) {

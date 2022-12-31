@@ -6,7 +6,7 @@ import InfoIcon from 'src/components/Icons/InfoIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { formatAddress } from 'src/services';
-import { HDKeyring } from 'src/WalletObject/keyring-object/hd-keyring';
+import HDKeyring from 'src/WalletObject/keyring-object/hd-keyring';
 
 export default function CreateMnemonic() {
   const { t } = useTranslate();

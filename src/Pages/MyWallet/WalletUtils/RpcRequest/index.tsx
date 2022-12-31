@@ -4,7 +4,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
-import { EthQuery } from 'src/blockchain-interaction/eth-query';
+import EthQuery from 'src/blockchain-interaction/eth-query';
 import { EthBlock, EthTransaction, SyncingType } from 'src/blockchain-interaction/type';
 import { BlockResult, TransactionResult } from './components/BlockResult';
 import { AccountsResult, SyncingResult } from './components/OtherResult';

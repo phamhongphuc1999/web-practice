@@ -11,3 +11,7 @@ This package base on some libraries: [eth-json-rpc-middleware](https://github.co
 | [json-rpc-middleware](./json-rpc-middleware.tsx) | Static class used for handle middleware        |
 | [contract-handler](./contract-handler/)          | Handle contract flow                           |
 | [eth-rpc-errors](./eth-rpc-errors/)              | Defined ether error                            |
+
+### Test
+
+You can test with my test account, has a mnemonic `comfort laugh shrimp surprise hip cruel inmate arrange copper force sock strike`

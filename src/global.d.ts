@@ -24,6 +24,10 @@ export interface NativeToken {
   decimals: number;
 }
 
+export interface EthToken extends NativeToken {
+  address: string;
+}
+
 export interface BaseChain {
   name: string;
   isMainnet: boolean;

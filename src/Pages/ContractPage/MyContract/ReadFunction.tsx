@@ -1,6 +1,6 @@
 import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { Contract } from 'src/blockchain-interaction/contract-handler/contract';
+import Contract from 'src/blockchain-interaction/contract-handler/contract';
 import { FunctionFragment } from 'src/blockchain-interaction/contract-handler/type';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
 import useTranslate from 'src/hooks/useTranslate';

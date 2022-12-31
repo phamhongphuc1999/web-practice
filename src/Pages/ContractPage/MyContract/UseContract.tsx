@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
-import { Contract } from 'src/blockchain-interaction/contract-handler/contract';
-import { Interface } from 'src/blockchain-interaction/contract-handler/interface';
+import Contract from 'src/blockchain-interaction/contract-handler/contract';
+import Interface from 'src/blockchain-interaction/contract-handler/interface';
 import { isAddress } from 'src/blockchain-interaction/utils';
 import useTranslate from 'src/hooks/useTranslate';
 import ReadFunction from './ReadFunction';

@@ -11,7 +11,7 @@ import {
 
 type Filter = 'all' | 'view' | 'write';
 
-export class Interface {
+export default class Interface {
   private rawAbi: Json[];
   private abi: JsonContractAbi;
 

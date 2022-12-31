@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 import { OptionType } from '../wallet';
 
-export class BaseKeyring extends EventEmitter {
+export default class BaseKeyring extends EventEmitter {
   static type = 'Base Keyring';
   type = 'Base Keyring';
   options?: OptionType = undefined;

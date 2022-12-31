@@ -38,19 +38,12 @@ export type JsonRpcRequest<Params> = {
   params?: Params;
 };
 
-export type JsonRpcSuccess<Result> = {
+export type JsonRpcResponse<Result = unknown> = {
   id: JsonRpcId;
   jsonrpc: JsonRpcVersion2;
-  result: Result;
+  result?: Result;
+  error?: JsonRpcError;
 };
-
-export type JsonRpcFailure = {
-  id: JsonRpcId;
-  jsonrpc: JsonRpcVersion2;
-  error: JsonRpcError;
-};
-
-export type JsonRpcResponse<Result = unknown> = JsonRpcSuccess<Result> | JsonRpcFailure;
 
 export type RequestRpcMiddlewareReturn<Params> = {
   request: JsonRpcRequest<Params>;

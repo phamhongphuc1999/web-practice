@@ -1,6 +1,5 @@
 import {
   JsonRpcError,
-  JsonRpcFailure,
   JsonRpcRequest,
   JsonRpcResponse,
   RequestRpcMiddleware,
@@ -9,7 +8,7 @@ import {
   ResponseRpcMiddlewareReturn,
 } from './type';
 
-export class JsonRpcMiddleware {
+export default class JsonRpcMiddleware {
   static runRequestMiddleware<Params>(request: JsonRpcRequest<Params>, middleware: RequestRpcMiddleware<Params>) {
     return middleware(request);
   }
@@ -48,8 +47,7 @@ export class JsonRpcMiddleware {
     for (const middleware of middlewareList) {
       const { request: _request, response: _response } = middleware(request, finalResponse);
       finalResponse = _response;
-      const _checkType = finalResponse as JsonRpcFailure;
-      if (_checkType.error) break;
+      if (finalResponse.error) break;
     }
     return { request, response: finalResponse } as ResponseRpcMiddlewareReturn<Params, Result>;
   }

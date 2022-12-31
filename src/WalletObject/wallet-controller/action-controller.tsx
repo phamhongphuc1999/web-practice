@@ -1,16 +1,14 @@
 import { Mutex } from 'await-semaphore';
 import EventEmitter from 'events';
-import { KeyringController } from '../keyring-controller';
+import KeyringController from '../keyring-controller';
 import { ActionOptionType, MemStoreType } from '../wallet';
-import { AccountController } from './account-controller';
-import { NetworkController } from './network-controller';
-import { StorageController } from './storage-controller';
-import { TransactionController } from './transaction-controller';
+import NetworkController from './network-controller';
+import StorageController from './storage-controller';
+import TransactionController from './transaction-controller';
 
-export class ActionController extends EventEmitter {
+export default class ActionController extends EventEmitter {
   options: ActionOptionType | undefined;
   keyringController: KeyringController;
-  accountController: AccountController;
   networkController: NetworkController;
   transactionController: TransactionController;
   createVaultMutex: Mutex;
@@ -25,7 +23,6 @@ export class ActionController extends EventEmitter {
     this.keyringController.memStore.subscribe((state) => this._onKeyringControllerUpdate(state));
     this.keyringController.on('unlock', () => this._onUnlock());
     this.keyringController.on('lock', () => this._onLock());
-    this.accountController = new AccountController();
     this.networkController = new NetworkController(options?.initState?.networkController);
     this.transactionController = new TransactionController();
     this.createVaultMutex = new Mutex();

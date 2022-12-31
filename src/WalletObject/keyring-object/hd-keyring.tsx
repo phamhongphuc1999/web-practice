@@ -6,12 +6,12 @@ import { HDKey } from 'ethereum-cryptography/hdkey';
 import { keccak256 } from 'ethereum-cryptography/keccak';
 import { bytesToHex } from 'ethereum-cryptography/utils';
 import { OptionType } from '../wallet';
-import { BaseKeyring } from './base-keyring';
+import BaseKeyring from './base-keyring';
 
 // eslint-disable-next-line quotes
 const hdPathString = "m/44'/60'/0'/0";
 
-export class HDKeyring extends BaseKeyring {
+export default class HDKeyring extends BaseKeyring {
   static type = 'HD Key Tree';
   type = 'HD Key Tree';
   root: HDKey | null;

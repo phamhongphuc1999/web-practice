@@ -1,14 +1,8 @@
 import { Box, Theme, useTheme } from '@mui/material';
-import { ReactNode, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { ReactNode } from 'react';
 import ScrollToTop from 'src/components/ScrollToTop';
-import { ROUTE, WALLET_LS } from 'src/configs/constance';
-import { useAppSelector } from 'src/redux/hook';
-import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
-import { updateCurrentNetwork } from 'src/redux/my-wallet/myWalletStateSlice';
-import { actionController, setActionController } from 'src/WalletObject/background';
 import Header from './Header';
+import RestoreWallet from './RestoreWallet';
 
 const useStyle = (theme: Theme) => ({
   container: {
@@ -37,38 +31,10 @@ interface Props {
 export default function MyWalletWrapper({ children }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const { password } = useAppSelector((state) => state.myWalletSlice);
-
-  function _backToInitWallet() {
-    dispatch(updateStatus('init'));
-    const _check =
-      history.location.pathname.includes('/my-wallet-utils') ||
-      history.location.pathname.includes('/my-wallet-setting');
-    if (!_check) history.push(ROUTE.WALLET_OVERVIEW);
-  }
-
-  function _initWallet() {
-    if (!actionController) setActionController();
-    if (actionController) {
-      const _network = actionController.networkController.currentNetwork;
-      dispatch(updateCurrentNetwork(_network));
-      const seedPhrase = localStorage.getItem(WALLET_LS.SEED);
-      if (!seedPhrase || !password) _backToInitWallet();
-      else {
-        dispatch(updateStatus('login'));
-        actionController.createNewVaultAndRestore(password, seedPhrase);
-      }
-    } else _backToInitWallet();
-  }
-
-  useEffect(() => {
-    _initWallet();
-  }, []);
 
   return (
     <Box position="relative" sx={{ backgroundColor: theme.palette.background.primary }}>
+      <RestoreWallet />
       <Header />
       <Box sx={cls.container}>
         <Box display="flex" justifyContent="space-between" flexDirection="column" sx={cls.mainContainer}>

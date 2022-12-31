@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { EthQuery } from '../eth-query';
+import EthQuery from '../eth-query';
 import { Json, RawTransaction } from '../type';
 import { Encoder } from './bytes';
-import { Interface } from './interface';
+import Interface from './interface';
 
-export class Contract {
+export default class Contract {
   address: string;
   private inter: Interface;
   rpcUrl: string;

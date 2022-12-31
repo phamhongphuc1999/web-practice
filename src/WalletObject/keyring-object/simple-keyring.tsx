@@ -1,9 +1,9 @@
 import { bufferToHex, privateToPublic, publicToAddress } from '@ethereumjs/util';
 import { generateKey } from '../utils';
 import { OptionType, Wallet } from '../wallet';
-import { BaseKeyring } from './base-keyring';
+import BaseKeyring from './base-keyring';
 
-export class SimpleKeyring extends BaseKeyring {
+export default class SimpleKeyring extends BaseKeyring {
   static type = 'Simple Key Pair';
   type = 'Simple Key Pair';
   private wallets: Wallet[];

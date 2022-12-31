@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-export class TransactionController {
+export default class TransactionController {
   getTransactions() {
     //
   }

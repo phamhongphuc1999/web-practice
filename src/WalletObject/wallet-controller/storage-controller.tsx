@@ -1,6 +1,6 @@
 import { WALLET_LS } from 'src/configs/constance';
 
-export class StorageController {
+export default class StorageController {
   static saveSeedPhrase(seedPhrase: string) {
     localStorage.setItem(WALLET_LS.SEED, seedPhrase);
   }
