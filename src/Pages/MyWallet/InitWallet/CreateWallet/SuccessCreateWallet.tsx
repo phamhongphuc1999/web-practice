@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import CopyIcon from 'src/components/Icons/CopyIcon';
+import { TextCopy } from 'src/components/Icons/CopyIcon';
 import useTranslate from 'src/hooks/useTranslate';
+import { useAppDispatch } from 'src/redux/hook';
 import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { formatAddress } from 'src/services';
 
@@ -11,15 +11,15 @@ interface Props {
 
 export default function SuccessCreateWallet({ accounts }: Props) {
   const { t } = useTranslate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <Box>
       <Typography>{`${t('step')} 4: ${t('successCreateWallet')}`}</Typography>
-      <Box display="flex" alignItems="center">
-        <Typography>{`${t('accountAddress')}: ${formatAddress(accounts[0])}`}</Typography>
-        <CopyIcon copyText={accounts[0]} defaultText={t('copyAddress')} successText={t('copiedAddress')} />
-      </Box>
+      <TextCopy
+        title={`${t('accountAddress')}: ${formatAddress(accounts[0])}`}
+        iconProps={{ copyText: accounts[0], defaultText: t('copyAddress'), successText: t('copiedAddress') }}
+      />
       <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => dispatch(updateStatus('login'))}>
         {t('next')}
       </Button>

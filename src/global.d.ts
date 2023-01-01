@@ -26,6 +26,7 @@ export interface NativeToken {
 
 export interface EthToken extends NativeToken {
   address: string;
+  isNative?: boolean;
 }
 
 export interface BaseChain {

@@ -1,8 +1,7 @@
 import { Button, ButtonProps } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { connectMetamask, disconnect } from 'src/wallet-connection/action';
 import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
 
@@ -11,7 +10,7 @@ interface Props {
 }
 
 export default function ConnectedButton({ props }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslate();
   const accountAddress = useAppSelector<string>((state) => state.walletSlice.accountAddress);

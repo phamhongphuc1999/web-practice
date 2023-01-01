@@ -46,6 +46,7 @@
     "lastDays": "%{days} ngày gần đây"
   },
   "multipleSelector": "Bộ chọn",
+  "cssSelector": "Bộ chọn css",
   "startDate": "Ngày bắt đầu",
   "endDate": "Ngày kết thúc",
   "event": "Sự kiện",
@@ -68,6 +69,7 @@
   "language": "Ngôn ngữ",
   "mainnet": "Mạng chính %{network}",
   "testnet": "Mạng thử nghiệm %{network}",
+  "tokens": "Tài sản",
   "token": "Đồng %{token}",
   "owner": "Chủ sở hữu",
   "reset": "Đặt lại",
@@ -90,5 +92,6 @@
   "orUseBep20Default": "Hoặc dùng mặc định BEP20",
   "useBep20": "Sử dụng bep20",
   "useCustom": "Sử dụng tuỳ chỉnh",
-  "signature": "Chữ ký"
+  "signature": "Chữ ký",
+  "thItem": "Mục %{item}"
 }

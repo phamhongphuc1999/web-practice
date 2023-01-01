@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import { CssForm } from 'src/components/utils';
 import useTranslate from 'src/hooks/useTranslate';
+import { useAppDispatch } from 'src/redux/hook';
 import { savePassword } from 'src/redux/my-wallet/myWalletSlice';
 import { actionController } from 'src/WalletObject/background';
 
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function CreatePassword({ setStep, password, setPassword, setAccounts, setMnemonic }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [confirm, setConfirm] = useState(false);
   const { t } = useTranslate();
 

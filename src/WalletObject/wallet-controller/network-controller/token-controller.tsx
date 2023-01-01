@@ -9,7 +9,7 @@ export default class TokenController {
   }
 
   updateTokens(currentNetwork: MyWalletChain) {
-    this.tokens.push({ ...currentNetwork.nativeCurrency, address: '' });
+    this.tokens.push({ ...currentNetwork.nativeCurrency, address: '', isNative: true });
   }
 
   getTokens() {

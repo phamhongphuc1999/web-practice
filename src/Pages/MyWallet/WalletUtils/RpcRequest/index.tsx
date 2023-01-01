@@ -1,11 +1,11 @@
 import { Box, TextField, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
-import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import CopyIcon from 'src/components/Icons/CopyIcon';
-import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
 import EthQuery from 'src/blockchain-interaction/eth-query';
 import { EthBlock, EthTransaction, SyncingType } from 'src/blockchain-interaction/type';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import { TextCopy } from 'src/components/Icons/CopyIcon';
+import { ROUTE } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
 import { BlockResult, TransactionResult } from './components/BlockResult';
 import { AccountsResult, SyncingResult } from './components/OtherResult';
 import RpcForm from './RpcForm';
@@ -216,15 +216,14 @@ export default function RpcRequest() {
         </Box>
         <Box sx={{ width: '90%' }}>
           <TextField fullWidth onChange={(e) => setRpcUrl(e.target.value)} />
-          <Box display="flex" alignItems="center">
-            <Typography color="secondary" sx={{ fontSize: '12px' }}>{`${t(
-              'example'
-            )}: https://bsc-dataseed.binance.org`}</Typography>
-            <CopyIcon
-              copyText="https://bsc-dataseed.binance.org"
-              iconProps={{ color: 'secondary', fontSize: 'small' }}
-            />
-          </Box>
+          <TextCopy
+            title={`${t('example')}: https://bsc-dataseed.binance.org`}
+            textProps={{ color: 'secondary', sx: { fontSize: '12px' } }}
+            iconProps={{
+              copyText: 'https://bsc-dataseed.binance.org',
+              iconProps: { color: 'secondary', fontSize: 'small' },
+            }}
+          />
         </Box>
       </Box>
       <Box mt={1}>

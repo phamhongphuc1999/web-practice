@@ -1,17 +1,17 @@
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useDispatch } from 'react-redux';
-import { savePassword, updateStatus } from 'src/redux/my-wallet/myWalletSlice';
-import useTranslate from 'src/hooks/useTranslate';
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { CssForm } from 'src/components/utils';
+import { TextCopy } from 'src/components/Icons/CopyIcon';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
-import { actionController } from 'src/WalletObject/background';
+import { CssForm } from 'src/components/utils';
+import useTranslate from 'src/hooks/useTranslate';
+import { useAppDispatch } from 'src/redux/hook';
+import { savePassword, updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { formatAddress } from 'src/services';
-import CopyIcon from 'src/components/Icons/CopyIcon';
+import { actionController } from 'src/WalletObject/background';
 
 export default function ImportWallet() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslate();
   const [seedPhrase, setSeedPhrase] = useState('');
   const [password, setPassword] = useState('');
@@ -91,10 +91,10 @@ export default function ImportWallet() {
         </CssForm>
       ) : (
         <>
-          <Box display="flex" alignItems="center">
-            <Typography>{`${t('accountAddress')}: ${formatAddress(accounts[0])}`}</Typography>
-            <CopyIcon copyText={accounts[0]} defaultText={t('copyAddress')} successText={t('copiedAddress')} />
-          </Box>
+          <TextCopy
+            title={`${t('accountAddress')}: ${formatAddress(accounts[0])}`}
+            iconProps={{ copyText: accounts[0], defaultText: t('copyAddress'), successText: t('copiedAddress') }}
+          />
           <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => dispatch(updateStatus('login'))}>
             {t('next')}
           </Button>

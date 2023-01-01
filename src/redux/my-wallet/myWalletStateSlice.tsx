@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import EthQuery from 'src/blockchain-interaction/eth-query';
 import { MyWalletChain } from 'src/configs/wallet-network-config';
 import { EthToken } from 'src/global';
+import { AppDispatch, RootState } from '../store';
 
 export interface TokenState {
   baseData: EthToken;
@@ -31,20 +32,22 @@ const initialState: myWalletStateInitialState = {
   tokens: [],
 };
 
-async function _updateTokens(state: myWalletStateInitialState, action: PayloadAction<EthToken[]>) {
-  const { accounts, selectedAccount } = state.account;
-  if (state.currentNetwork && accounts.length > 0) {
-    const ethQuery = new EthQuery(state.currentNetwork?.provider.rpcUrl);
-    const tokenList = action.payload;
-    const result: TokenState[] = [];
-    for (const _token of tokenList) {
-      if (_token.address.length === 0) {
-        const nativeBalance = await ethQuery.getBalance(selectedAccount);
-        result.push({ baseData: _token, balance: { raw: nativeBalance ?? '0', usd: '0' } });
+export function updateTokens(tokenList: EthToken[]) {
+  return async (dispatch: AppDispatch, getState: () => RootState) => {
+    const { account, currentNetwork } = getState().myWalletStateSlice;
+    const { accounts, selectedAccount } = account;
+    if (currentNetwork && accounts.length > 0) {
+      const ethQuery = new EthQuery(currentNetwork.provider.rpcUrl);
+      const result: TokenState[] = [];
+      for (const _token of tokenList) {
+        if (_token.address.length === 0) {
+          const nativeBalance = await ethQuery.getBalance(selectedAccount);
+          result.push({ baseData: _token, balance: { raw: nativeBalance ?? '0', usd: '0' } });
+        }
       }
+      dispatch(myWalletStateSlice.actions.updateTokensSuccess(result));
     }
-    state.tokens = result;
-  }
+  };
 }
 
 const myWalletStateSlice = createSlice({
@@ -66,11 +69,11 @@ const myWalletStateSlice = createSlice({
         state.account = { accounts: [], selectedAccount: '' };
       }
     },
-    updateTokens: (state: myWalletStateInitialState, action: PayloadAction<EthToken[]>) => {
-      _updateTokens(state, action);
+    updateTokensSuccess: (state: myWalletStateInitialState, action: PayloadAction<TokenState[]>) => {
+      state.tokens = action.payload;
     },
   },
 });
 
 export default myWalletStateSlice.reducer;
-export const { updateCurrentNetwork, updateAccounts, updateTokens } = myWalletStateSlice.actions;
+export const { updateCurrentNetwork, updateAccounts } = myWalletStateSlice.actions;

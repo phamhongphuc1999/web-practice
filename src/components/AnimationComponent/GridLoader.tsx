@@ -9,6 +9,10 @@ const block = keyframes`
   0% { width: 33.333333%; height: 33.333333%; }
   100% { width: 15%; height: 15%; }
 `;
+const gooeyBlock = keyframes`
+  0% { width: 33.333333%; height: 33.333333%; border-radius: 50%; }
+  100% { width: 15%; height: 15%; border-radius: 5%; }
+`;
 
 const Point = styled('div')`
   position: absolute;
@@ -28,15 +32,15 @@ const Block = styled('div')`
 `;
 
 interface GridLoaderProps extends AnimationComponentProps {
-  isBlock?: boolean;
+  mode?: 'circle' | 'block' | 'gooey';
 }
 
-export default function GridLoader({ color, size, isBlock }: GridLoaderProps) {
-  const Item = isBlock ? Block : Point;
-  const _sx = {
-    backgroundColor: color,
-    animation: isBlock ? `${block} 0.5s linear infinite alternate` : `${point} 0.5s linear infinite alternate`,
-  };
+export default function GridLoader({ color, size, mode }: GridLoaderProps) {
+  const Item = mode == 'block' || mode == 'gooey' ? Block : Point;
+  let animation = `${point} 0.5s linear infinite alternate`;
+  if (mode === 'block') animation = `${block} 0.5s linear infinite alternate`;
+  else if (mode === 'gooey') animation = `${gooeyBlock} 0.5s linear infinite alternate`;
+  const _sx = { backgroundColor: color, animation: animation };
 
   return (
     <Box sx={{ position: 'relative', display: 'inline-block', boxSizing: 'border-box', height: size, width: size }}>

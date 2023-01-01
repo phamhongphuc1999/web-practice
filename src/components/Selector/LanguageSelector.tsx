@@ -1,11 +1,10 @@
-import { useDispatch } from 'react-redux';
 import { languageConfig, LanguageType } from 'src/configs/constance';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { setLanguage } from 'src/redux/userConfigSlice';
 import CssSelector, { CssSelectItem } from './CssSelector';
 
 export default function LanguageSelector() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { language } = useAppSelector((state) => state.userConfigSlice);
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {

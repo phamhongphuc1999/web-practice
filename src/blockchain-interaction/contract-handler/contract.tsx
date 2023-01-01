@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Decoder from '../coder/decoder';
+import Encoder from '../coder/encoder';
 import EthQuery from '../eth-query';
 import { Json, RawTransaction } from '../type';
-import { Encoder } from './bytes';
 import Interface from './interface';
 
 export default class Contract {
@@ -28,16 +29,19 @@ export default class Contract {
     const _signature = this.inter.getSignature(functionName);
     if (!_signature) throw new Error(`Can not found ${functionName}`);
     if (!options) options = {};
+    let result: string | null = null;
     if (params) {
-      const types = _fragment?.inputs.map((item) => item.type);
+      const inputTypes = _fragment?.inputs.map((item) => item.type);
       let data = _signature;
-      if (types) {
-        if (types.length !== params.length) throw new Error('Error params');
-        const encodeParam = Encoder.encodeParam(params, types);
+      if (inputTypes) {
+        if (inputTypes.length !== params.length) throw new Error('Error params');
+        const encodeParam = Encoder.encodeParam(params, inputTypes);
         data = `${_signature}${encodeParam}`;
       }
-      const result = await this.provider.call({ ...options, to: this.address, data } as RawTransaction);
-      return result;
-    } else return await this.provider.call({ ...options, to: this.address, data: _signature });
+      result = await this.provider.call({ ...options, to: this.address, data } as RawTransaction);
+    } else result = await this.provider.call({ ...options, to: this.address, data: _signature });
+    const outputTypes = _fragment?.outputs.map((item) => ({ type: item.type, name: item.name }));
+    if (outputTypes && result) return Decoder.decodeParam(result, outputTypes);
+    return null;
   }
 }

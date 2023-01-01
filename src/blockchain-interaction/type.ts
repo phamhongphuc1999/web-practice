@@ -18,6 +18,7 @@ export type PlainObject = Record<number | string | symbol, unknown>;
 export type RuntimeObject = Record<number | string | symbol, unknown>;
 
 export type Json = null | boolean | number | string | Json[] | { [prop: string]: Json };
+export type RealJson = { [key: string]: Json };
 
 export type BlockTag = 'earliest' | 'finalized' | 'safe' | 'latest' | 'pending';
 

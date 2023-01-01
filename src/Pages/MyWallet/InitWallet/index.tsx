@@ -1,13 +1,12 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import CreateWallet from './CreateWallet';
 import ImportWallet from './ImportWallet';
 
 export default function InitWallet() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { status } = useAppSelector((state) => state.myWalletSlice);
   const { t } = useTranslate();
 

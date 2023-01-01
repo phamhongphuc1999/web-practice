@@ -1,5 +1,5 @@
 import { Json } from '../type';
-import { getId } from './bytes';
+import { getId } from '../utils';
 import {
   BaseFragment,
   ConstructorFragment,

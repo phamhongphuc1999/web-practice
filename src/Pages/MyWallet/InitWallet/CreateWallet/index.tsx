@@ -1,8 +1,8 @@
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Box, IconButton, Typography } from '@mui/material';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslate from 'src/hooks/useTranslate';
+import { useAppDispatch } from 'src/redux/hook';
 import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import CreatePassword from './CreatePassword';
 import ShowMnemonic from './ShowMnemonic';
@@ -10,7 +10,7 @@ import SuccessCreateWallet from './SuccessCreateWallet';
 import VerifyMnemonic from './VerifyMnemonic';
 
 export default function CreateWallet() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslate();
   const [step, setStep] = useState(1);
   const [password, setPassword] = useState<string | undefined>(undefined);

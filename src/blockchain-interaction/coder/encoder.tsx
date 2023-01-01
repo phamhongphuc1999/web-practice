@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { keccak256 } from '@ethersproject/keccak256';
-import { toUtf8Bytes } from '@ethersproject/strings';
-
-export function getId(text: string) {
-  return keccak256(toUtf8Bytes(text));
-}
-
-export class Encoder {
+export default class Encoder {
   private static expand32bytes(text: string) {
     let result = text;
     while (result.length < 64) result = '0' + result;
@@ -46,5 +39,3 @@ export class Encoder {
     }
   }
 }
-
-export class Decoder {}

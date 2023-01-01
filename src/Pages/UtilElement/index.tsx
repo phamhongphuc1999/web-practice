@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ThemeButton from 'src/components/Button/ThemeButton';
-import CopyIcon from 'src/components/Icons/CopyIcon';
+import { TextCopy } from 'src/components/Icons/CopyIcon';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import useTranslate from 'src/hooks/useTranslate';
@@ -28,10 +28,7 @@ export default function UtilElement() {
         >
           {t('multipleSelector')}
         </Button>
-        <Box ml={1} display="flex" alignItems="center">
-          <Typography>{t('copyHere')}</Typography>
-          <CopyIcon copyText="Copy is here" />
-        </Box>
+        <TextCopy rootProps={{ ml: 1 }} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(theme.label)}</Typography>
           <ThemeButton />

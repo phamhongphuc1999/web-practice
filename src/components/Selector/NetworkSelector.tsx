@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import { MyWalletChainType } from 'src/configs/wallet-network-config';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateCurrentNetwork } from 'src/redux/my-wallet/myWalletStateSlice';
 import { useActionController } from 'src/WalletObject/background';
 
@@ -14,7 +13,7 @@ interface ProviderSelectItem extends CssSelectItem {
 
 export default function NetworkSelector() {
   const { t } = useTranslate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { currentNetwork } = useAppSelector((state) => state.myWalletStateSlice);
   const { language } = useAppSelector((state) => state.userConfigSlice);
   const actionController = useActionController();

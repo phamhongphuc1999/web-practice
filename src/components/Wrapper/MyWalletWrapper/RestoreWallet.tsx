@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ROUTE, WALLET_LS } from 'src/configs/constance';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { updateAccounts, updateCurrentNetwork, updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
 import { actionController, setActionController } from 'src/WalletObject/background';
 
 export default function RestoreWallet() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const { password } = useAppSelector((state) => state.myWalletSlice);
 
@@ -32,7 +31,6 @@ export default function RestoreWallet() {
         const vaults = await actionController.createNewVaultAndRestore(password, seedPhrase);
         const _accounts = vaults.keyrings[0].accounts;
         dispatch(updateAccounts({ accounts: _accounts }));
-
         const tokens = actionController.networkController.tokenController.getTokens();
         dispatch(updateTokens(tokens));
       }

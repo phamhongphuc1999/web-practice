@@ -46,6 +46,7 @@
     "lastDays": "Last %{days} days"
   },
   "multipleSelector": "Multiple selector",
+  "cssSelector": "Css selector",
   "startDate": "Selected start date",
   "endDate": "Selected end date",
   "event": "Event",
@@ -68,6 +69,7 @@
   "language": "Language",
   "mainnet": "%{network} mainnet",
   "testnet": "%{network} testnet",
+  "tokens": "Tokens",
   "token": "%{token} token",
   "owner": "Owner",
   "reset": "Reset",
@@ -90,5 +92,6 @@
   "orUseBep20Default": "Or use default bep20",
   "useBep20": "Use bep20",
   "useCustom": "Use custom",
-  "signature": "Signature"
+  "signature": "Signature",
+  "thItem": "Item %{item}"
 }

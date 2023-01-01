@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useMemo, useState } from 'react';
 import Bep20 from 'src/assets/abis/BEP20.json';
-import CopyIcon from 'src/components/Icons/CopyIcon';
+import CopyIcon, { TextCopy } from 'src/components/Icons/CopyIcon';
 import ExploreIcon from 'src/components/Icons/ExploreIcon';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import { CHAINS, CHAIN_ALIASES } from 'src/configs/networkConfig';
@@ -108,12 +108,11 @@ export default function Bep20Contract() {
           {t('confirm')}
         </Button>
       </Box>
-      <Box display="flex" alignItems="center">
-        <Typography color="secondary" sx={{ fontSize: '12px', marginBottom: '4px' }}>
-          {t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3
-        </Typography>
-        <CopyIcon iconProps={{ color: 'secondary' }} copyText="0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3" />
-      </Box>
+      <TextCopy
+        title={`${t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3`}
+        textProps={{ color: 'secondary', sx: { fontSize: '12px', marginBottom: '4px' } }}
+        iconProps={{ copyText: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', iconProps: { color: 'secondary' } }}
+      />
       {loading && <CircularProgress />}
       {addressTextHelper == '' && (
         <>

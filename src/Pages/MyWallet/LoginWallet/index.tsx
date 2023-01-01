@@ -6,7 +6,8 @@ import { formatAddress } from 'src/services';
 
 export default function LoginWallet() {
   const { t } = useTranslate();
-  const { accounts } = useAppSelector((state) => state.myWalletStateSlice.account);
+  const { account, tokens } = useAppSelector((state) => state.myWalletStateSlice);
+  const { accounts } = account;
 
   return (
     <>
@@ -20,6 +21,18 @@ export default function LoginWallet() {
           />
         </Box>
       )}
+      <Box sx={{ border: '1px solid', p: 1, borderRadius: '5px' }}>
+        <Typography variant="body3" sx={{ mb: 1 }}>
+          {t('tokens')}
+        </Typography>
+        {tokens.map((token, index) => {
+          return (
+            <Box key={index}>
+              <Typography>{`${token.balance.raw} ${token.baseData.symbol}`}</Typography>
+            </Box>
+          );
+        })}
+      </Box>
     </>
   );
 }
