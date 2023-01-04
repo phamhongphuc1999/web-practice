@@ -93,5 +93,6 @@
   "useBep20": "Sử dụng bep20",
   "useCustom": "Sử dụng tuỳ chỉnh",
   "signature": "Chữ ký",
-  "thItem": "Mục %{item}"
+  "thItem": "Mục %{item}",
+  "importToken": "Thêm tài sản"
 }

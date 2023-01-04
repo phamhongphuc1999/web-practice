@@ -38,7 +38,7 @@ export default class Contract {
       if (inputTypes) {
         if (inputTypes.length !== params.length) throw new Error('Error params');
         const encodeParam = this.abiCoder.encode(inputTypes, params);
-        data = `${_signature}${encodeParam}`;
+        data = `${_signature}${encodeParam.slice(2)}`;
       }
       result = await this.provider.call({ ...options, to: this.address, data } as RawTransaction);
     } else result = await this.provider.call({ ...options, to: this.address, data: _signature });

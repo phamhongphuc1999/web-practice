@@ -1,8 +1,10 @@
 import { Box, Theme, useTheme } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import ScrollToTop from 'src/components/ScrollToTop';
+import { useAppDispatch, useAppSelector } from 'src/redux/hook';
+import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
 import Header from './Header';
-import RestoreWallet from './RestoreWallet';
 
 const useStyle = (theme: Theme) => ({
   container: {
@@ -31,10 +33,16 @@ interface Props {
 export default function MyWalletWrapper({ children }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
+  const dispatch = useAppDispatch();
+  const history = useHistory();
+  const { password } = useAppSelector((state) => state.myWalletSlice);
+
+  useEffect(() => {
+    initWallet(password, dispatch, { history });
+  }, []);
 
   return (
     <Box position="relative" sx={{ backgroundColor: theme.palette.background.primary }}>
-      <RestoreWallet />
       <Header />
       <Box sx={cls.container}>
         <Box display="flex" justifyContent="space-between" flexDirection="column" sx={cls.mainContainer}>

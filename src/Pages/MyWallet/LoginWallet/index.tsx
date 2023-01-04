@@ -1,11 +1,14 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
+import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
 import { formatAddress } from 'src/services';
 
 export default function LoginWallet() {
   const { t } = useTranslate();
+  const history = useHistory();
   const { account, tokens } = useAppSelector((state) => state.myWalletStateSlice);
   const { accounts } = account;
 
@@ -33,6 +36,9 @@ export default function LoginWallet() {
           );
         })}
       </Box>
+      <Button sx={{ mt: 1 }} variant="outlined" onClick={() => history.push(ROUTE.WALLET_ADD_TOKEN)}>
+        {t('importToken')}
+      </Button>
     </>
   );
 }

@@ -44,14 +44,17 @@ export default function USeContract({ abi, contractAddress, provider }: Props) {
           <Button variant={isOpen ? 'outlined' : 'contained'} onClick={() => setIsOpen(!isOpen)} sx={{ my: 1 }}>
             {isOpen ? t('reset') : t('expandAll')}
           </Button>
-          {inter.getFunctions('view').map((item, _) => {
-            const signature = inter.getSignature(item.name);
+          {inter
+            .getFunctions('view')
+            .slice(1, 2)
+            .map((item, _) => {
+              const signature = inter.getSignature(item.name);
 
-            if (signature)
-              return (
-                <ReadFunction key={signature} contract={contract} signature={signature} data={item} isOpen={isOpen} />
-              );
-          })}
+              if (signature)
+                return (
+                  <ReadFunction key={signature} contract={contract} signature={signature} data={item} isOpen={isOpen} />
+                );
+            })}
         </Box>
       )}
     </Box>

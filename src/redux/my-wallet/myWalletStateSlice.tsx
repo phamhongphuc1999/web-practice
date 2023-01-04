@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import TokenBalance from 'src/blockchain-interaction/token-balance';
+import TokenBalance from 'src/blockchain-interaction/token-information/TokenBalance';
 import { MyWalletChain } from 'src/configs/wallet-network-config';
 import { EthToken } from 'src/global';
 import { AppDispatch, RootState } from '../store';
