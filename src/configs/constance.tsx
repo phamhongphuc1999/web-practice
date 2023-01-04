@@ -37,6 +37,7 @@ export const ROUTE = {
   UTIL_SELECTOR: '/utils/selector',
   THEME: '/theme',
   WALLET_OVERVIEW: '/my-wallet',
+  WALLET_ADD_TOKEN: '/my-wallet/add-token',
   WALLET_SETTING: '/my-wallet-setting',
   WALLET_UTILS: '/my-wallet-utils',
   WALLET_MNEMONIC: '/my-wallet-utils/mnemonic',

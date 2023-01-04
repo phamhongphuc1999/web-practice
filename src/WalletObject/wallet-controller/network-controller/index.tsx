@@ -32,7 +32,7 @@ export default class NetworkController {
     this._infuraProjectId = '';
 
     this.tokenController = new TokenController();
-    this.tokenController.updateTokens(this.currentNetwork);
+    this.tokenController.initToken(this.currentNetwork);
   }
 
   switchNetwork(chainId: string) {
@@ -40,6 +40,7 @@ export default class NetworkController {
     const { provider } = this.currentNetwork;
     this._configureProvider(provider.type, provider.rpcUrl);
     StorageController.saveChainId(chainId);
+    this.tokenController.initToken(this.currentNetwork);
   }
 
   getProviderConfig() {

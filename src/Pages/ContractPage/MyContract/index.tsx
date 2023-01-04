@@ -18,8 +18,8 @@ export default function MyContract() {
   useEffect(() => {
     if (autoMode) {
       setAbi(JSON.stringify(bep20));
-      setContractAddress('0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56');
-      setProvider('https://bsc-dataseed.binance.org');
+      setContractAddress('0xA7E240b473D15E65A2114227C841ABf69DDC6Cd3');
+      setProvider('https://data-seed-prebsc-1-s1.binance.org:8545/');
     } else {
       setAbi('');
       setContractAddress('');

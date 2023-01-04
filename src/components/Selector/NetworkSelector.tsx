@@ -3,7 +3,7 @@ import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector'
 import { MyWalletChainType } from 'src/configs/wallet-network-config';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
-import { updateCurrentNetwork } from 'src/redux/my-wallet/myWalletStateSlice';
+import { updateCurrentNetwork, updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
 import { useActionController } from 'src/WalletObject/background';
 
 interface ProviderSelectItem extends CssSelectItem {
@@ -53,6 +53,8 @@ export default function NetworkSelector() {
       actionController.networkController.switchNetwork(item.id);
       const _network = actionController.networkController.currentNetwork;
       dispatch(updateCurrentNetwork(_network));
+      const tokens = actionController.networkController.tokenController.getTokens();
+      dispatch(updateTokens(tokens));
     }
   }
 

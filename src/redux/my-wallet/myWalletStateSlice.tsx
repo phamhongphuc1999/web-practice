@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import EthQuery from 'src/blockchain-interaction/eth-query';
+import TokenBalance from 'src/blockchain-interaction/token-information/TokenBalance';
 import { MyWalletChain } from 'src/configs/wallet-network-config';
 import { EthToken } from 'src/global';
 import { AppDispatch, RootState } from '../store';
@@ -37,13 +37,11 @@ export function updateTokens(tokenList: EthToken[]) {
     const { account, currentNetwork } = getState().myWalletStateSlice;
     const { accounts, selectedAccount } = account;
     if (currentNetwork && accounts.length > 0) {
-      const ethQuery = new EthQuery(currentNetwork.provider.rpcUrl);
       const result: TokenState[] = [];
       for (const _token of tokenList) {
-        if (_token.address.length === 0) {
-          const nativeBalance = await ethQuery.getBalance(selectedAccount);
-          result.push({ baseData: _token, balance: { raw: nativeBalance ?? '0', usd: '0' } });
-        }
+        const _balance = await TokenBalance.getBalance(selectedAccount, _token.address, currentNetwork.provider.rpcUrl);
+        if (_balance) result.push({ baseData: _token, balance: { raw: _balance.bigNumber.toString(), usd: '0' } });
+        else result.push({ baseData: _token, balance: { raw: '0', usd: '0' } });
       }
       dispatch(myWalletStateSlice.actions.updateTokensSuccess(result));
     }

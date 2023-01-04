@@ -26,6 +26,7 @@ yarn start
 
 - https://ethereum.github.io/execution-apis/api-documentation/
 - https://docs.soliditylang.org/en/v0.8.17/abi-spec.html?highlight=compile
+- https://github.com/gnosis/MultiSigWallet
 
 ### Các việc cần làm
 
@@ -33,3 +34,11 @@ yarn start
 - Tuần sau(25 -> 31/12) -> kết nối tới blockchain \*
 - Tuần tiếp(1-7/1) -> tạo quản lý token
 - Tuần tiếp(8-14) -> gửi transaction
+
+### Những việc cần tìm hiểu
+
+- multisig
+- loopring wallet
+- zero wallet
+- gnosis wallet -> người bảo hộ, mất private key
+- Kết nối với web2, đăng nhập bằng ví

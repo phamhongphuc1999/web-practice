@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Contract from 'src/blockchain-interaction/contract-handler/contract';
 import { FunctionFragment } from 'src/blockchain-interaction/contract-handler/type';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
@@ -15,7 +16,8 @@ interface FunctionProps {
 export default function ReadFunction({ contract, signature, data, isOpen }: FunctionProps) {
   const { t } = useTranslate();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState<string | null>(null);
+  const [result, setResult] = useState<any>(null);
+  const [params, setParams] = useState<{ [key: number]: any }>({});
 
   useEffect(() => {
     if (isOpen) setOpen(isOpen);
@@ -25,13 +27,25 @@ export default function ReadFunction({ contract, signature, data, isOpen }: Func
   async function callNoneParamFunction() {
     if (data.inputs.length == 0) {
       const _result = await contract.viewFunction(data.name);
-      setResult(_result);
+      setResult(_result.toString());
     }
   }
 
   useEffect(() => {
     callNoneParamFunction();
   }, [contract]);
+
+  function onParamsChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) {
+    const _params = params;
+    _params[index] = event.target.value;
+    setParams(_params);
+  }
+
+  async function onSubmitClick() {
+    const realParam = Object.values(params);
+    const _result = await contract.viewFunction(data.name, realParam);
+    setResult(_result.toString());
+  }
 
   return (
     <Box>
@@ -47,11 +61,19 @@ export default function ReadFunction({ contract, signature, data, isOpen }: Func
             {data.inputs.map((input, index) => {
               return (
                 <Box key={index} my={1}>
-                  <TextField label={`${input.name}(${input.type})`} size="small" fullWidth />
+                  <TextField
+                    label={`${input.name}(${input.type})`}
+                    size="small"
+                    fullWidth
+                    onChange={(event) => onParamsChange(event, index)}
+                  />
                 </Box>
               );
             })}
-            <Button variant="contained">{t('submit')}</Button>
+            <Button variant="contained" onClick={() => onSubmitClick()}>
+              {t('submit')}
+            </Button>
+            {result.length > 0 && <Typography>{result}</Typography>}
           </Box>
         </Collapse>
       )}

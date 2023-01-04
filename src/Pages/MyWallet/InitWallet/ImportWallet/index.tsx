@@ -1,6 +1,7 @@
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import { CssForm } from 'src/components/utils';
@@ -9,9 +10,11 @@ import { useAppDispatch } from 'src/redux/hook';
 import { savePassword, updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { formatAddress } from 'src/services';
 import { actionController } from 'src/WalletObject/background';
+import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
 
 export default function ImportWallet() {
   const dispatch = useAppDispatch();
+  const history = useHistory();
   const { t } = useTranslate();
   const [seedPhrase, setSeedPhrase] = useState('');
   const [password, setPassword] = useState('');
@@ -40,6 +43,11 @@ export default function ImportWallet() {
       const vault = await actionController.createNewVaultAndRestore(password, seedPhrase);
       if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
     }
+  }
+
+  async function nextClick() {
+    await initWallet(password, dispatch, { history });
+    dispatch(updateStatus('login'));
   }
 
   return (
@@ -95,7 +103,7 @@ export default function ImportWallet() {
             title={`${t('accountAddress')}: ${formatAddress(accounts[0])}`}
             iconProps={{ copyText: accounts[0], defaultText: t('copyAddress'), successText: t('copiedAddress') }}
           />
-          <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => dispatch(updateStatus('login'))}>
+          <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => nextClick()}>
             {t('next')}
           </Button>
         </>
