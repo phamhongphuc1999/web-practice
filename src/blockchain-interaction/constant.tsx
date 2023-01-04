@@ -1,4 +1,11 @@
-export const DEFAULT_ADDRESS = '0x' + '0'.repeat(40);
+import BigNumber from 'bignumber.js';
+
+export const DEFAULT_ADDRESS = '0x0000000000000000000000000000000000000000';
+
+export const BIG_NUMBER = {
+  TEN: BigNumber(10),
+  TEN_POW_18: BigNumber(10).pow(BigNumber(18)),
+};
 
 export const EthRequest = {
   getBlockByHash: 'eth_getBlockByHash',

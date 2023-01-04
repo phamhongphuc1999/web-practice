@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Contract from 'src/blockchain-interaction/contract-handler/contract';
@@ -15,7 +16,7 @@ interface FunctionProps {
 export default function ReadFunction({ contract, signature, data, isOpen }: FunctionProps) {
   const { t } = useTranslate();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState<string | null>(null);
+  const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
     if (isOpen) setOpen(isOpen);
@@ -25,7 +26,7 @@ export default function ReadFunction({ contract, signature, data, isOpen }: Func
   async function callNoneParamFunction() {
     if (data.inputs.length == 0) {
       const _result = await contract.viewFunction(data.name);
-      setResult(_result);
+      setResult(_result.toString());
     }
   }
 

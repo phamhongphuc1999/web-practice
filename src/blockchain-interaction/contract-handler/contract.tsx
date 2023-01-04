@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Decoder from '../coder/decoder';
-import Encoder from '../coder/encoder';
+import { AbiCoder } from '@ethersproject/abi';
+import BigNumber from 'bignumber.js';
 import EthQuery from '../eth-query';
 import { Json, RawTransaction } from '../type';
 import Interface from './interface';
@@ -10,6 +10,7 @@ export default class Contract {
   private inter: Interface;
   rpcUrl: string;
   provider: EthQuery;
+  abiCoder: AbiCoder;
 
   constructor(address: string, abi: Json | Interface, provider: string | EthQuery) {
     this.address = address;
@@ -22,6 +23,7 @@ export default class Contract {
       this.rpcUrl = provider.rpcUrl;
       this.provider = provider;
     }
+    this.abiCoder = new AbiCoder();
   }
 
   async viewFunction(functionName: string, params?: Array<any>, options?: Omit<RawTransaction, 'to' | 'data'>) {
@@ -35,13 +37,18 @@ export default class Contract {
       let data = _signature;
       if (inputTypes) {
         if (inputTypes.length !== params.length) throw new Error('Error params');
-        const encodeParam = Encoder.encodeParam(params, inputTypes);
+        const encodeParam = this.abiCoder.encode(inputTypes, params);
         data = `${_signature}${encodeParam}`;
       }
       result = await this.provider.call({ ...options, to: this.address, data } as RawTransaction);
     } else result = await this.provider.call({ ...options, to: this.address, data: _signature });
-    const outputTypes = _fragment?.outputs.map((item) => ({ type: item.type, name: item.name }));
-    if (outputTypes && result) return Decoder.decodeParam(result, outputTypes);
-    return null;
+    const outputTypes = _fragment?.outputs.map((item) => item.type);
+    let finalResult = null;
+    if (outputTypes && result) finalResult = this.abiCoder.decode(outputTypes, result);
+    if (finalResult) {
+      if (finalResult.length === 1) finalResult = finalResult[0];
+      if (finalResult?._hex) return BigNumber(finalResult._hex);
+      else return finalResult;
+    } else return null;
   }
 }
