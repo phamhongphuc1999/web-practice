@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { keccak256 } from '@ethersproject/keccak256';
 import { toUtf8Bytes } from '@ethersproject/strings';
+import { signSync } from '@noble/secp256k1';
 import { EthereumRpcError } from '../eth-rpc-errors/classes';
 import { ethErrors } from '../eth-rpc-errors/errors';
 import { Json, PlainObject, RuntimeObject, SimpleItem } from '../type';
@@ -116,4 +117,17 @@ export function isPlainObject(value: unknown): value is PlainObject {
   } catch (_) {
     return false;
   }
+}
+
+export interface ECDSASignature {
+  v: bigint;
+  r: Buffer;
+  s: Buffer;
+}
+export function ecsign(msgHash: Buffer, privateKey: Buffer, chainId?: bigint): ECDSASignature {
+  const [signature, recovery] = signSync(msgHash, privateKey, { recovered: true, der: false });
+  const r = Buffer.from(signature.slice(0, 32));
+  const s = Buffer.from(signature.slice(32, 64));
+  const v = chainId === undefined ? BigInt(recovery + 27) : BigInt(recovery + 35) + BigInt(chainId) * BigInt(2);
+  return { r, s, v };
 }
