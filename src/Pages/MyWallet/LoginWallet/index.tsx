@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import { TextCopy } from 'src/components/Icons/CopyIcon';
+import CopyIcon, { TextCopy } from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
-import { formatAddress } from 'src/services';
+import { formatAddress, numberWithCommas } from 'src/services';
 
 export default function LoginWallet() {
   const { t } = useTranslate();
@@ -30,8 +30,11 @@ export default function LoginWallet() {
         </Typography>
         {tokens.map((token, index) => {
           return (
-            <Box key={index}>
-              <Typography>{`${token.balance.raw} ${token.baseData.symbol}`}</Typography>
+            <Box key={index} display="flex" alignItems="center">
+              <Typography>{`${numberWithCommas(token.balance.raw)} ${token.baseData.symbol}(${numberWithCommas(
+                token.balance.usd
+              )} USD)`}</Typography>
+              {token.baseData.address.length > 0 && <CopyIcon copyText={token.baseData.address} />}
             </Box>
           );
         })}

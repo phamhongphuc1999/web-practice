@@ -31,6 +31,8 @@ export default class NetworkController {
     } else this.currentNetwork = NetworkConfigOptions[CHAIN_ALIASES.ETH_MAINNET];
     this._infuraProjectId = '';
 
+    StorageController.saveChainId(this.currentNetwork.chainId);
+
     this.tokenController = new TokenController();
     this.tokenController.initToken(this.currentNetwork);
   }

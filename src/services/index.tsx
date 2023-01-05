@@ -10,12 +10,12 @@ export function toFixed(num: number, fractionDigits = 0): number {
   return fixedNum;
 }
 
-export function numberWithCommas(x: string, fractionDigits: number) {
+export function numberWithCommas(x: string, fractionDigits = 3) {
   const [naturalPart, decimalPart] = x.split('.');
   let out = naturalPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   if (decimalPart) {
     if (!isNumeric(fractionDigits)) out += '.' + decimalPart;
-    else if (decimalPart.length >= fractionDigits) out += '.' + decimalPart.substr(0, fractionDigits);
+    else if (decimalPart.length >= fractionDigits) out += '.' + decimalPart.slice(0, fractionDigits);
     else out += '.' + decimalPart + '0'.repeat(fractionDigits - decimalPart.length);
   }
   return out;

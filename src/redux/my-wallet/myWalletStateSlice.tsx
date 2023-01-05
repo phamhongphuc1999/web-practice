@@ -39,8 +39,13 @@ export function updateTokens(tokenList: EthToken[]) {
     if (currentNetwork && accounts.length > 0) {
       const result: TokenState[] = [];
       for (const _token of tokenList) {
-        const _balance = await TokenBalance.getBalance(selectedAccount, _token.address, currentNetwork.provider.rpcUrl);
-        if (_balance) result.push({ baseData: _token, balance: { raw: _balance.bigNumber.toString(), usd: '0' } });
+        const data = await TokenBalance.getBalanceAndPrice(
+          selectedAccount,
+          _token.address,
+          _token.symbol,
+          currentNetwork.provider.rpcUrl
+        );
+        if (data) result.push({ baseData: _token, balance: { raw: data.balance.bigNumber.toString(), usd: data.usd } });
         else result.push({ baseData: _token, balance: { raw: '0', usd: '0' } });
       }
       dispatch(myWalletStateSlice.actions.updateTokensSuccess(result));

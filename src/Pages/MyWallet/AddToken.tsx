@@ -1,17 +1,21 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import TokenInformation from 'src/blockchain-interaction/token-information';
 import { isAddress } from 'src/blockchain-interaction/utils';
 import { CssForm } from 'src/components/utils';
+import { ROUTE } from 'src/configs/constance';
 import { EthToken } from 'src/global';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
 import { actionController } from 'src/WalletObject/background';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useHistory } from 'react-router-dom';
 
 export default function AddToken() {
   const { t } = useTranslate();
   const dispatch = useAppDispatch();
+  const history = useHistory();
   const [tokenAddress, setTokenAddress] = useState('');
   const [tokenAddressHelpText, setTokenAddressHelpText] = useState('');
   const [tokenSymbol, setTokenSymbol] = useState('');
@@ -54,7 +58,7 @@ export default function AddToken() {
       } as EthToken;
       actionController.networkController.tokenController.importToken(ethToken);
       const tokens = actionController.networkController.tokenController.getTokens();
-      dispatch(updateTokens(tokens));
+      dispatch(updateTokens(tokens)).then(() => history.push(ROUTE.WALLET_OVERVIEW));
     }
   }
 
@@ -64,7 +68,12 @@ export default function AddToken() {
 
   return (
     <>
-      <Typography>{t('importToken')}</Typography>
+      <Box display="flex" alignItems="center">
+        <IconButton sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_OVERVIEW)}>
+          <ArrowBackIosNewIcon />
+        </IconButton>
+        <Typography>{t('importToken')}</Typography>
+      </Box>
       <CssForm sx={{ mt: 1 }} onSubmit={importToken}>
         <TextField
           size="small"

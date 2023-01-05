@@ -12,6 +12,7 @@ export const WALLET_LS = {
   PASSWORD: 'password',
   STATUS: 'status',
   CHAIN_ID: 'wallet_chain_id',
+  TOKEN: 'wallet_token',
 };
 
 export type THEME_MODE = 'dark' | 'light';

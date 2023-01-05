@@ -2,7 +2,7 @@ import { Box, Button, Collapse, TextField, Typography } from '@mui/material';
 import { ReactElement, useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
 import useTranslate from 'src/hooks/useTranslate';
-import PropertiesList, { PropertiesListProps } from './PropertiesList';
+import PropertiesList, { PropertiesListProps } from '../PropertiesList';
 
 interface Props {
   requestName: string;
@@ -35,6 +35,7 @@ export default function RpcForm(props: Props) {
         <PropertiesList {...listProps} />
         {events.onChange && (
           <TextField
+            size="small"
             fullWidth
             placeholder={placeholder}
             onChange={(e) => {

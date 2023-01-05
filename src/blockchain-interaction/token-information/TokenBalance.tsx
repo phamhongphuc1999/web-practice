@@ -41,4 +41,13 @@ export default class TokenBalance {
     if (tokenAddress.length === 0) return await TokenBalance.getNativeBalance(address, rpcUrl);
     else return await TokenBalance.getNormalBalance(address, tokenAddress, rpcUrl);
   }
+
+  static async getBalanceAndPrice(address: string, tokenAddress: string, tokenSymbol: string, rpcUrl: string) {
+    const balance = await TokenBalance.getBalance(address, tokenAddress, rpcUrl);
+    const usdPrice = await TokenBalance.getTokenPrice(tokenSymbol);
+    if (balance) {
+      const _usd = Number(balance.bigNumber.toString()) * usdPrice;
+      return { balance, usdPrice, usd: _usd.toString() };
+    } else return null;
+  }
 }

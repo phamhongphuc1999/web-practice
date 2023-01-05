@@ -7,8 +7,9 @@ import { TextCopy } from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { BlockResult, TransactionResult } from './components/BlockResult';
+import RpcForm from './components/Form/RpcForm';
+import SignTransactionForm from './components/Form/SignTransactionForm';
 import { AccountsResult, SyncingResult } from './components/OtherResult';
-import RpcForm from './RpcForm';
 
 const defaultAddressParam = { name: 'address', type: 'string', example: '0x871DBcE2b9923A35716e7E83ee402B535298538E' };
 const defaultBlockParam = {
@@ -327,6 +328,7 @@ export default function RpcRequest() {
           events={{ onSubmitClick: onBlockNumberClick, onDeleteClick: () => setBlockNumberResult('') }}
           result={blockNumberResult}
         />
+        <SignTransactionForm ethQuery={ethQuery} />
         <RpcForm
           requestName="eth_getBalance"
           isSubmitDisable={isDisable}
