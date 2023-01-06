@@ -44,6 +44,7 @@ export const ROUTE = {
   WALLET_MNEMONIC: '/my-wallet-utils/mnemonic',
   WALLET_BROWSER_PASSWORD: '/my-wallet-utils/browser-password',
   WALLET_RPC: '/my-wallet-utils/rpc',
+  WALLET_SIGN_TRANSACTION: '/my-wallet-utils/sign-transaction',
 };
 
 export type LanguageType = 'en' | 'vi';

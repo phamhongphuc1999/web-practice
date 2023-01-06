@@ -50,7 +50,7 @@ export default function NetworkSelector() {
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: ProviderSelectItem) {
     if (actionController?.networkController) {
-      actionController.networkController.switchNetwork(item.id);
+      actionController.switchNetwork(item.id);
       const _network = actionController.networkController.currentNetwork;
       dispatch(updateCurrentNetwork(_network));
       const tokens = actionController.networkController.tokenController.getTokens();

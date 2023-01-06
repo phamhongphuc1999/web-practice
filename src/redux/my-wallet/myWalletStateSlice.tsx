@@ -4,6 +4,8 @@ import { MyWalletChain } from 'src/configs/wallet-network-config';
 import { EthToken } from 'src/global';
 import { AppDispatch, RootState } from '../store';
 
+export type WalletStateStatus = 'init' | 'fetching' | 'done';
+
 export interface TokenState {
   baseData: EthToken;
   balance: {
@@ -21,6 +23,7 @@ export interface myWalletStateInitialState {
   currentNetwork: MyWalletChain | undefined;
   account: AccountState;
   tokens: TokenState[];
+  status: WalletStateStatus;
 }
 
 const initialState: myWalletStateInitialState = {
@@ -30,6 +33,7 @@ const initialState: myWalletStateInitialState = {
     selectedAccount: '',
   },
   tokens: [],
+  status: 'init',
 };
 
 export function updateTokens(tokenList: EthToken[]) {
@@ -57,6 +61,9 @@ const myWalletStateSlice = createSlice({
   name: 'myWalletStateSlice',
   initialState: initialState,
   reducers: {
+    updateWalletStatus: (state: myWalletStateInitialState, action: PayloadAction<WalletStateStatus>) => {
+      state.status = action.payload;
+    },
     updateCurrentNetwork: (state: myWalletStateInitialState, action: PayloadAction<MyWalletChain>) => {
       state.currentNetwork = action.payload;
     },
@@ -79,4 +86,4 @@ const myWalletStateSlice = createSlice({
 });
 
 export default myWalletStateSlice.reducer;
-export const { updateCurrentNetwork, updateAccounts } = myWalletStateSlice.actions;
+export const { updateWalletStatus, updateCurrentNetwork, updateAccounts } = myWalletStateSlice.actions;

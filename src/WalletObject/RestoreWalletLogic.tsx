@@ -1,7 +1,12 @@
 import { RouteComponentProps } from 'react-router-dom';
 import { ROUTE, WALLET_LS } from 'src/configs/constance';
 import { updateStatus } from 'src/redux/my-wallet/myWalletSlice';
-import { updateAccounts, updateCurrentNetwork, updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
+import {
+  updateAccounts,
+  updateCurrentNetwork,
+  updateTokens,
+  updateWalletStatus,
+} from 'src/redux/my-wallet/myWalletStateSlice';
 import { AppDispatch } from 'src/redux/store';
 import { actionController, setActionController } from './background';
 
@@ -18,6 +23,7 @@ export async function initWallet(
   dispatch: AppDispatch,
   history: Pick<RouteComponentProps, 'history'>
 ) {
+  dispatch(updateWalletStatus('fetching'));
   if (!actionController) setActionController();
   if (actionController) {
     const _network = actionController.networkController.currentNetwork;
@@ -31,6 +37,8 @@ export async function initWallet(
       dispatch(updateAccounts({ accounts: _accounts }));
       const tokens = actionController.networkController.tokenController.getTokens();
       dispatch(updateTokens(tokens));
+      await actionController.waitFullInit();
     }
   } else backToInitWallet(dispatch, history);
+  dispatch(updateWalletStatus('done'));
 }

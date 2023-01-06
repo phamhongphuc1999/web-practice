@@ -13,6 +13,7 @@ import WalletUtils from 'src/Pages/MyWallet/WalletUtils';
 import BrowserPassword from 'src/Pages/MyWallet/WalletUtils/BrowserPassword';
 import CreateMnemonic from 'src/Pages/MyWallet/WalletUtils/CreateMnemonic';
 import RpcRequest from 'src/Pages/MyWallet/WalletUtils/RpcRequest';
+import SignTransaction from 'src/Pages/MyWallet/WalletUtils/RpcRequest/components/Form/SignTransaction';
 import UtilElement from 'src/Pages/UtilElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
@@ -40,6 +41,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.WALLET_RPC} exact={true}>
         <RpcRequest />
+      </Route>
+      <Route path={ROUTE.WALLET_SIGN_TRANSACTION} exact={true}>
+        <SignTransaction />
       </Route>
       <Route path={`${ROUTE.ANIMATION}/:page`} exact={true}>
         <AnimationPage />

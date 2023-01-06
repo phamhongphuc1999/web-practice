@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Mutex } from 'await-semaphore';
 import EventEmitter from 'events';
+import { OverviewTransaction } from 'src/blockchain-interaction/transaction-module/type';
 import KeyringController from '../keyring-controller';
+import BaseKeyring from '../keyring-object/base-keyring';
+import HDKeyring from '../keyring-object/hd-keyring';
 import { ActionOptionType, MemStoreType } from '../wallet';
 import NetworkController from './network-controller';
 import StorageController from './storage-controller';
@@ -24,7 +28,7 @@ export default class ActionController extends EventEmitter {
     this.keyringController.on('unlock', () => this._onUnlock());
     this.keyringController.on('lock', () => this._onLock());
     this.networkController = new NetworkController(options?.initState?.networkController);
-    this.transactionController = new TransactionController();
+    this.transactionController = new TransactionController(this.networkController.currentNetwork);
     this.createVaultMutex = new Mutex();
 
     this.initializeProvider();
@@ -101,5 +105,40 @@ export default class ActionController extends EventEmitter {
       // verify account with mnemonic
       return mnemonic;
     }
+  }
+
+  async waitFullInit() {
+    function sleep(ms: any) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    let keyring: BaseKeyring | undefined = undefined;
+    while (!keyring) {
+      keyring = this.keyringController.keyrings[0];
+      await sleep(500);
+    }
+  }
+
+  switchNetwork(chainId: string) {
+    this.networkController.switchNetwork(chainId);
+    const currentNetwork = this.networkController.currentNetwork;
+    this.transactionController.switchNetwork(currentNetwork);
+  }
+
+  signTransaction(transaction: OverviewTransaction) {
+    const _keyring = this.keyringController.keyrings[0] as HDKeyring;
+    const accounts = _keyring.getAccounts();
+    const privateKey = _keyring.exportAccount(accounts[0]);
+    if (privateKey) return this.transactionController.sign(privateKey, transaction);
+    else throw new Error('Invalid account');
+  }
+
+  async sendTransaction(rawTransaction: string) {
+    return await this.transactionController.send(rawTransaction);
+  }
+
+  async publishTransaction(transaction: OverviewTransaction) {
+    const signedTransaction = this.signTransaction(transaction);
+    return await this.sendTransaction(signedTransaction.rawTransaction);
   }
 }
