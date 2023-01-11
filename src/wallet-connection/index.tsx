@@ -28,8 +28,8 @@ export function setChainId(chainId: string) {
   window.localStorage.setItem(LS.CHAIN_ID, chainId);
 }
 
-export async function setWeb3Reader(chainId: number) {
-  if (!chainId) chainId = Number(getChainId());
+export async function setWeb3Reader(chainId: string) {
+  if (!chainId) chainId = getChainId().toString();
   const chain = CHAINS[chainId];
   const promises = chain.urls.map(async (rpc) => {
     const web3 = new StaticJsonRpcProvider(rpc);

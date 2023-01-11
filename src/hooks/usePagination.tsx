@@ -25,12 +25,6 @@ export default function usePagination<DataType>(data: Array<DataType>, defaultDa
     setCurrentPage(Math.min(pageNumber, maxPage));
   }
 
-  return {
-    next,
-    prev,
-    jump,
-    data: data.slice(currentPage * rowPerPage - rowPerPage, currentPage * rowPerPage),
-    currentPage,
-    maxPage,
-  };
+  const _data = data.slice(currentPage * rowPerPage - rowPerPage, currentPage * rowPerPage);
+  return { next, prev, jump, data: _data, currentPage, maxPage };
 }

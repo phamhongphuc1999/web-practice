@@ -43,5 +43,5 @@ export interface Chain extends BaseChain {
 }
 
 export interface ChainType {
-  [chain: number]: Chain;
+  [chain: string]: Chain;
 }

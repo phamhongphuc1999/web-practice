@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ConnectedButton from 'src/components/Button/ConnectedButton';
+import NetworkButton from 'src/components/Button/NetworkButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
@@ -15,6 +16,7 @@ export default function MetamaskPage() {
     <>
       <CssBreadcrumbs configs={[{ label: 'metamask' }]} props={{ mb: 2 }} />
       <ConnectedButton props={{ variant: 'contained' }} />
+      <NetworkButton butProps={{ sx: { ml: 1 } }} />
       <Box mt={2}>
         <Typography>{t('data')}</Typography>
         <Box display="flex" alignItems="center" flexWrap="wrap">

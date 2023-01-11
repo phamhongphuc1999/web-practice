@@ -5,12 +5,7 @@ import myWalletSlice from './my-wallet/myWalletSlice';
 import myWalletStateSlice from './my-wallet/myWalletStateSlice';
 
 const store = configureStore({
-  reducer: {
-    userConfigSlice,
-    walletSlice,
-    myWalletSlice,
-    myWalletStateSlice,
-  },
+  reducer: { userConfigSlice, walletSlice, myWalletSlice, myWalletStateSlice },
 });
 
 export type AppDispatch = typeof store.dispatch;
