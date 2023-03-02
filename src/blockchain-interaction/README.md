@@ -11,7 +11,7 @@ This package base on some libraries: [eth-json-rpc-middleware](https://github.co
 | [json-rpc-middleware](./json-rpc-middleware.tsx) | Static class used for handle middleware        |
 | [contract-handler](./contract-handler/)          | Handle contract flow                           |
 | [eth-rpc-errors](./eth-rpc-errors/)              | Defined ether error                            |
-| [formatter](./formatter/)                        | Format input and output of EthQuery            |
+| [token-information](./token-information/)        | Get token information                          |
 
 ### Test
 
