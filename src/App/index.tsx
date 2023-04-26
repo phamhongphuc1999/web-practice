@@ -3,25 +3,37 @@ import { IconButton } from '@mui/material';
 import { SnackbarKey, SnackbarProvider } from 'notistack';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import DocsWrapper from 'src/components/Wrapper/DocsWrapper';
 import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
 import MyWalletWrapper from 'src/components/Wrapper/MyWalletWrapper';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
+import useLayout from 'src/hooks/useLayout';
 import store from 'src/redux/store';
+import DocsRouteApp from './DocsRouteApp';
 import RouteApp from './RouteApp';
 
 function WrapperApp() {
-  const location = useLocation();
-  const isWallet = location.pathname.includes('/my-wallet');
+  const layout = useLayout();
 
-  return isWallet ? (
-    <MyWalletWrapper>
-      <RouteApp />
-    </MyWalletWrapper>
-  ) : (
-    <LayoutWrapper>
-      <RouteApp />
-    </LayoutWrapper>
+  return (
+    <>
+      {layout == 'normal' && (
+        <LayoutWrapper>
+          <RouteApp />
+        </LayoutWrapper>
+      )}
+      {layout == 'wallet' && (
+        <MyWalletWrapper>
+          <RouteApp />
+        </MyWalletWrapper>
+      )}
+      {layout == 'docs' && (
+        <DocsWrapper>
+          <DocsRouteApp />
+        </DocsWrapper>
+      )}
+    </>
   );
 }
 

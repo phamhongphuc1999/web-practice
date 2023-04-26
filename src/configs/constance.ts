@@ -47,6 +47,11 @@ export const ROUTE = {
   WALLET_SIGN_TRANSACTION: '/my-wallet-utils/sign-transaction',
 };
 
+export const DOCS_ROUTE = {
+  MAIN_PAGE: '/docs',
+  GAS_PRICE: '/docs/gas-and-price',
+};
+
 export type LanguageType = 'en' | 'vi';
 export const languageConfig = {
   en: { id: 'en', label: 'English' },

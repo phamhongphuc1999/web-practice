@@ -1,38 +1,14 @@
-import { Box, Theme, useTheme } from '@mui/material';
-import { ReactNode, useEffect } from 'react';
+import { Box } from '@mui/material';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
 import ScrollToTop from 'src/components/ScrollToTop';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
-import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
+import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';
 import Header from './Header';
 
-const useStyle = (theme: Theme) => ({
-  container: {
-    transition: 'margin 0.5s linear',
-    padding: theme.spacing(10, 2, 10, 2),
-  },
-  mainContainer: {
-    minHeight: 'calc(100vh - 80px)',
-    height: '100%',
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(0, 1),
-    },
-    [theme.breakpoints.only('sm')]: {
-      marginLeft: '80px',
-    },
-    [theme.breakpoints.only('xs')]: {
-      marginLeft: 0,
-    },
-  },
-});
-
-interface Props {
-  children: ReactNode;
-}
-
-export default function MyWalletWrapper({ children }: Props) {
-  const theme = useTheme();
-  const cls = useStyle(theme);
+export default function MyWalletWrapper({ children }: LayoutProps) {
+  const cls = useLayoutStyle();
   const dispatch = useAppDispatch();
   const history = useHistory();
   const { password } = useAppSelector((state) => state.myWalletSlice);
@@ -42,7 +18,7 @@ export default function MyWalletWrapper({ children }: Props) {
   }, []);
 
   return (
-    <Box position="relative" sx={{ backgroundColor: theme.palette.background.primary }}>
+    <Box position="relative" sx={cls.root}>
       <Header />
       <Box sx={cls.container}>
         <Box display="flex" justifyContent="space-between" flexDirection="column" sx={cls.mainContainer}>

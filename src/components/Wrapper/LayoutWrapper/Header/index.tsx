@@ -33,6 +33,9 @@ export default function Header() {
           <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
             {t('launchWallet')}
           </Button>
+          <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/docs', '_blank')}>
+            {t('launchDocs')}
+          </Button>
         </Box>
         <CssSelector
           width={120}

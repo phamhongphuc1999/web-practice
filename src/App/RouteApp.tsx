@@ -1,10 +1,11 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { ROUTE } from 'src/configs/constance';
+import { DOCS_ROUTE, ROUTE } from 'src/configs/constance';
 import AnimationPage from 'src/Pages/AnimationPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
 import MyContract from 'src/Pages/ContractPage/MyContract';
+import DocsPage from 'src/Pages/DocsPage';
 import MetamaskPage from 'src/Pages/MetamaskPage';
 import AddToken from 'src/Pages/MyWallet/AddToken';
 import SettingWallet from 'src/Pages/MyWallet/SettingWallet';
@@ -72,6 +73,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.THEME} exact>
         <ConfigPage />
+      </Route>
+      <Route path={DOCS_ROUTE.MAIN_PAGE} exact={true}>
+        <DocsPage />
       </Route>
       <Redirect from="/" to={ROUTE.ANIMATION} />
     </Switch>
