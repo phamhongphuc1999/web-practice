@@ -6,8 +6,8 @@ export function baseTooltip(
   isPercent = false,
   xFormat: (xValue: string | number | null | undefined) => string = (x) => (x ? x.toString() : '')
 ) {
-  function formatter(_this: TooltipFormatterContextObject, _: Tooltip) {
-    const points = _this.points;
+  function formatter(this: TooltipFormatterContextObject, _: Tooltip) {
+    const points = this.points;
     if (points) {
       let data = '';
       let x = null;
@@ -45,8 +45,8 @@ export function powerfulTooltip(
   valueFormatter: (point: TooltipFormatterContextObject) => string,
   headerFormatter: (xValue: string | number | null | undefined) => string = (x) => (x ? x.toString() : '')
 ) {
-  function formatter(_this: TooltipFormatterContextObject, _: Tooltip) {
-    const points = _this.points;
+  function formatter(this: TooltipFormatterContextObject, _: Tooltip) {
+    const points = this.points;
     if (points) {
       let data = '';
       let x = null;

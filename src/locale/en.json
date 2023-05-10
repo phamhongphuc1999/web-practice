@@ -35,6 +35,10 @@
   "copyHere": "Copy is here",
   "lineChart": "Line charts",
   "basicLineChart": "Basic line chart",
+  "areaCharts": "Area charts",
+  "basicAreaChart": "Basic area chart",
+  "barCharts": "Bar charts",
+  "basicBarChart": "Basic bar chart",
   "createMnemonic": "Create your mnemonic",
   "yourMnemonic": "Your mnemonic",
   "saveMnemonic": "Please save your mnemonic carefully",
@@ -95,5 +99,6 @@
   "useCustom": "Use custom",
   "signature": "Signature",
   "thItem": "Item %{item}",
-  "importToken": "Import token"
+  "importToken": "Import token",
+  "openDetail": "Open detail"
 }

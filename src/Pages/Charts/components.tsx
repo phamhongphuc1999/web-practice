@@ -1,17 +1,11 @@
-import { Box, Theme, Typography, useTheme } from '@mui/material';
+import LaunchOutlinedIcon from '@mui/icons-material/LaunchOutlined';
+import { Box, Grid, GridProps, Tooltip, Typography } from '@mui/material';
 import { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
+import useTranslate from 'src/hooks/useTranslate';
 
-function useStyle(theme: Theme) {
+function useStyle() {
   return {
-    box: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '50%',
-      padding: '2rem 0rem',
-      [theme.breakpoints.only('sm')]: {
-        width: '100%',
-      },
-    },
     itemBox: {
       height: '100%',
       margin: '0rem 2rem',
@@ -24,21 +18,30 @@ function useStyle(theme: Theme) {
 
 interface ItemProps {
   label: string;
+  detailLink: string;
   Chart: ReactElement;
+  props?: GridProps;
 }
 
-export function Item({ label, Chart }: ItemProps) {
-  const theme = useTheme();
-  const cls = useStyle(theme);
+export function Item({ label, detailLink, Chart, props }: ItemProps) {
+  const cls = useStyle();
+  const { t } = useTranslate();
 
   return (
-    <Box sx={cls.box}>
+    <Grid item sm={6} xs={12} {...props}>
       <Box sx={cls.itemBox}>
-        <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
+          <Tooltip title={t('openDetail')}>
+            <Link style={{ marginLeft: 1 }} to={detailLink}>
+              <LaunchOutlinedIcon sx={{ fontSize: '16px' }} />
+            </Link>
+          </Tooltip>
+        </Box>
         <Box mt={5} mb={2}>
           {Chart}
         </Box>
       </Box>
-    </Box>
+    </Grid>
   );
 }

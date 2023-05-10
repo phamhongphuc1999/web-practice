@@ -35,6 +35,10 @@
   "copyHere": "Sao chép ở đây",
   "lineChart": "Đồ thị đường",
   "basicLineChart": "Đồ thị đường cơ bản",
+  "areaCharts": "Đồ thị miền",
+  "basicAreaChart": "Đồ thị miền cơ bản",
+  "barCharts": "Đồ thị cột",
+  "basicBarChart": "Đồ thị cột cơ bản",
   "createMnemonic": "Tạo mnemonic",
   "yourMnemonic": "Mnemonic của bạn",
   "saveMnemonic": "Lưu mnemonic của bạn cẩn thận",
@@ -95,5 +99,6 @@
   "useCustom": "Sử dụng tuỳ chỉnh",
   "signature": "Chữ ký",
   "thItem": "Mục %{item}",
-  "importToken": "Thêm tài sản"
+  "importToken": "Thêm tài sản",
+  "openDetail": "Xem chi tiết"
 }

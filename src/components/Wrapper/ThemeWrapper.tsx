@@ -177,6 +177,30 @@ export default function ThemeWrapper({ children }: Props) {
             'input[type=number]': {
               MozAppearance: 'textfield',
             },
+            '.highcharts-range-selector-group': {
+              display: 'none',
+            },
+            '.highcharts-scrollbar': {
+              display: 'none',
+            },
+            '.highcharts-credits': {
+              display: 'none',
+            },
+            '.scoring-chart-tooltip-container': {
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+            },
+            '.scoring-chart-tooltip-circle': {
+              borderRadius: '50%',
+              width: '10px',
+              height: '10px',
+              marginRight: '0.25rem',
+            },
+            '.scoring-chart-tooltip-x': {
+              borderBottom: '1px solid silver',
+              paddingBottom: '0.25rem',
+            },
           },
         },
         MuiBackdrop: {

@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { DOCS_ROUTE, ROUTE } from 'src/configs/constance';
+import { CHART_ROUTE, DOCS_ROUTE, ROUTE } from 'src/configs/constance';
 import AnimationPage from 'src/Pages/AnimationPage';
+import BasicLineChart from 'src/Pages/Charts/BasicLineChart';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
@@ -61,6 +62,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.CHART} exact={true}>
         <Overview />
+      </Route>
+      <Route path={CHART_ROUTE.BASIC_LINE_CHART} exact={true}>
+        <BasicLineChart />
       </Route>
       <Route path={ROUTE.UTILS} exact={true}>
         <UtilElement />
