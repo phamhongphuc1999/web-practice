@@ -10,12 +10,9 @@ import HDKeyring from '../keyring-object/hd-keyring';
 import SimpleKeyring from '../keyring-object/simple-keyring';
 import { MemStoreType, OptionType, RestoreKeyringType, StoreType } from '../wallet';
 
-const keyringTypes: typeof BaseKeyring[] = [SimpleKeyring, HDKeyring];
+const keyringTypes: (typeof BaseKeyring)[] = [SimpleKeyring, HDKeyring];
 
-export const KEYRINGS_TYPE_MAP = {
-  HD_KEYRING: 'HD Key Tree',
-  SIMPLE_KEYRING: 'Simple Key Pair',
-};
+export const KEYRINGS_TYPE_MAP = { HD_KEYRING: 'HD Key Tree', SIMPLE_KEYRING: 'Simple Key Pair' };
 
 export default class KeyringController extends EventEmitter {
   store: ObservableStore<StoreType>;
@@ -49,10 +46,7 @@ export default class KeyringController extends EventEmitter {
 
   async displayForKeyring(keyring: BaseKeyring) {
     const accounts = await keyring.getAccounts();
-    return {
-      type: keyring.type,
-      accounts: accounts.map(normalizeAddress),
-    };
+    return { type: keyring.type, accounts: accounts.map(normalizeAddress) as Array<string> };
   }
 
   fullUpdate() {

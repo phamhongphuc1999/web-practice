@@ -4,11 +4,17 @@ const webpack = require('webpack');
 module.exports = function override(config) {
   config.ignoreWarnings = [/Failed to parse source map/];
   config.resolve.fallback = {
-    url: require.resolve('url'),
+    url: false,
     assert: require.resolve('assert'),
     buffer: require.resolve('buffer'),
     stream: require.resolve('stream-browserify'),
-    util: false,
+    fs: false,
+    tls: false,
+    net: false,
+    path: false,
+    zlib: false,
+    http: false,
+    https: false,
     crypto: false,
   };
   config.plugins.push(

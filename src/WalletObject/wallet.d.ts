@@ -9,7 +9,7 @@ export interface Wallet {
 
 export interface MemStoreKeyringType {
   type: string;
-  accounts: string[];
+  accounts: Array<string>;
 }
 
 export interface MemStoreType {
