@@ -8,7 +8,7 @@ import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
 import { formatAddress } from 'src/services';
-import { actionController } from 'src/WalletObject/background';
+import { actionController } from 'src/wallet-object/background';
 
 const exampleTransaction = {
   gasPrice: '0x9184e72a000',

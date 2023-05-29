@@ -7,6 +7,7 @@ import ThemeButton from 'src/components/Button/ThemeButton';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
+import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
 
@@ -20,13 +21,13 @@ export default function UtilElement() {
     <>
       <CssBreadcrumbs configs={[{ label: t('utils') }]} props={{ mb: 2 }} />
       <Box display="flex" flexWrap="wrap">
-        <Button variant="contained" color="primary" onClick={() => history.push('/utils/date-picker')}>
+        <Button variant="contained" color="primary" onClick={() => history.push(ROUTE.UTIL_DATE_PICKER)}>
           {t('rangeDatePicker')}
         </Button>
         <Button
           variant="outlined"
           color="primary"
-          onClick={() => history.push('/utils/selector')}
+          onClick={() => history.push(ROUTE.UTIL_SELECTOR)}
           sx={{ marginLeft: '0.5rem' }}
         >
           {t('multipleSelector')}
@@ -66,6 +67,14 @@ export default function UtilElement() {
             { name: '7', onClick: () => setText('7') },
           ]}
         />
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => history.push(ROUTE.UTIL_CAROUSEL)}
+          sx={{ marginLeft: '1rem' }}
+        >
+          Carousel
+        </Button>
       </Box>
     </>
   );

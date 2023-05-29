@@ -1,8 +1,14 @@
-<h1 align="center">My Web Practice</h1>
+<div align="center">
+
+<h1>My Web Practice</h1>
+
+</div>
+
+---
 
 ### Run
 
 ```shell
 yarn install
-yarn start
+yarn dev
 ```

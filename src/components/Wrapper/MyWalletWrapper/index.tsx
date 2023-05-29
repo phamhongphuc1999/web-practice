@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
+import { initWallet } from 'src/wallet-object/RestoreWalletLogic';
 import ScrollToTop from 'src/components/ScrollToTop';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';

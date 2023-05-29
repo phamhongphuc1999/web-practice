@@ -8,7 +8,7 @@ import { EthToken } from 'src/global';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
-import { actionController } from 'src/WalletObject/background';
+import { actionController } from 'src/wallet-object/background';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useHistory } from 'react-router-dom';
 

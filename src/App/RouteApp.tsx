@@ -17,6 +17,7 @@ import CreateMnemonic from 'src/Pages/MyWallet/WalletUtils/CreateMnemonic';
 import RpcRequest from 'src/Pages/MyWallet/WalletUtils/RpcRequest';
 import SignTransaction from 'src/Pages/MyWallet/WalletUtils/RpcRequest/components/Form/SignTransaction';
 import UtilElement from 'src/Pages/UtilElement';
+import CarouselElement from 'src/Pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
 
@@ -74,6 +75,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.UTIL_SELECTOR} exact={true}>
         <SelectorElement />
+      </Route>
+      <Route path={ROUTE.UTIL_CAROUSEL} exact={true}>
+        <CarouselElement />
       </Route>
       <Route path={ROUTE.THEME} exact>
         <ConfigPage />

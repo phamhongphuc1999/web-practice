@@ -4,7 +4,7 @@ import { MyWalletChainType } from 'src/configs/wallet-network-config';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { updateCurrentNetwork, updateTokens } from 'src/redux/my-wallet/myWalletStateSlice';
-import { useActionController } from 'src/WalletObject/background';
+import { useActionController } from 'src/wallet-object/background';
 
 interface ProviderSelectItem extends CssSelectItem {
   type: string;

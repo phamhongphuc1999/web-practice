@@ -5,7 +5,7 @@ import { CssForm } from 'src/components/utils';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch } from 'src/redux/hook';
 import { savePassword } from 'src/redux/my-wallet/myWalletSlice';
-import { actionController } from 'src/WalletObject/background';
+import { actionController } from 'src/wallet-object/background';
 
 interface Props {
   setStep: (step: number) => void;

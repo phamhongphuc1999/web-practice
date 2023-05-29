@@ -1,5 +1,5 @@
-import { Box, BoxProps, Breadcrumbs, Link, Typography } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Box, BoxProps, Breadcrumbs, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface Props {

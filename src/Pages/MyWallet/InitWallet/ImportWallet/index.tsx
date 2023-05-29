@@ -9,8 +9,8 @@ import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch } from 'src/redux/hook';
 import { savePassword, updateStatus } from 'src/redux/my-wallet/myWalletSlice';
 import { formatAddress } from 'src/services';
-import { actionController } from 'src/WalletObject/background';
-import { initWallet } from 'src/WalletObject/RestoreWalletLogic';
+import { actionController } from 'src/wallet-object/background';
+import { initWallet } from 'src/wallet-object/RestoreWalletLogic';
 
 export default function ImportWallet() {
   const dispatch = useAppDispatch();

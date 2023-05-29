@@ -36,6 +36,7 @@ export const ROUTE = {
   UTILS: '/utils',
   UTIL_DATE_PICKER: '/utils/date-picker',
   UTIL_SELECTOR: '/utils/selector',
+  UTIL_CAROUSEL: '/utils/carousel',
   THEME: '/theme',
   WALLET_OVERVIEW: '/my-wallet',
   WALLET_ADD_TOKEN: '/my-wallet/add-token',
