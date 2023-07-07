@@ -41,7 +41,8 @@ const datepicker = (theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     '&:hover': {
-      background: theme.palette.mode === 'dark' ? 'rgba(121, 148, 193, 0.5)' : 'rgba(86, 100, 116, 0.2)',
+      background:
+        theme.palette.mode === 'dark' ? 'rgba(121, 148, 193, 0.5)' : 'rgba(86, 100, 116, 0.2)',
     },
   },
   '& .react-datepicker__day--disabled': {
@@ -79,8 +80,18 @@ interface Props {
   props?: BoxProps;
 }
 
-export default function MainDatePicker({ start, setStart, end, setEnd, monthsShow = 24, props }: Props) {
-  function onChange(date: DateType | [DateType, DateType], _: React.SyntheticEvent<any> | undefined) {
+export default function MainDatePicker({
+  start,
+  setStart,
+  end,
+  setEnd,
+  monthsShow = 24,
+  props,
+}: Props) {
+  function onChange(
+    date: DateType | [DateType, DateType],
+    _: React.SyntheticEvent<any> | undefined
+  ) {
     if (Array.isArray(date)) {
       const [start, end] = date;
       setStart(start);

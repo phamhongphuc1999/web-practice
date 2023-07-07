@@ -18,7 +18,11 @@ export default function VerifyMnemonic({ setStep, mnemonic }: Props) {
   return (
     <Box>
       <Typography>{`${t('step')} 3: ${t('verifyYourMnemonic')}`}</Typography>
-      <TextField fullWidth placeholder={t('enterMnemonic')} onChange={(event) => onDataChange(event)} />
+      <TextField
+        fullWidth
+        placeholder={t('enterMnemonic')}
+        onChange={(event) => onDataChange(event)}
+      />
       <Button
         fullWidth
         disabled={data !== mnemonic}

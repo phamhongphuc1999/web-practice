@@ -15,10 +15,14 @@ export const JSON_RPC_SERVER_ERROR_MESSAGE = 'Unspecified server error.';
 
 type ErrorValueKey = keyof typeof errorValues;
 
-export function getMessageFromCode(code: number, fallbackMessage: string = FALLBACK_MESSAGE): string {
+export function getMessageFromCode(
+  code: number,
+  fallbackMessage: string = FALLBACK_MESSAGE
+): string {
   if (Number.isInteger(code)) {
     const codeString = code.toString();
-    if (hasProperty(errorValues, codeString)) return errorValues[codeString as ErrorValueKey].message;
+    if (hasProperty(errorValues, codeString))
+      return errorValues[codeString as ErrorValueKey].message;
     if (isJsonRpcServerError(code)) return JSON_RPC_SERVER_ERROR_MESSAGE;
   }
   return fallbackMessage;
@@ -36,7 +40,11 @@ export function serializeError(
   error: unknown,
   { fallbackError = FALLBACK_ERROR, shouldIncludeStack = false } = {}
 ): SerializedEthereumRpcError {
-  if (!fallbackError || !Number.isInteger(fallbackError.code) || typeof fallbackError.message !== 'string') {
+  if (
+    !fallbackError ||
+    !Number.isInteger(fallbackError.code) ||
+    typeof fallbackError.message !== 'string'
+  ) {
     throw new Error('Must provide fallback error with integer number code and string message.');
   }
 

@@ -30,7 +30,11 @@ export default function Header() {
       <Box display="flex" alignItems="center" justifyContent="space-between" height="100%">
         <Box display="flex" alignItems="center">
           <ThemeButton />
-          <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/my-wallet', '_blank')}>
+          <Button
+            variant="outlined"
+            sx={{ ml: 1 }}
+            onClick={() => window.open('/my-wallet', '_blank')}
+          >
             {t('launchWallet')}
           </Button>
           <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/docs', '_blank')}>

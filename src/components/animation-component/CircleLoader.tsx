@@ -14,7 +14,15 @@ const Circle = styled('div')`
 
 export default function CircleLoader({ color, size }: AnimationComponentProps) {
   return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', perspective: 800 }}>
+    <Box
+      sx={{
+        display: 'inline-block',
+        width: size,
+        height: size,
+        borderRadius: '50%',
+        perspective: 800,
+      }}
+    >
       <Circle
         sx={{
           width: '100%',

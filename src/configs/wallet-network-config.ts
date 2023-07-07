@@ -16,7 +16,11 @@ export interface MyWalletChainType {
   [chain: string]: MyWalletChain;
 }
 
-export const INFURA_PROVIDER_TYPES = [NETWORK_TYPES.MAINNET, NETWORK_TYPES.GOERLI, NETWORK_TYPES.SEPOLIA];
+export const INFURA_PROVIDER_TYPES = [
+  NETWORK_TYPES.MAINNET,
+  NETWORK_TYPES.GOERLI,
+  NETWORK_TYPES.SEPOLIA,
+];
 
 export const NetworkConfigOptions: MyWalletChainType = {
   [CHAIN_ALIASES.ETH_MAINNET]: {
@@ -47,6 +51,9 @@ export const NetworkConfigOptions: MyWalletChainType = {
     chainId: CHAIN_ALIASES.BSC_TESTNET.toString(),
     image: BscImage,
     nativeCurrency: BNB,
-    provider: { type: NETWORK_TYPES.RPC, rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/' },
+    provider: {
+      type: NETWORK_TYPES.RPC,
+      rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+    },
   },
 };

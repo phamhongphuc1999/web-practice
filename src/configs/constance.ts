@@ -1,4 +1,11 @@
-import { Wallet, Animation, Settings, TaskAlt, CurrencyBitcoin, BarChart } from '@mui/icons-material';
+import {
+  Wallet,
+  Animation,
+  Settings,
+  TaskAlt,
+  CurrencyBitcoin,
+  BarChart,
+} from '@mui/icons-material';
 
 export const LS = {
   THEME: 'theme',

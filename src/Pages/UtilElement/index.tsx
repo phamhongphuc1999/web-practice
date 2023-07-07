@@ -21,7 +21,11 @@ export default function UtilElement() {
     <>
       <CssBreadcrumbs configs={[{ label: t('utils') }]} props={{ mb: 2 }} />
       <Box display="flex" flexWrap="wrap">
-        <Button variant="contained" color="primary" onClick={() => history.push(ROUTE.UTIL_DATE_PICKER)}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(ROUTE.UTIL_DATE_PICKER)}
+        >
           {t('rangeDatePicker')}
         </Button>
         <Button
@@ -32,7 +36,11 @@ export default function UtilElement() {
         >
           {t('multipleSelector')}
         </Button>
-        <TextCopy rootProps={{ ml: 1 }} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
+        <TextCopy
+          rootProps={{ ml: 1 }}
+          title={t('copyHere')}
+          iconProps={{ copyText: t('copyHere') }}
+        />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(theme.label)}</Typography>
           <ThemeButton />
@@ -40,7 +48,9 @@ export default function UtilElement() {
       </Box>
       <Box mt={2} display="flex" flexWrap="wrap">
         <LanguageSelector />
-        <PasswordTextField props={{ sx: { ml: 2, width: '40%' }, placeholder: t('enterPassword') }} />
+        <PasswordTextField
+          props={{ sx: { ml: 2, width: '40%' }, placeholder: t('enterPassword') }}
+        />
       </Box>
       <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography>{text}</Typography>
@@ -55,7 +65,9 @@ export default function UtilElement() {
               ml: 1,
             },
           }}
-          textProps={{ sx: { transform: 'skewX(20deg)', fontSize: '15px', fontWeight: 600, color: '#22CBFB' } }}
+          textProps={{
+            sx: { transform: 'skewX(20deg)', fontSize: '15px', fontWeight: 600, color: '#22CBFB' },
+          }}
           textActiveProps={{ sx: { color: '#FFFFFF' } }}
           items={[
             { name: '1', onClick: () => setText('1') },

@@ -26,7 +26,11 @@ export default class Contract {
     this.abiCoder = new AbiCoder();
   }
 
-  async viewFunction(functionName: string, params?: Array<any>, options?: Omit<RawTransaction, 'to' | 'data'>) {
+  async viewFunction(
+    functionName: string,
+    params?: Array<any>,
+    options?: Omit<RawTransaction, 'to' | 'data'>
+  ) {
     const _fragment = this.inter.getFunction(functionName);
     const _signature = this.inter.getSignature(functionName);
     if (!_signature) throw new Error(`Can not found ${functionName}`);

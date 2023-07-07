@@ -15,16 +15,33 @@ export default function WalletUtils() {
         props={{ mb: 2 }}
       />
       <Box mt={2}>
-        <Button variant="outlined" sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_MNEMONIC)}>
+        <Button
+          variant="outlined"
+          sx={{ mr: 1 }}
+          onClick={() => history.push(ROUTE.WALLET_MNEMONIC)}
+        >
           Mnemonic
         </Button>
-        <Button variant="contained" sx={{ mr: 1 }} onClick={() => history.push(ROUTE.WALLET_BROWSER_PASSWORD)}>
+        <Button
+          variant="contained"
+          sx={{ mr: 1 }}
+          onClick={() => history.push(ROUTE.WALLET_BROWSER_PASSWORD)}
+        >
           Wallet browser password
         </Button>
-        <Button variant="contained" sx={{ mr: 1 }} color="error" onClick={() => history.push(ROUTE.WALLET_RPC)}>
+        <Button
+          variant="contained"
+          sx={{ mr: 1 }}
+          color="error"
+          onClick={() => history.push(ROUTE.WALLET_RPC)}
+        >
           {t('rpcRequest')}
         </Button>
-        <Button variant="outlined" color="secondary" onClick={() => history.push(ROUTE.WALLET_SIGN_TRANSACTION)}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => history.push(ROUTE.WALLET_SIGN_TRANSACTION)}
+        >
           Sign Transaction
         </Button>
       </Box>

@@ -17,7 +17,10 @@ export default function MultipleSelectorElement() {
 
   const ItemList = Array(105)
     .fill(0)
-    .map((_, index) => ({ id: `item${index + 1}`, label: `${t('thItem', { item: (index + 1).toString() })}` }));
+    .map((_, index) => ({
+      id: `item${index + 1}`,
+      label: `${t('thItem', { item: (index + 1).toString() })}`,
+    }));
 
   const { data, jump, maxPage, currentPage } = usePagination(ItemList);
   function onPageChange(page: number) {
@@ -61,7 +64,11 @@ export default function MultipleSelectorElement() {
       </Box>
       <Box mt={2}>
         <Typography sx={{ marginBottom: 1 }}>{t('cssSelector')}</Typography>
-        <CssSelector<ExtendItem> items={NetworkList} value={network.label} events={{ onChooseItem: onChooseItem }} />
+        <CssSelector<ExtendItem>
+          items={NetworkList}
+          value={network.label}
+          events={{ onChooseItem: onChooseItem }}
+        />
       </Box>
     </>
   );

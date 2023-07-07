@@ -5,7 +5,13 @@
 */
 import { ethErrors } from './eth-rpc-errors/errors';
 import JsonRpcMiddleware from './json-rpc-middleware';
-import { Json, JsonRpcRequest, JsonRpcResponse, RequestRpcMiddleware, ResponseRpcMiddleware } from './type';
+import {
+  Json,
+  JsonRpcRequest,
+  JsonRpcResponse,
+  RequestRpcMiddleware,
+  ResponseRpcMiddleware,
+} from './type';
 import { btoa, checkForHttpErrors, normalizeUrlFromParsed } from './utils';
 
 const fetch = global.fetch;
@@ -96,7 +102,9 @@ export default class JsonRpcEngine {
       if (fetchBody.error) throw ethErrors.rpc.internal({ data: fetchBody.error as Json });
       return fetchBody;
     } catch (err: any) {
-      const isRetriable: boolean = RETRIABLE_ERRORS.some((phrase) => JSON.stringify(err).includes(phrase));
+      const isRetriable: boolean = RETRIABLE_ERRORS.some((phrase) =>
+        JSON.stringify(err).includes(phrase)
+      );
       if (!isRetriable) throw err;
     }
   }

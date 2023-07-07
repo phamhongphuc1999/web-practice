@@ -9,7 +9,9 @@ import { walletInitialState } from 'src/redux/walletSlice';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {
-  const { chainId, hexChainId, accountAddress } = useAppSelector<walletInitialState>((state) => state.walletSlice);
+  const { chainId, hexChainId, accountAddress } = useAppSelector<walletInitialState>(
+    (state) => state.walletSlice
+  );
   const { t } = useTranslate();
 
   return (
@@ -28,7 +30,11 @@ export default function MetamaskPage() {
             <Typography>
               {t('accountAddress')}: {formatAddress(accountAddress, 5)}
             </Typography>
-            <CopyIcon copyText={accountAddress} defaultText={t('copyAddress')} successText={t('copiedAddress')} />
+            <CopyIcon
+              copyText={accountAddress}
+              defaultText={t('copyAddress')}
+              successText={t('copiedAddress')}
+            />
           </Box>
         </Box>
       </Box>

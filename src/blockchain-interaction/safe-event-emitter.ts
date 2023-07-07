@@ -10,7 +10,11 @@ interface EventMap {
   [k: string]: Handler | Handler[] | undefined;
 }
 
-function safeApply<T, A extends any[]>(handler: (this: T, ...args: A) => void, context: T, args: A): void {
+function safeApply<T, A extends any[]>(
+  handler: (this: T, ...args: A) => void,
+  context: T,
+  args: A
+): void {
   try {
     Reflect.apply(handler, context, args);
   } catch (err) {

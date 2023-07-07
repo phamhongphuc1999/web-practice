@@ -36,8 +36,16 @@ interface Props<T> {
   items: Array<T>;
   defaultSelectedItems?: Array<T>;
   events?: {
-    onSelectItem?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T, items: Array<T>) => void;
-    onRemoveItem?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>, item: T, items: Array<T>) => void;
+    onSelectItem?: (
+      e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+      item: T,
+      items: Array<T>
+    ) => void;
+    onRemoveItem?: (
+      e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+      item: T,
+      items: Array<T>
+    ) => void;
   };
   Component?: {
     start?: ReactNode;
@@ -123,7 +131,12 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
             .filter((item) => !selectedLabel.includes(item.label))
             .map((item) => {
               return (
-                <ListItem key={item.id} button onClick={(e) => onSelectItem(e, item)} sx={{ borderRadius: '6px' }}>
+                <ListItem
+                  key={item.id}
+                  button
+                  onClick={(e) => onSelectItem(e, item)}
+                  sx={{ borderRadius: '6px' }}
+                >
                   {item.label}
                 </ListItem>
               );

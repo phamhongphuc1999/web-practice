@@ -29,7 +29,14 @@ interface Props {
   props?: ButtonGroupProps;
 }
 
-export default function CssGroupButton({ config, defaultActive, onClick, activeBut, but, props }: Props) {
+export default function CssGroupButton({
+  config,
+  defaultActive,
+  onClick,
+  activeBut,
+  but,
+  props,
+}: Props) {
   const [active, setActive] = useState<number>(defaultActive ?? 0);
 
   function onButtonClick(event: React.MouseEvent, element: string, index: number) {
@@ -41,7 +48,10 @@ export default function CssGroupButton({ config, defaultActive, onClick, activeB
     <CssButtonGroup {...props}>
       {config.map((element, index) => {
         return active == index ? (
-          <ActiveButton {...{ ...but, ...activeBut }} onClick={(event) => onButtonClick(event, element, index)}>
+          <ActiveButton
+            {...{ ...but, ...activeBut }}
+            onClick={(event) => onButtonClick(event, element, index)}
+          >
             {element}
           </ActiveButton>
         ) : (

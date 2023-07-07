@@ -23,7 +23,13 @@ export interface CopyIconProps {
 
 export default function CopyIcon(params: CopyIconProps) {
   const { t } = useTranslate();
-  const { copyText = '', defaultText = t('copy'), successText = t('copied'), iconProps, props } = params;
+  const {
+    copyText = '',
+    defaultText = t('copy'),
+    successText = t('copied'),
+    iconProps,
+    props,
+  } = params;
   const [tooltip, setTooltip] = useState(defaultText);
 
   return (

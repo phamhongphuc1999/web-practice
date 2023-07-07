@@ -43,7 +43,15 @@ export default function GridLoader({ color, size, mode }: GridLoaderProps) {
   const _sx = { backgroundColor: color, animation: animation };
 
   return (
-    <Box sx={{ position: 'relative', display: 'inline-block', boxSizing: 'border-box', height: size, width: size }}>
+    <Box
+      sx={{
+        position: 'relative',
+        display: 'inline-block',
+        boxSizing: 'border-box',
+        height: size,
+        width: size,
+      }}
+    >
       <Item sx={[_sx, { top: '5%', left: '5%' }]} />
       <Item sx={[_sx, { top: '5%', left: '50%', animationDelay: '0.25s' }]} />
       <Item sx={[_sx, { top: '5%', left: '95%', animationDelay: '0.5s' }]} />

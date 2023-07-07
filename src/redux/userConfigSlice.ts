@@ -15,7 +15,8 @@ const initialLanguage = localStorage.getItem(LS.LANGUAGE);
 const initialState: themeInitialState = {
   theme: {
     mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as THEME_MODE,
-    label: initialThemeMode == null || initialThemeMode == 'dark' ? 'themeMode.dark' : 'themeMode.light',
+    label:
+      initialThemeMode == null || initialThemeMode == 'dark' ? 'themeMode.dark' : 'themeMode.light',
   },
   language: (initialLanguage == null ? 'en' : initialLanguage) as LanguageType,
 };

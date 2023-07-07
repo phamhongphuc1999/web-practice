@@ -59,7 +59,13 @@ export default function Carousel({ items, currentIndex, events, itemProps, props
           <Box
             key={index}
             {...itemProps}
-            sx={[{ width: width, transform: `translateX(${xSlide}%)` }, cls.item, itemProps?.sx] as SxProps<Theme>}
+            sx={
+              [
+                { width: width, transform: `translateX(${xSlide}%)` },
+                cls.item,
+                itemProps?.sx,
+              ] as SxProps<Theme>
+            }
           >
             {item}
           </Box>

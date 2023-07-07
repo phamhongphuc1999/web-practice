@@ -25,7 +25,9 @@ export default class KeyringController extends EventEmitter {
 
   constructor(options: OptionType) {
     super();
-    this.keyringTypes = options.keyringTypes ? keyringTypes.concat(options.keyringTypes) : keyringTypes;
+    this.keyringTypes = options.keyringTypes
+      ? keyringTypes.concat(options.keyringTypes)
+      : keyringTypes;
     this.store = new ObservableStore(options.initState ?? { vault: '' });
     this.memStore = new ObservableStore({
       isUnlocked: false,
@@ -81,7 +83,9 @@ export default class KeyringController extends EventEmitter {
     switch (type) {
       case KEYRINGS_TYPE_MAP.SIMPLE_KEYRING: {
         const isIncluded = Boolean(
-          accounts.find((key) => key === newAccountArray[0] || key === stripHexPrefix(newAccountArray[0]))
+          accounts.find(
+            (key) => key === newAccountArray[0] || key === stripHexPrefix(newAccountArray[0])
+          )
         );
         if (isIncluded) throw new Error('The account you are trying to import is a duplicate');
         return newAccountArray;
@@ -94,7 +98,8 @@ export default class KeyringController extends EventEmitter {
 
   async persistAllKeyrings() {
     const { encryptionKey, encryptionSalt } = this.memStore.getState();
-    if (!this.password && !encryptionKey) throw new Error('Cannot persist vault without password and encryption key');
+    if (!this.password && !encryptionKey)
+      throw new Error('Cannot persist vault without password and encryption key');
     const serializedKeyrings = await Promise.all(
       this.keyrings.map(async (keyring) => {
         const [type, data] = await Promise.all([keyring.type, keyring.serialize()]);
@@ -117,7 +122,8 @@ export default class KeyringController extends EventEmitter {
         vaultJSON.salt = encryptionSalt;
         vault = JSON.stringify(vaultJSON);
       }
-    } else if (this.password) vault = await this.encryptor.encrypt(this.password, serializedKeyrings);
+    } else if (this.password)
+      vault = await this.encryptor.encrypt(this.password, serializedKeyrings);
     if (!vault) throw new Error('Cannot persist vault without vault information');
     this.store.updateState({ vault });
     await this._updateMemStoreKeyrings();

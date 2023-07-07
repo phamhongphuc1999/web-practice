@@ -35,7 +35,10 @@ export default function ReadFunction({ contract, signature, data, isOpen }: Func
     callNoneParamFunction();
   }, [contract]);
 
-  function onParamsChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) {
+  function onParamsChange(
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number
+  ) {
     const _params = params;
     _params[index] = event.target.value;
     setParams(_params);
@@ -52,7 +55,11 @@ export default function ReadFunction({ contract, signature, data, isOpen }: Func
       <Paper onClick={() => setOpen(!open)} sx={{ cursor: 'pointer' }}>
         <Box mb={1} p="1rem" display="flex" alignItems="center" justifyContent="space-between">
           <Typography>{`${t('name')}: ${data.name}, ${t('signature')}: ${signature}`}</Typography>
-          {data.inputs.length > 0 ? <ArrowAnimationIcon isTransform={open} /> : <Typography>{result}</Typography>}
+          {data.inputs.length > 0 ? (
+            <ArrowAnimationIcon isTransform={open} />
+          ) : (
+            <Typography>{result}</Typography>
+          )}
         </Box>
       </Paper>
       {data.inputs.length > 0 && (

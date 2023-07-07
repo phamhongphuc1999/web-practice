@@ -20,7 +20,10 @@ const walletSlice = createSlice({
   name: 'walletSlice',
   initialState: initialState,
   reducers: {
-    updateWallet: (state: walletInitialState, action: PayloadAction<{ chainId?: string; accountAddress?: string }>) => {
+    updateWallet: (
+      state: walletInitialState,
+      action: PayloadAction<{ chainId?: string; accountAddress?: string }>
+    ) => {
       const payload = action.payload;
       if (payload.chainId) {
         const _chainId = payload.chainId;

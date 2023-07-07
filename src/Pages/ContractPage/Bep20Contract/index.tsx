@@ -111,7 +111,10 @@ export default function Bep20Contract() {
       <TextCopy
         title={`${t('example')}: 0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3`}
         textProps={{ color: 'secondary', sx: { fontSize: '12px', marginBottom: '4px' } }}
-        iconProps={{ copyText: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', iconProps: { color: 'secondary' } }}
+        iconProps={{
+          copyText: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
+          iconProps: { color: 'secondary' },
+        }}
       />
       {loading && <CircularProgress />}
       {addressTextHelper == '' && (
@@ -124,9 +127,12 @@ export default function Bep20Contract() {
             <ExploreIcon hash={address} config={{ chainId: network.chainId }} />
           </Box>
           <Box>
-            <Typography>{`${t('name')}: ${tokenData.name}, ${t('symbol')}: ${tokenData.symbol}, Decimal: ${
-              tokenData.decimal
-            }, ${t('totalSupply')}: ${numberWithCommas(tokenData.totalSupply, 2)}`}</Typography>
+            <Typography>{`${t('name')}: ${tokenData.name}, ${t('symbol')}: ${
+              tokenData.symbol
+            }, Decimal: ${tokenData.decimal}, ${t('totalSupply')}: ${numberWithCommas(
+              tokenData.totalSupply,
+              2
+            )}`}</Typography>
             <Box display="flex" alignItems="center">
               <Typography>
                 {t('owner')}: {formatAddress(tokenData.owner)}

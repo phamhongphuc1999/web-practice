@@ -19,7 +19,12 @@ export default function PropertiesList({ data }: PropertiesListProps) {
 
   return data ? (
     <Box>
-      <Box sx={{ cursor: 'pointer' }} display="flex" alignItems="center" onClick={() => setOpen(!open)}>
+      <Box
+        sx={{ cursor: 'pointer' }}
+        display="flex"
+        alignItems="center"
+        onClick={() => setOpen(!open)}
+      >
         <Typography>{t('properties')}</Typography>
         <IconButton>
           <ArrowAnimationIcon isTransform={open} />
@@ -30,7 +35,9 @@ export default function PropertiesList({ data }: PropertiesListProps) {
           {data.map((item, index) => {
             let _text = '';
             if (item.example)
-              _text = `${t('name')}: ${item.name}, ${t('type')}: ${item.type}, ${t('example')}: ${item.example}`;
+              _text = `${t('name')}: ${item.name}, ${t('type')}: ${item.type}, ${t('example')}: ${
+                item.example
+              }`;
             else _text = `${t('name')}: ${item.name}, ${t('type')}: ${item.type}`;
 
             return (

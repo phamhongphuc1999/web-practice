@@ -18,7 +18,10 @@ const Block = styled('div')`
 
 export default function BlockLoader({ color, size }: AnimationComponentProps) {
   const baseSize = 0.33333333 * Number(size);
-  const _sx = { backgroundColor: color, animation: `${block} 2s linear infinite normal none running` };
+  const _sx = {
+    backgroundColor: color,
+    animation: `${block} 2s linear infinite normal none running`,
+  };
 
   return (
     <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>

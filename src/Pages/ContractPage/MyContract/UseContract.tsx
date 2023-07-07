@@ -41,7 +41,11 @@ export default function USeContract({ abi, contractAddress, provider }: Props) {
       {inter && contract && (
         <Box mt={1}>
           <Typography>{t('viewFunction')}</Typography>
-          <Button variant={isOpen ? 'outlined' : 'contained'} onClick={() => setIsOpen(!isOpen)} sx={{ my: 1 }}>
+          <Button
+            variant={isOpen ? 'outlined' : 'contained'}
+            onClick={() => setIsOpen(!isOpen)}
+            sx={{ my: 1 }}
+          >
             {isOpen ? t('reset') : t('expandAll')}
           </Button>
           {inter
@@ -52,7 +56,13 @@ export default function USeContract({ abi, contractAddress, provider }: Props) {
 
               if (signature)
                 return (
-                  <ReadFunction key={signature} contract={contract} signature={signature} data={item} isOpen={isOpen} />
+                  <ReadFunction
+                    key={signature}
+                    contract={contract}
+                    signature={signature}
+                    data={item}
+                    isOpen={isOpen}
+                  />
                 );
             })}
         </Box>

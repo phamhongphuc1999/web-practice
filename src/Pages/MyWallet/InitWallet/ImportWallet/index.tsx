@@ -41,7 +41,10 @@ export default function ImportWallet() {
     if (actionController && password.length > 0) {
       dispatch(savePassword(password));
       const vault = await actionController.createNewVaultAndRestore(password, seedPhrase);
-      if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
+      if (vault)
+        setAccounts(
+          vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data))
+        );
     }
   }
 
@@ -101,7 +104,11 @@ export default function ImportWallet() {
         <>
           <TextCopy
             title={`${t('accountAddress')}: ${formatAddress(accounts[0])}`}
-            iconProps={{ copyText: accounts[0], defaultText: t('copyAddress'), successText: t('copiedAddress') }}
+            iconProps={{
+              copyText: accounts[0],
+              defaultText: t('copyAddress'),
+              successText: t('copiedAddress'),
+            }}
           />
           <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => nextClick()}>
             {t('next')}

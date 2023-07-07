@@ -57,7 +57,12 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
 
   return (
     <>
-      <CssBox width={width ?? 'auto'} {...props} ref={rootRef} onClick={(event) => setAnchorEl(event.currentTarget)}>
+      <CssBox
+        width={width ?? 'auto'}
+        {...props}
+        ref={rootRef}
+        onClick={(event) => setAnchorEl(event.currentTarget)}
+      >
         <Typography>{value ?? defaultSelectedItem?.label}</Typography>
         <ArrowAnimationIcon isTransform={open} props={{ fontSize: 'small', sx: { ml: 1 } }} />
       </CssBox>

@@ -19,10 +19,14 @@ type EthErrorsArg<T extends Json> = EthereumErrorOptions<T> | string;
 export const ethErrors = {
   rpc: {
     parse: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.parse, arg),
-    invalidRequest: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.invalidRequest, arg),
-    invalidParams: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.invalidParams, arg),
-    methodNotFound: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.methodNotFound, arg),
-    internal: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.internal, arg),
+    invalidRequest: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.invalidRequest, arg),
+    invalidParams: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.invalidParams, arg),
+    methodNotFound: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.methodNotFound, arg),
+    internal: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.internal, arg),
     server: <T extends Json>(opts: ServerErrorOptions<T>) => {
       if (!opts || typeof opts !== 'object' || Array.isArray(opts)) {
         throw new Error('Ethereum RPC Server errors must provide single object argument.');
@@ -33,7 +37,8 @@ export const ethErrors = {
       }
       return getEthJsonRpcError(code, opts);
     },
-    invalidInput: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.invalidInput, arg),
+    invalidInput: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.invalidInput, arg),
     resourceNotFound: <T extends Json>(arg?: EthErrorsArg<T>) =>
       getEthJsonRpcError(errorCodes.rpc.resourceNotFound, arg),
     resourceUnavailable: <T extends Json>(arg?: EthErrorsArg<T>) =>
@@ -42,7 +47,8 @@ export const ethErrors = {
       getEthJsonRpcError(errorCodes.rpc.transactionRejected, arg),
     methodNotSupported: <T extends Json>(arg?: EthErrorsArg<T>) =>
       getEthJsonRpcError(errorCodes.rpc.methodNotSupported, arg),
-    limitExceeded: <T extends Json>(arg?: EthErrorsArg<T>) => getEthJsonRpcError(errorCodes.rpc.limitExceeded, arg),
+    limitExceeded: <T extends Json>(arg?: EthErrorsArg<T>) =>
+      getEthJsonRpcError(errorCodes.rpc.limitExceeded, arg),
   },
 
   provider: {
@@ -66,23 +72,32 @@ export const ethErrors = {
         throw new Error('Ethereum Provider custom errors must provide single object argument.');
       }
       const { code, message, data } = opts;
-      if (!message || typeof message !== 'string') throw new Error('"message" must be a nonempty string');
+      if (!message || typeof message !== 'string')
+        throw new Error('"message" must be a nonempty string');
       return new EthereumProviderError(code, message, data);
     },
   },
 };
 
-function getEthJsonRpcError<T extends Json>(code: number, arg?: EthErrorsArg<T>): EthereumRpcError<T> {
+function getEthJsonRpcError<T extends Json>(
+  code: number,
+  arg?: EthErrorsArg<T>
+): EthereumRpcError<T> {
   const [message, data] = parseOpts(arg);
   return new EthereumRpcError(code, message || getMessageFromCode(code), data);
 }
 
-function getEthProviderError<T extends Json>(code: number, arg?: EthErrorsArg<T>): EthereumProviderError<T> {
+function getEthProviderError<T extends Json>(
+  code: number,
+  arg?: EthErrorsArg<T>
+): EthereumProviderError<T> {
   const [message, data] = parseOpts(arg);
   return new EthereumProviderError(code, message || getMessageFromCode(code), data);
 }
 
-function parseOpts<T extends Json>(arg?: EthErrorsArg<T>): [message?: string | undefined, data?: T | undefined] {
+function parseOpts<T extends Json>(
+  arg?: EthErrorsArg<T>
+): [message?: string | undefined, data?: T | undefined] {
   if (arg) {
     if (typeof arg === 'string') return [arg];
     else if (typeof arg === 'object' && !Array.isArray(arg)) {

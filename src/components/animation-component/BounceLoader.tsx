@@ -18,7 +18,15 @@ const Inner = styled('div')`
 export default function BounceLoader({ color, size }: AnimationComponentProps) {
   const _sx = { backgroundColor: color, animation: `${bounce} 1.2s linear infinite` };
   return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', perspective: 800 }}>
+    <Box
+      sx={{
+        display: 'inline-block',
+        width: size,
+        height: size,
+        borderRadius: '50%',
+        perspective: 800,
+      }}
+    >
       <Inner sx={[{ width: '100%', height: '100%', opacity: 0.1 }, _sx]} />
       <Inner sx={[_sx, { width: '0%', height: '0%', opacity: 1, animationDirection: 'reverse' }]} />
     </Box>

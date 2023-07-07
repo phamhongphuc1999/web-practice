@@ -51,7 +51,9 @@ export type RequestRpcMiddlewareReturn<Params> = {
   error?: JsonRpcError;
 };
 
-export type RequestRpcMiddleware<Params> = (request: JsonRpcRequest<Params>) => RequestRpcMiddlewareReturn<Params>;
+export type RequestRpcMiddleware<Params> = (
+  request: JsonRpcRequest<Params>
+) => RequestRpcMiddlewareReturn<Params>;
 
 export type ResponseRpcMiddlewareReturn<Params, Result> = {
   request: JsonRpcRequest<Params>;

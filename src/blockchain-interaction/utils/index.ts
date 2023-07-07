@@ -128,6 +128,9 @@ export function ecsign(msgHash: Buffer, privateKey: Buffer, chainId?: bigint): E
   const [signature, recovery] = signSync(msgHash, privateKey, { recovered: true, der: false });
   const r = Buffer.from(signature.slice(0, 32));
   const s = Buffer.from(signature.slice(32, 64));
-  const v = chainId === undefined ? BigInt(recovery + 27) : BigInt(recovery + 35) + BigInt(chainId) * BigInt(2);
+  const v =
+    chainId === undefined
+      ? BigInt(recovery + 27)
+      : BigInt(recovery + 35) + BigInt(chainId) * BigInt(2);
   return { r, s, v };
 }

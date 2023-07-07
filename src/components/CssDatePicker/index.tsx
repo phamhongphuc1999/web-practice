@@ -103,7 +103,9 @@ export default function CssDatePicker({ events, props }: Props) {
                   key={index}
                   onClick={() => onPredefinedClick(index, element.value)}
                 >
-                  <Typography>{t('datePicker.lastDays', { days: element.value.toString() })}</Typography>
+                  <Typography>
+                    {t('datePicker.lastDays', { days: element.value.toString() })}
+                  </Typography>
                 </ListItem>
               );
             })}

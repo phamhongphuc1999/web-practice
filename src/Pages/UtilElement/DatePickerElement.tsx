@@ -34,7 +34,10 @@ export default function DatePickerElement() {
       />
       <Grid container>
         <Grid item sm={6} xs={12}>
-          <CssDatePicker props={{ maxWidth: '450px' }} events={{ onPredefinedClick, onCancelClick, onContinueClick }} />
+          <CssDatePicker
+            props={{ maxWidth: '450px' }}
+            events={{ onPredefinedClick, onCancelClick, onContinueClick }}
+          />
         </Grid>
         <Grid item sm={6} xs={12}>
           <Typography>{`${t('startDate')}: ${start?.toLocaleString() ?? ''}`}</Typography>

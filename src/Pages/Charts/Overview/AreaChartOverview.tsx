@@ -34,7 +34,9 @@ export default function AreaChartOverview({ props }: Props) {
                 yAxis: {
                   gridLineWidth: 0,
                 },
-                ...beautifulTooltip((value) => (value ? numberWithCommas(toFixed(value, 2).toString()) : '')),
+                ...beautifulTooltip((value) =>
+                  value ? numberWithCommas(toFixed(value, 2).toString()) : ''
+                ),
               }}
               series={getBasicLineChart()}
             />

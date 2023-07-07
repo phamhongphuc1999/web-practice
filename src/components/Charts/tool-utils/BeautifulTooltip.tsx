@@ -43,7 +43,8 @@ export function baseTooltip(
 export function powerfulTooltip(
   titleFormatter: (point: TooltipFormatterContextObject) => string,
   valueFormatter: (point: TooltipFormatterContextObject) => string,
-  headerFormatter: (xValue: string | number | null | undefined) => string = (x) => (x ? x.toString() : '')
+  headerFormatter: (xValue: string | number | null | undefined) => string = (x) =>
+    x ? x.toString() : ''
 ) {
   function formatter(this: TooltipFormatterContextObject, _: Tooltip) {
     const points = this.points;
@@ -81,7 +82,11 @@ export function beautifulTooltip(
   isPercent = false,
   dateFormat = '%b %e, %Y, %k:%M'
 ) {
-  return baseTooltip(valueFormatter, isPercent, (date) => `${Highcharts.dateFormat(dateFormat, Number(date))}`);
+  return baseTooltip(
+    valueFormatter,
+    isPercent,
+    (date) => `${Highcharts.dateFormat(dateFormat, Number(date))}`
+  );
 }
 
 export function powerfulDateTooltip(

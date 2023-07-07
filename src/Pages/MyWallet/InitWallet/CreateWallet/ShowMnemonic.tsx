@@ -13,7 +13,12 @@ export default function CreateMnemonic({ setStep, mnemonic }: Props) {
   return (
     <Box>
       <Typography>{`${t('step')} 2: ${t('saveYourMnemonic')}`}</Typography>
-      <Box mt={2} display="flex" justifyContent="space-between" sx={{ border: '1px solid', p: 2, borderRadius: '5px' }}>
+      <Box
+        mt={2}
+        display="flex"
+        justifyContent="space-between"
+        sx={{ border: '1px solid', p: 2, borderRadius: '5px' }}
+      >
         <Typography>{mnemonic}</Typography>
         <InfoIcon info={t('saveMnemonic')} />
       </Box>

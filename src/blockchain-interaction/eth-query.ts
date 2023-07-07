@@ -35,7 +35,8 @@ export default class EthQuery {
     }
     const _options = options || { max: undefined, start: undefined };
     this.max = _options.max || Number.MAX_SAFE_INTEGER;
-    this.idCounter = _options.start !== undefined ? _options.start : Math.floor(Math.random() * this.max);
+    this.idCounter =
+      _options.start !== undefined ? _options.start : Math.floor(Math.random() * this.max);
   }
 
   addRequestMiddleware<Params>(middleware: RequestRpcMiddleware<Params>) {
@@ -98,12 +99,16 @@ export default class EthQuery {
   }
 
   async chainId() {
-    const _chainId = await this._sendAsync<any, string>(this._createPayload(EthRequest.chainId, []));
+    const _chainId = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.chainId, [])
+    );
     return _chainId;
   }
 
   async syncing() {
-    const _syncing = await this._sendAsync<any, SyncingType>(this._createPayload(EthRequest.syncing, []));
+    const _syncing = await this._sendAsync<any, SyncingType>(
+      this._createPayload(EthRequest.syncing, [])
+    );
     return _syncing;
   }
 
@@ -113,12 +118,16 @@ export default class EthQuery {
   }
 
   async accounts() {
-    const data = await this._sendAsync<any, Array<string>>(this._createPayload(EthRequest.accounts, []));
+    const data = await this._sendAsync<any, Array<string>>(
+      this._createPayload(EthRequest.accounts, [])
+    );
     return data;
   }
 
   async blockNumber() {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.blockNumber, []));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.blockNumber, [])
+    );
     return data;
   }
 
@@ -146,12 +155,22 @@ export default class EthQuery {
   }
 
   async maxPriorityFeePerGas() {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.maxPriorityFeePerGas, []));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.maxPriorityFeePerGas, [])
+    );
     return data;
   }
 
-  async feeHistory(blockCount: string, rewardPercentiles: Array<number>, newestBlock: string | BlockTag = 'latest') {
-    const data = this._createPayload(EthRequest.feeHistory, [blockCount, newestBlock, rewardPercentiles]);
+  async feeHistory(
+    blockCount: string,
+    rewardPercentiles: Array<number>,
+    newestBlock: string | BlockTag = 'latest'
+  ) {
+    const data = this._createPayload(EthRequest.feeHistory, [
+      blockCount,
+      newestBlock,
+      rewardPercentiles,
+    ]);
     const result = await this._sendAsync<any, FeeHistoryResult>(data);
     return result;
   }
@@ -163,12 +182,16 @@ export default class EthQuery {
   }
 
   async newBlockFilter() {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.newBlockFilter, []));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.newBlockFilter, [])
+    );
     return data;
   }
 
   async newPendingTransactionFilter() {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.newPendingTransactionFilter, []));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.newPendingTransactionFilter, [])
+    );
     return data;
   }
 
@@ -211,17 +234,23 @@ export default class EthQuery {
   }
 
   async getWork() {
-    const data = await this._sendAsync<any, Array<string>>(this._createPayload(EthRequest.getWork, []));
+    const data = await this._sendAsync<any, Array<string>>(
+      this._createPayload(EthRequest.getWork, [])
+    );
     return data;
   }
 
   async submitWork(nonce: string, hash: string, digest: string) {
-    const data = await this._sendAsync<any, boolean>(this._createPayload(EthRequest.submitWork, [nonce, hash, digest]));
+    const data = await this._sendAsync<any, boolean>(
+      this._createPayload(EthRequest.submitWork, [nonce, hash, digest])
+    );
     return data;
   }
 
   async submitHashrate(hashrate: string, ID: string) {
-    const data = await this._sendAsync<any, boolean>(this._createPayload(EthRequest.submitHashrate, [hashrate, ID]));
+    const data = await this._sendAsync<any, boolean>(
+      this._createPayload(EthRequest.submitHashrate, [hashrate, ID])
+    );
     return data;
   }
 
@@ -234,7 +263,9 @@ export default class EthQuery {
   }
 
   async signTransaction(rawTransaction: RawTransaction) {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.signTransaction, [rawTransaction]));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.signTransaction, [rawTransaction])
+    );
     return data;
   }
 
@@ -265,7 +296,9 @@ export default class EthQuery {
   async getCode(address: string, block: string | BlockTag = 'latest') {
     const _address = getAddress(address);
     if (!_address) throw new Error('EthQuery-invalid address');
-    const data = this._sendAsync<any, string>(this._createPayload(EthRequest.getCode, [_address, block]));
+    const data = this._sendAsync<any, string>(
+      this._createPayload(EthRequest.getCode, [_address, block])
+    );
     return data;
   }
 
@@ -279,7 +312,9 @@ export default class EthQuery {
   }
 
   async sendTransaction(rawTransaction: RawTransaction) {
-    const data = await this._sendAsync<any, string>(this._createPayload(EthRequest.sendTransaction, [rawTransaction]));
+    const data = await this._sendAsync<any, string>(
+      this._createPayload(EthRequest.sendTransaction, [rawTransaction])
+    );
     return data;
   }
 
@@ -297,20 +332,28 @@ export default class EthQuery {
   }
 
   async getTransactionByBlockHashAndIndex(blockHash: string, transactionIndex: string) {
-    const data = this._createPayload(EthRequest.getTransactionByBlockHashAndIndex, [blockHash, transactionIndex]);
+    const data = this._createPayload(EthRequest.getTransactionByBlockHashAndIndex, [
+      blockHash,
+      transactionIndex,
+    ]);
     const result = await this._sendAsync<any, EthTransaction>(data);
     return result;
   }
 
   async getTransactionByBlockNumberAndIndex(blockHash: string, transactionIndex: string) {
-    const data = this._createPayload(EthRequest.getTransactionByBlockNumberAndIndex, [blockHash, transactionIndex]);
+    const data = this._createPayload(EthRequest.getTransactionByBlockNumberAndIndex, [
+      blockHash,
+      transactionIndex,
+    ]);
     const result = await this._sendAsync<any, EthTransaction>(data);
     return result;
   }
 
   async getTransactionReceipt(transactionHash: string) {
     const data = await this._sendAsync<any, TransactionReceipt>(
-      this._createPayload(EthRequest.getTransactionReceipt, [transactionHash]) as JsonRpcRequest<any>
+      this._createPayload(EthRequest.getTransactionReceipt, [
+        transactionHash,
+      ]) as JsonRpcRequest<any>
     );
     return data;
   }

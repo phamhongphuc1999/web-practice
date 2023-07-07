@@ -26,7 +26,13 @@ interface Props {
   props?: BoxProps;
 }
 
-export default function SlideGroupButton({ items, defaultActive = 0, textProps, textActiveProps, props }: Props) {
+export default function SlideGroupButton({
+  items,
+  defaultActive = 0,
+  textProps,
+  textActiveProps,
+  props,
+}: Props) {
   const [active, setActive] = useState(defaultActive);
 
   const { left, right } = useMemo(() => {
@@ -50,7 +56,8 @@ export default function SlideGroupButton({ items, defaultActive = 0, textProps, 
         }}
       />
       {items.map((item, index) => {
-        const textRealProp = active == index ? deepmerge(textProps, textActiveProps) : { ...textProps };
+        const textRealProp =
+          active == index ? deepmerge(textProps, textActiveProps) : { ...textProps };
 
         return (
           <Box

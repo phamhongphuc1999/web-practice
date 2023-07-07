@@ -9,7 +9,10 @@ import {
 } from './type';
 
 export default class JsonRpcMiddleware {
-  static runRequestMiddleware<Params>(request: JsonRpcRequest<Params>, middleware: RequestRpcMiddleware<Params>) {
+  static runRequestMiddleware<Params>(
+    request: JsonRpcRequest<Params>,
+    middleware: RequestRpcMiddleware<Params>
+  ) {
     return middleware(request);
   }
 

@@ -10,7 +10,11 @@ import { BlockResult, TransactionResult } from './components/BlockResult';
 import RpcForm from './components/Form/RpcForm';
 import { AccountsResult, SyncingResult } from './components/OtherResult';
 
-const defaultAddressParam = { name: 'address', type: 'string', example: '0x871DBcE2b9923A35716e7E83ee402B535298538E' };
+const defaultAddressParam = {
+  name: 'address',
+  type: 'string',
+  example: '0x871DBcE2b9923A35716e7E83ee402B535298538E',
+};
 const defaultBlockParam = {
   name: 'block',
   type: 'string or earliest | finalized | safe | latest | pending',
@@ -46,7 +50,8 @@ export default function RpcRequest() {
 
   //eth_getBlockTransactionCountByNumber
   const [blockTransactionCountByNumberParam, setBlockTransactionCountByNumberParam] = useState('');
-  const [blockTransactionCountByNumberResult, setBlockTransactionCountByNumberResult] = useState('');
+  const [blockTransactionCountByNumberResult, setBlockTransactionCountByNumberResult] =
+    useState('');
 
   //eth_getUncleCountByBlockHash
   const [uncleCountByBlockHashParam, setUncleCountByBlockHashParam] = useState('');
@@ -81,7 +86,9 @@ export default function RpcRequest() {
 
   //eth_getTransactionByHash
   const [transactionByHashParam, setTransactionByHashParam] = useState('');
-  const [transactionByHashResult, setTransactionByHashResult] = useState<EthTransaction | null>(null);
+  const [transactionByHashResult, setTransactionByHashResult] = useState<EthTransaction | null>(
+    null
+  );
 
   const ethQuery = useMemo(() => {
     if (rpcUrl) {
@@ -108,21 +115,28 @@ export default function RpcRequest() {
   async function onBlockByNumberClick() {
     const _blockByNumber = blockByNumberParam.split(',') as [string, string];
     if (ethQuery) {
-      const _result = await ethQuery.getBlockByNumber(_blockByNumber[0], Boolean(_blockByNumber[1]));
+      const _result = await ethQuery.getBlockByNumber(
+        _blockByNumber[0],
+        Boolean(_blockByNumber[1])
+      );
       setBlockByNumberResult(_result);
     }
   }
 
   async function onBlockTransactionCountByHashClick() {
     if (ethQuery) {
-      const _result = await ethQuery.getBlockTransactionCountByHash(blockTransactionCountByHashParam);
+      const _result = await ethQuery.getBlockTransactionCountByHash(
+        blockTransactionCountByHashParam
+      );
       if (_result) setBlockTransactionCountByHashResult(_result);
     }
   }
 
   async function onBlockTransactionCountByNumberClick() {
     if (ethQuery) {
-      const _result = await ethQuery.getBlockTransactionCountByNumber(blockTransactionCountByNumberParam);
+      const _result = await ethQuery.getBlockTransactionCountByNumber(
+        blockTransactionCountByNumberParam
+      );
       if (_result) setBlockTransactionCountByNumberResult(_result);
     }
   }
@@ -324,7 +338,10 @@ export default function RpcRequest() {
         <RpcForm
           requestName="eth_blockNumber"
           isSubmitDisable={isDisable}
-          events={{ onSubmitClick: onBlockNumberClick, onDeleteClick: () => setBlockNumberResult('') }}
+          events={{
+            onSubmitClick: onBlockNumberClick,
+            onDeleteClick: () => setBlockNumberResult(''),
+          }}
           result={blockNumberResult}
         />
         <RpcForm
@@ -358,7 +375,9 @@ export default function RpcRequest() {
             onSubmitClick: onTransactionByHashClick,
             onDeleteClick: () => setTransactionByHashResult(null),
           }}
-          Components={{ ResultComponent: <TransactionResult transactionData={transactionByHashResult} /> }}
+          Components={{
+            ResultComponent: <TransactionResult transactionData={transactionByHashResult} />,
+          }}
         />
       </Box>
     </>

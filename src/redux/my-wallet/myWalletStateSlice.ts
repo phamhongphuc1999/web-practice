@@ -49,7 +49,11 @@ export function updateTokens(tokenList: EthToken[]) {
           _token.symbol,
           currentNetwork.provider.rpcUrl
         );
-        if (data) result.push({ baseData: _token, balance: { raw: data.balance.bigNumber.toString(), usd: data.usd } });
+        if (data)
+          result.push({
+            baseData: _token,
+            balance: { raw: data.balance.bigNumber.toString(), usd: data.usd },
+          });
         else result.push({ baseData: _token, balance: { raw: '0', usd: '0' } });
       }
       dispatch(myWalletStateSlice.actions.updateTokensSuccess(result));
@@ -61,13 +65,22 @@ const myWalletStateSlice = createSlice({
   name: 'myWalletStateSlice',
   initialState: initialState,
   reducers: {
-    updateWalletStatus: (state: myWalletStateInitialState, action: PayloadAction<WalletStateStatus>) => {
+    updateWalletStatus: (
+      state: myWalletStateInitialState,
+      action: PayloadAction<WalletStateStatus>
+    ) => {
       state.status = action.payload;
     },
-    updateCurrentNetwork: (state: myWalletStateInitialState, action: PayloadAction<MyWalletChain>) => {
+    updateCurrentNetwork: (
+      state: myWalletStateInitialState,
+      action: PayloadAction<MyWalletChain>
+    ) => {
       state.currentNetwork = action.payload;
     },
-    updateAccounts: (state: myWalletStateInitialState, action: PayloadAction<Partial<AccountState>>) => {
+    updateAccounts: (
+      state: myWalletStateInitialState,
+      action: PayloadAction<Partial<AccountState>>
+    ) => {
       const { accounts, selectedAccount } = action.payload;
       if (accounts && accounts.length > 0) {
         state.account.accounts = accounts;
@@ -79,11 +92,15 @@ const myWalletStateSlice = createSlice({
         state.account = { accounts: [], selectedAccount: '' };
       }
     },
-    updateTokensSuccess: (state: myWalletStateInitialState, action: PayloadAction<TokenState[]>) => {
+    updateTokensSuccess: (
+      state: myWalletStateInitialState,
+      action: PayloadAction<TokenState[]>
+    ) => {
       state.tokens = action.payload;
     },
   },
 });
 
 export default myWalletStateSlice.reducer;
-export const { updateWalletStatus, updateCurrentNetwork, updateAccounts } = myWalletStateSlice.actions;
+export const { updateWalletStatus, updateCurrentNetwork, updateAccounts } =
+  myWalletStateSlice.actions;

@@ -27,8 +27,18 @@ const Ellipsis = styled('div')`
 
 export default function EllipsisLoader({ size, color }: AnimationComponentProps) {
   return (
-    <Box sx={{ position: 'relative', display: 'inline-block', boxSizing: 'border-box', height: size, width: size }}>
-      <Ellipsis sx={{ backgroundColor: color, left: '10%', animation: `${ellipsis1} 0.6s linear infinite` }} />
+    <Box
+      sx={{
+        position: 'relative',
+        display: 'inline-block',
+        boxSizing: 'border-box',
+        height: size,
+        width: size,
+      }}
+    >
+      <Ellipsis
+        sx={{ backgroundColor: color, left: '10%', animation: `${ellipsis1} 0.6s linear infinite` }}
+      />
       <Ellipsis
         sx={{
           backgroundColor: color,
@@ -47,7 +57,9 @@ export default function EllipsisLoader({ size, color }: AnimationComponentProps)
           animation: `${ellipsis3} 0.6s linear infinite`,
         }}
       />
-      <Ellipsis sx={{ backgroundColor: color, left: '70%', animation: `${ellipsis4} 0.6s linear infinite` }} />
+      <Ellipsis
+        sx={{ backgroundColor: color, left: '70%', animation: `${ellipsis4} 0.6s linear infinite` }}
+      />
     </Box>
   );
 }

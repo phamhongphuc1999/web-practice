@@ -34,8 +34,10 @@ export default class Interface {
     for (const item of this.rawAbi) {
       const rawFragment = item as BaseFragment;
       if (rawFragment) {
-        if (rawFragment.type === 'constructor') this.abi.constructor = rawFragment as ConstructorFragment;
-        else if (rawFragment.type === 'function') this.abi.functions.push(rawFragment as FunctionFragment);
+        if (rawFragment.type === 'constructor')
+          this.abi.constructor = rawFragment as ConstructorFragment;
+        else if (rawFragment.type === 'function')
+          this.abi.functions.push(rawFragment as FunctionFragment);
         else if (rawFragment.type === 'event') this.abi.events.push(rawFragment as EventFragment);
         else if (rawFragment.type === 'error') this.abi.errors.push(rawFragment as ErrorFragment);
       }
@@ -45,7 +47,8 @@ export default class Interface {
   getFunctions(filter: Filter = 'all') {
     const functions = this.abi.functions;
     if (filter === 'all') return Object.freeze(functions);
-    else if (filter === 'view') return Object.freeze(functions.filter((func) => func.stateMutability === 'view'));
+    else if (filter === 'view')
+      return Object.freeze(functions.filter((func) => func.stateMutability === 'view'));
     else return Object.freeze(functions.filter((func) => func.stateMutability !== 'view'));
   }
 

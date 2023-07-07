@@ -18,9 +18,18 @@ export default function SuccessCreateWallet({ accounts }: Props) {
       <Typography>{`${t('step')} 4: ${t('successCreateWallet')}`}</Typography>
       <TextCopy
         title={`${t('accountAddress')}: ${formatAddress(accounts[0])}`}
-        iconProps={{ copyText: accounts[0], defaultText: t('copyAddress'), successText: t('copiedAddress') }}
+        iconProps={{
+          copyText: accounts[0],
+          defaultText: t('copyAddress'),
+          successText: t('copiedAddress'),
+        }}
       />
-      <Button variant="contained" type="submit" sx={{ mt: 1 }} onClick={() => dispatch(updateStatus('login'))}>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ mt: 1 }}
+        onClick={() => dispatch(updateStatus('login'))}
+      >
         {t('next')}
       </Button>
     </Box>

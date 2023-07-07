@@ -67,9 +67,23 @@ const RowFade = styled('div')`
 
 export default function FadeLoader({ color, size }: AnimationComponentProps) {
   return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, borderRadius: '50%', perspective: 800 }}>
+    <Box
+      sx={{
+        display: 'inline-block',
+        width: size,
+        height: size,
+        borderRadius: '50%',
+        perspective: 800,
+      }}
+    >
       <ColumnFade
-        sx={{ animation: `${fade1} 1.2s linear infinite`, backgroundColor: color, top: 0, right: '50%', opacity: 0.7 }}
+        sx={{
+          animation: `${fade1} 1.2s linear infinite`,
+          backgroundColor: color,
+          top: 0,
+          right: '50%',
+          opacity: 0.7,
+        }}
       />
       <ColumnFade
         sx={{
@@ -119,7 +133,13 @@ export default function FadeLoader({ color, size }: AnimationComponentProps) {
         }}
       />
       <RowFade
-        sx={{ animation: `${fade7} 1.2s linear infinite`, backgroundColor: color, left: 0, top: '50%', opacity: 0.7 }}
+        sx={{
+          animation: `${fade7} 1.2s linear infinite`,
+          backgroundColor: color,
+          left: 0,
+          top: '50%',
+          opacity: 0.7,
+        }}
       />
       <ColumnFade
         sx={{

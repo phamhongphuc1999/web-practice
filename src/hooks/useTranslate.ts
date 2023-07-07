@@ -40,7 +40,8 @@ export function translate(language: LanguageType, key: string, params?: Params) 
     if (!_check) result = (result as Item)[_key];
     else return key;
   }
-  if (result instanceof String || typeof result === 'string') return replace(result.toString(), params);
+  if (result instanceof String || typeof result === 'string')
+    return replace(result.toString(), params);
   else return key;
 }
 

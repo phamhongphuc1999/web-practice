@@ -36,4 +36,7 @@ export interface EIP1559TransactionType extends EIP2930TransactionType {
   maxFeePerGas?: string;
 }
 
-export type OverviewTransaction = LegacyTransactionType | EIP2930TransactionType | EIP1559TransactionType;
+export type OverviewTransaction =
+  | LegacyTransactionType
+  | EIP2930TransactionType
+  | EIP1559TransactionType;

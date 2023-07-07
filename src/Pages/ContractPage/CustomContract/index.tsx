@@ -41,7 +41,11 @@ export default function CustomContract() {
         config={[t('viewFunction'), t('sendFunction')]}
         onClick={(e, element, active) => setActive(active)}
       />
-      {active == 0 ? <ReadFunction fragment={fragments[0]} /> : <WriteFunction fragment={fragments[1]} />}
+      {active == 0 ? (
+        <ReadFunction fragment={fragments[0]} />
+      ) : (
+        <WriteFunction fragment={fragments[1]} />
+      )}
     </Box>
   );
 }

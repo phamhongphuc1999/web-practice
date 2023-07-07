@@ -13,7 +13,8 @@ export class EthereumRpcError<T extends Json> extends Error {
 
   constructor(code: number, message: string, data?: T) {
     if (!Number.isInteger(code)) throw new Error('"code" must be an integer.');
-    if (!message || typeof message !== 'string') throw new Error('"message" must be a nonempty string.');
+    if (!message || typeof message !== 'string')
+      throw new Error('"message" must be a nonempty string.');
     super(message);
     this.code = code;
     if (data !== undefined) this.data = data;

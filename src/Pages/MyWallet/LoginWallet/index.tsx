@@ -31,15 +31,19 @@ export default function LoginWallet() {
         {tokens.map((token, index) => {
           return (
             <Box key={index} display="flex" alignItems="center">
-              <Typography>{`${numberWithCommas(token.balance.raw)} ${token.baseData.symbol}(${numberWithCommas(
-                token.balance.usd
-              )} USD)`}</Typography>
+              <Typography>{`${numberWithCommas(token.balance.raw)} ${
+                token.baseData.symbol
+              }(${numberWithCommas(token.balance.usd)} USD)`}</Typography>
               {token.baseData.address.length > 0 && <CopyIcon copyText={token.baseData.address} />}
             </Box>
           );
         })}
       </Box>
-      <Button sx={{ mt: 1 }} variant="outlined" onClick={() => history.push(ROUTE.WALLET_ADD_TOKEN)}>
+      <Button
+        sx={{ mt: 1 }}
+        variant="outlined"
+        onClick={() => history.push(ROUTE.WALLET_ADD_TOKEN)}
+      >
         {t('importToken')}
       </Button>
     </>

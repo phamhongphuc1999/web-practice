@@ -10,7 +10,10 @@ import {
 import { AppDispatch } from 'src/redux/store';
 import { actionController, setActionController } from './background';
 
-export function backToInitWallet(dispatch: AppDispatch, history: Pick<RouteComponentProps, 'history'>) {
+export function backToInitWallet(
+  dispatch: AppDispatch,
+  history: Pick<RouteComponentProps, 'history'>
+) {
   dispatch(updateStatus('init'));
   const _check =
     history.history.location.pathname.includes('/my-wallet-utils') ||

@@ -1,4 +1,10 @@
-import { createTheme, CssBaseline, darken, responsiveFontSizes, ThemeProvider } from '@mui/material';
+import {
+  createTheme,
+  CssBaseline,
+  darken,
+  responsiveFontSizes,
+  ThemeProvider,
+} from '@mui/material';
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
 import { THEME_MODE } from 'src/configs/constance';
@@ -80,7 +86,12 @@ function switchTheme(mode: THEME_MODE, darkMode: string, lightMode: string) {
 
 const round = (value: number): number => Math.round(value * 1e5) / 1e5;
 const pxToRem = (size: number): string => `${size / 16}rem`;
-const buildVariant = (fontWeight: number, size: number, lineHeight: number, letterSpacing?: number) => ({
+const buildVariant = (
+  fontWeight: number,
+  size: number,
+  lineHeight: number,
+  letterSpacing?: number
+) => ({
   fontWeight,
   fontSize: pxToRem(size),
   lineHeight: `${round(lineHeight / size)}`,

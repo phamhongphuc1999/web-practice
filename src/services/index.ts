@@ -15,7 +15,8 @@ export function numberWithCommas(x: string, fractionDigits = 3) {
   let out = naturalPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   if (decimalPart) {
     if (!isNumeric(fractionDigits)) out += '.' + decimalPart;
-    else if (decimalPart.length >= fractionDigits) out += '.' + decimalPart.slice(0, fractionDigits);
+    else if (decimalPart.length >= fractionDigits)
+      out += '.' + decimalPart.slice(0, fractionDigits);
     else out += '.' + decimalPart + '0'.repeat(fractionDigits - decimalPart.length);
   }
   return out;

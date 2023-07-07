@@ -15,7 +15,13 @@ interface Props {
   setMnemonic: (mnemonic: string) => void;
 }
 
-export default function CreatePassword({ setStep, password, setPassword, setAccounts, setMnemonic }: Props) {
+export default function CreatePassword({
+  setStep,
+  password,
+  setPassword,
+  setAccounts,
+  setMnemonic,
+}: Props) {
   const dispatch = useAppDispatch();
   const [confirm, setConfirm] = useState(false);
   const { t } = useTranslate();
@@ -25,7 +31,10 @@ export default function CreatePassword({ setStep, password, setPassword, setAcco
     if (actionController && password) {
       dispatch(savePassword(password));
       const vault = await actionController.createNewVaultAndKeychain(password);
-      if (vault) setAccounts(vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data)));
+      if (vault)
+        setAccounts(
+          vault.keyrings.map((item) => item.accounts).reduce((result, data) => result.concat(data))
+        );
       const _mnemonic = await actionController.verifySeedPhrase();
       if (_mnemonic) setMnemonic(_mnemonic);
     }
@@ -47,7 +56,11 @@ export default function CreatePassword({ setStep, password, setPassword, setAcco
       <Typography>{`${t('step')} 1: ${t('createPassword')}`}</Typography>
       <CssForm onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
         <PasswordTextField
-          props={{ placeholder: t('enterPassword'), name: 'password', onChange: (event) => onPasswordChange(event) }}
+          props={{
+            placeholder: t('enterPassword'),
+            name: 'password',
+            onChange: (event) => onPasswordChange(event),
+          }}
         />
         <PasswordTextField
           props={{

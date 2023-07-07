@@ -21,7 +21,12 @@ export default function MyWalletWrapper({ children }: LayoutProps) {
     <Box position="relative" sx={cls.root}>
       <Header />
       <Box sx={cls.container}>
-        <Box display="flex" justifyContent="space-between" flexDirection="column" sx={cls.mainContainer}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="column"
+          sx={cls.mainContainer}
+        >
           <Box>{children}</Box>
         </Box>
       </Box>

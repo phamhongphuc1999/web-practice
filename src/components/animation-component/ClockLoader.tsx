@@ -32,9 +32,24 @@ export default function ClockLoader({ color, size, isReverse }: ClockLoaderProps
         perspective: 800,
       }}
     >
-      <Clock sx={[{ animation: `${rotate} 2s linear infinite`, height: '45%', top: '5%', right: '50%' }, _sx]} />
-      <Clock sx={[{ animation: `${rotate} 10s linear infinite`, height: '35%', top: '15%', right: '50%' }, _sx]} />
-      <Clock sx={[{ animation: `${rotate} 20s linear infinite`, height: '25%', top: '25%', right: '50%' }, _sx]} />
+      <Clock
+        sx={[
+          { animation: `${rotate} 2s linear infinite`, height: '45%', top: '5%', right: '50%' },
+          _sx,
+        ]}
+      />
+      <Clock
+        sx={[
+          { animation: `${rotate} 10s linear infinite`, height: '35%', top: '15%', right: '50%' },
+          _sx,
+        ]}
+      />
+      <Clock
+        sx={[
+          { animation: `${rotate} 20s linear infinite`, height: '25%', top: '25%', right: '50%' },
+          _sx,
+        ]}
+      />
     </Box>
   );
 }

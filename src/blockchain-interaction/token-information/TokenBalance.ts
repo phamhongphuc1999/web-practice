@@ -11,7 +11,9 @@ export default class TokenBalance {
   static async getTokenPrice(tokenSymbol: string, currency = 'USD') {
     const formattedCurrency = currency.toUpperCase();
     const result = await axios
-      .get<{ [key: string]: number }>(`${TokenBalance.PRICE_TOKEN_ROOT}?fsym=${tokenSymbol}&tsyms=${formattedCurrency}`)
+      .get<{ [key: string]: number }>(
+        `${TokenBalance.PRICE_TOKEN_ROOT}?fsym=${tokenSymbol}&tsyms=${formattedCurrency}`
+      )
       .then((res) => res.data);
     return result[formattedCurrency];
   }
@@ -42,7 +44,12 @@ export default class TokenBalance {
     else return await TokenBalance.getNormalBalance(address, tokenAddress, rpcUrl);
   }
 
-  static async getBalanceAndPrice(address: string, tokenAddress: string, tokenSymbol: string, rpcUrl: string) {
+  static async getBalanceAndPrice(
+    address: string,
+    tokenAddress: string,
+    tokenSymbol: string,
+    rpcUrl: string
+  ) {
     const balance = await TokenBalance.getBalance(address, tokenAddress, rpcUrl);
     const usdPrice = await TokenBalance.getTokenPrice(tokenSymbol);
     if (balance) {

@@ -30,22 +30,40 @@ interface GooeyProps extends AnimationComponentProps {
 export default function Gooey({ color, size, opposite }: GooeyProps) {
   return (
     <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>
-      <Circle sx={{ borderColor: color, width: size, height: size, animation: `${rotate} 2s linear infinite` }} />
+      <Circle
+        sx={{
+          borderColor: color,
+          width: size,
+          height: size,
+          animation: `${rotate} 2s linear infinite`,
+        }}
+      />
       <Circle
         sx={{
           borderColor: color,
           width: '75%',
           height: '75%',
-          animation: opposite ? `${oppositeRotate} 2s linear infinite` : `${rotate} 2s linear infinite`,
+          animation: opposite
+            ? `${oppositeRotate} 2s linear infinite`
+            : `${rotate} 2s linear infinite`,
         }}
       />
-      <Circle sx={{ borderColor: color, width: '50%', height: '50%', animation: `${rotate} 2s linear infinite` }} />
+      <Circle
+        sx={{
+          borderColor: color,
+          width: '50%',
+          height: '50%',
+          animation: `${rotate} 2s linear infinite`,
+        }}
+      />
       <Circle
         sx={{
           borderColor: color,
           width: '25%',
           height: '25%',
-          animation: opposite ? `${oppositeRotate} 2s linear infinite` : `${rotate} 2s linear infinite`,
+          animation: opposite
+            ? `${oppositeRotate} 2s linear infinite`
+            : `${rotate} 2s linear infinite`,
         }}
       />
     </Box>
@@ -78,7 +96,9 @@ export function ContainedGooey({ color, size, opposite }: GooeyProps) {
           borderColor: color,
           width: '50%',
           height: '50%',
-          animation: opposite ? `${oppositeRotate} 2s linear infinite` : `${rotate} 2s linear infinite`,
+          animation: opposite
+            ? `${oppositeRotate} 2s linear infinite`
+            : `${rotate} 2s linear infinite`,
         }}
       />
     </Box>
@@ -127,7 +147,9 @@ export function ColorfulGooey({ size, color, opposite }: ColorfulGooeyProps) {
           backgroundColor: color?.[1],
           width: '75%',
           height: '75%',
-          animation: opposite ? `${oppositeRotate} 2s linear infinite` : `${rotate} 2s linear infinite`,
+          animation: opposite
+            ? `${oppositeRotate} 2s linear infinite`
+            : `${rotate} 2s linear infinite`,
         }}
       />
       <Circle
@@ -145,7 +167,9 @@ export function ColorfulGooey({ size, color, opposite }: ColorfulGooeyProps) {
           backgroundColor: color?.[3],
           width: '25%',
           height: '25%',
-          animation: opposite ? `${oppositeRotate} 2s linear infinite` : `${rotate} 2s linear infinite`,
+          animation: opposite
+            ? `${oppositeRotate} 2s linear infinite`
+            : `${rotate} 2s linear infinite`,
         }}
       />
     </Box>
@@ -158,7 +182,10 @@ ColorfulGooey.defaultProps = {
   opposite: false,
 };
 
-export function ColorfulGooeyBox({ iconProps, props }: AnimationComponentBoxProps<ColorfulGooeyProps>) {
+export function ColorfulGooeyBox({
+  iconProps,
+  props,
+}: AnimationComponentBoxProps<ColorfulGooeyProps>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <ColorfulGooey {...iconProps} />

@@ -21,13 +21,19 @@ interface Props {
 }
 
 export default function RpcForm(props: Props) {
-  const { requestName, listProps, placeholder, isSubmitDisable, events, result, Components } = props;
+  const { requestName, listProps, placeholder, isSubmitDisable, events, result, Components } =
+    props;
   const { t } = useTranslate();
   const [open, setOpen] = useState(false);
 
   return (
     <Box sx={{ borderTop: '1px solid', pt: 1, mt: 1 }}>
-      <Box display="flex" justifyContent="space-between" sx={{ cursor: 'pointer' }} onClick={() => setOpen(!open)}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        sx={{ cursor: 'pointer' }}
+        onClick={() => setOpen(!open)}
+      >
         <Typography variant="h4">{requestName}</Typography>
         <ArrowAnimationIcon isTransform={open} />
       </Box>
@@ -52,7 +58,12 @@ export default function RpcForm(props: Props) {
           >
             {t('submit')}
           </Button>
-          <Button sx={{ mt: 1, mr: 1 }} variant="contained" color="error" onClick={() => events.onDeleteClick()}>
+          <Button
+            sx={{ mt: 1, mr: 1 }}
+            variant="contained"
+            color="error"
+            onClick={() => events.onDeleteClick()}
+          >
             {t('delete')}
           </Button>
           {result && result.length > 0 && <Typography>{`${t('result')}: ${result}`}</Typography>}

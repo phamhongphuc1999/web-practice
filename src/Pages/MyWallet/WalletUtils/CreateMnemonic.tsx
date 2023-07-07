@@ -68,7 +68,11 @@ export default function CreateMnemonic() {
           <Box mt={2} display="flex" alignItems="center">
             <Typography variant="subtitle1">{`${t('accountAddress')}: `}</Typography>
             <Typography sx={{ marginLeft: 0.5 }}>{formatAddress(firstAccount, 5)}</Typography>
-            <CopyIcon copyText={firstAccount} defaultText={t('copyAddress')} successText={t('copiedAddress')} />
+            <CopyIcon
+              copyText={firstAccount}
+              defaultText={t('copyAddress')}
+              successText={t('copiedAddress')}
+            />
             <Button variant="outlined" onClick={() => onExportAccountClick()}>
               Export account
             </Button>
@@ -76,7 +80,11 @@ export default function CreateMnemonic() {
           {privateKey && (
             <Box mt={2} display="flex" alignItems="center">
               <TextField value={privateKey} fullWidth multiline />
-              <CopyIcon copyText={privateKey} defaultText={t('copyPrivateKey')} successText={t('copiedPrivateKey')} />
+              <CopyIcon
+                copyText={privateKey}
+                defaultText={t('copyPrivateKey')}
+                successText={t('copiedPrivateKey')}
+              />
             </Box>
           )}
         </>

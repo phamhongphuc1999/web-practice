@@ -15,7 +15,8 @@ export default class TokenController {
       let localTokens = StorageController.getTokens() as EthToken[];
       if (!localTokens) localTokens = [];
       const _check = localTokens.find((token) => token.address === '');
-      if (!_check) this.tokens.push({ ...currentNetwork.nativeCurrency, address: '', isNative: true });
+      if (!_check)
+        this.tokens.push({ ...currentNetwork.nativeCurrency, address: '', isNative: true });
       this.tokens = this.tokens.concat(localTokens);
     }
   }

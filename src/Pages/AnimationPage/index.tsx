@@ -75,14 +75,23 @@ const ComponentList = [
   { label: 'Fade Loader', icon: <FadeLoaderBox props={{ mt: 2 }} /> },
   { label: 'Clock Loader', icon: <ClockLoaderBox props={{ mt: 2 }} /> },
   { label: 'Grid Circle Loader', icon: <GridLoaderBox props={{ mt: 2 }} /> },
-  { label: 'Grid Square Loader', icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'block' }} /> },
-  { label: 'Gird Gooey Loader', icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'gooey' }} /> },
+  {
+    label: 'Grid Square Loader',
+    icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'block' }} />,
+  },
+  {
+    label: 'Gird Gooey Loader',
+    icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'gooey' }} />,
+  },
   { label: 'Puff Loader', icon: <PuffLoaderBox props={{ mt: 2 }} /> },
   { label: 'Gooey', icon: <GooeyBox props={{ mt: 2 }} iconProps={{ opposite: false }} /> },
   { label: 'Contained gooey', icon: <GooeyBox type="contained" props={{ mt: 2 }} /> },
   { label: 'Colorful gooey', icon: <ColorfulGooeyBox props={{ mt: 2 }} /> },
   { label: 'Opposite gooey', icon: <GooeyBox props={{ mt: 2 }} iconProps={{ opposite: true }} /> },
-  { label: 'Opposite colorful gooey', icon: <ColorfulGooeyBox props={{ mt: 2 }} iconProps={{ opposite: true }} /> },
+  {
+    label: 'Opposite colorful gooey',
+    icon: <ColorfulGooeyBox props={{ mt: 2 }} iconProps={{ opposite: true }} />,
+  },
   { label: 'Blocks', icon: <BlockLoaderBox props={{ mt: 2 }} /> },
 ];
 

@@ -13,7 +13,8 @@ export default function ContractPage() {
   const history = useHistory();
   const { t } = useTranslate();
 
-  const defaultActive = action == t('custom') ? 1 : action == undefined || action == 'bep20' ? 0 : 2;
+  const defaultActive =
+    action == t('custom') ? 1 : action == undefined || action == 'bep20' ? 0 : 2;
 
   function onClick(event: React.MouseEvent, element: string, index: number) {
     let _action = 'bep20';
@@ -25,7 +26,11 @@ export default function ContractPage() {
     <>
       <CssBreadcrumbs configs={[{ label: t('contract') }]} props={{ mb: 2 }} />
       <Box display="flex" alignItems="center">
-        <CssGroupButton config={['Bep20', t('custom')]} defaultActive={defaultActive} onClick={onClick} />
+        <CssGroupButton
+          config={['Bep20', t('custom')]}
+          defaultActive={defaultActive}
+          onClick={onClick}
+        />
         <Button variant="outlined" sx={{ ml: 2 }} onClick={() => history.push(ROUTE.MY_CONTRACT)}>
           {t('myContract')}
         </Button>

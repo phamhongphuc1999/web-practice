@@ -1,4 +1,15 @@
-import { alpha, Box, Drawer, List, ListItem, styled, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  alpha,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  styled,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { Layout } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
@@ -56,7 +67,11 @@ export default function Sidebar() {
           return (
             <ListItem key={index} sx={{ paddingY: 0 }}>
               <CssNavLink to={element.link} sx={cls.navLink}>
-                <Box display="flex" alignItems="center" justifyContent={mdUp ? 'flex-start' : 'center'}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent={mdUp ? 'flex-start' : 'center'}
+                >
                   <Icon fontSize="small" sx={{ marginRight: '0.5rem' }} />
                   {mdUp && <Typography>{t(element.label)}</Typography>}
                 </Box>

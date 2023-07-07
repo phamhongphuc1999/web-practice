@@ -46,7 +46,11 @@ export default class HDKeyring extends BaseKeyring {
 
   private _mnemonicToUint8Array(mnemonic: string | Buffer | Array<number> | object) {
     const mnemonicData = mnemonic;
-    if (typeof mnemonicData === 'string' || Buffer.isBuffer(mnemonicData) || Array.isArray(mnemonicData)) {
+    if (
+      typeof mnemonicData === 'string' ||
+      Buffer.isBuffer(mnemonicData) ||
+      Array.isArray(mnemonicData)
+    ) {
       let mnemonicAsString = mnemonicData;
       if (Array.isArray(mnemonicData)) mnemonicAsString = Buffer.from(mnemonicData).toString();
       else if (Buffer.isBuffer(mnemonicData)) mnemonicAsString = mnemonicData.toString();
@@ -58,7 +62,12 @@ export default class HDKeyring extends BaseKeyring {
   }
 
   serialize() {
-    if (this.mnemonic) return { mnemonic: this.mnemonic, numberOfAccounts: this.wallets.length, hdPath: this.hdPath };
+    if (this.mnemonic)
+      return {
+        mnemonic: this.mnemonic,
+        numberOfAccounts: this.wallets.length,
+        hdPath: this.hdPath,
+      };
     return undefined;
   }
 
