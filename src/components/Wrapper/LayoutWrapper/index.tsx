@@ -1,6 +1,6 @@
 import { Theme, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
-import ScrollToTop from '../../ScrollToTop';
+import ScrollToTop from 'src/components/ScrollToTop';
 import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';
 import Footer from './Footer';
 import Header from './Header';

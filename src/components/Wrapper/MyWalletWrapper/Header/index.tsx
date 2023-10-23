@@ -2,10 +2,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { alpha, Box, Button, IconButton } from '@mui/material';
 import { useHistory, useLocation } from 'react-router-dom';
 import ThemeButton from 'src/components/Button/ThemeButton';
+import NetworkSelector from 'src/components/Selector/NetworkSelector';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
-import NetworkSelector from '../../../Selector/NetworkSelector';
 
 export default function Header() {
   const history = useHistory();

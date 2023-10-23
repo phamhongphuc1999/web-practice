@@ -7,7 +7,7 @@ import {
   MyWalletChainType,
   NetworkConfigOptions,
 } from 'src/configs/wallet-network-config';
-import { NetworkOptionType } from '../../wallet';
+import { NetworkOptionType } from 'src/wallet-object/wallet';
 import StorageController from '../storage-controller';
 import TokenController from './token-controller';
 
