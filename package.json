@@ -19,6 +19,8 @@
     "@mui/material": "^5.10.10",
     "@mui/utils": "^5.10.9",
     "@noble/secp256k1": "1.6.3",
+    "@peter-present/eth-query": "^1.0.11",
+    "@peter-present/user-operation-type": "^1.0.42",
     "@reduxjs/toolkit": "^1.8.6",
     "@scure/bip39": "^1.1.0",
     "await-semaphore": "^0.1.3",
@@ -28,6 +30,7 @@
     "ethers": "^5.7.2",
     "highcharts": "10.1.0",
     "highcharts-react-official": "3.1.0",
+    "lodash.isequal": "^4.5.0",
     "notistack": "^2.0.8",
     "react": "^18.2.0",
     "react-app-rewired": "^2.0.0",
@@ -51,6 +54,7 @@
     "@commitlint/config-conventional": "^16.2.1",
     "@types/bn.js": "^5.1.1",
     "@types/jest": "^27.4.1",
+    "@types/lodash.isequal": "^4.5.7",
     "@types/node": "^18.7.21",
     "@types/react": "^18.0.21",
     "@types/react-copy-to-clipboard": "^5.0.4",
@@ -89,7 +93,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "eslint": "eslint . --ext .ts,.tsx"
   },
   "eslintConfig": {
     "extends": [

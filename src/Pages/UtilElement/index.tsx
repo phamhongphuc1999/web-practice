@@ -7,6 +7,7 @@ import ThemeButton from 'src/components/Button/ThemeButton';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
+import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
@@ -87,6 +88,17 @@ export default function UtilElement() {
         >
           Carousel
         </Button>
+      </Box>
+      <Box mt={2}>
+        <ScrollPaper
+          props={{ border: '1px solid red', borderRadius: '8px', padding: 1, height: '200px' }}
+        >
+          {Array(100)
+            .fill(0)
+            .map((_, index) => (
+              <Typography key={index}>{`line${index + 1}`}</Typography>
+            ))}
+        </ScrollPaper>
       </Box>
     </>
   );

@@ -1,9 +1,9 @@
+import { EthQuery } from '@peter-present/eth-query';
 import axios from 'axios';
 import BigNumber from 'bignumber.js';
 import StandardTokenAbi from 'src/assets/abis/StandardTokenAbi.json';
 import { BIG_NUMBER } from '../constant';
 import Contract from '../contract-handler/contract';
-import EthQuery from '../eth-query';
 
 export default class TokenBalance {
   static readonly PRICE_TOKEN_ROOT = 'https://min-api.cryptocompare.com/data/price';

@@ -4,14 +4,11 @@ This package base on some libraries: [eth-json-rpc-middleware](https://github.co
 
 ### Structure
 
-| File                                             | Description                                    |
-| :----------------------------------------------- | :--------------------------------------------- |
-| [eth-query](./eth-query.tsx)                     | Send RPC requests                              |
-| [json-rpc-engine](./json-rpc-engine.tsx)         | Manage middleware and connection to RPC server |
-| [json-rpc-middleware](./json-rpc-middleware.tsx) | Static class used for handle middleware        |
-| [contract-handler](./contract-handler/)          | Handle contract flow                           |
-| [eth-rpc-errors](./eth-rpc-errors/)              | Defined ether error                            |
-| [token-information](./token-information/)        | Get token information                          |
+| File                                                                               | Description           |
+| :--------------------------------------------------------------------------------- | :-------------------- |
+| [@peter-present/eth-query](https://www.npmjs.com/package/@peter-present/eth-query) | Send RPC requests     |
+| [contract-handler](./contract-handler/)                                            | Handle contract flow  |
+| [token-information](./token-information/)                                          | Get token information |
 
 ### Test
 

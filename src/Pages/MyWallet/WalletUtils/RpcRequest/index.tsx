@@ -1,7 +1,7 @@
 import { Box, TextField, Typography } from '@mui/material';
+import { EthQuery } from '@peter-present/eth-query';
+import { EthBlock, EthTransaction, SyncingType } from '@peter-present/user-operation-type';
 import { useMemo, useState } from 'react';
-import EthQuery from 'src/blockchain-interaction/eth-query';
-import { EthBlock, EthTransaction, SyncingType } from 'src/blockchain-interaction/type';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import { ROUTE } from 'src/configs/constance';

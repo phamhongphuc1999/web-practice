@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
+import { EthQuery } from '@peter-present/eth-query';
 import { useEffect, useState } from 'react';
-import EthQuery from 'src/blockchain-interaction/eth-query';
 import { TransactionSignReturn } from 'src/blockchain-interaction/transaction-module/type';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CopyIcon from 'src/components/Icons/CopyIcon';
@@ -35,10 +35,10 @@ export default function SignTransaction() {
 
   async function sendRawTransaction() {
     const ethQuery = new EthQuery('https://data-seed-prebsc-1-s1.binance.org:8545/');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const transactionHash = await ethQuery.sendRawTransaction(
       '0xf865808609184e72a000825498949a85752b25cb26a1e42f8e095588e4647859bc36808026a0359142194243eb92d481c8072e9e4fca68e46cbc729600e59501f563236fc78ca04256e2f6fbe84f8e308121aadc3303cf7fa3add4d2d02aa3bfc4386648908121'
     );
+    console.error(transactionHash);
   }
 
   return (

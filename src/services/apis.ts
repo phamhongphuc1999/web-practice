@@ -1,22 +1,44 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
+export const defaultHeader = { Accept: 'application/json', 'Content-Type': 'application/json' };
+
 function responseBody<T>(res: AxiosResponse<T>) {
   return res.data;
 }
 
-export function createApi(apiRoot: string, apiConfig: AxiosRequestConfig = {}) {
-  function get<T = any>(url: string, config?: AxiosRequestConfig) {
-    return axios.get(`${apiRoot}${url}`, { ...config, ...apiConfig }).then<T>(responseBody);
+export default class ApiQuery {
+  root: string;
+  config: AxiosRequestConfig;
+
+  constructor(rootUrl: string, config?: AxiosRequestConfig) {
+    this.root = rootUrl;
+    this.config = config
+      ? { ...config, ...{ headers: defaultHeader } }
+      : { headers: defaultHeader };
   }
-  function post<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
-    return axios.post(`${apiRoot}${url}`, data, { ...config, ...apiConfig }).then<T>(responseBody);
+
+  async get<T = any>(url: string, config?: AxiosRequestConfig) {
+    return await axios
+      .get(`${this.root}${url}`, { ...config, ...this.config })
+      .then<T>(responseBody);
   }
-  function put<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
-    return axios.put(`${apiRoot}${url}`, data, { ...config, ...apiConfig }).then<T>(responseBody);
+
+  async post<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
+    return await axios
+      .post(`${this.root}${url}`, data, { ...config, ...this.config })
+      .then<T>(responseBody);
   }
-  function del<T = any>(url: string, config?: AxiosRequestConfig) {
-    return axios.delete(`${apiRoot}${url}`, { ...config, ...apiConfig }).then<T>(responseBody);
+
+  async put<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
+    return await axios
+      .put(`${this.root}${url}`, data, { ...config, ...this.config })
+      .then<T>(responseBody);
   }
-  return { get, post, put, del };
+
+  async del<T = any>(url: string, config?: AxiosRequestConfig) {
+    return await axios
+      .delete(`${this.root}${url}`, { ...config, ...this.config })
+      .then<T>(responseBody);
+  }
 }

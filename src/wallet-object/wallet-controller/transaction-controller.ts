@@ -1,4 +1,4 @@
-import EthQuery from 'src/blockchain-interaction/eth-query';
+import { EthQuery } from '@peter-present/eth-query';
 import BaseTransaction from 'src/blockchain-interaction/transaction-module/BaseTransaction';
 import { OverviewTransaction } from 'src/blockchain-interaction/transaction-module/type';
 import { MyWalletChain } from 'src/configs/wallet-network-config';

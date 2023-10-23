@@ -1,4 +1,3 @@
-import EthQuery from 'src/blockchain-interaction/eth-query';
 import { NETWORK_TYPES } from 'src/blockchain-interaction/type';
 import { CHAIN_ALIASES } from 'src/configs/networkConfig';
 import {
@@ -10,6 +9,7 @@ import {
 import { NetworkOptionType } from 'src/wallet-object/wallet';
 import StorageController from '../storage-controller';
 import TokenController from './token-controller';
+import { EthQuery } from '@peter-present/eth-query';
 
 export default class NetworkController {
   options: NetworkOptionType | undefined;

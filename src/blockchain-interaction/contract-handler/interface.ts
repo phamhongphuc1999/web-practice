@@ -1,4 +1,4 @@
-import { Json } from '../type';
+import { Json } from '@peter-present/user-operation-type';
 import { getId } from '../utils';
 import {
   BaseFragment,

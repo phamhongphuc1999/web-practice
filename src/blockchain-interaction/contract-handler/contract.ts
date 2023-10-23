@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AbiCoder } from '@ethersproject/abi';
+import { EthQuery } from '@peter-present/eth-query';
+import { Json, RawTransaction } from '@peter-present/user-operation-type';
 import BigNumber from 'bignumber.js';
-import EthQuery from '../eth-query';
-import { Json, RawTransaction } from '../type';
 import Interface from './interface';
 
 export default class Contract {

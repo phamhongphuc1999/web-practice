@@ -1,6 +1,6 @@
 import { TransactionFactory } from '@ethereumjs/tx';
 import { keccak256 } from '@ethersproject/keccak256';
-import EthQuery from '../eth-query';
+import { EthQuery } from '@peter-present/eth-query';
 import { stripHexPrefix } from '../utils';
 import { OverviewTransaction, TransactionSignReturn } from './type';
 
