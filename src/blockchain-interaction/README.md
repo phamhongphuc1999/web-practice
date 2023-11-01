@@ -4,11 +4,10 @@ This package base on some libraries: [eth-json-rpc-middleware](https://github.co
 
 ### Structure
 
-| File                                                                               | Description           |
-| :--------------------------------------------------------------------------------- | :-------------------- |
-| [@peter-present/eth-query](https://www.npmjs.com/package/@peter-present/eth-query) | Send RPC requests     |
-| [contract-handler](./contract-handler/)                                            | Handle contract flow  |
-| [token-information](./token-information/)                                          | Get token information |
+| File                                      | Description           |
+| :---------------------------------------- | :-------------------- |
+| [contract-handler](./contract-handler/)   | Handle contract flow  |
+| [token-information](./token-information/) | Get token information |
 
 ### Test
 

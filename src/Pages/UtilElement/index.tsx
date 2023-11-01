@@ -56,7 +56,6 @@ export default function UtilElement() {
       <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography>{text}</Typography>
         <SlideGroupButton
-          defaultActive={0}
           props={{
             sx: {
               transform: 'skewX(-20deg)',
@@ -66,19 +65,20 @@ export default function UtilElement() {
               ml: 1,
             },
           }}
-          textProps={{
-            sx: { transform: 'skewX(20deg)', fontSize: '15px', fontWeight: 600, color: '#22CBFB' },
-          }}
-          textActiveProps={{ sx: { color: '#FFFFFF' } }}
           items={[
-            { name: '1', onClick: () => setText('1') },
-            { name: '2', onClick: () => setText('2') },
-            { name: '3', onClick: () => setText('3') },
-            { name: '4', onClick: () => setText('4') },
-            { name: '5', onClick: () => setText('5') },
-            { name: '6', onClick: () => setText('6') },
-            { name: '7', onClick: () => setText('7') },
+            { id: '1', title: '1' },
+            { id: '2', title: '2' },
+            { id: '3', title: '3' },
+            { id: '4', title: '4' },
+            { id: '5', title: '5' },
+            { id: '6', title: '6' },
+            { id: '7', title: '7' },
+            { id: '8', title: '8' },
+            { id: '9', title: '9' },
+            { id: '10', title: '10' },
           ]}
+          selectedId={text}
+          events={{ onClick: (item) => setText(item.title) }}
         />
         <Button
           variant="outlined"

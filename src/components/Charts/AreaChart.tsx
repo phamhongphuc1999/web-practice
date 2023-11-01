@@ -2,7 +2,7 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
-import { COLOR_ARRAY } from 'src/configs/styleConfig';
+import { COLOR_ARRAY } from 'src/configs/constance';
 import { useAppSelector } from 'src/redux/hook';
 import { hexToRgb } from 'src/services';
 

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Box, BoxProps, SxProps, Theme } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { mergeSx } from 'src/services/merge-sx';
 
 function useStyle() {
   return {
@@ -51,7 +52,7 @@ export default function Carousel({ items, currentIndex, events, itemProps, props
   }, [len, currentIndex, events]);
 
   return (
-    <Box {...props} sx={[cls.root, props?.sx] as SxProps<Theme>} ref={ref}>
+    <Box {...props} sx={mergeSx([cls.root, props?.sx])} ref={ref}>
       {items.map((item, index) => {
         const xSlide = (index - currentIndex) * 100;
 
@@ -59,13 +60,11 @@ export default function Carousel({ items, currentIndex, events, itemProps, props
           <Box
             key={index}
             {...itemProps}
-            sx={
-              [
-                { width: width, transform: `translateX(${xSlide}%)` },
-                cls.item,
-                itemProps?.sx,
-              ] as SxProps<Theme>
-            }
+            sx={mergeSx([
+              { width: width, transform: `translateX(${xSlide}%)` },
+              cls.item,
+              itemProps?.sx,
+            ])}
           >
             {item}
           </Box>

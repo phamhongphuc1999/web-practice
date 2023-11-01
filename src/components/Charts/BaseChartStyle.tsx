@@ -1,6 +1,6 @@
 import { alpha, Theme, useTheme } from '@mui/material';
 import Highcharts from 'highcharts';
-import { COLOR_ARRAY } from 'src/configs/styleConfig';
+import { COLOR_ARRAY } from 'src/configs/constance';
 
 const defaultOption = (theme: Theme) => ({
   credits: {

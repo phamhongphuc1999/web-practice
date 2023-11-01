@@ -1,10 +1,10 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
-import useTranslate from 'src/hooks/useTranslate';
-import { Item } from '../components';
 import AreaChart from 'src/components/Charts/AreaChart';
-import { CHART_ROUTE } from 'src/configs/constance';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
+import { CHART_ROUTE } from 'src/configs/constance';
+import useTranslate from 'src/hooks/useTranslate';
 import { numberWithCommas, toFixed } from 'src/services';
+import { Item } from '../components';
 import { getBasicLineChart } from '../config';
 
 interface Props {
