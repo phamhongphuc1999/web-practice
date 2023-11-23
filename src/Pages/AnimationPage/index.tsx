@@ -123,8 +123,16 @@ const ComponentList = [
     label: 'Opposite colorful gooey',
     icon: <ColorfulGooeyBox props={{ mt: 2 }} iconProps={{ opposite: true, size: '150px' }} />,
   },
-  { label: 'Blocks', icon: <BlockLoaderBox props={{ mt: 2 }} /> },
   { label: 'Ring', icon: <CircleRingBox props={{ mt: 2 }} iconProps={{ size: '150px' }} /> },
+  {
+    label: 'Square Ring',
+    icon: <CircleRingBox props={{ mt: 2 }} iconProps={{ size: '150px', mode: 'square' }} />,
+  },
+  {
+    label: 'Dynamic Ring',
+    icon: <CircleRingBox props={{ mt: 2 }} iconProps={{ size: '150px', mode: 'dynamic' }} />,
+  },
+  { label: 'Blocks', icon: <BlockLoaderBox props={{ mt: 2 }} /> },
 ];
 
 export default function AnimationPage() {

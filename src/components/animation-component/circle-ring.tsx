@@ -3,51 +3,84 @@ import { Box, BoxProps, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 import { mergeSx } from 'src/services/merge-sx';
 
-const ratio = 0.05;
-
-const ring = keyframes`
-  0% { top: 0; }
-  100% { top: 95%; }
+function rotateFn(beginDeg: number) {
+  return keyframes`
+  0% { transform: translateX(50%) rotate(${beginDeg}deg); }
+  100% { transform: translateX(50%) rotate(${beginDeg + 360}deg); }
 `;
-const Ring = styled(Box)`
-  position: absolute;
-  box-sizing: border-box;
-  border-radius: 50%;
-`;
-
-interface Props {
-  iconProps?: BoxProps;
-  props?: BoxProps;
 }
 
-function Line({ iconProps, props }: Props) {
+const rotateItem = keyframes`
+  0% { transform: translateX(50%) rotate(360deg); }
+  100% { transform: translateX(50%) rotate(0deg); }
+`;
+
+const rotateItem1 = keyframes`
+  0% { border-radius: 50%; border-style: dashed; transform: translateX(50%) rotate(360deg); }
+  50% { border-radius: 0%; border-style: solid; transform: translateX(50%) rotate(180deg); }
+  100% { border-radius: 50%; border-style: dashed; transform: translateX(50%) rotate(0deg); }
+`;
+
+const config = [
+  { rotate: rotateFn(0), deg: 0 },
+  { rotate: rotateFn(45), deg: 45 },
+  { rotate: rotateFn(90), deg: 90 },
+  { rotate: rotateFn(135), deg: 135 },
+  { rotate: rotateFn(180), deg: 180 },
+  { rotate: rotateFn(225), deg: 225 },
+  { rotate: rotateFn(-90), deg: -90 },
+  { rotate: rotateFn(-45), deg: -45 },
+];
+
+const Wheel = styled(Box)(() => ({
+  position: 'absolute',
+  boxSizing: 'border-box',
+  borderWidth: '1px',
+  borderStyle: 'dashed',
+}));
+
+interface Props extends AnimationComponentProps {
+  mode?: 'normal' | 'square' | 'dynamic';
+}
+
+function Line({ size, color, mode, props }: Props & { props?: BoxProps }) {
   return (
     <Box
       {...props}
       sx={mergeSx([
-        { position: 'absolute', boxSizing: 'border-box', width: '1px', transformOrigin: 'bottom' },
+        {
+          position: 'absolute',
+          boxSizing: 'border-box',
+          transformOrigin: 'bottom',
+          right: '50%',
+          top: `calc(${size} / 6)`,
+          height: `calc(${size} / 3)`,
+        },
         props?.sx,
       ])}
     >
       <Box sx={{ position: 'relative', height: '100%' }}>
-        <Ring
-          {...iconProps}
-          sx={mergeSx([
+        <Wheel
+          sx={[
             {
-              position: 'absolute',
+              borderColor: color,
               right: '50%',
-              transform: 'translateX(50%)',
-              animation: `${ring} 2s linear infinite alternate`,
+              top: '-50%',
+              width: `calc(${size} / 3)`,
+              height: `calc(${size} / 3)`,
             },
-            iconProps?.sx,
-          ])}
+            mode == 'square' ? { borderStyle: 'solid' } : { borderRadius: '50%' },
+            mode == 'dynamic'
+              ? { animation: `${rotateItem1} 1.5s linear infinite` }
+              : { animation: `${rotateItem} 1.5s linear infinite` },
+          ]}
         />
       </Box>
     </Box>
   );
 }
 
-export default function CircleRing({ size, color }: AnimationComponentProps) {
+export default function CircleRing({ size, color, mode }: Props) {
   return (
     <Box
       sx={{
@@ -60,114 +93,22 @@ export default function CircleRing({ size, color }: AnimationComponentProps) {
         perspective: 800,
       }}
     >
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '-1.25s',
-          },
-        }}
-        props={{
-          sx: { height: `calc(${size} - 2px)`, top: 0, right: '50%', transform: 'translateX(50%)' },
-        }}
-      />
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '-1s',
-          },
-        }}
-        props={{
-          sx: {
-            height: `calc(${size} - 2px)`,
-            top: 0,
-            right: '50%',
-            transform: 'translateX(50%) rotate(30deg)',
-            transformOrigin: 'center',
-          },
-        }}
-      />
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '-0.75s',
-          },
-        }}
-        props={{
-          sx: {
-            height: `calc(${size} - 2px)`,
-            top: 0,
-            right: '50%',
-            transform: 'translateX(50%) rotate(60deg)',
-            transformOrigin: 'center',
-          },
-        }}
-      />
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '-0.5s',
-          },
-        }}
-        props={{
-          sx: {
-            height: `calc(${size} - 2px)`,
-            top: 0,
-            right: '50%',
-            transform: 'translateX(50%) rotate(90deg)',
-            transformOrigin: 'center',
-          },
-        }}
-      />
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '-0.25s',
-          },
-        }}
-        props={{
-          sx: {
-            height: `calc(${size} - 2px)`,
-            top: 0,
-            right: '50%',
-            transform: 'translateX(50%) rotate(120deg)',
-            transformOrigin: 'center',
-          },
-        }}
-      />
-      <Line
-        iconProps={{
-          sx: {
-            backgroundColor: color,
-            width: `calc(${ratio} * ${size})`,
-            height: `calc(${ratio} * ${size})`,
-            animationDelay: '0s',
-          },
-        }}
-        props={{
-          sx: {
-            height: `calc(${size} - 2px)`,
-            top: 0,
-            right: '50%',
-            transform: 'translateX(50%) rotate(150deg)',
-            transformOrigin: 'center',
-          },
-        }}
-      />
+      {config.map((item, index) => {
+        return (
+          <Line
+            key={index}
+            size={size}
+            color={color}
+            mode={mode}
+            props={{
+              sx: {
+                animation: `${item.rotate} 4.5s linear infinite`,
+                transform: `translateX(50%) rotate(${item.deg}deg)`,
+              },
+            }}
+          />
+        );
+      })}
     </Box>
   );
 }
@@ -177,7 +118,7 @@ CircleRing.defaultProps = {
   color: 'primary.main',
 };
 
-export function CircleRingBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function CircleRingBox({ iconProps, props }: AnimationComponentBoxProps<Props>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <CircleRing {...iconProps} />
