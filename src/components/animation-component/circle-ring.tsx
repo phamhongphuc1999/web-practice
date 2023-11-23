@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+import { Keyframes } from '@emotion/react';
 import { Box, BoxProps, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 import { mergeSx } from 'src/services/merge-sx';
 
-function rotateFn(beginDeg: number) {
+function getRotate(beginDeg: number) {
   return keyframes`
   0% { transform: translateX(50%) rotate(${beginDeg}deg); }
   100% { transform: translateX(50%) rotate(${beginDeg + 360}deg); }
@@ -16,21 +17,24 @@ const rotateItem = keyframes`
 `;
 
 const rotateItem1 = keyframes`
-  0% { border-radius: 50%; border-style: dashed; transform: translateX(50%) rotate(360deg); }
-  50% { border-radius: 0%; border-style: solid; transform: translateX(50%) rotate(180deg); }
-  100% { border-radius: 50%; border-style: dashed; transform: translateX(50%) rotate(0deg); }
+  0% { border-radius: 50%; transform: translateX(50%) rotate(360deg); }
+  50% { border-radius: 0%; transform: translateX(50%) rotate(180deg); }
+  100% { border-radius: 50%; transform: translateX(50%) rotate(0deg); }
 `;
 
-const config = [
-  { rotate: rotateFn(0), deg: 0 },
-  { rotate: rotateFn(45), deg: 45 },
-  { rotate: rotateFn(90), deg: 90 },
-  { rotate: rotateFn(135), deg: 135 },
-  { rotate: rotateFn(180), deg: 180 },
-  { rotate: rotateFn(225), deg: 225 },
-  { rotate: rotateFn(-90), deg: -90 },
-  { rotate: rotateFn(-45), deg: -45 },
-];
+function getConfig(numberOfItems: number) {
+  if (numberOfItems <= 0) numberOfItems = 1;
+  const offset = 360 / numberOfItems;
+  const result: Array<{ rotate: Keyframes; deg: number }> = [{ rotate: getRotate(0), deg: 0 }];
+  let counter = 0;
+  let deg = offset;
+  while (counter < numberOfItems) {
+    result.push({ rotate: getRotate(deg), deg });
+    deg += offset;
+    counter++;
+  }
+  return result;
+}
 
 const Wheel = styled(Box)(() => ({
   position: 'absolute',
@@ -41,9 +45,10 @@ const Wheel = styled(Box)(() => ({
 
 interface Props extends AnimationComponentProps {
   mode?: 'normal' | 'square' | 'dynamic';
+  numberOfItems?: number;
 }
 
-function Line({ size, color, mode, props }: Props & { props?: BoxProps }) {
+function Line({ size, color, mode, props }: Omit<Props, 'numberOfItems'> & { props?: BoxProps }) {
   return (
     <Box
       {...props}
@@ -71,7 +76,7 @@ function Line({ size, color, mode, props }: Props & { props?: BoxProps }) {
             },
             mode == 'square' ? { borderStyle: 'solid' } : { borderRadius: '50%' },
             mode == 'dynamic'
-              ? { animation: `${rotateItem1} 1.5s linear infinite` }
+              ? { animation: `${rotateItem1} 1.5s linear infinite`, borderStyle: 'solid' }
               : { animation: `${rotateItem} 1.5s linear infinite` },
           ]}
         />
@@ -80,7 +85,7 @@ function Line({ size, color, mode, props }: Props & { props?: BoxProps }) {
   );
 }
 
-export default function CircleRing({ size, color, mode }: Props) {
+export default function CircleRing({ size, color, mode, numberOfItems = 4 }: Props) {
   return (
     <Box
       sx={{
@@ -93,7 +98,7 @@ export default function CircleRing({ size, color, mode }: Props) {
         perspective: 800,
       }}
     >
-      {config.map((item, index) => {
+      {getConfig(numberOfItems).map((item, index) => {
         return (
           <Line
             key={index}

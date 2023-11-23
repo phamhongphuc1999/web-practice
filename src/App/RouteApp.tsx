@@ -1,6 +1,9 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { CHART_ROUTE, DOCS_ROUTE, ROUTE } from 'src/configs/constance';
 import AnimationPage from 'src/Pages/AnimationPage';
+import CirclePage from 'src/Pages/AnimationPage/circle-page';
+import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
+import GridPage from 'src/Pages/AnimationPage/grid-page';
 import BasicLineChart from 'src/Pages/Charts/BasicLineChart';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
@@ -50,6 +53,15 @@ export default function RouteApp() {
       </Route>
       <Route path={`${ROUTE.ANIMATION}/:page`} exact={true}>
         <AnimationPage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-circle/:page`} exact={true}>
+        <CirclePage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-gooey/:page`} exact={true}>
+        <GooeyPage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-grid/:page`} exact={true}>
+        <GridPage />
       </Route>
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.METAMASK} exact={true}>
