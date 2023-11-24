@@ -26,7 +26,7 @@ function getConfig(numberOfItems: number) {
   if (numberOfItems <= 0) numberOfItems = 1;
   const offset = 360 / numberOfItems;
   const result: Array<{ rotate: Keyframes; deg: number }> = [{ rotate: getRotate(0), deg: 0 }];
-  let counter = 0;
+  let counter = 1;
   let deg = offset;
   while (counter < numberOfItems) {
     result.push({ rotate: getRotate(deg), deg });

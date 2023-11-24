@@ -1,10 +1,11 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { CHART_ROUTE, DOCS_ROUTE, ROUTE } from 'src/configs/constance';
+import { DOCS_ROUTE, ROUTE } from 'src/configs/constance';
 import AnimationPage from 'src/Pages/AnimationPage';
+import BouncePage from 'src/Pages/AnimationPage/bounce-page';
 import CirclePage from 'src/Pages/AnimationPage/circle-page';
+import ClockPage from 'src/Pages/AnimationPage/clock-page';
 import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
-import BasicLineChart from 'src/Pages/Charts/BasicLineChart';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
@@ -63,6 +64,12 @@ export default function RouteApp() {
       <Route path={`${ROUTE.ANIMATION}-grid/:page`} exact={true}>
         <GridPage />
       </Route>
+      <Route path={`${ROUTE.ANIMATION}-bounce/:page`} exact={true}>
+        <BouncePage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-clock/:page`} exact={true}>
+        <ClockPage />
+      </Route>
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.METAMASK} exact={true}>
         <MetamaskPage />
@@ -75,9 +82,6 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.CHART} exact={true}>
         <Overview />
-      </Route>
-      <Route path={CHART_ROUTE.BASIC_LINE_CHART} exact={true}>
-        <BasicLineChart />
       </Route>
       <Route path={ROUTE.UTILS} exact={true}>
         <UtilElement />

@@ -55,12 +55,6 @@ export const ROUTE = {
   WALLET_SIGN_TRANSACTION: '/my-wallet-utils/sign-transaction',
 };
 
-export const CHART_ROUTE = {
-  BASIC_LINE_CHART: '/chart/basic-line-chart',
-  BASIC_AREA_CHART: '/chart/basic-area-chart',
-  BASIC_BAR_CHART: '/chart/basic-bar-chart',
-};
-
 export const DOCS_ROUTE = {
   MAIN_PAGE: '/docs',
   GAS_PRICE: '/docs/gas-and-price',

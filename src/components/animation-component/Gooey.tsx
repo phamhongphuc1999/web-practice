@@ -1,16 +1,11 @@
-import { Box, keyframes, styled } from '@mui/material';
+import { Box, Theme, keyframes, styled } from '@mui/material';
+import { SystemStyleObject } from '@mui/system';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const rotate = keyframes`
   0% { border-radius: 50%; transform: translate(-50%, -50%) rotate(0deg); }
   50% { border-radius: 5%; transform: translate(-50%, -50%) rotate(180deg); }
   100% { border-radius: 50%; transform:translate(-50%, -50%) rotate(360deg); }
-`;
-
-const oppositeRotate = keyframes`
-  0% { border-radius: 50%; transform: translate(-50%, -50%) rotate(0deg); }
-  50% { border-radius: 5%; transform: translate(-50%, -50%) rotate(-180deg); }
-  100% { border-radius: 50%; transform:translate(-50%, -50%) rotate(-360deg); }
 `;
 
 const Circle = styled('div')`
@@ -23,49 +18,55 @@ const Circle = styled('div')`
   transform: translate(-50%, -50%) rotate(0deg);
 `;
 
-interface GooeyProps extends AnimationComponentProps {
+function getStyle(
+  size: string | number | undefined,
+  min: number,
+  numberOfItems: number,
+  opposite?: boolean
+) {
+  if (numberOfItems <= 1) numberOfItems = 2;
+  if (min <= 0 || min > 0.25) min = 0.25;
+  const offset = (1 - min) / (numberOfItems - 1);
+  const result: Array<SystemStyleObject<Theme>> = [
+    { width: size, height: size, animation: `${rotate} 2s linear infinite` },
+  ];
+  let counter = 1;
+  let _size = 1 - offset;
+  while (counter < numberOfItems) {
+    result.push({
+      width: `calc(${size} * ${_size})`,
+      height: `calc(${size} * ${_size})`,
+      animationDirection: opposite && counter % 2 == 1 ? 'reverse' : 'normal',
+    });
+    _size -= offset;
+    counter++;
+  }
+  return result;
+}
+
+interface Props extends AnimationComponentProps {
+  numberOfItems?: number;
+  min?: number;
   opposite?: boolean;
 }
 
-export default function Gooey({ color, size, opposite }: GooeyProps) {
+export default function Gooey({
+  color,
+  size,
+  numberOfItems = 4,
+  min = 0.25,
+  opposite = false,
+}: Props) {
   return (
     <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>
-      <Circle
-        sx={{
-          borderColor: color,
-          width: size,
-          height: size,
-          animation: `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color,
-          width: '75%',
-          height: '75%',
-          animation: opposite
-            ? `${oppositeRotate} 2s linear infinite`
-            : `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color,
-          width: '50%',
-          height: '50%',
-          animation: `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color,
-          width: '25%',
-          height: '25%',
-          animation: opposite
-            ? `${oppositeRotate} 2s linear infinite`
-            : `${rotate} 2s linear infinite`,
-        }}
-      />
+      {getStyle(size, min, numberOfItems, opposite).map((data, index) => {
+        return (
+          <Circle
+            key={index}
+            sx={[{ borderColor: color, animation: `${rotate} 2s linear infinite` }, data]}
+          />
+        );
+      })}
     </Box>
   );
 }
@@ -73,122 +74,14 @@ export default function Gooey({ color, size, opposite }: GooeyProps) {
 Gooey.defaultProps = {
   size: 80,
   color: 'primary.main',
+  numberOfItems: 4,
   opposite: false,
 };
 
-export function ContainedGooey({ color, size, opposite }: GooeyProps) {
-  const borderSize = Number(size);
-
-  return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>
-      <Circle
-        sx={{
-          border: `${borderSize * 0.125}px solid`,
-          borderColor: color,
-          width: size,
-          height: size,
-          animation: `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          border: `${borderSize * 0.125}px solid`,
-          borderColor: color,
-          width: '50%',
-          height: '50%',
-          animation: opposite
-            ? `${oppositeRotate} 2s linear infinite`
-            : `${rotate} 2s linear infinite`,
-        }}
-      />
-    </Box>
-  );
-}
-
-ContainedGooey.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-  opposite: false,
-};
-
-interface GooeyBoxProps extends AnimationComponentBoxProps<GooeyProps> {
-  type?: 'normal' | 'contained';
-}
-
-export function GooeyBox({ type, iconProps, props }: GooeyBoxProps) {
+export function GooeyBox({ iconProps, props }: AnimationComponentBoxProps<Props>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
-      {type == 'contained' ? <ContainedGooey {...iconProps} /> : <Gooey {...iconProps} />}
-    </Box>
-  );
-}
-
-interface ColorfulGooeyProps {
-  size?: number | string;
-  color?: [string, string, string, string];
-  opposite?: boolean;
-}
-
-export function ColorfulGooey({ size, color, opposite }: ColorfulGooeyProps) {
-  return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>
-      <Circle
-        sx={{
-          borderColor: color?.[0],
-          backgroundColor: color?.[0],
-          width: size,
-          height: size,
-          animation: `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color?.[1],
-          backgroundColor: color?.[1],
-          width: '75%',
-          height: '75%',
-          animation: opposite
-            ? `${oppositeRotate} 2s linear infinite`
-            : `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color?.[2],
-          backgroundColor: color?.[2],
-          width: '50%',
-          height: '50%',
-          animation: `${rotate} 2s linear infinite`,
-        }}
-      />
-      <Circle
-        sx={{
-          borderColor: color?.[3],
-          backgroundColor: color?.[3],
-          width: '25%',
-          height: '25%',
-          animation: opposite
-            ? `${oppositeRotate} 2s linear infinite`
-            : `${rotate} 2s linear infinite`,
-        }}
-      />
-    </Box>
-  );
-}
-
-ColorfulGooey.defaultProps = {
-  size: 80,
-  color: ['primary.main', 'secondary.main', 'error.main', 'success.main'],
-  opposite: false,
-};
-
-export function ColorfulGooeyBox({
-  iconProps,
-  props,
-}: AnimationComponentBoxProps<ColorfulGooeyProps>) {
-  return (
-    <Box display="flex" justifyContent="center" {...props}>
-      <ColorfulGooey {...iconProps} />
+      <Gooey {...iconProps} />
     </Box>
   );
 }

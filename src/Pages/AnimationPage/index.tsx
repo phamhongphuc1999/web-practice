@@ -12,6 +12,7 @@ import { GooeyBox } from 'src/components/animation-component/Gooey';
 import { GridLoaderBox } from 'src/components/animation-component/GridLoader';
 import { PuffLoaderBox } from 'src/components/animation-component/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/animation-component/ZCircleLoader';
+import { CircleDotBox } from 'src/components/animation-component/circle-dot-loader';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import { ROUTE } from 'src/configs/constance';
 import usePagination from 'src/hooks/usePagination';
@@ -39,6 +40,15 @@ export default function AnimationPage() {
     {
       label: 'Bounce Loader',
       icon: <BounceLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      componentEnd: (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`${ROUTE.ANIMATION}-bounce/${page}`)}
+        >
+          see more
+        </Button>
+      ),
     },
     {
       label: 'Fade Loader',
@@ -47,6 +57,15 @@ export default function AnimationPage() {
     {
       label: 'Clock Loader',
       icon: <ClockLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      componentEnd: (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`${ROUTE.ANIMATION}-clock/${page}`)}
+        >
+          see more
+        </Button>
+      ),
     },
     {
       label: 'Grid Circle Loader',
@@ -92,6 +111,10 @@ export default function AnimationPage() {
       ),
     },
     { label: 'Blocks', icon: <BlockLoaderBox props={{ mt: 2 }} /> },
+    {
+      label: 'Circle Dot Loader',
+      icon: <CircleDotBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+    },
   ];
   const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 6 });
 

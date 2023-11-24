@@ -1,10 +1,17 @@
 import Highcharts, { Tooltip, TooltipFormatterContextObject } from 'highcharts';
 import { toFixed } from 'src/services';
 
+type XType = string | number | null | undefined;
+type XFormatFn = (xValue: XType) => string;
+
+function xDefaultFormat(xValue: XType) {
+  return xValue != undefined && xValue != null ? xValue.toString() : '';
+}
+
 export function baseTooltip(
-  valueFormatter: (value: number | null | undefined) => string,
+  valueFormatter: (value: XType) => string,
   isPercent = false,
-  xFormat: (xValue: string | number | null | undefined) => string = (x) => (x ? x.toString() : '')
+  xFormat: XFormatFn = xDefaultFormat
 ) {
   function formatter(this: TooltipFormatterContextObject, _: Tooltip) {
     const points = this.points;
@@ -43,8 +50,7 @@ export function baseTooltip(
 export function powerfulTooltip(
   titleFormatter: (point: TooltipFormatterContextObject) => string,
   valueFormatter: (point: TooltipFormatterContextObject) => string,
-  headerFormatter: (xValue: string | number | null | undefined) => string = (x) =>
-    x ? x.toString() : ''
+  headerFormatter: XFormatFn = xDefaultFormat
 ) {
   function formatter(this: TooltipFormatterContextObject, _: Tooltip) {
     const points = this.points;
@@ -78,7 +84,7 @@ export function powerfulTooltip(
 }
 
 export function beautifulTooltip(
-  valueFormatter: (value: number | null | undefined) => string,
+  valueFormatter: (value: XType) => string,
   isPercent = false,
   dateFormat = '%b %e, %Y, %k:%M'
 ) {

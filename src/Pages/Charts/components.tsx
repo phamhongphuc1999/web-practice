@@ -18,7 +18,7 @@ function useStyle() {
 
 interface ItemProps {
   label: string;
-  detailLink: string;
+  detailLink?: string;
   Chart: ReactElement;
   props?: GridProps;
 }
@@ -32,11 +32,13 @@ export function Item({ label, detailLink, Chart, props }: ItemProps) {
       <Box sx={cls.itemBox}>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
-          <Tooltip title={t('openDetail')}>
-            <Link style={{ marginLeft: 1 }} to={detailLink}>
-              <LaunchOutlinedIcon sx={{ fontSize: '16px' }} />
-            </Link>
-          </Tooltip>
+          {detailLink && (
+            <Tooltip title={t('openDetail')}>
+              <Link style={{ marginLeft: 1 }} to={detailLink}>
+                <LaunchOutlinedIcon sx={{ fontSize: '16px' }} />
+              </Link>
+            </Tooltip>
+          )}
         </Box>
         <Box mt={5} mb={2}>
           {Chart}

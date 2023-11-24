@@ -1,6 +1,5 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
 import BarChart from 'src/components/Charts/BarChart';
-import { CHART_ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { Item } from '../components';
 import { BarChartCategories, BarChartData } from '../config';
@@ -20,7 +19,6 @@ export default function BarChartOverview({ props }: Props) {
         <Item
           props={{ sm: 12, xs: 12 }}
           label={t('basicBarChart')}
-          detailLink={CHART_ROUTE.BASIC_BAR_CHART}
           Chart={
             <BarChart
               categories={BarChartCategories}

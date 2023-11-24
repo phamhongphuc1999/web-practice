@@ -2,14 +2,14 @@ import { Box, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
 
 const rotate = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: translateX(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) rotate(360deg); }
 `;
 
 const Clock = styled('div')`
   position: absolute;
   box-sizing: border-box;
-  width: 1px;
+  width: 0.5px;
   transform-origin: bottom;
 `;
 

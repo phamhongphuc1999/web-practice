@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const isNumeric = (num: number) => {
   return !isNaN(num) && !isNaN(parseFloat(num.toString()));
 };
 
-export function toFixed(num: number, fractionDigits = 0): number {
+export function toFixed(num: number | string, fractionDigits = 0): number {
   num = Number(num);
   if (num == 0) return Number(num.toFixed(fractionDigits));
   const fixedNum = Number(num.toFixed(fractionDigits));
@@ -22,7 +23,6 @@ export function numberWithCommas(x: string, fractionDigits = 3) {
   return out;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function decimalAdjust(type: 'ceil' | 'round' | 'floor', value: any, exp?: any): any {
   if (typeof exp === 'undefined' || +exp === 0) return Math[type](value);
   value = +value;

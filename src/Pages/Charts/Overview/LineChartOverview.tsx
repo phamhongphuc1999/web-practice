@@ -1,7 +1,6 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
 import LineChart from 'src/components/Charts/LineChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
-import { CHART_ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
 import { numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
@@ -21,7 +20,6 @@ export default function LineChartOverview({ props }: Props) {
       <Grid container spacing={2}>
         <Item
           label={t('basicLineChart')}
-          detailLink={CHART_ROUTE.BASIC_LINE_CHART}
           Chart={
             <LineChart
               option={{
