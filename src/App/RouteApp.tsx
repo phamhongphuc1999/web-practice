@@ -20,6 +20,7 @@ import BrowserPassword from 'src/Pages/MyWallet/WalletUtils/BrowserPassword';
 import CreateMnemonic from 'src/Pages/MyWallet/WalletUtils/CreateMnemonic';
 import RpcRequest from 'src/Pages/MyWallet/WalletUtils/RpcRequest';
 import SignTransaction from 'src/Pages/MyWallet/WalletUtils/RpcRequest/components/Form/SignTransaction';
+import ThreePage from 'src/Pages/three-page';
 import UtilElement from 'src/Pages/UtilElement';
 import CarouselElement from 'src/Pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
@@ -69,6 +70,9 @@ export default function RouteApp() {
       </Route>
       <Route path={`${ROUTE.ANIMATION}-clock/:page`} exact={true}>
         <ClockPage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-3d`} exact={true}>
+        <ThreePage />
       </Route>
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.METAMASK} exact={true}>

@@ -129,6 +129,13 @@ export default function AnimationPage() {
   return (
     <>
       <CssBreadcrumbs configs={[{ label: t('animation') }]} props={{ mb: 2 }} />
+      <Button
+        variant="contained"
+        sx={{ width: '5rem' }}
+        onClick={() => history.push(`${ROUTE.ANIMATION}-3d`)}
+      >
+        3D
+      </Button>
       <Box display="flex" flexWrap="wrap">
         {data.map((item, index) => {
           return (

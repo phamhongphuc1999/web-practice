@@ -88,5 +88,5 @@ const defaultOption = (theme: Theme) => ({
 export default function BaseChartStyle() {
   const theme = useTheme();
   Highcharts.setOptions(defaultOption(theme));
-  return null;
+  return <></>;
 }
