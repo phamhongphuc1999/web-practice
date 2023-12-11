@@ -22,14 +22,19 @@ export default function DonutChart({ series, option }: Props) {
           pie: {
             allowPointSelect: true,
             cursor: 'pointer',
+            borderRadius: 0,
+            borderWidth: 0,
             dataLabels: {
               enabled: false,
             },
             showInLegend: true,
-            innerSize: '90%',
+            innerSize: '85%',
           },
         },
         series: series,
+        legend: {
+          enabled: false,
+        },
       },
       option
     );

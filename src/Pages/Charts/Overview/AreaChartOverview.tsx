@@ -1,10 +1,12 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
+import { useCallback } from 'react';
 import AreaChart from 'src/components/Charts/AreaChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
 import useTranslate from 'src/hooks/useTranslate';
-import { numberWithCommas, toFixed } from 'src/services';
+import { useAppSelector } from 'src/redux/hook';
+import { hexToRgb, numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
-import { getBasicLineChart } from '../config';
+import { getBasicLineChart, getThresholdLineChart } from '../config';
 
 interface Props {
   props?: BoxProps;
@@ -12,6 +14,31 @@ interface Props {
 
 export default function AreaChartOverview({ props }: Props) {
   const { t } = useTranslate();
+  const themeMode = useAppSelector((state) => state.userConfigSlice.theme.mode);
+
+  const zoneFn = useCallback(
+    (color: string) => {
+      const rgb = hexToRgb(color);
+      const beginOpacity = themeMode === 'dark' ? 1 : 0.7;
+      let shadowColor = color;
+      let beginColor = color;
+      if (rgb) {
+        shadowColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1)`;
+        beginColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${beginOpacity})`;
+      }
+      return {
+        color: beginColor,
+        fillColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+          stops: [
+            [0, shadowColor],
+            [1, shadowColor],
+          ],
+        },
+      };
+    },
+    [themeMode]
+  );
 
   return (
     <Box {...props}>
@@ -37,6 +64,39 @@ export default function AreaChartOverview({ props }: Props) {
                 ),
               }}
               series={getBasicLineChart()}
+            />
+          }
+        />
+        <Item
+          label={t('thresholdAreaChart')}
+          Chart={
+            <AreaChart
+              option={{
+                chart: {
+                  height: 225,
+                },
+                plotOptions: {
+                  area: {
+                    threshold: 500000,
+                  },
+                },
+                xAxis: {
+                  type: 'datetime',
+                },
+                yAxis: {
+                  gridLineWidth: 0,
+                  labels: {
+                    enabled: true,
+                  },
+                },
+                ...beautifulTooltip((value) =>
+                  value ? numberWithCommas(toFixed(value, 2).toString()) : ''
+                ),
+              }}
+              series={getThresholdLineChart({
+                zones: [{ value: 500000, ...zoneFn('#764C79') }, { ...zoneFn('#009FDB') }],
+              })}
+              metadata={{ makeSeries: false }}
             />
           }
         />

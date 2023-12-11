@@ -2,10 +2,9 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
-import { LineSeriesType } from 'src/global';
 
 interface Props {
-  series: Array<LineSeriesType>;
+  series: any;
   option?: any;
 }
 

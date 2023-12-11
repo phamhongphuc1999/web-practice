@@ -2,11 +2,6 @@ import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers/lib/utils';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 
-export type LineSeriesType = {
-  name: string;
-  data: Array<{ x: string | number; y: string | number }>;
-};
-
 export type enqueueSnackbarFunc = (
   message: SnackbarMessage,
   options?: OptionsObject | undefined

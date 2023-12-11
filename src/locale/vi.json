@@ -37,6 +37,7 @@
   "basicLineChart": "Đồ thị đường cơ bản",
   "areaCharts": "Đồ thị miền",
   "basicAreaChart": "Đồ thị miền cơ bản",
+  "thresholdAreaChart": "Đồ thị miền có ngưỡng",
   "barCharts": "Đồ thị cột",
   "basicBarChart": "Đồ thị cột cơ bản",
   "createMnemonic": "Tạo mnemonic",

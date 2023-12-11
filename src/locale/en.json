@@ -37,6 +37,7 @@
   "basicLineChart": "Basic line chart",
   "areaCharts": "Area charts",
   "basicAreaChart": "Basic area chart",
+  "thresholdAreaChart": "Threshold area chart",
   "barCharts": "Bar charts",
   "basicBarChart": "Basic bar chart",
   "createMnemonic": "Create your mnemonic",

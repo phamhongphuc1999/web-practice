@@ -3,19 +3,22 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
 import { COLOR_ARRAY } from 'src/configs/constance';
-import { LineSeriesType } from 'src/global';
 import { useAppSelector } from 'src/redux/hook';
 import { hexToRgb } from 'src/services';
 
 interface Props {
-  series: Array<LineSeriesType>;
+  series: any;
   option?: any;
+  metadata?: {
+    makeSeries?: boolean;
+  };
 }
 
-export default function AreaChart({ series, option }: Props) {
+export default function AreaChart({ series, option, metadata }: Props) {
+  const isMakeSeries = metadata?.makeSeries == undefined ? true : metadata.makeSeries;
   const themeMode = useAppSelector((state) => state.userConfigSlice.theme.mode);
 
-  function makeSeries(series: Array<LineSeriesType>) {
+  function makeSeries(series: any) {
     const finalSeries = [];
     let index = 0;
     for (const item of series) {
@@ -89,7 +92,7 @@ export default function AreaChart({ series, option }: Props) {
             threshold: null,
           },
         },
-        series: makeSeries(series),
+        series: isMakeSeries ? makeSeries(series) : series,
         tooltip: {
           enabled: true,
           shared: true,
