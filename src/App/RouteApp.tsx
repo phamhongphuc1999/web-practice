@@ -4,6 +4,7 @@ import AnimationPage from 'src/Pages/AnimationPage';
 import BouncePage from 'src/Pages/AnimationPage/bounce-page';
 import CirclePage from 'src/Pages/AnimationPage/circle-page';
 import ClockPage from 'src/Pages/AnimationPage/clock-page';
+import DropPage from 'src/Pages/AnimationPage/drop-page';
 import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
 import Overview from 'src/Pages/Charts/Overview';
@@ -70,6 +71,9 @@ export default function RouteApp() {
       </Route>
       <Route path={`${ROUTE.ANIMATION}-clock/:page`} exact={true}>
         <ClockPage />
+      </Route>
+      <Route path={`${ROUTE.ANIMATION}-drop-animation/:page`} exact={true}>
+        <DropPage />
       </Route>
       <Route path={`${ROUTE.ANIMATION}-3d`} exact={true}>
         <ThreePage />

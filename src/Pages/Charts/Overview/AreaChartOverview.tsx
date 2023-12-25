@@ -94,7 +94,11 @@ export default function AreaChartOverview({ props }: Props) {
                 ),
               }}
               series={getThresholdLineChart({
-                zones: [{ value: 500000, ...zoneFn('#764C79') }, { ...zoneFn('#009FDB') }],
+                zones: [
+                  { value: 400000, ...zoneFn('#764C79') },
+                  { value: 500000, ...zoneFn('#009FDB') },
+                  { ...zoneFn('#eb8881') },
+                ],
               })}
               metadata={{ makeSeries: false }}
             />

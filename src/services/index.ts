@@ -55,3 +55,15 @@ export function hexToRgb(hex: string) {
 export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function random(min: number, max: number) {
+  if (max < 0) max = 1;
+  if (min < 0) min = 0;
+  if (min >= max) {
+    min = 0;
+    max = 1;
+  }
+  const seed = Math.random();
+  const range = max - min;
+  return seed * range + min;
+}

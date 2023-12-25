@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import SlideGroupButton from 'src/components/Button/SlideGroupButton';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import Carousel from 'src/components/carousel';
 import { ROUTE } from 'src/configs/constance';
@@ -29,6 +30,7 @@ function Item({ number }: Props) {
 
 export default function CarouselElement() {
   const { t } = useTranslate();
+  const [mode, setMode] = useState('normal');
   const [location, setLocation] = useState(0);
   const [isArrow, setIsArrow] = useState(true);
   const [isInterval, setIsInterval] = useState(false);
@@ -47,6 +49,15 @@ export default function CarouselElement() {
         props={{ mb: 2 }}
       />
       <Typography>{location + 1}</Typography>
+      <SlideGroupButton
+        items={[
+          { id: 'normal', title: 'normal' },
+          { id: 'linear', title: 'linear' },
+          { id: 'circle', title: 'circle' },
+        ]}
+        selectedId={mode}
+        events={{ onClick: (item) => setMode(item.id) }}
+      />
       <FormGroup onSubmit={onSubmit}>
         <FormControlLabel
           control={<Switch checked={isArrow} onClick={() => setIsArrow(!isArrow)} />}
@@ -54,7 +65,7 @@ export default function CarouselElement() {
         />
         <FormControlLabel
           control={<Switch checked={isInterval} onClick={() => setIsInterval(!isInterval)} />}
-          label="Is Arrow"
+          label="Is Auto"
         />
         <TextField
           value={interval}
@@ -71,11 +82,15 @@ export default function CarouselElement() {
       <Carousel
         props={{ sx: { height: '100px' } }}
         location={location}
-        setLocation={setLocation}
+        events={{ setLocation }}
         items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, _) => (
           <Item key={item} number={item} />
         ))}
-        metadata={{ isArrow, interval: isInterval ? realInterval : undefined }}
+        metadata={{
+          isArrow,
+          interval: isInterval ? realInterval : undefined,
+          mode: mode as 'normal' | 'circle' | 'linear',
+        }}
       />
     </Container>
   );

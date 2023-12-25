@@ -2,6 +2,7 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
+import BaseChart from './base-chart';
 
 export type BAR_DIRECTION = 'horizontal' | 'vertical';
 
@@ -60,5 +61,9 @@ export default function BarChart({ series, option, categories, type = 'vertical'
     );
   }, [categories, series, option, type]);
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <BaseChart>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </BaseChart>
+  );
 }

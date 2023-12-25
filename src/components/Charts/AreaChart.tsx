@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { COLOR_ARRAY } from 'src/configs/constance';
 import { useAppSelector } from 'src/redux/hook';
 import { hexToRgb } from 'src/services';
+import BaseChart from './base-chart';
 
 interface Props {
   series: any;
@@ -108,5 +109,9 @@ export default function AreaChart({ series, option, metadata }: Props) {
     );
   }, [series, option]);
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <BaseChart>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </BaseChart>
+  );
 }

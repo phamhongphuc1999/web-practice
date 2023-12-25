@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsMore from 'highcharts/highcharts-more';
 import { useMemo } from 'react';
+import BaseChart from './base-chart';
 
 HighchartsMore(Highcharts);
 
@@ -52,5 +53,9 @@ export default function RadarChart({ series, option, categories }: Props) {
     );
   }, [series, option, categories]);
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <BaseChart>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </BaseChart>
+  );
 }

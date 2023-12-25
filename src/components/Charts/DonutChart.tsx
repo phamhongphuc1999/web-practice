@@ -2,6 +2,7 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
+import BaseChart from './base-chart';
 
 interface Props {
   series: any;
@@ -40,5 +41,9 @@ export default function DonutChart({ series, option }: Props) {
     );
   }, [option, series]);
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <BaseChart>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </BaseChart>
+  );
 }

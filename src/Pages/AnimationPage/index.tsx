@@ -18,6 +18,7 @@ import { ROUTE } from 'src/configs/constance';
 import usePagination from 'src/hooks/usePagination';
 import useTranslate from 'src/hooks/useTranslate';
 import Item from './item';
+import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 
 export default function AnimationPage() {
   const { t } = useTranslate();
@@ -114,6 +115,19 @@ export default function AnimationPage() {
     {
       label: 'Circle Dot Loader',
       icon: <CircleDotBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+    },
+    {
+      label: 'Drop Animation',
+      icon: <PieceDropAnimation props={{ sx: { width: '100%', height: '150px' } }} />,
+      componentEnd: (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`${ROUTE.ANIMATION}-drop-animation/${page}`)}
+        >
+          see more
+        </Button>
+      ),
     },
   ];
   const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 6 });

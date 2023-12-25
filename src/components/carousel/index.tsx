@@ -1,22 +1,28 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, BoxProps, IconButton } from '@mui/material';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 const defaultInterval = 2000;
 
 interface Props {
   location: number;
-  setLocation: (location: number) => void;
   items: Array<ReactNode>;
+  events?: {
+    setLocation: (location: number) => void;
+  };
   metadata?: {
     isArrow?: boolean;
     interval?: number;
+    mode?: 'normal' | 'circle' | 'linear';
   };
   props?: BoxProps;
 }
 
-export default function Carousel({ location, setLocation, items, metadata, props }: Props) {
+export default function Carousel({ location, items, events, metadata, props }: Props) {
+  const [realItems, setRealItems] = useState(items);
+  const [direction, setDirection] = useState<'right' | 'left'>('right');
+
   const isArrow = metadata?.isArrow == undefined ? true : metadata.isArrow;
   const interval =
     metadata?.interval == undefined
@@ -24,15 +30,46 @@ export default function Carousel({ location, setLocation, items, metadata, props
       : metadata.interval < defaultInterval
       ? defaultInterval
       : metadata.interval;
+  const mode = metadata?.mode == undefined ? 'normal' : metadata.mode;
   const len = items.length;
 
   function onBackClick() {
-    setLocation(location == 0 ? len - 1 : location - 1);
+    if (events?.setLocation) {
+      if (mode == 'normal') events.setLocation(location == 0 ? len - 1 : location - 1);
+      else if (mode == 'linear') {
+        let currentDirection = direction;
+        if (location == 0 || location == len - 1) {
+          currentDirection = direction == 'left' ? 'right' : 'left';
+          setDirection(currentDirection);
+        }
+        if (currentDirection == 'right') events.setLocation(location - 1);
+        else events.setLocation(location + 1);
+      }
+    }
   }
 
   function onNextClick() {
-    setLocation(location == len - 1 ? 0 : location + 1);
+    if (events?.setLocation) {
+      if (mode == 'normal') events.setLocation(location == len - 1 ? 0 : location + 1);
+      else if (mode == 'linear') {
+        let currentDirection = direction;
+        if (location == 0 || location == len - 1) {
+          currentDirection = direction == 'left' ? 'right' : 'left';
+          setDirection(currentDirection);
+        }
+        if (currentDirection == 'right') events.setLocation(location + 1);
+        else events.setLocation(location - 1);
+      }
+    }
   }
+
+  useEffect(() => {
+    if (mode == 'normal' || mode == 'circle') setDirection('right');
+  }, [mode]);
+
+  useEffect(() => {
+    setRealItems(items);
+  }, [items]);
 
   useEffect(() => {
     let fn: NodeJS.Timeout | undefined = undefined;
@@ -42,7 +79,7 @@ export default function Carousel({ location, setLocation, items, metadata, props
       }, defaultInterval);
     }
     if (fn || interval < defaultInterval) return () => clearInterval(fn);
-  }, [location, interval]);
+  }, [location, interval, mode]);
 
   return (
     <Box {...props}>
@@ -69,7 +106,7 @@ export default function Carousel({ location, setLocation, items, metadata, props
                 transitionDuration: '0.5s',
               }}
             >
-              {items.map((item, index) => {
+              {realItems.map((item, index) => {
                 return (
                   <Box
                     key={index}
