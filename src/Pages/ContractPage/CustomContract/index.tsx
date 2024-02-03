@@ -1,7 +1,7 @@
 import { Box, TextField } from '@mui/material';
 import { ethers } from 'ethers';
 import { useMemo, useState } from 'react';
-import CssGroupButton from 'src/components/Button/CssGroupButton';
+import GroupButton from 'src/components/Button/group-button';
 import { EtherFragment } from 'src/global';
 import useTranslate from 'src/hooks/useTranslate';
 import ReadFunction from './ReadFunction';
@@ -9,7 +9,7 @@ import WriteFunction from './WriteFunction';
 
 export default function CustomContract() {
   const { t } = useTranslate();
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState('viewFunction');
   const [abi, setAbi] = useState('');
 
   const fragments = useMemo(() => {
@@ -37,11 +37,15 @@ export default function CustomContract() {
         maxRows={8}
         onChange={(e) => setAbi(e.target.value)}
       />
-      <CssGroupButton
-        config={[t('viewFunction'), t('sendFunction')]}
-        onClick={(e, element, active) => setActive(active)}
+      <GroupButton
+        items={[
+          { id: 'viewFunction', content: t('viewFunction') },
+          { id: 'sendFunction', content: t('sendFunction') },
+        ]}
+        selectedId="viewFunction"
+        events={{ onClick: (item) => setActive(item.id) }}
       />
-      {active == 0 ? (
+      {active == 'viewFunction' ? (
         <ReadFunction fragment={fragments[0]} />
       ) : (
         <WriteFunction fragment={fragments[1]} />

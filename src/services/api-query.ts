@@ -13,9 +13,11 @@ export default class ApiQuery {
 
   constructor(rootUrl: string, config?: AxiosRequestConfig) {
     this.root = rootUrl;
-    this.config = config
-      ? { ...config, ...{ headers: defaultHeader } }
-      : { headers: defaultHeader };
+    if (config) {
+      this.config = config;
+      if (!this.config?.headers) this.config.headers = {};
+      this.config['headers'] = { ...this.config['headers'], ...defaultHeader };
+    } else this.config = { headers: defaultHeader };
   }
 
   async get<T = any>(url: string, config?: AxiosRequestConfig) {
@@ -24,13 +26,13 @@ export default class ApiQuery {
       .then<T>(responseBody);
   }
 
-  async post<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
+  async post<T = any, B = any>(url: string, data?: B, config?: AxiosRequestConfig) {
     return await axios
       .post(`${this.root}${url}`, data, { ...config, ...this.config })
       .then<T>(responseBody);
   }
 
-  async put<B = any, T = any>(url: string, data?: B, config?: AxiosRequestConfig) {
+  async put<T = any, B = any>(url: string, data?: B, config?: AxiosRequestConfig) {
     return await axios
       .put(`${this.root}${url}`, data, { ...config, ...this.config })
       .then<T>(responseBody);

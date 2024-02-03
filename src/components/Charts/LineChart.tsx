@@ -1,72 +1,45 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { BoxProps } from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import cloneDeep from 'lodash.clonedeep';
 import { useMemo } from 'react';
 import BaseChart from './base-chart';
 
 interface Props {
   series: any;
   option?: any;
+  props?: BoxProps;
 }
 
-export default function LineChart({ series, option }: Props) {
+export default function LineChart({ series, option, props }: Props) {
+  const realSeries = cloneDeep(series);
+
   const options = useMemo(() => {
     return Highcharts.merge(
       {
-        chart: {
-          type: 'line',
-        },
-        title: {
-          text: undefined,
-        },
-        yAxis: {
-          labels: {
-            enabled: false,
-          },
-          title: {
-            text: undefined,
-          },
-          gridLineWidth: 0,
-        },
-        xAxis: {
-          crosshair: {
-            color: '#7E94BD',
-            width: 1,
-          },
-        },
+        chart: { type: 'line' },
+        title: { text: undefined },
+        yAxis: { labels: { enabled: false }, title: { text: undefined }, gridLineWidth: 0 },
+        xAxis: { crosshair: { color: '#7E94BD', width: 1 } },
         plotOptions: {
           line: {
-            marker: {
-              enabled: false,
-              symbol: 'circle',
-            },
+            marker: { enabled: false, symbol: 'circle' },
             lineWidth: 2,
-            states: {
-              hover: {
-                lineWidth: 2,
-              },
-            },
+            states: { hover: { lineWidth: 2 } },
             threshold: null,
           },
         },
-        series: series,
-        tooltip: {
-          enabled: true,
-          shared: true,
-          style: {
-            display: 'none',
-          },
-        },
-        legend: {
-          enabled: false,
-        },
+        series: realSeries,
+        tooltip: { enabled: true, shared: true, style: { display: 'none' } },
+        legend: { enabled: false },
       },
       option
     );
-  }, [series, option]);
+  }, [realSeries, option]);
 
   return (
-    <BaseChart>
+    <BaseChart props={props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );

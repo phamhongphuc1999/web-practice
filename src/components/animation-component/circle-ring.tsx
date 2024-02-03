@@ -2,7 +2,7 @@
 import { Keyframes } from '@emotion/react';
 import { Box, BoxProps, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
-import { mergeSx } from 'src/services/merge-sx';
+import { mergeSx } from 'src/services';
 
 function getRotate(beginDeg: number) {
   return keyframes`

@@ -68,12 +68,12 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
 
   useEffect(() => {
     if (selectedItems.length == 0) setSelectedItems(defaultSelectedItems ?? []);
-  }, [defaultSelectedItems]);
+  }, [defaultSelectedItems, selectedItems.length]);
 
   const rootWidth = useMemo(() => {
     if (rootRef?.current) return rootRef.current.offsetWidth;
     else return 'auto';
-  }, [rootRef?.current]);
+  }, []);
 
   const selectedLabel = selectedItems.map((item) => item.label);
 

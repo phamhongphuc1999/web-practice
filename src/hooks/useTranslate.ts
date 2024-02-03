@@ -1,7 +1,7 @@
-import { useAppSelector } from 'src/redux/hook';
-import { LanguageType } from 'src/configs/constance';
+import { LanguageType } from 'src/global';
 import en from 'src/locale/en.json';
 import vi from 'src/locale/vi.json';
+import { useAppSelector } from 'src/redux/hook';
 
 interface Params {
   [param: string]: string;

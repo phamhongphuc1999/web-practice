@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LanguageType, LS, THEME_MODE } from 'src/configs/constance';
+import { LS } from 'src/configs/constance';
+import { LanguageType, ThemeMode } from 'src/global';
 
 export interface themeInitialState {
   theme: {
-    mode: THEME_MODE;
+    mode: ThemeMode;
     label: string;
   };
   language: LanguageType;
@@ -14,7 +15,7 @@ const initialLanguage = localStorage.getItem(LS.LANGUAGE);
 
 const initialState: themeInitialState = {
   theme: {
-    mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as THEME_MODE,
+    mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as ThemeMode,
     label:
       initialThemeMode == null || initialThemeMode == 'dark' ? 'themeMode.dark' : 'themeMode.light',
   },

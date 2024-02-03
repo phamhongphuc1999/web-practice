@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import CssGroupButton from 'src/components/Button/CssGroupButton';
+import GroupButton, { GroupButtonItem } from 'src/components/Button/group-button';
 import { ROUTE } from 'src/configs/constance';
 import useQueryUrl from 'src/hooks/useQueryUrl';
 import useTranslate from 'src/hooks/useTranslate';
@@ -16,9 +16,9 @@ export default function ContractPage() {
   const defaultActive =
     action == t('custom') ? 1 : action == undefined || action == 'bep20' ? 0 : 2;
 
-  function onClick(event: React.MouseEvent, element: string, index: number) {
+  function onClick(item: GroupButtonItem) {
     let _action = 'bep20';
-    if (index == 1) _action = t('custom');
+    if (item.id == 'custom') _action = t('custom');
     history.push(`/contract?action=${_action}`);
   }
 
@@ -26,10 +26,13 @@ export default function ContractPage() {
     <>
       <CssBreadcrumbs configs={[{ label: t('contract') }]} props={{ mb: 2 }} />
       <Box display="flex" alignItems="center">
-        <CssGroupButton
-          config={['Bep20', t('custom')]}
-          defaultActive={defaultActive}
-          onClick={onClick}
+        <GroupButton
+          items={[
+            { id: 'bep20', content: 'Bep20' },
+            { id: 'custom', content: t('custom') },
+          ]}
+          selectedId="bep20"
+          events={{ onClick }}
         />
         <Button variant="outlined" sx={{ ml: 2 }} onClick={() => history.push(ROUTE.MY_CONTRACT)}>
           {t('myContract')}

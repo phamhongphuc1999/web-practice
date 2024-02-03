@@ -1,4 +1,5 @@
-import { languageConfig, LanguageType } from 'src/configs/constance';
+import { languageConfig } from 'src/configs/constance';
+import { LanguageType } from 'src/global';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { setLanguage } from 'src/redux/userConfigSlice';
 import CssSelector, { CssSelectItem } from './CssSelector';

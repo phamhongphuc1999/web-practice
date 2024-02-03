@@ -2,8 +2,8 @@ import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import SlideGroupButton from 'src/components/Button/SlideGroupButton';
 import ThemeButton from 'src/components/Button/ThemeButton';
+import GroupButton from 'src/components/Button/group-button';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
@@ -55,7 +55,7 @@ export default function UtilElement() {
       </Box>
       <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography>{text}</Typography>
-        <SlideGroupButton
+        <GroupButton
           props={{
             sx: {
               transform: 'skewX(-20deg)',
@@ -66,19 +66,19 @@ export default function UtilElement() {
             },
           }}
           items={[
-            { id: '1', title: '1' },
-            { id: '2', title: '2' },
-            { id: '3', title: '3' },
-            { id: '4', title: '4' },
-            { id: '5', title: '5' },
-            { id: '6', title: '6' },
-            { id: '7', title: '7' },
-            { id: '8', title: '8' },
-            { id: '9', title: '9' },
-            { id: '10', title: '10' },
+            { id: '1', content: '1' },
+            { id: '2', content: '2' },
+            { id: '3', content: '3' },
+            { id: '4', content: '4' },
+            { id: '5', content: '5' },
+            { id: '6', content: '6' },
+            { id: '7', content: '7' },
+            { id: '8', content: '8' },
+            { id: '9', content: '9' },
+            { id: '10', content: '10' },
           ]}
           selectedId={text}
-          events={{ onClick: (item) => setText(item.title) }}
+          events={{ onClick: (item) => setText(item.id) }}
         />
         <Button
           variant="outlined"

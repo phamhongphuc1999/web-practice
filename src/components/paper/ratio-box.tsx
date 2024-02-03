@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, BoxProps } from '@mui/material';
 import { ReactNode } from 'react';
-import { mergeSx } from 'src/services/merge-sx';
+import { mergeSx } from 'src/services';
 
 interface Props {
   ratio?: number;

@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
-import { THEME_MODE } from 'src/configs/constance';
+import { ThemeMode } from 'src/global';
 import { useAppSelector } from 'src/redux/hook';
 import BaseChartStyle from '../Charts/BaseChartStyle';
 
@@ -79,7 +79,7 @@ interface Props {
   children: ReactNode;
 }
 
-function switchTheme(mode: THEME_MODE, darkMode: string, lightMode: string) {
+function switchTheme(mode: ThemeMode, darkMode: string, lightMode: string) {
   if (mode === 'dark') return darkMode;
   else return lightMode;
 }
@@ -99,7 +99,7 @@ const buildVariant = (
 });
 
 export default function ThemeWrapper({ children }: Props) {
-  const mode = useAppSelector<THEME_MODE>((state) => state.userConfigSlice.theme.mode);
+  const mode = useAppSelector<ThemeMode>((state) => state.userConfigSlice.theme.mode);
 
   const theme = useMemo(() => {
     return createTheme({

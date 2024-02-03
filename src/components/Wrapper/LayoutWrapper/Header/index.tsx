@@ -1,7 +1,8 @@
 import { alpha, Box, Button } from '@mui/material';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
-import { languageConfig, LanguageType } from 'src/configs/constance';
+import { languageConfig } from 'src/configs/constance';
+import { LanguageType } from 'src/global';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import { setLanguage } from 'src/redux/userConfigSlice';

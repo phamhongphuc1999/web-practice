@@ -3,22 +3,27 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useMemo } from 'react';
 import BaseChart from './base-chart';
+import { BoxProps } from '@mui/material';
+import cloneDeep from 'lodash.clonedeep';
 
-export type BAR_DIRECTION = 'horizontal' | 'vertical';
+export type BarDirection = 'horizontal' | 'vertical';
 
 interface Props {
   series: any;
   option?: any;
   categories: Array<string>;
-  type?: BAR_DIRECTION;
+  type?: BarDirection;
+  props?: BoxProps;
 }
 
-export default function BarChart({ series, option, categories, type = 'vertical' }: Props) {
-  const _plotOption = {
-    borderWidth: 0,
-    borderRadius: 2,
-    pointWidth: 8,
-  };
+const _plotOption = {
+  borderWidth: 0,
+  borderRadius: 2,
+  pointWidth: 8,
+};
+
+export default function BarChart({ series, option, categories, type = 'vertical', props }: Props) {
+  const realSeries = cloneDeep(series);
 
   const options = useMemo(() => {
     let _type = 'column';
@@ -29,40 +34,20 @@ export default function BarChart({ series, option, categories, type = 'vertical'
     }
     return Highcharts.merge(
       {
-        chart: {
-          type: _type,
-        },
-        title: {
-          text: undefined,
-        },
-        xAxis: {
-          categories: categories,
-        },
-        yAxis: {
-          title: {
-            text: undefined,
-          },
-          gridLineWidth: 0,
-        },
-        legend: {
-          enabled: false,
-        },
-        plotOptions: {
-          ..._plotOptions,
-          ...{
-            series: {
-              pointWidth: 20,
-            },
-          },
-        },
-        series: series,
+        chart: { type: _type },
+        title: { text: undefined },
+        xAxis: { categories: categories },
+        yAxis: { title: { text: undefined }, gridLineWidth: 0 },
+        legend: { enabled: false },
+        plotOptions: { ..._plotOptions, ...{ series: { pointWidth: 20 } } },
+        series: realSeries,
       },
       option
     );
-  }, [categories, series, option, type]);
+  }, [categories, realSeries, option, type]);
 
   return (
-    <BaseChart>
+    <BaseChart props={props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );

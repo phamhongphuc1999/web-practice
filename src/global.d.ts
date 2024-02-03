@@ -2,6 +2,10 @@ import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers/lib/utils';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 
+export type LanguageType = 'en' | 'vi';
+export type ThemeMode = 'dark' | 'light';
+export type MyWalletStatus = 'init' | 'create_wallet' | 'import_wallet' | 'login' | 'logout';
+
 export type enqueueSnackbarFunc = (
   message: SnackbarMessage,
   options?: OptionsObject | undefined

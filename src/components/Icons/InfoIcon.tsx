@@ -1,7 +1,7 @@
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { SvgIconProps, SxProps, Theme, Tooltip } from '@mui/material';
 import { ReactNode, useMemo } from 'react';
-import { mergeSx } from 'src/services/merge-sx';
+import { mergeSx } from 'src/services';
 
 interface Props {
   info: ReactNode;

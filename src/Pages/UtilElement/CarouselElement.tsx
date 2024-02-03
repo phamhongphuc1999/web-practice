@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import SlideGroupButton from 'src/components/Button/SlideGroupButton';
+import GroupButton from 'src/components/Button/group-button';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import Carousel from 'src/components/carousel';
 import { ROUTE } from 'src/configs/constance';
@@ -49,11 +49,11 @@ export default function CarouselElement() {
         props={{ mb: 2 }}
       />
       <Typography>{location + 1}</Typography>
-      <SlideGroupButton
+      <GroupButton
         items={[
-          { id: 'normal', title: 'normal' },
-          { id: 'linear', title: 'linear' },
-          { id: 'circle', title: 'circle' },
+          { id: 'normal', content: 'normal' },
+          { id: 'linear', content: 'linear' },
+          { id: 'circle', content: 'circle' },
         ]}
         selectedId={mode}
         events={{ onClick: (item) => setMode(item.id) }}
@@ -78,7 +78,6 @@ export default function CarouselElement() {
           Confirm
         </Button>
       </FormGroup>
-
       <Carousel
         props={{ sx: { height: '100px' } }}
         location={location}

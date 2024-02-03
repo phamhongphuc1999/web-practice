@@ -22,9 +22,6 @@ export const WALLET_LS = {
   TOKEN: 'wallet_token',
 };
 
-export type THEME_MODE = 'dark' | 'light';
-export type MY_WALLET_STATUS = 'init' | 'create_wallet' | 'import_wallet' | 'login' | 'logout';
-
 export const Layout = [
   { label: 'animation', link: '/animation', icon: Animation },
   { label: 'metamask', link: '/metamask', icon: Wallet },
@@ -60,7 +57,6 @@ export const DOCS_ROUTE = {
   GAS_PRICE: '/docs/gas-and-price',
 };
 
-export type LanguageType = 'en' | 'vi';
 export const languageConfig = {
   en: { id: 'en', label: 'English' },
   vi: { id: 'vi', label: 'Vietnamese' },

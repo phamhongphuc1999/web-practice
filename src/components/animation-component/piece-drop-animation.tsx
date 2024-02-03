@@ -8,8 +8,7 @@ import GreenPiece from 'src/assets/images/pieces/green-piece.svg';
 import PinkPiece from 'src/assets/images/pieces/pink-piece.svg';
 import RedPiece from 'src/assets/images/pieces/red-piece.svg';
 import YellowPiece from 'src/assets/images/pieces/yellow-piece.svg';
-import { random } from 'src/services';
-import { mergeSx } from 'src/services/merge-sx';
+import { mergeSx, random } from 'src/services';
 
 type AnimationObject = {
   top: string;
@@ -68,12 +67,12 @@ function Piece({ image, duration, animation, props }: PieceProps) {
 
 const colors: Array<PieceProps['image']> = [
   'blue',
+  'pink',
   'brightGreen',
   'deepBlue',
   'green',
-  'pink',
-  'red',
   'yellow',
+  'red',
 ];
 
 interface Props {
