@@ -1,0 +1,10 @@
+#input-test {
+  border: 3px solid yellow;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  outline: none;
+}
+#input-test:focus {
+  border: 3px solid red;
+}

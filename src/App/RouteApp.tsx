@@ -10,17 +10,8 @@ import GridPage from 'src/Pages/AnimationPage/grid-page';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
-import MyContract from 'src/Pages/ContractPage/MyContract';
 import DocsPage from 'src/Pages/DocsPage';
 import MetamaskPage from 'src/Pages/MetamaskPage';
-import AddToken from 'src/Pages/MyWallet/AddToken';
-import SettingWallet from 'src/Pages/MyWallet/SettingWallet';
-import WalletOverview from 'src/Pages/MyWallet/WalletOverview';
-import WalletUtils from 'src/Pages/MyWallet/WalletUtils';
-import BrowserPassword from 'src/Pages/MyWallet/WalletUtils/BrowserPassword';
-import CreateMnemonic from 'src/Pages/MyWallet/WalletUtils/CreateMnemonic';
-import RpcRequest from 'src/Pages/MyWallet/WalletUtils/RpcRequest';
-import SignTransaction from 'src/Pages/MyWallet/WalletUtils/RpcRequest/components/Form/SignTransaction';
 import ThreePage from 'src/Pages/three-page';
 import UtilElement from 'src/Pages/UtilElement';
 import CarouselElement from 'src/Pages/UtilElement/CarouselElement';
@@ -30,30 +21,6 @@ import SelectorElement from 'src/Pages/UtilElement/SelectorElement';
 export default function RouteApp() {
   return (
     <Switch>
-      <Route path={ROUTE.WALLET_OVERVIEW} exact={true}>
-        <WalletOverview />
-      </Route>
-      <Route path={ROUTE.WALLET_ADD_TOKEN} exact={true}>
-        <AddToken />
-      </Route>
-      <Route path={ROUTE.WALLET_SETTING} exact={true}>
-        <SettingWallet />
-      </Route>
-      <Route path={ROUTE.WALLET_UTILS} exact={true}>
-        <WalletUtils />
-      </Route>
-      <Route path={ROUTE.WALLET_MNEMONIC} exact={true}>
-        <CreateMnemonic />
-      </Route>
-      <Route path={ROUTE.WALLET_BROWSER_PASSWORD} exact={true}>
-        <BrowserPassword />
-      </Route>
-      <Route path={ROUTE.WALLET_RPC} exact={true}>
-        <RpcRequest />
-      </Route>
-      <Route path={ROUTE.WALLET_SIGN_TRANSACTION} exact={true}>
-        <SignTransaction />
-      </Route>
       <Route path={`${ROUTE.ANIMATION}/:page`} exact={true}>
         <AnimationPage />
       </Route>
@@ -84,9 +51,6 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.CONTRACT} exact={true}>
         <ContractPage />
-      </Route>
-      <Route path={ROUTE.MY_CONTRACT} exact={true}>
-        <MyContract />
       </Route>
       <Route path={ROUTE.CHART} exact={true}>
         <Overview />

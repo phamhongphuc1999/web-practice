@@ -1,8 +1,7 @@
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import GroupButton, { GroupButtonItem } from 'src/components/Button/group-button';
-import { ROUTE } from 'src/configs/constance';
 import useQueryUrl from 'src/hooks/useQueryUrl';
 import useTranslate from 'src/hooks/useTranslate';
 import Bep20Contract from './Bep20Contract';
@@ -34,9 +33,6 @@ export default function ContractPage() {
           selectedId="bep20"
           events={{ onClick }}
         />
-        <Button variant="outlined" sx={{ ml: 2 }} onClick={() => history.push(ROUTE.MY_CONTRACT)}>
-          {t('myContract')}
-        </Button>
       </Box>
       {defaultActive == 0 ? <Bep20Contract /> : <CustomContract />}
     </>

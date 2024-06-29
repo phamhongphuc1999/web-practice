@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import DocsWrapper from 'src/components/Wrapper/DocsWrapper';
 import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
-import MyWalletWrapper from 'src/components/Wrapper/MyWalletWrapper';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
 import useLayout from 'src/hooks/useLayout';
 import store from 'src/redux/store';
@@ -22,11 +21,6 @@ function WrapperApp() {
         <LayoutWrapper>
           <RouteApp />
         </LayoutWrapper>
-      )}
-      {layout == 'wallet' && (
-        <MyWalletWrapper>
-          <RouteApp />
-        </MyWalletWrapper>
       )}
       {layout == 'docs' && (
         <DocsWrapper>
