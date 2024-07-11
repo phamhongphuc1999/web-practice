@@ -1,5 +1,4 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import { Box, BoxProps, IconButton } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 
@@ -86,7 +85,7 @@ export default function Carousel({ location, items, events, metadata, props }: P
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {isArrow && (
           <IconButton onClick={onBackClick}>
-            <ArrowBackIcon />
+            <ArrowBack />
           </IconButton>
         )}
         <Box
@@ -131,7 +130,7 @@ export default function Carousel({ location, items, events, metadata, props }: P
         </Box>
         {isArrow && (
           <IconButton onClick={onNextClick}>
-            <ArrowForwardIcon />
+            <ArrowForward />
           </IconButton>
         )}
       </Box>

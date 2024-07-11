@@ -54,7 +54,7 @@ function makeSeries(themeMode: ThemeMode, series: any) {
 export default function AreaChart({ series, option, metadata, props }: Props) {
   const realSeries = cloneDeep(series);
   const isMakeSeries = metadata?.makeSeries == undefined ? true : metadata.makeSeries;
-  const themeMode = useAppSelector((state) => state.userConfigSlice.theme.mode);
+  const themeMode = useAppSelector((state) => state.userConfig.theme.mode);
 
   const options = useMemo(() => {
     return Highcharts.merge(

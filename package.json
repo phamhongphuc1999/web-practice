@@ -19,6 +19,7 @@
     "@mui/material": "^5.10.10",
     "@mui/utils": "^5.10.9",
     "@noble/secp256k1": "1.6.3",
+    "@peter-present/react-hook-utils": "^0.0.13",
     "@reduxjs/toolkit": "^1.8.6",
     "@scure/bip39": "^1.1.0",
     "await-semaphore": "^0.1.3",

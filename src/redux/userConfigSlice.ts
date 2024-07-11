@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LS } from 'src/configs/constance';
 import { LanguageType, ThemeMode } from 'src/global';
 
-export interface themeInitialState {
+export interface UserConfigType {
   theme: {
     mode: ThemeMode;
     label: string;
@@ -13,7 +13,7 @@ export interface themeInitialState {
 const initialThemeMode = localStorage.getItem(LS.THEME);
 const initialLanguage = localStorage.getItem(LS.LANGUAGE);
 
-const initialState: themeInitialState = {
+const initialState: UserConfigType = {
   theme: {
     mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as ThemeMode,
     label:
@@ -26,13 +26,13 @@ const userConfigSlice = createSlice({
   name: 'userConfigSlice',
   initialState: initialState,
   reducers: {
-    toggleMode: (state: themeInitialState) => {
+    toggleMode: (state: UserConfigType) => {
       const themeMode = state.theme.mode === 'dark' ? 'light' : 'dark';
       const themeLabel = themeMode === 'dark' ? 'themeMode.dark' : 'themeMode.light';
       state.theme = { mode: themeMode, label: themeLabel };
       localStorage.setItem(LS.THEME, themeMode);
     },
-    setLanguage: (state: themeInitialState, actions: PayloadAction<LanguageType>) => {
+    setLanguage: (state: UserConfigType, actions: PayloadAction<LanguageType>) => {
       state.language = actions.payload;
       localStorage.setItem(LS.LANGUAGE, actions.payload);
     },

@@ -99,7 +99,7 @@ const buildVariant = (
 });
 
 export default function ThemeWrapper({ children }: Props) {
-  const mode = useAppSelector<ThemeMode>((state) => state.userConfigSlice.theme.mode);
+  const mode = useAppSelector<ThemeMode>((state) => state.userConfig.theme.mode);
 
   const theme = useMemo(() => {
     return createTheme({

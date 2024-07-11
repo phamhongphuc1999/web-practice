@@ -11,7 +11,7 @@ interface Props {
 
 export default function BaseChart({ children, props }: Props) {
   const [loading, setLoading] = useState(false);
-  const { theme } = useAppSelector((state) => state.userConfigSlice);
+  const { theme } = useAppSelector((state) => state.userConfig);
 
   useEffect(() => {
     setLoading(true);

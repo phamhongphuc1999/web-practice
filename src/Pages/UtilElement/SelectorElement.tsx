@@ -1,11 +1,11 @@
 import { Box, Pagination, Typography } from '@mui/material';
+import { usePagination } from '@peter-present/react-hook-utils';
 import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import MultipleSelector from 'src/components/Selector/MultipleSelector';
 import { ROUTE } from 'src/configs/constance';
 import { CHAINS } from 'src/configs/networkConfig';
-import usePagination from 'src/hooks/usePagination';
 import useTranslate from 'src/hooks/useTranslate';
 
 interface ExtendItem extends CssSelectItem {

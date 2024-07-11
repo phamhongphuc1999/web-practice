@@ -46,7 +46,7 @@ export function translate(language: LanguageType, key: string, params?: Params) 
 }
 
 export default function useTranslate() {
-  const { language } = useAppSelector((state) => state.userConfigSlice);
+  const { language } = useAppSelector((state) => state.userConfig);
   function _translate(key: string, params?: Params) {
     return translate(language, key, params);
   }

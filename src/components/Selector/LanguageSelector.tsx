@@ -6,7 +6,7 @@ import CssSelector, { CssSelectItem } from './CssSelector';
 
 export default function LanguageSelector() {
   const dispatch = useAppDispatch();
-  const { language } = useAppSelector((state) => state.userConfigSlice);
+  const { language } = useAppSelector((state) => state.userConfig);
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
     dispatch(setLanguage(item.id as LanguageType));

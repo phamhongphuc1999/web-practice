@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pure page</title>
-  <h1>My Site</h1>
-  <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-  <script>
-    function onChange(event) {
-      console.log("onChange");
-    }
-    function onMouseDown(event) {
-      console.log('onMouseDown');
-    }
-    function onMouseLeave(event) {
-      console.log('onMouseLeave');
-    }
-    function onMouseOut(event) {
-      console.log('onMouseOut');
-    }
-    function onFocus(event) {
-      console.log('onFocus');
-    }
-    function onMouseUp(event) {
-      console.log('onMouseUp');
-    }
-  </script>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <input type="text" id="input-test" placeholder="test" onmouseup="onMouseUp(this)" onfocus="onFocus(this)" onmouseout="onMouseOut(this)" onmouseleave="onMouseLeave(this)" onmousedown="onMouseDown(this)" onchange="onChange(this)" />
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="contact"></section>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        template: `
+          <h1>Hello from {{ teamName }} and {{ isHello ? firstName + " " + lastName : '' }}</h1>
+          <button v-on:click="onChangeName">Change Name</button>
+          <button @click="onChangeName">Change Name But Shorter</button>
+          <div class="modal" v-if="isShowModal">
+            <h1>Modal content</h1>
+          </div>`,
+        data() {
+          return {
+            teamName: 'RHP Team',
+            firstName: 'Peter',
+            lastName: 'Pham',
+            isHello: true,
+            isShowModal: false,
+          };
+        },
+        methods: {
+          onChangeName() {
+            this.firstName = 'Peter111';
+            this.isShowModal = !this.isShowModal;
+          },
+        },
+      });
+      app.mount('#contact');
+    </script>
+  </body>
 </html>

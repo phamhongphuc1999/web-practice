@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SxProps, Theme } from '@mui/material';
 import { SystemStyleObject } from '@mui/system';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const isNumeric = (num: number) => {
   return !isNaN(num) && !isNaN(parseFloat(num.toString()));
 };

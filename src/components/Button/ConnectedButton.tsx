@@ -13,7 +13,7 @@ export default function ConnectedButton({ props }: Props) {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslate();
-  const accountAddress = useAppSelector<string>((state) => state.walletSlice.accountAddress);
+  const accountAddress = useAppSelector((state) => state.wallet.accountAddress);
 
   function onClick() {
     if (accountAddress) disconnect(dispatch);

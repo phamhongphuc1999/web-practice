@@ -1,6 +1,5 @@
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, TextField, TextFieldProps } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useState } from 'react';
 
 interface Props {
@@ -17,7 +16,7 @@ export default function PasswordTextField({ props }: Props) {
       InputProps={{
         endAdornment: (
           <IconButton onClick={() => setIsPassword(!isPassword)}>
-            {isPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            {isPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
         ),
       }}

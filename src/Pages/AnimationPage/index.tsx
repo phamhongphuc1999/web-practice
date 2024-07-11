@@ -1,4 +1,5 @@
 import { Box, Button, Pagination } from '@mui/material';
+import { usePagination } from '@peter-present/react-hook-utils';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
@@ -14,11 +15,10 @@ import { PuffLoaderBox } from 'src/components/animation-component/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/animation-component/ZCircleLoader';
 import { CircleDotBox } from 'src/components/animation-component/circle-dot-loader';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
+import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 import { ROUTE } from 'src/configs/constance';
-import usePagination from 'src/hooks/usePagination';
 import useTranslate from 'src/hooks/useTranslate';
 import Item from './item';
-import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 
 export default function AnimationPage() {
   const { t } = useTranslate();
@@ -130,7 +130,7 @@ export default function AnimationPage() {
       ),
     },
   ];
-  const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { rowPerPage: 6 });
+  const { data, jump, maxPage, currentPage } = usePagination(ComponentList, { itemsPerPage: 6 });
 
   useEffect(() => {
     jump(Number(page));

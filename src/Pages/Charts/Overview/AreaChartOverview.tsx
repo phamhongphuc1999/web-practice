@@ -14,7 +14,7 @@ interface Props {
 
 export default function AreaChartOverview({ props }: Props) {
   const { t } = useTranslate();
-  const themeMode = useAppSelector((state) => state.userConfigSlice.theme.mode);
+  const themeMode = useAppSelector((state) => state.userConfig.theme.mode);
 
   const zoneFn = useCallback(
     (color: string) => {

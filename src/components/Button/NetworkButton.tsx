@@ -54,7 +54,7 @@ export default function NetworkButton({ butProps }: Props) {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
-  const { chainId } = useAppSelector((state) => state.walletSlice);
+  const { chainId } = useAppSelector((state) => state.wallet);
 
   async function changeNetwork(chainId: string) {
     const isSuccess = await switchNetwork(dispatch, enqueueSnackbar, chainId);

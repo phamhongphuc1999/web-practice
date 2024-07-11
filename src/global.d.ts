@@ -4,7 +4,6 @@ import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';
-export type MyWalletStatus = 'init' | 'create_wallet' | 'import_wallet' | 'login' | 'logout';
 
 export type enqueueSnackbarFunc = (
   message: SnackbarMessage,
@@ -29,11 +28,6 @@ export interface NativeToken {
   name: string;
   symbol: string;
   decimals: number;
-}
-
-export interface EthToken extends NativeToken {
-  address: string;
-  isNative?: boolean;
 }
 
 export interface BaseChain {

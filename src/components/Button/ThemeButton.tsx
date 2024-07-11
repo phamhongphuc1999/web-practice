@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function ThemeButton({ props }: Props) {
-  const mode = useAppSelector<ThemeMode>((state) => state.userConfigSlice.theme.mode);
+  const mode = useAppSelector<ThemeMode>((state) => state.userConfig.theme.mode);
   const dispatch = useAppDispatch();
 
   return (

@@ -3,14 +3,14 @@ import { hexlify } from 'ethers/lib/utils';
 import { CHAINS } from 'src/configs/networkConfig';
 import { Chain } from 'src/global';
 
-export interface walletInitialState {
+export interface WalletSliceType {
   chainId: string;
   hexChainId: string;
   accountAddress: string;
   chainData?: Chain;
 }
 
-const initialState: walletInitialState = {
+const initialState: WalletSliceType = {
   chainId: '',
   hexChainId: '',
   accountAddress: '',
@@ -21,7 +21,7 @@ const walletSlice = createSlice({
   initialState: initialState,
   reducers: {
     updateWallet: (
-      state: walletInitialState,
+      state: WalletSliceType,
       action: PayloadAction<{ chainId?: string; accountAddress?: string }>
     ) => {
       const payload = action.payload;
@@ -34,7 +34,7 @@ const walletSlice = createSlice({
       }
       if (payload.accountAddress) state.accountAddress = payload.accountAddress;
     },
-    resetWallet: (state: walletInitialState) => {
+    resetWallet: (state: WalletSliceType) => {
       Object.assign(state, initialState);
     },
   },

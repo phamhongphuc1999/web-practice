@@ -10,7 +10,7 @@ import { setLanguage } from 'src/redux/userConfigSlice';
 export default function Header() {
   const dispatch = useAppDispatch();
   const { t } = useTranslate();
-  const { language } = useAppSelector((state) => state.userConfigSlice);
+  const { language } = useAppSelector((state) => state.userConfig);
 
   function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
     dispatch(setLanguage(item.id as LanguageType));

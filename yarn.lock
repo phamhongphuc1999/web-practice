@@ -2707,6 +2707,14 @@
     proc-log "^4.0.0"
     which "^4.0.0"
 
+"@peter-present/react-hook-utils@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@peter-present/react-hook-utils/-/react-hook-utils-0.0.13.tgz#78effb9a2dc56c4df181c9178999587951ebf108"
+  integrity sha512-hkuW32romp3CyRkdBwyYFOcr+YmeZskT3k7FCJBaocOSJN0jw/S2Q6ErXpaEHdf32nzOt4co+HlZ1bKZN99UEg==
+  dependencies:
+    react "^18.2.0"
+    react-dom "^18.2.0"
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
@@ -10668,7 +10676,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^18.0.0:
+react-dom@^18.0.0, react-dom@^18.2.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==

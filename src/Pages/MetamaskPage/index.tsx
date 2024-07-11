@@ -5,13 +5,10 @@ import NetworkButton from 'src/components/Button/NetworkButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import useTranslate from 'src/hooks/useTranslate';
 import { useAppSelector } from 'src/redux/hook';
-import { walletInitialState } from 'src/redux/walletSlice';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {
-  const { chainId, hexChainId, accountAddress } = useAppSelector<walletInitialState>(
-    (state) => state.walletSlice
-  );
+  const { chainId, hexChainId, accountAddress } = useAppSelector((state) => state.wallet);
   const { t } = useTranslate();
 
   return (

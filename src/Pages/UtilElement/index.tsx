@@ -15,7 +15,7 @@ import { useAppSelector } from 'src/redux/hook';
 export default function UtilElement() {
   const history = useHistory();
   const { t } = useTranslate();
-  const { theme } = useAppSelector((state) => state.userConfigSlice);
+  const { theme } = useAppSelector((state) => state.userConfig);
   const [text, setText] = useState('1');
 
   return (
