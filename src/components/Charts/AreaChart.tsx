@@ -6,7 +6,7 @@ import cloneDeep from 'lodash.clonedeep';
 import { useMemo } from 'react';
 import { COLOR_ARRAY } from 'src/configs/constance';
 import { ThemeMode } from 'src/global';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 import { hexToRgb } from 'src/services';
 import BaseChart from './base-chart';
 
@@ -54,7 +54,7 @@ function makeSeries(themeMode: ThemeMode, series: any) {
 export default function AreaChart({ series, option, metadata, props }: Props) {
   const realSeries = cloneDeep(series);
   const isMakeSeries = metadata?.makeSeries == undefined ? true : metadata.makeSeries;
-  const themeMode = useAppSelector((state) => state.userConfig.theme.mode);
+  const themeMode = useAppSelector((state) => state.user.theme.mode);
 
   const options = useMemo(() => {
     return Highcharts.merge(

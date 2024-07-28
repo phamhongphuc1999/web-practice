@@ -22,8 +22,8 @@ const initialState: UserConfigType = {
   language: (initialLanguage == null ? 'en' : initialLanguage) as LanguageType,
 };
 
-const userConfigSlice = createSlice({
-  name: 'userConfigSlice',
+const userSlice = createSlice({
+  name: 'userSlice',
   initialState: initialState,
   reducers: {
     toggleMode: (state: UserConfigType) => {
@@ -39,5 +39,5 @@ const userConfigSlice = createSlice({
   },
 });
 
-export default userConfigSlice.reducer;
-export const { toggleMode, setLanguage } = userConfigSlice.actions;
+export default userSlice.reducer;
+export const { toggleMode, setLanguage } = userSlice.actions;

@@ -8,7 +8,7 @@ import {
 import { deepmerge } from '@mui/utils';
 import { ReactNode, useMemo } from 'react';
 import { ThemeMode } from 'src/global';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 import BaseChartStyle from '../Charts/BaseChartStyle';
 
 declare module '@mui/material/styles/createPalette' {
@@ -99,7 +99,7 @@ const buildVariant = (
 });
 
 export default function ThemeWrapper({ children }: Props) {
-  const mode = useAppSelector<ThemeMode>((state) => state.userConfig.theme.mode);
+  const mode = useAppSelector<ThemeMode>((state) => state.user.theme.mode);
 
   const theme = useMemo(() => {
     return createTheme({

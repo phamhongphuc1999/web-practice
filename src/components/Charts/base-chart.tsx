@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, BoxProps, CircularProgress } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 import { mergeSx } from 'src/services';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 export default function BaseChart({ children, props }: Props) {
   const [loading, setLoading] = useState(false);
-  const { theme } = useAppSelector((state) => state.userConfig);
+  const { theme } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     setLoading(true);

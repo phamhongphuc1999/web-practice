@@ -10,12 +10,12 @@ import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/constance';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 
 export default function UtilElement() {
   const history = useHistory();
   const { t } = useTranslate();
-  const { theme } = useAppSelector((state) => state.userConfig);
+  const { theme } = useAppSelector((state) => state.user);
   const [text, setText] = useState('1');
 
   return (

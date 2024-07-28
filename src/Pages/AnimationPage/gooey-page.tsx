@@ -57,7 +57,7 @@ export default function GooeyPage() {
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
           <Button type="submit" sx={{ marginLeft: '1rem' }} variant="contained" color="primary">
-            Confirm
+            {t('confirm')}
           </Button>
         </Box>
       </form>

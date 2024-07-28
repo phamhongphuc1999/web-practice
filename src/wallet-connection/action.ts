@@ -2,7 +2,7 @@ import { ExternalProvider } from '@ethersproject/providers';
 import { CONNECTOR } from 'src/configs/networkConfig';
 import { enqueueSnackbarFunc } from 'src/global';
 import { AppDispatch } from 'src/redux/store';
-import { resetWallet, updateWallet } from 'src/redux/walletSlice';
+import { resetWallet, updateWallet } from 'src/redux/wallet-slice';
 import {
   getChainId,
   getConnectedWallet,

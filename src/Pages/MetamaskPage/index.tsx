@@ -4,7 +4,7 @@ import ConnectedButton from 'src/components/Button/ConnectedButton';
 import NetworkButton from 'src/components/Button/NetworkButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {

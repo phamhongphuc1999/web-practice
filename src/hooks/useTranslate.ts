@@ -1,7 +1,7 @@
 import { LanguageType } from 'src/global';
 import en from 'src/locale/en.json';
 import vi from 'src/locale/vi.json';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 
 interface Params {
   [param: string]: string;
@@ -46,7 +46,7 @@ export function translate(language: LanguageType, key: string, params?: Params) 
 }
 
 export default function useTranslate() {
-  const { language } = useAppSelector((state) => state.userConfig);
+  const { language } = useAppSelector((state) => state.user);
   function _translate(key: string, params?: Params) {
     return translate(language, key, params);
   }

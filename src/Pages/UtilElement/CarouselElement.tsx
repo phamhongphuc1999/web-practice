@@ -75,7 +75,7 @@ export default function CarouselElement() {
           onChange={(event) => setInterval(event.target.value)}
         />
         <Button type="submit" sx={{ marginLeft: '1rem' }} variant="contained" color="primary">
-          Confirm
+          {t('confirm')}
         </Button>
       </FormGroup>
       <Carousel

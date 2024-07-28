@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppDispatch, useAppSelector } from 'src/redux/hook';
+import { useAppDispatch, useAppSelector } from 'src/redux/store';
 import { connectMetamask, disconnect } from 'src/wallet-connection/action';
 import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
 

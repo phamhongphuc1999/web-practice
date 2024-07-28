@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import AreaChart from 'src/components/Charts/AreaChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppSelector } from 'src/redux/hook';
+import { useAppSelector } from 'src/redux/store';
 import { hexToRgb, numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
 import { getBasicLineChart, getThresholdLineChart } from '../config';
@@ -14,7 +14,7 @@ interface Props {
 
 export default function AreaChartOverview({ props }: Props) {
   const { t } = useTranslate();
-  const themeMode = useAppSelector((state) => state.userConfig.theme.mode);
+  const themeMode = useAppSelector((state) => state.user.theme.mode);
 
   const zoneFn = useCallback(
     (color: string) => {

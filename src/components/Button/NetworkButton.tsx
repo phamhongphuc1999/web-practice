@@ -11,14 +11,14 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { useState } from 'react';
-import { CHAINS } from 'src/configs/networkConfig';
-import { useAppDispatch, useAppSelector } from 'src/redux/hook';
 import BSC from 'src/assets/images/BSC.svg';
 import ETH from 'src/assets/images/ETH.png';
 import FTM from 'src/assets/images/FTM.svg';
+import { CHAINS } from 'src/configs/networkConfig';
+import { useAppDispatch, useAppSelector } from 'src/redux/store';
 import { switchNetwork } from 'src/wallet-connection/action';
-import { useSnackbar } from 'notistack';
 
 const useStyle = (theme: Theme) => ({
   title: {
