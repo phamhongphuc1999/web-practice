@@ -7,6 +7,7 @@ import ClockPage from 'src/Pages/AnimationPage/clock-page';
 import DropPage from 'src/Pages/AnimationPage/drop-page';
 import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
+import AptosPage from 'src/Pages/AptosPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
@@ -46,6 +47,9 @@ export default function RouteApp() {
         <ThreePage />
       </Route>
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
+      <Route path={ROUTE.APTOS} exact={true}>
+        <AptosPage />
+      </Route>
       <Route path={ROUTE.METAMASK} exact={true}>
         <MetamaskPage />
       </Route>

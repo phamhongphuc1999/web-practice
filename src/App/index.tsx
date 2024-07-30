@@ -9,6 +9,7 @@ import LayoutWrapper from 'src/components/Wrapper/LayoutWrapper';
 import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
 import useLayout from 'src/hooks/useLayout';
 import store from 'src/redux/store';
+import AptosWrapper from 'src/wallet-connection/aptos-connection/aptos-wrapper';
 import DocsRouteApp from './DocsRouteApp';
 import RouteApp from './RouteApp';
 
@@ -16,7 +17,7 @@ function WrapperApp() {
   const layout = useLayout();
 
   return (
-    <>
+    <AptosWrapper>
       {layout == 'normal' && (
         <LayoutWrapper>
           <RouteApp />
@@ -27,7 +28,7 @@ function WrapperApp() {
           <DocsRouteApp />
         </DocsWrapper>
       )}
-    </>
+    </AptosWrapper>
   );
 }
 

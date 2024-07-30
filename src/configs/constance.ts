@@ -1,10 +1,11 @@
 import {
-  Wallet,
   Animation,
-  Settings,
-  TaskAlt,
-  CurrencyBitcoin,
   BarChart,
+  CurrencyBitcoin,
+  Settings,
+  SvgIconComponent,
+  TaskAlt,
+  Wallet,
 } from '@mui/icons-material';
 
 export const LS = {
@@ -22,8 +23,9 @@ export const WALLET_LS = {
   TOKEN: 'wallet_token',
 };
 
-export const Layout = [
+export const Layout: Array<{ label: string; link: string; icon: SvgIconComponent }> = [
   { label: 'animation', link: '/animation', icon: Animation },
+  { label: 'aptos', link: '/aptos', icon: Animation },
   { label: 'metamask', link: '/metamask', icon: Wallet },
   { label: 'contract', link: '/contract', icon: CurrencyBitcoin },
   { label: 'chart', link: '/charts', icon: BarChart },
@@ -33,6 +35,7 @@ export const Layout = [
 
 export const ROUTE = {
   ANIMATION: '/animation',
+  APTOS: '/aptos',
   METAMASK: '/metamask',
   CONTRACT: '/contract',
   CHART: '/charts',
