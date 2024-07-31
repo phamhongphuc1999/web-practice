@@ -1,6 +1,6 @@
 import { AccountAddress, Aptos, AptosConfig, Network, U64 } from '@aptos-labs/ts-sdk';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 
 const config = new AptosConfig({ network: Network.TESTNET });
 const aptos = new Aptos(config);
@@ -12,10 +12,7 @@ export default function SignAptosTransaction() {
     if (account == null) throw new Error('Unable to find account to sign transaction');
     const response = await signAndSubmitTransaction({
       sender: account.address,
-      data: {
-        function: '0x1::aptos_account::transfer',
-        functionArguments: [account.address, 1],
-      },
+      data: { function: '0x1::aptos_account::transfer', functionArguments: [account.address, 1] },
     });
     // if you want to wait for transaction
     try {
@@ -44,8 +41,9 @@ export default function SignAptosTransaction() {
 
   return (
     <Box>
-      <Typography>Sign transaction</Typography>
-      <Button variant="outlined" onClick={onSignAndSubmitTransaction}>
+      <Divider sx={{ marginY: 1 }} />
+      <Typography variant="h4">Sign transaction</Typography>
+      <Button sx={{ mr: 1 }} variant="outlined" onClick={onSignAndSubmitTransaction}>
         Sign and submit transaction
       </Button>
       <Button variant="contained" onClick={onSignAndSubmitBCSTransaction}>

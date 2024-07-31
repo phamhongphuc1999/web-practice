@@ -1,5 +1,6 @@
 {
   "animation": "Animation",
+  "ant-design": "Ant Design",
   "aptos": "Aptos",
   "animationCircle": "Circle",
   "animationGooey": "Gooey",
@@ -103,5 +104,7 @@
   "signature": "Signature",
   "thItem": "Item %{item}",
   "importToken": "Import token",
-  "openDetail": "Open detail"
+  "openDetail": "Open detail",
+  "english": "English",
+  "vietnamese": "Vietnamese"
 }

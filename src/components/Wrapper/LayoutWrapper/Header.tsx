@@ -1,20 +1,10 @@
 import { alpha, Box, Button } from '@mui/material';
 import ThemeButton from 'src/components/Button/ThemeButton';
-import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
-import { languageConfig } from 'src/configs/constance';
-import { LanguageType } from 'src/global';
+import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import useTranslate from 'src/hooks/useTranslate';
-import { useAppDispatch, useAppSelector } from 'src/redux/store';
-import { setLanguage } from 'src/redux/user-slice';
 
 export default function Header() {
-  const dispatch = useAppDispatch();
   const { t } = useTranslate();
-  const { language } = useAppSelector((state) => state.user);
-
-  function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
-    dispatch(setLanguage(item.id as LanguageType));
-  }
 
   return (
     <Box
@@ -42,12 +32,7 @@ export default function Header() {
             {t('launchDocs')}
           </Button>
         </Box>
-        <CssSelector
-          width={120}
-          items={Object.values(languageConfig)}
-          defaultSelectedItem={languageConfig[language]}
-          events={{ onChooseItem }}
-        />
+        <LanguageSelector />
       </Box>
     </Box>
   );

@@ -1,11 +1,15 @@
 import { useWallet, WalletName } from '@aptos-labs/wallet-adapter-react';
 import { Box, Button, Typography } from '@mui/material';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import useTranslate from 'src/hooks/useTranslate';
 import { formatAddress } from 'src/services';
 import ChangeNetwork from './change-network';
+import FetchData from './fetch-data';
 import SignAptosTransaction from './sign-aptos-transaction';
 import SignVerifyMessage from './sign-verify-message';
 
 export default function AptosPage() {
+  const { t } = useTranslate();
   const { connect, disconnect, account, connected } = useWallet();
 
   async function onConnect() {
@@ -29,7 +33,8 @@ export default function AptosPage() {
 
   return (
     <Box>
-      <Typography>Aptos Wallet Connection</Typography>
+      <CssBreadcrumbs configs={[{ label: t('aptos') }]} props={{ mb: 2 }} />
+      <Typography variant="h4">Aptos Wallet Connection</Typography>
       <Box>
         {connected ? (
           <Box>
@@ -40,6 +45,7 @@ export default function AptosPage() {
             <SignAptosTransaction />
             <SignVerifyMessage />
             <ChangeNetwork />
+            <FetchData />
           </Box>
         ) : (
           <Button variant="outlined" onClick={onConnect}>

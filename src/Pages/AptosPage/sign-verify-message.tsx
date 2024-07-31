@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import { Box } from '@mui/material';
+import { Box, Button, Divider, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 
 export default function SignVerifyMessage() {
-  const { signMessage, signMessageAndVerify, connected, account } = useWallet();
+  const { signMessage, signMessageAndVerify } = useWallet();
   const [message, setMessage] = useState<string>('');
   const [nonce, setNonce] = useState<string>('');
   const [signedMessage, setSignedMessage] = useState<any>(null);
@@ -33,60 +33,45 @@ export default function SignVerifyMessage() {
 
   return (
     <Box>
-      <h1>Aptos Sign and Verify Message</h1>
-      <div>
-        {connected ? (
+      <Divider sx={{ marginY: 1 }} />
+      <Typography variant="h4">Aptos Sign and Verify Message</Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 1 }}>
+        <TextField
+          InputProps={{ multiline: true }}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Enter your message here"
+          className="border rounded p-2"
+        />
+        <TextField
+          type="text"
+          value={nonce}
+          onChange={(e) => setNonce(e.target.value)}
+          placeholder="Enter nonce (random string) here"
+          className="border rounded p-2 mt-2"
+        />
+        <Button variant="contained" onClick={handleSignMessage}>
+          Sign Message
+        </Button>
+        {signedMessage && (
           <div>
-            <p>Connected to: {account?.address}</p>
-            <div className="flex flex-col gap-4">
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Enter your message here"
-                className="border rounded p-2"
-              />
-              <input
-                type="text"
-                value={nonce}
-                onChange={(e) => setNonce(e.target.value)}
-                placeholder="Enter nonce (random string) here"
-                className="border rounded p-2 mt-2"
-              />
-              <button
-                onClick={handleSignMessage}
-                className="bg-blue-500 text-white rounded p-2 mt-2"
-              >
-                Sign Message
-              </button>
-              {signedMessage && (
-                <div>
-                  <h4>Signed Message</h4>
-                  <pre>{JSON.stringify(signedMessage, null, 2)}</pre>
-                  <button
-                    onClick={handleVerifyMessage}
-                    className="bg-green-500 text-white rounded p-2 mt-2"
-                  >
-                    Verify Message
-                  </button>
-                </div>
-              )}
-              {verificationResult !== null && (
-                <div>
-                  <h4>Verification Result</h4>
-                  <p>{verificationResult ? 'Message is verified!' : 'Failed to verify message.'}</p>
-                </div>
-              )}
-              {error && (
-                <div className="text-red-600">
-                  <p>{error}</p>
-                </div>
-              )}
-            </div>
+            <h4>Signed Message</h4>
+            <pre>{JSON.stringify(signedMessage, null, 2)}</pre>
+            <Button onClick={handleVerifyMessage}>Verify Message</Button>
           </div>
-        ) : (
-          <p>Please connect your wallet to sign and verify messages.</p>
         )}
-      </div>
+        {verificationResult !== null && (
+          <div>
+            <h4>Verification Result</h4>
+            <p>{verificationResult ? 'Message is verified!' : 'Failed to verify message.'}</p>
+          </div>
+        )}
+        {error && (
+          <div className="text-red-600">
+            <p>{error}</p>
+          </div>
+        )}
+      </Box>
     </Box>
   );
 }

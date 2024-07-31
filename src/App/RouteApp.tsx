@@ -7,6 +7,7 @@ import ClockPage from 'src/Pages/AnimationPage/clock-page';
 import DropPage from 'src/Pages/AnimationPage/drop-page';
 import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
+import AntDesignPage from 'src/Pages/AntDesignPage';
 import AptosPage from 'src/Pages/AptosPage';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
@@ -50,6 +51,9 @@ export default function RouteApp() {
       <Route path={ROUTE.APTOS} exact={true}>
         <AptosPage />
       </Route>
+      <Route path={ROUTE.ANT_DESIGN} exact={true}>
+        <AntDesignPage />
+      </Route>
       <Route path={ROUTE.METAMASK} exact={true}>
         <MetamaskPage />
       </Route>
@@ -77,7 +81,7 @@ export default function RouteApp() {
       <Route path={DOCS_ROUTE.MAIN_PAGE} exact={true}>
         <DocsPage />
       </Route>
-      <Redirect from="/" to={ROUTE.ANIMATION} />
+      <Redirect from="/" to={ROUTE.ANT_DESIGN} />
     </Switch>
   );
 }

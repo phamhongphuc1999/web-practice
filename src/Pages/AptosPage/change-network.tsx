@@ -1,5 +1,6 @@
 import { Network } from '@aptos-labs/ts-sdk';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
+import { Box, Divider, Typography } from '@mui/material';
 
 export default function ChangeNetwork() {
   const { network, changeNetwork, wallet } = useWallet();
@@ -10,8 +11,9 @@ export default function ChangeNetwork() {
   }
 
   return (
-    <div>
-      <h4>Network Info</h4>
+    <Box>
+      <Divider sx={{ marginY: 1 }} />
+      <Typography variant="h4">Network Info</Typography>
       <div>
         <div>
           <strong>Network name</strong>
@@ -80,6 +82,6 @@ export default function ChangeNetwork() {
           <div>* {wallet?.name ?? 'This wallet'} does not support network change requests</div>
         )}
       </div>
-    </div>
+    </Box>
   );
 }

@@ -1,5 +1,6 @@
 {
   "animation": "Hiệu ứng",
+  "ant-design": "Ant Design",
   "aptos": "Aptos",
   "animationCircle": "Vòng tròn",
   "animationGooey": "Nhớt",
@@ -103,5 +104,7 @@
   "signature": "Chữ ký",
   "thItem": "Mục %{item}",
   "importToken": "Thêm tài sản",
-  "openDetail": "Xem chi tiết"
+  "openDetail": "Xem chi tiết",
+  "english": "Tiếng Anh",
+  "vietnamese": "Tiếng Việt"
 }

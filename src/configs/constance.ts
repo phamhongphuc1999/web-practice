@@ -2,6 +2,8 @@ import {
   Animation,
   BarChart,
   CurrencyBitcoin,
+  LinkOutlined,
+  LocalFireDepartmentOutlined,
   Settings,
   SvgIconComponent,
   TaskAlt,
@@ -25,16 +27,18 @@ export const WALLET_LS = {
 
 export const Layout: Array<{ label: string; link: string; icon: SvgIconComponent }> = [
   { label: 'animation', link: '/animation', icon: Animation },
-  { label: 'aptos', link: '/aptos', icon: Animation },
-  { label: 'metamask', link: '/metamask', icon: Wallet },
-  { label: 'contract', link: '/contract', icon: CurrencyBitcoin },
+  { label: 'ant-design', link: '/ant-design', icon: LocalFireDepartmentOutlined },
+  { label: 'aptos', link: '/aptos', icon: LinkOutlined },
   { label: 'chart', link: '/charts', icon: BarChart },
+  { label: 'contract', link: '/contract', icon: CurrencyBitcoin },
+  { label: 'metamask', link: '/metamask', icon: Wallet },
   { label: 'utils', link: '/utils', icon: TaskAlt },
   { label: 'config', link: '/theme', icon: Settings },
 ];
 
 export const ROUTE = {
   ANIMATION: '/animation',
+  ANT_DESIGN: '/ant-design',
   APTOS: '/aptos',
   METAMASK: '/metamask',
   CONTRACT: '/contract',
@@ -52,8 +56,8 @@ export const DOCS_ROUTE = {
 };
 
 export const languageConfig = {
-  en: { id: 'en', label: 'English' },
-  vi: { id: 'vi', label: 'Vietnamese' },
+  en: { id: 'en', label: 'english' },
+  vi: { id: 'vi', label: 'vietnamese' },
 };
 
 export const MILLISECOND = 1;
