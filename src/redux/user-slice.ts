@@ -30,6 +30,7 @@ const userSlice = createSlice({
       const themeMode = state.theme.mode === 'dark' ? 'light' : 'dark';
       const themeLabel = themeMode === 'dark' ? 'themeMode.dark' : 'themeMode.light';
       state.theme = { mode: themeMode, label: themeLabel };
+      document.documentElement.setAttribute('data-theme', themeMode);
       localStorage.setItem(LS.THEME, themeMode);
     },
     setLanguage: (state: UserConfigType, actions: PayloadAction<LanguageType>) => {
