@@ -4,10 +4,18 @@ import ScrollToTop from 'src/components/ScrollToTop';
 import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { useEffect } from 'react';
+import { useAppDispatch } from 'src/redux/store';
+import { toggleMode } from 'src/redux/user-slice';
 
 export default function LayoutWrapper({ children }: LayoutProps) {
+  const dispatch = useAppDispatch();
   const cls = useLayoutStyle();
   const onlyXs = useMediaQuery<Theme>((theme) => theme.breakpoints.only('xs'));
+
+  useEffect(() => {
+    dispatch(toggleMode());
+  }, []);
 
   return (
     <Box position="relative" sx={cls.root}>

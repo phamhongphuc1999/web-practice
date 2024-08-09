@@ -38,20 +38,40 @@ function Avatar() {
 
 export default function TailwindOnly() {
   return (
-    <div className="mt-2 flex gap-5 flex-wrap">
-      <SimpleMessage />
-      <Avatar />
-      <div className="cycle w-[100px] h-[100px] bg-grey-100" />
-      <div className="flex items-center w-[50%]">
-        <div className="part-cycle w-[200px] h-[200px] bg-grey-100" />
-        <span>
-          In this one a circle is created using the shape-outside property. You also have to apply a
-          clip-path with the corresponding property for the circle to show up. The clip-path
-          property can take the same value as the shape-outside property so we can give it the
-          standard circle() shape that we used for shape-outside. Also, note that I've applied a
-          20px margin on the element here to give the text some space.
-        </span>
+    <>
+      <div className="mt-2 flex gap-5 flex-wrap">
+        <SimpleMessage />
+        <Avatar />
+        <div className="cycle w-[100px] h-[100px] bg-grey-100" />
+        <div className="flex items-center w-[50%]">
+          <div className="part-cycle w-[200px] h-[200px] bg-grey-100" />
+          <span>
+            In this one a circle is created using the shape-outside property. You also have to apply
+            a clip-path with the corresponding property for the circle to show up. The clip-path
+            property can take the same value as the shape-outside property so we can give it the
+            standard circle() shape that we used for shape-outside. Also, note that I've applied a
+            20px margin on the element here to give the text some space.
+          </span>
+        </div>
       </div>
-    </div>
+      <div className="flex">
+        <p>Point</p>
+        <div className="curve-common inline-flex">
+          <div className="relative w-[50px] h-[250px]">
+            <div className="absolute top-0 bottom-0 left-[-100%] right-[0%] flex flex-col">
+              <div className="curve-shape1 aspect-square rounded-tr-[50%]" />
+              <div className="curve-shape1 h-full" />
+            </div>
+          </div>
+          <div className="relative w-[50px] h-[250px]">
+            <div className="absolute top-0 bottom-0 left-[0%] right-[-100%] flex flex-col">
+              <div className="curve-shape2 h-full" />
+              <div className="curve-shape2 aspect-square rounded-bl-[50%]" />
+            </div>
+          </div>
+        </div>
+        <p>Point</p>
+      </div>
+    </>
   );
 }
