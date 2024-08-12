@@ -1,6 +1,6 @@
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import useTranslate from 'src/hooks/useTranslate';
-import TailwindOnly from './tailwind-only';
+import TailwindOnly from './TailwindOnly';
 
 export default function AntDesignPage() {
   const { t } = useTranslate();

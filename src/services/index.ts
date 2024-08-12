@@ -71,6 +71,19 @@ export function random(min: number, max: number) {
   return seed * range + min;
 }
 
+export function randomSubGroup(range: number, numberOfSelected: number) {
+  if (numberOfSelected < 0 || range < numberOfSelected) {
+    range = 10;
+    numberOfSelected = 1;
+  }
+  const _array = Array.from(Array(range).keys(), (key) => key + 1);
+  for (let i = range - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [_array[i], _array[j]] = [_array[j], _array[i]];
+  }
+  return _array.slice(0, numberOfSelected);
+}
+
 export function mergeSx(sxs: Array<boolean | SxProps<Theme> | undefined>): SxProps<Theme> {
   let result: Array<
     boolean | SystemStyleObject<Theme> | ((theme: Theme) => SystemStyleObject<Theme>)

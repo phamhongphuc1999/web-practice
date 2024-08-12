@@ -9,6 +9,7 @@ module.exports = {
         },
         black: {
           100: 'var(--text-primary)',
+          900: 'var(--very-contrast)',
         },
       },
     },

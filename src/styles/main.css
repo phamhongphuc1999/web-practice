@@ -19,6 +19,7 @@
   --background-primary: #e6ebf4;
   --background-secondary: #ffffff;
   --text-primary: #566474;
+  --very-contrast: #ffffff;
 }
 [data-theme='dark'] {
   --background-paper: #021c39;
@@ -26,12 +27,13 @@
   --background-primary: #00244d;
   --background-secondary: #07111c;
   --text-primary: #ffffff;
+  --very-contrast: #000000;
 }
 .curve-common {
-  background: linear-gradient(to bottom, green 50%, var(--background-paper) 50%);
+  background: linear-gradient(to bottom, green 50%, red 50%);
 }
 .curve-shape1 {
-  background: linear-gradient(to left, var(--background-paper) 50%, transparent 50%);
+  background: linear-gradient(to left, red 50%, transparent 50%);
 }
 .curve-shape2 {
   background: linear-gradient(to left, transparent 50%, green 50%);

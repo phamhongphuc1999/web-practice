@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import MessageImg from 'src/assets/images/ant-design/message.svg';
+import CaroBox from './caro-box';
 
 function SimpleMessage() {
   return (
@@ -39,6 +40,7 @@ function Avatar() {
 export default function TailwindOnly() {
   return (
     <>
+      <p className="font-xl">Tailwind Only</p>
       <div className="mt-2 flex gap-5 flex-wrap">
         <SimpleMessage />
         <Avatar />
@@ -72,6 +74,7 @@ export default function TailwindOnly() {
         </div>
         <p>Point</p>
       </div>
+      <CaroBox />
     </>
   );
 }
