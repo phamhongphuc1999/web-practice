@@ -9,14 +9,14 @@ interface Props extends Omit<CssCaroProps, 'blocks'> {
 export default function RandomCaro(props: Props) {
   const { rows, columns, selectedBlock = 1 } = props;
 
-  const blocks = useMemo<Array<[number, number]>>(() => {
+  const blocks = useMemo<Array<{ row: number; column: number }>>(() => {
     const range = rows * columns;
     const rawBlocks = randomSubGroup(range, selectedBlock);
-    const result: Array<[number, number]> = [];
+    const result: Array<{ row: number; column: number }> = [];
     for (const rawBlock of rawBlocks) {
       const _row = Math.floor(rawBlock / columns);
       const _column = rawBlock % columns;
-      result.push([_row, _column]);
+      result.push({ row: _row, column: _column });
     }
     return result;
   }, [rows, columns, selectedBlock]);

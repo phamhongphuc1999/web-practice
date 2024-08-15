@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 export interface CssCaroProps {
   rows: number;
   columns: number;
-  blocks?: Array<[number, number]>;
+  blocks?: Array<{ row: number; column: number; className?: string }>;
   blockClassName?: string;
   stickClassName?: string;
   className?: string;
@@ -23,8 +23,8 @@ export default function NormalCssCaro(props: CssCaroProps) {
   return (
     <div className={`relative border-gray-50 border-[0.5px] overflow-hidden ${className}`}>
       {blocks.map((item, index) => {
-        const row = item[0] >= rows ? rows - 1 : item[0] < 0 ? 0 : item[0];
-        const column = item[1] >= columns ? columns - 1 : item[1] < 0 ? 0 : item[1];
+        const row = item.row >= rows ? rows - 1 : item.row < 0 ? 0 : item.row;
+        const column = item.column >= columns ? columns - 1 : item.column < 0 ? 0 : item.column;
 
         return (
           <div
@@ -35,7 +35,7 @@ export default function NormalCssCaro(props: CssCaroProps) {
               width: `${rowStep}%`,
               height: `${columnStep}%`,
             }}
-            className={`absolute bg-black-900 ${blockClassName}`}
+            className={`absolute bg-black-900 ${blockClassName} ${item.className}`}
           />
         );
       })}
