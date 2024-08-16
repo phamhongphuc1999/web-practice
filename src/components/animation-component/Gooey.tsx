@@ -78,7 +78,7 @@ Gooey.defaultProps = {
   opposite: false,
 };
 
-export function GooeyBox({ iconProps, props }: AnimationComponentBoxProps<Props>) {
+export function GooeyBox({ iconProps, ...props }: AnimationComponentBoxProps<Props>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <Gooey {...iconProps} />

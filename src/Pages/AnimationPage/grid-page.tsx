@@ -21,15 +21,15 @@ export default function GridPage() {
       <Box display="flex" flexWrap="wrap">
         <Item
           label="Grid Circle Loader"
-          Icon={<GridLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />}
+          Icon={<GridLoaderBox mt={2} iconProps={{ size: '150px' }} />}
         />
         <Item
           label="Grid Square Loader"
-          Icon={<GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'block', size: '150px' }} />}
+          Icon={<GridLoaderBox mt={2} iconProps={{ mode: 'block', size: '150px' }} />}
         />
         <Item
           label="Gird Gooey Loader"
-          Icon={<GridLoaderBox props={{ mt: 2 }} iconProps={{ mode: 'gooey', size: '150px' }} />}
+          Icon={<GridLoaderBox mt={2} iconProps={{ mode: 'gooey', size: '150px' }} />}
         />
       </Box>
     </>

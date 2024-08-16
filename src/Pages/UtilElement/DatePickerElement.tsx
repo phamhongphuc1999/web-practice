@@ -30,12 +30,12 @@ export default function DatePickerElement() {
     <>
       <CssBreadcrumbs
         configs={[{ label: t('utils'), link: ROUTE.UTILS }, { label: t('datePicker.title') }]}
-        props={{ mb: 2 }}
+        mb={2}
       />
       <Grid container>
         <Grid item sm={6} xs={12}>
           <CssDatePicker
-            props={{ maxWidth: '450px' }}
+            maxWidth="450px"
             events={{ onPredefinedClick, onCancelClick, onContinueClick }}
           />
         </Grid>

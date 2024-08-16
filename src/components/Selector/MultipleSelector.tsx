@@ -32,7 +32,7 @@ interface ItemProps<T> {
   item: T;
 }
 
-interface Props<T> {
+interface Props<T> extends BoxProps {
   items: Array<T>;
   defaultSelectedItems?: Array<T>;
   events?: {
@@ -54,11 +54,10 @@ interface Props<T> {
   config?: {
     maxItem?: number;
   };
-  props?: BoxProps;
 }
 
 export default function MultipleSelector<T extends MultipleSelectorItem>(params: Props<T>) {
-  const { items, defaultSelectedItems, events, Component, config, props } = params;
+  const { items, defaultSelectedItems, events, Component, config, ...props } = params;
   const rootRef = useRef<HTMLDivElement>(null);
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined);
   const open = Boolean(anchorEl);
@@ -121,7 +120,7 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
           ))}
         </Box>
         <Box display="flex" alignItems="center" width="25px" px="2px">
-          <ArrowAnimationIcon props={{ fontSize: 'small' }} isTransform={open} />
+          <ArrowAnimationIcon fontSize="small" isTransform={open} />
         </Box>
       </CssBox>
       <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(undefined)}>

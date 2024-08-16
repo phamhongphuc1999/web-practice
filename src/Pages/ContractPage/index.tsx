@@ -23,7 +23,7 @@ export default function ContractPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('contract') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('contract') }]} mb={2} />
       <Box display="flex" alignItems="center">
         <GroupButton
           items={[

@@ -4,12 +4,11 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useAppSelector } from 'src/redux/store';
 import { mergeSx } from 'src/services';
 
-interface Props {
+interface Props extends BoxProps {
   children: ReactNode;
-  props?: BoxProps;
 }
 
-export default function BaseChart({ children, props }: Props) {
+export default function BaseChart({ children, ...props }: Props) {
   const [loading, setLoading] = useState(false);
   const { theme } = useAppSelector((state) => state.user);
 

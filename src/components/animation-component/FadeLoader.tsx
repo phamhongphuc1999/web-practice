@@ -160,7 +160,7 @@ FadeLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function FadeLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function FadeLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <FadeLoader {...iconProps} />

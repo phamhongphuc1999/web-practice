@@ -8,11 +8,7 @@ import { hexToRgb, numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
 import { getBasicLineChart, getThresholdLineChart } from '../config';
 
-interface Props {
-  props?: BoxProps;
-}
-
-export default function AreaChartOverview({ props }: Props) {
+export default function AreaChartOverview(props: BoxProps) {
   const { t } = useTranslate();
   const themeMode = useAppSelector((state) => state.user.theme.mode);
 

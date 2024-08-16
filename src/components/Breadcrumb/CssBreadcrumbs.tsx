@@ -2,12 +2,11 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Box, BoxProps, Breadcrumbs, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
-interface Props {
+interface Props extends BoxProps {
   configs: Array<{ link?: string; label: string; formatter?: (label: string) => string }>;
-  props?: BoxProps;
 }
 
-export default function CssBreadcrumbs({ configs, props }: Props) {
+export default function CssBreadcrumbs({ configs, ...props }: Props) {
   function DefaultFormatter(label: string) {
     const textArray = label.split(' ');
     let result = '';

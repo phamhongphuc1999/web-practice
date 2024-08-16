@@ -28,19 +28,19 @@ export default function AnimationPage() {
   const ComponentList = [
     {
       label: '3D Circle Loader',
-      icon: <ZCircleLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <ZCircleLoaderBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Ellipsis Loader',
-      icon: <EllipsisLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <EllipsisLoaderBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Circle Loader',
-      icon: <CircleLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <CircleLoaderBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Bounce Loader',
-      icon: <BounceLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <BounceLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -53,11 +53,11 @@ export default function AnimationPage() {
     },
     {
       label: 'Fade Loader',
-      icon: <FadeLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <FadeLoaderBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Clock Loader',
-      icon: <ClockLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <ClockLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -70,7 +70,7 @@ export default function AnimationPage() {
     },
     {
       label: 'Grid Circle Loader',
-      icon: <GridLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <GridLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -83,11 +83,11 @@ export default function AnimationPage() {
     },
     {
       label: 'Puff Loader',
-      icon: <PuffLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <PuffLoaderBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Gooey',
-      icon: <GooeyBox props={{ mt: 2 }} iconProps={{ opposite: false, size: '150px' }} />,
+      icon: <GooeyBox mt={2} iconProps={{ opposite: false, size: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -100,7 +100,7 @@ export default function AnimationPage() {
     },
     {
       label: 'Ring',
-      icon: <CircleRingBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <CircleRingBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -111,14 +111,14 @@ export default function AnimationPage() {
         </Button>
       ),
     },
-    { label: 'Blocks', icon: <BlockLoaderBox props={{ mt: 2 }} /> },
+    { label: 'Blocks', icon: <BlockLoaderBox mt={2} /> },
     {
       label: 'Circle Dot Loader',
-      icon: <CircleDotBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />,
+      icon: <CircleDotBox mt={2} iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Drop Animation',
-      icon: <PieceDropAnimation props={{ sx: { width: '100%', height: '150px' } }} />,
+      icon: <PieceDropAnimation sx={{ width: '100%', height: '150px' }} />,
       componentEnd: (
         <Button
           variant="contained"
@@ -142,7 +142,7 @@ export default function AnimationPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('animation') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('animation') }]} mb={2} />
       <Button
         variant="contained"
         sx={{ width: '5rem' }}

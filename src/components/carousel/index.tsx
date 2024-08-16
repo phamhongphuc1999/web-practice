@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useState } from 'react';
 
 const defaultInterval = 2000;
 
-interface Props {
+interface Props extends BoxProps {
   location: number;
   items: Array<ReactNode>;
   events?: {
@@ -15,10 +15,9 @@ interface Props {
     interval?: number;
     mode?: 'normal' | 'circle' | 'linear';
   };
-  props?: BoxProps;
 }
 
-export default function Carousel({ location, items, events, metadata, props }: Props) {
+export default function Carousel({ location, items, events, metadata, ...props }: Props) {
   const [realItems, setRealItems] = useState(items);
   const [direction, setDirection] = useState<'right' | 'left'>('right');
 

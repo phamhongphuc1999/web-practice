@@ -48,7 +48,7 @@ interface Props extends AnimationComponentProps {
   numberOfItems?: number;
 }
 
-function Line({ size, color, mode, props }: Omit<Props, 'numberOfItems'> & { props?: BoxProps }) {
+function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & BoxProps) {
   return (
     <Box
       {...props}
@@ -105,11 +105,9 @@ export default function CircleRing({ size, color, mode, numberOfItems = 4 }: Pro
             size={size}
             color={color}
             mode={mode}
-            props={{
-              sx: {
-                animation: `${item.rotate} 4.5s linear infinite`,
-                transform: `translateX(50%) rotate(${item.deg}deg)`,
-              },
+            sx={{
+              animation: `${item.rotate} 4.5s linear infinite`,
+              transform: `translateX(50%) rotate(${item.deg}deg)`,
             }}
           />
         );
@@ -123,7 +121,7 @@ CircleRing.defaultProps = {
   color: 'primary.main',
 };
 
-export function CircleRingBox({ iconProps, props }: AnimationComponentBoxProps<Props>) {
+export function CircleRingBox({ iconProps, ...props }: AnimationComponentBoxProps<Props>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <CircleRing {...iconProps} />

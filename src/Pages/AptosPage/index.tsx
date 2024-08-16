@@ -33,7 +33,7 @@ export default function AptosPage() {
 
   return (
     <Box>
-      <CssBreadcrumbs configs={[{ label: t('aptos') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('aptos') }]} mb={2} />
       <Typography variant="h4">Aptos Wallet Connection</Typography>
       <Box>
         {connected ? (

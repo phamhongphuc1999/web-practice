@@ -71,7 +71,7 @@ CircleLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function CircleLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function CircleLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <CircleLoader {...iconProps} />

@@ -20,7 +20,7 @@ export default function UtilElement() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('utils') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('utils') }]} mb={2} />
       <Box display="flex" flexWrap="wrap">
         <Button
           variant="contained"
@@ -37,11 +37,7 @@ export default function UtilElement() {
         >
           {t('multipleSelector')}
         </Button>
-        <TextCopy
-          rootProps={{ ml: 1 }}
-          title={t('copyHere')}
-          iconProps={{ copyText: t('copyHere') }}
-        />
+        <TextCopy ml={1} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(theme.label)}</Typography>
           <ThemeButton />
@@ -49,21 +45,17 @@ export default function UtilElement() {
       </Box>
       <Box mt={2} display="flex" flexWrap="wrap">
         <LanguageSelector />
-        <PasswordTextField
-          props={{ sx: { ml: 2, width: '40%' }, placeholder: t('enterPassword') }}
-        />
+        <PasswordTextField sx={{ ml: 2, width: '40%' }} placeholder={t('enterPassword')} />
       </Box>
       <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography>{text}</Typography>
         <GroupButton
-          props={{
-            sx: {
-              transform: 'skewX(-20deg)',
-              borderRadius: '4px',
-              boxShadow: '2px 3px 0px #1841B5',
-              minWidth: '170px',
-              ml: 1,
-            },
+          sx={{
+            transform: 'skewX(-20deg)',
+            borderRadius: '4px',
+            boxShadow: '2px 3px 0px #1841B5',
+            minWidth: '170px',
+            ml: 1,
           }}
           items={[
             { id: '1', content: '1' },

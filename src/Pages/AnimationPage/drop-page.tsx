@@ -30,7 +30,7 @@ export default function DropPage() {
           <PieceDropAnimation
             numberOfPieces={numberOfItems}
             metadata={{ durationStart: 13 }}
-            props={{ sx: { width: '100%', height: '100%' } }}
+            sx={{ width: '100%', height: '100%' }}
           />
         </Box>
         <form onSubmit={(event) => onNumberOfItemsChange(event)}>

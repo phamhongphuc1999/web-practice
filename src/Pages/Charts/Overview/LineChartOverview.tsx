@@ -6,11 +6,7 @@ import { numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
 import { getBasicLineChart } from '../config';
 
-interface Props {
-  props?: BoxProps;
-}
-
-export default function LineChartOverview({ props }: Props) {
+export default function LineChartOverview(props: BoxProps) {
   const { t } = useTranslate();
 
   return (

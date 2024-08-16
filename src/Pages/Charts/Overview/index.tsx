@@ -9,10 +9,10 @@ export default function Overview() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('chart') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('chart') }]} mb={2} />
       <LineChartOverview />
-      <AreaChartOverview props={{ mt: 3 }} />
-      <BarChartOverview props={{ mt: 3 }} />
+      <AreaChartOverview mt={3} />
+      <BarChartOverview mt={3} />
     </>
   );
 }

@@ -19,9 +19,8 @@ export interface AnimationComponentProps {
   color?: string;
 }
 
-export interface AnimationComponentBoxProps<T = AnimationComponentProps> {
+export interface AnimationComponentBoxProps<T = AnimationComponentProps> extends BoxProps {
   iconProps?: T;
-  props?: BoxProps;
 }
 
 export interface NativeToken {

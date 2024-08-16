@@ -10,13 +10,12 @@ import { useAppSelector } from 'src/redux/store';
 import { hexToRgb } from 'src/services';
 import BaseChart from './base-chart';
 
-interface Props {
+interface Props extends BoxProps {
   series: any;
   option?: any;
   metadata?: {
     makeSeries?: boolean;
   };
-  props?: BoxProps;
 }
 
 function makeSeries(themeMode: ThemeMode, series: any) {
@@ -51,7 +50,7 @@ function makeSeries(themeMode: ThemeMode, series: any) {
   return finalSeries;
 }
 
-export default function AreaChart({ series, option, metadata, props }: Props) {
+export default function AreaChart({ series, option, metadata, ...props }: Props) {
   const realSeries = cloneDeep(series);
   const isMakeSeries = metadata?.makeSeries == undefined ? true : metadata.makeSeries;
   const themeMode = useAppSelector((state) => state.user.theme.mode);
@@ -80,7 +79,7 @@ export default function AreaChart({ series, option, metadata, props }: Props) {
   }, [realSeries, option]);
 
   return (
-    <BaseChart props={props}>
+    <BaseChart {...props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );

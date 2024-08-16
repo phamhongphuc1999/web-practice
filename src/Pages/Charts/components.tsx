@@ -16,14 +16,13 @@ function useStyle() {
   };
 }
 
-interface ItemProps {
+interface ItemProps extends GridProps {
   label: string;
   detailLink?: string;
   Chart: ReactElement;
-  props?: GridProps;
 }
 
-export function Item({ label, detailLink, Chart, props }: ItemProps) {
+export function Item({ label, detailLink, Chart, ...props }: ItemProps) {
   const cls = useStyle();
   const { t } = useTranslate();
 

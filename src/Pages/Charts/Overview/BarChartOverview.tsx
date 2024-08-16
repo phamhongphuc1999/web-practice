@@ -4,11 +4,7 @@ import useTranslate from 'src/hooks/useTranslate';
 import { Item } from '../components';
 import { BarChartCategories, BarChartData } from '../config';
 
-interface Props {
-  props?: BoxProps;
-}
-
-export default function BarChartOverview({ props }: Props) {
+export default function BarChartOverview(props: BoxProps) {
   const { t } = useTranslate();
 
   return (
@@ -17,7 +13,8 @@ export default function BarChartOverview({ props }: Props) {
       <Divider sx={{ marginY: 1 }} />
       <Grid container spacing={2}>
         <Item
-          props={{ sm: 12, xs: 12 }}
+          sm={12}
+          xs={12}
           label={t('basicBarChart')}
           Chart={
             <BarChart

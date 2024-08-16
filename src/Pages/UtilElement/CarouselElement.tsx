@@ -23,7 +23,7 @@ interface Props {
 function Item({ number }: Props) {
   return (
     <Box sx={{ border: '1px solid red' }}>
-      <CircleRingBox props={{ mt: 2 }} iconProps={{ size: '150px', numberOfItems: number }} />
+      <CircleRingBox mt={2} iconProps={{ size: '150px', numberOfItems: number }} />
     </Box>
   );
 }
@@ -46,7 +46,7 @@ export default function CarouselElement() {
     <Container>
       <CssBreadcrumbs
         configs={[{ label: t('utils'), link: ROUTE.UTILS }, { label: t('datePicker.title') }]}
-        props={{ mb: 2 }}
+        mb={2}
       />
       <Typography>{location + 1}</Typography>
       <GroupButton
@@ -79,7 +79,7 @@ export default function CarouselElement() {
         </Button>
       </FormGroup>
       <Carousel
-        props={{ sx: { height: '100px' } }}
+        sx={{ height: '100px' }}
         location={location}
         events={{ setLocation }}
         items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, _) => (

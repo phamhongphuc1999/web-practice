@@ -43,16 +43,15 @@ const useStyle = (theme: Theme) => ({
   },
 });
 
-interface Props {
+interface Props extends BoxProps {
   events?: {
     onPredefinedClick?: (value: number) => void;
     onCancelClick?: () => void;
     onContinueClick?: (start: DateType, end: DateType) => void;
   };
-  props?: BoxProps;
 }
 
-export default function CssDatePicker({ events, props }: Props) {
+export default function CssDatePicker({ events, ...props }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
   const { t } = useTranslate();

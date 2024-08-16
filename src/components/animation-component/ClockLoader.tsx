@@ -60,7 +60,10 @@ ClockLoader.defaultProps = {
   isReverse: false,
 };
 
-export function ClockLoaderBox({ iconProps, props }: AnimationComponentBoxProps<ClockLoaderProps>) {
+export function ClockLoaderBox({
+  iconProps,
+  ...props
+}: AnimationComponentBoxProps<ClockLoaderProps>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <ClockLoader {...iconProps} />

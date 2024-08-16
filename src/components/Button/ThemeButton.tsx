@@ -4,11 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/redux/store';
 import { toggleMode } from 'src/redux/user-slice';
 import { MoonIcon, SunIcon } from '../Icons';
 
-interface Props {
-  props?: IconButtonProps;
-}
-
-export default function ThemeButton({ props }: Props) {
+export default function ThemeButton(props: IconButtonProps) {
   const mode = useAppSelector<ThemeMode>((state) => state.user.theme.mode);
   const dispatch = useAppDispatch();
 

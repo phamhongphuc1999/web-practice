@@ -43,7 +43,7 @@ export default function MultipleSelectorElement() {
     <>
       <CssBreadcrumbs
         configs={[{ label: t('utils'), link: ROUTE.UTILS }, { label: t('multipleSelector') }]}
-        props={{ mb: 2 }}
+        mb={2}
       />
       <Box>
         <Typography sx={{ marginBottom: 1 }}>{t('multipleSelector')}</Typography>

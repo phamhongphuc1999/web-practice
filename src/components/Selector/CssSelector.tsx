@@ -19,7 +19,7 @@ export interface CssSelectItem {
   label: string;
 }
 
-interface Props<T> {
+interface Props<T> extends BoxProps {
   items: Array<T>;
   defaultSelectedItem?: T;
   width?: number;
@@ -27,11 +27,10 @@ interface Props<T> {
     onChooseItem: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) => void;
   };
   value?: string;
-  props?: BoxProps;
 }
 
 export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
-  const { items, defaultSelectedItem, width, events, value, props } = param;
+  const { items, defaultSelectedItem, width, events, value, ...props } = param;
 
   const rootRef = useRef<HTMLDivElement>(null);
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined);
@@ -64,7 +63,7 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
         onClick={(event) => setAnchorEl(event.currentTarget)}
       >
         <Typography>{value ?? defaultSelectedItem?.label}</Typography>
-        <ArrowAnimationIcon isTransform={open} props={{ fontSize: 'small', sx: { ml: 1 } }} />
+        <ArrowAnimationIcon isTransform={open} fontSize="small" sx={{ ml: 1 }} />
       </CssBox>
       <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(undefined)}>
         <List sx={{ width: rootWidth }}>

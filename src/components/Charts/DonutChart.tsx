@@ -6,13 +6,12 @@ import cloneDeep from 'lodash.clonedeep';
 import { useMemo } from 'react';
 import BaseChart from './base-chart';
 
-interface Props {
+interface Props extends BoxProps {
   series: any;
   option?: any;
-  props?: BoxProps;
 }
 
-export default function DonutChart({ series, option, props }: Props) {
+export default function DonutChart({ series, option, ...props }: Props) {
   const realSeries = cloneDeep(series);
 
   const options = useMemo(() => {
@@ -39,7 +38,7 @@ export default function DonutChart({ series, option, props }: Props) {
   }, [option, realSeries]);
 
   return (
-    <BaseChart props={props}>
+    <BaseChart {...props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );

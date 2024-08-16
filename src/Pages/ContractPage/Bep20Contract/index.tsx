@@ -97,7 +97,7 @@ export default function Bep20Contract() {
           items={NetworkList}
           value={network.label}
           events={{ onChooseItem: onChooseItem }}
-          props={{ ml: 1 }}
+          ml={1}
         />
         <Button
           sx={{ marginLeft: '1rem' }}

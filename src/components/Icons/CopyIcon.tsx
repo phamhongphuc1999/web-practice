@@ -13,12 +13,11 @@ import { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import useTranslate from 'src/hooks/useTranslate';
 
-export interface CopyIconProps {
+export interface CopyIconProps extends IconButtonProps {
   copyText?: string;
   defaultText?: string;
   successText?: string;
   iconProps?: SvgIconProps;
-  props?: IconButtonProps;
 }
 
 export default function CopyIcon(params: CopyIconProps) {
@@ -28,7 +27,7 @@ export default function CopyIcon(params: CopyIconProps) {
     defaultText = t('copy'),
     successText = t('copied'),
     iconProps,
-    props,
+    ...props
   } = params;
   const [tooltip, setTooltip] = useState(defaultText);
 
@@ -51,16 +50,15 @@ export default function CopyIcon(params: CopyIconProps) {
   );
 }
 
-interface Props {
+interface Props extends BoxProps {
   title: string;
-  rootProps?: BoxProps;
   textProps?: TypographyProps;
   iconProps?: CopyIconProps;
 }
 
-export function TextCopy({ title, rootProps, textProps, iconProps }: Props) {
+export function TextCopy({ title, textProps, iconProps, ...props }: Props) {
   return (
-    <Box display="flex" alignItems="center" {...rootProps}>
+    <Box display="flex" alignItems="center" {...props}>
       <Typography {...textProps}>{title}</Typography>
       <CopyIcon {...iconProps} />
     </Box>

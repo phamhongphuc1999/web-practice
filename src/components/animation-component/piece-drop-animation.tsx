@@ -23,17 +23,16 @@ function getAnimation(initialState: AnimationObject, finalState: AnimationObject
   `;
 }
 
-interface PieceProps {
+interface PieceProps extends BoxProps {
   image: 'blue' | 'brightGreen' | 'deepBlue' | 'green' | 'pink' | 'red' | 'yellow';
   duration: number;
   animation: {
     initial: AnimationObject;
     final: AnimationObject;
   };
-  props?: BoxProps;
 }
 
-function Piece({ image, duration, animation, props }: PieceProps) {
+function Piece({ image, duration, animation, ...props }: PieceProps) {
   const PieceImage = useMemo(() => {
     if (image == 'blue') return BluePiece;
     else if (image == 'brightGreen') return BrightGreenPiece;
@@ -75,16 +74,15 @@ const colors: Array<PieceProps['image']> = [
   'red',
 ];
 
-interface Props {
+interface Props extends BoxProps {
   numberOfPieces?: number;
   metadata?: {
     durationStart?: number;
     durationRange?: number;
   };
-  props?: BoxProps;
 }
 
-export default function PieceDropAnimation({ numberOfPieces = 50, metadata, props }: Props) {
+export default function PieceDropAnimation({ numberOfPieces = 50, metadata, ...props }: Props) {
   const { durationStart, durationEnd } = useMemo(() => {
     let durationStart = 2;
     let durationEnd = 3.5;
@@ -124,7 +122,9 @@ export default function PieceDropAnimation({ numberOfPieces = 50, metadata, prop
             transform: `rotateX(${finalXRotate}deg) rotateZ(${finalZRotate}deg)`,
           },
         },
-        props: { width: `${size}px`, height: `${size}px`, sx: { animationDelay: `-${delay}s` } },
+        width: `${size}px`,
+        height: `${size}px`,
+        sx: { animationDelay: `-${delay}s` },
       });
     }
     return result;

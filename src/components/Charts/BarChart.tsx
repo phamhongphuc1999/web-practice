@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { BoxProps } from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import cloneDeep from 'lodash.clonedeep';
 import { useMemo } from 'react';
 import BaseChart from './base-chart';
-import { BoxProps } from '@mui/material';
-import cloneDeep from 'lodash.clonedeep';
 
 export type BarDirection = 'horizontal' | 'vertical';
 
-interface Props {
+interface Props extends BoxProps {
   series: any;
   option?: any;
   categories: Array<string>;
   type?: BarDirection;
-  props?: BoxProps;
 }
 
 const _plotOption = {
@@ -22,7 +21,8 @@ const _plotOption = {
   pointWidth: 8,
 };
 
-export default function BarChart({ series, option, categories, type = 'vertical', props }: Props) {
+export default function BarChart(params: Props) {
+  const { series, option, categories, type = 'vertical', ...props } = params;
   const realSeries = cloneDeep(series);
 
   const options = useMemo(() => {
@@ -47,7 +47,7 @@ export default function BarChart({ series, option, categories, type = 'vertical'
   }, [categories, realSeries, option, type]);
 
   return (
-    <BaseChart props={props}>
+    <BaseChart {...props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );

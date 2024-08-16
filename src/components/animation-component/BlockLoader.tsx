@@ -42,7 +42,7 @@ BlockLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function BlockLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function BlockLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <BlockLoader {...iconProps} />

@@ -41,7 +41,7 @@ PuffLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function PuffLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function PuffLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <PuffLoader {...iconProps} />

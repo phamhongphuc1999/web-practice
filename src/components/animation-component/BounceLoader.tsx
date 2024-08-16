@@ -56,7 +56,7 @@ BounceLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function BounceLoaderBox({ iconProps, props }: AnimationComponentBoxProps<Props>) {
+export function BounceLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps<Props>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <BounceLoader {...iconProps} />

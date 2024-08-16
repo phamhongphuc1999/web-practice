@@ -19,13 +19,10 @@ export default function ClockPage() {
         ]}
       />
       <Box display="flex" flexWrap="wrap">
-        <Item
-          label="Clock Loader"
-          Icon={<ClockLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />}
-        />
+        <Item label="Clock Loader" Icon={<ClockLoaderBox mt={2} iconProps={{ size: '150px' }} />} />
         <Item
           label="Reverse Clock Loader"
-          Icon={<ClockLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px', isReverse: true }} />}
+          Icon={<ClockLoaderBox mt={2} iconProps={{ size: '150px', isReverse: true }} />}
         />
       </Box>
     </>

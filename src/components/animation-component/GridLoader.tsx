@@ -71,7 +71,10 @@ GridLoader.defaultProps = {
   isBlock: false,
 };
 
-export function GridLoaderBox({ iconProps, props }: AnimationComponentBoxProps<GridLoaderProps>) {
+export function GridLoaderBox({
+  iconProps,
+  ...props
+}: AnimationComponentBoxProps<GridLoaderProps>) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <GridLoader {...iconProps} />

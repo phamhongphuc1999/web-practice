@@ -23,7 +23,7 @@ export default function LanguageSelector() {
   return (
     <CssSelector
       width={120}
-      props={{ sx: { ml: 1 } }}
+      ml={1}
       items={Object.values(languageConfig).map((item) => ({ id: item.id, label: t(item.label) }))}
       defaultSelectedItem={defaultSelectedItem}
       events={{ onChooseItem }}

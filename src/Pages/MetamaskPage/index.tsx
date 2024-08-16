@@ -13,8 +13,8 @@ export default function MetamaskPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: 'metamask' }]} props={{ mb: 2 }} />
-      <ConnectedButton props={{ variant: 'contained' }} />
+      <CssBreadcrumbs configs={[{ label: 'metamask' }]} mb={2} />
+      <ConnectedButton variant={'contained'} />
       <NetworkButton butProps={{ sx: { ml: 1 } }} />
       <Box mt={2}>
         <Typography>{t('data')}</Typography>

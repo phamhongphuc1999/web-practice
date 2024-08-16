@@ -21,17 +21,15 @@ export default function BouncePage() {
       <Box display="flex" flexWrap="wrap">
         <Item
           label="Bounce Loader"
-          Icon={<BounceLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px' }} />}
+          Icon={<BounceLoaderBox mt={2} iconProps={{ size: '150px' }} />}
         />
         <Item
           label="Square Bounce Loader"
-          Icon={<BounceLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px', mode: 'square' }} />}
+          Icon={<BounceLoaderBox mt={2} iconProps={{ size: '150px', mode: 'square' }} />}
         />
         <Item
           label="Dynamic Bounce Loader"
-          Icon={
-            <BounceLoaderBox props={{ mt: 2 }} iconProps={{ size: '150px', mode: 'dynamic' }} />
-          }
+          Icon={<BounceLoaderBox mt={2} iconProps={{ size: '150px', mode: 'dynamic' }} />}
         />
       </Box>
     </>

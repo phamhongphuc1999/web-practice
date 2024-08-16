@@ -16,7 +16,7 @@ export interface GroupButtonItem {
   content: ReactNode;
 }
 
-interface Props {
+interface Props extends ButtonGroupProps {
   items: Array<GroupButtonItem>;
   selectedId: string;
   events?: {
@@ -24,17 +24,10 @@ interface Props {
   };
   slideProps?: BoxProps;
   textProps?: TypographyProps;
-  props?: ButtonGroupProps;
 }
 
-export default function GroupButton({
-  items,
-  selectedId,
-  events,
-  slideProps,
-  textProps,
-  props,
-}: Props) {
+export default function GroupButton(params: Props) {
+  const { items, selectedId, events, slideProps, textProps, ...props } = params;
   const active = useMemo(() => {
     let counter = 0;
     for (const item of items) {

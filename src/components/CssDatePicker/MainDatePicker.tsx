@@ -71,23 +71,17 @@ const datepicker = (theme: Theme) => ({
 
 export type DateType = Date | null | undefined;
 
-interface Props {
+interface Props extends BoxProps {
   start?: DateType;
   setStart: (date: DateType) => void;
   end?: DateType;
   setEnd: (date: DateType) => void;
   monthsShow?: number;
-  props?: BoxProps;
 }
 
-export default function MainDatePicker({
-  start,
-  setStart,
-  end,
-  setEnd,
-  monthsShow = 24,
-  props,
-}: Props) {
+export default function MainDatePicker(params: Props) {
+  const { start, setStart, end, setEnd, monthsShow = 24, ...props } = params;
+
   function onChange(
     date: DateType | [DateType, DateType],
     _: React.SyntheticEvent<any> | undefined

@@ -68,19 +68,13 @@ export default function GooeyPage() {
           <Item
             label="Gooey"
             Icon={
-              <GooeyBox
-                props={{ mt: 2 }}
-                iconProps={{ opposite: false, size: '150px', numberOfItems, min }}
-              />
+              <GooeyBox mt={2} iconProps={{ opposite: false, size: '150px', numberOfItems, min }} />
             }
           />
           <Item
             label="Opposite gooey"
             Icon={
-              <GooeyBox
-                props={{ mt: 2 }}
-                iconProps={{ opposite: true, size: '150px', numberOfItems, min }}
-              />
+              <GooeyBox mt={2} iconProps={{ opposite: true, size: '150px', numberOfItems, min }} />
             }
           />
         </Box>

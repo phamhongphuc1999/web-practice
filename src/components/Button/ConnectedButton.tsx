@@ -5,11 +5,7 @@ import { useAppDispatch, useAppSelector } from 'src/redux/store';
 import { connectMetamask, disconnect } from 'src/wallet-connection/action';
 import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
 
-interface Props {
-  props?: ButtonProps;
-}
-
-export default function ConnectedButton({ props }: Props) {
+export default function ConnectedButton(props: ButtonProps) {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslate();

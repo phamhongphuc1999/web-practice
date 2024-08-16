@@ -8,7 +8,7 @@ export default function AntDesignPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('ant-design') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('ant-design') }]} mb={2} />
       <TailwindOnly />
       <ScrollComponent />
     </>

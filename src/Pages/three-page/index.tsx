@@ -43,7 +43,7 @@ export default function ThreePage() {
           { label: t('animation'), link: ROUTE.ANIMATION },
           { label: '3D', formatter: (text) => text },
         ]}
-        props={{ mb: 2 }}
+        mb={2}
       />
       <Box ref={ref} />
     </>

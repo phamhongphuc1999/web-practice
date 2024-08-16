@@ -1,12 +1,11 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { SvgIconProps } from '@mui/material';
 
-interface Props {
+interface Props extends SvgIconProps {
   isTransform: boolean;
-  props?: SvgIconProps;
 }
 
-export default function ArrowAnimationIcon({ isTransform, props }: Props) {
+export default function ArrowAnimationIcon({ isTransform, ...props }: Props) {
   return (
     <ExpandMoreIcon
       {...props}

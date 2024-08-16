@@ -70,7 +70,7 @@ ZCircleLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function ZCircleLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function ZCircleLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <ZCircleLoader {...iconProps} />

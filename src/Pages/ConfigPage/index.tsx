@@ -6,7 +6,7 @@ export default function ConfigPage() {
 
   return (
     <>
-      <CssBreadcrumbs configs={[{ label: t('config') }]} props={{ mb: 2 }} />
+      <CssBreadcrumbs configs={[{ label: t('config') }]} mb={2} />
     </>
   );
 }

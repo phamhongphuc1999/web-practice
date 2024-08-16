@@ -69,7 +69,7 @@ EllipsisLoader.defaultProps = {
   color: 'primary.main',
 };
 
-export function EllipsisLoaderBox({ iconProps, props }: AnimationComponentBoxProps) {
+export function EllipsisLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
   return (
     <Box display="flex" justifyContent="center" {...props}>
       <EllipsisLoader {...iconProps} />

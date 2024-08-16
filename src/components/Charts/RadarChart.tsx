@@ -9,14 +9,13 @@ import BaseChart from './base-chart';
 
 HighchartsMore(Highcharts);
 
-interface Props {
+interface Props extends BoxProps {
   series: any;
   option?: any;
   categories: Array<string>;
-  props?: BoxProps;
 }
 
-export default function RadarChart({ series, option, categories, props }: Props) {
+export default function RadarChart({ series, option, categories, ...props }: Props) {
   const realSeries = cloneDeep(series);
 
   const options = useMemo(() => {
@@ -42,7 +41,7 @@ export default function RadarChart({ series, option, categories, props }: Props)
   }, [realSeries, option, categories]);
 
   return (
-    <BaseChart props={props}>
+    <BaseChart {...props}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </BaseChart>
   );
