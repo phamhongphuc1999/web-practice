@@ -6,14 +6,14 @@ import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector'
 import MultipleSelector from 'src/components/Selector/MultipleSelector';
 import { ROUTE } from 'src/configs/constance';
 import { CHAINS } from 'src/configs/networkConfig';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface ExtendItem extends CssSelectItem {
   chainId: string;
 }
 
 export default function MultipleSelectorElement() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   const ItemList = Array(105)
     .fill(0)

@@ -3,13 +3,13 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ConnectedButton from 'src/components/Button/ConnectedButton';
 import NetworkButton from 'src/components/Button/NetworkButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 import { formatAddress } from 'src/services';
 
 export default function MetamaskPage() {
   const { chainId, hexChainId, accountAddress } = useAppSelector((state) => state.wallet);
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <>

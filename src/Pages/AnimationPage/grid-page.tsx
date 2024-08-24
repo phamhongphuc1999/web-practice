@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { GridLoaderBox } from 'src/components/animation-component/GridLoader';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
 
 export default function GridPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const { page } = useParams<{ page?: string }>();
 
   return (

@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface Props {
   decimal: number;
@@ -16,7 +16,7 @@ export default function ReadMethods({ decimal, contract }: Props) {
   const [address, setAddress] = useState('');
   const [balance, setBalance] = useState('');
   const [addressTextHelper, setAddressTextHelper] = useState<string | undefined>(undefined);
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   function onAddressChange(value: string) {
     setAddress(value);

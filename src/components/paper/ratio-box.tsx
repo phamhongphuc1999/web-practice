@@ -3,14 +3,13 @@ import { Box, BoxProps } from '@mui/material';
 import { ReactNode } from 'react';
 import { mergeSx } from 'src/services';
 
-interface Props {
+interface Props extends BoxProps {
   ratio?: number;
   children: ReactNode;
   rootProps?: BoxProps;
-  props?: BoxProps;
 }
 
-export default function RatioBox({ ratio = 100, children, rootProps, props }: Props) {
+export default function RatioBox({ ratio = 100, children, rootProps, ...props }: Props) {
   return ratio > 0 ? (
     <Box sx={mergeSx([{ position: 'relative', paddingTop: `${ratio}%` }, rootProps?.sx])}>
       <Box

@@ -9,12 +9,12 @@ import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 
 export default function UtilElement() {
   const history = useHistory();
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const { theme } = useAppSelector((state) => state.user);
   const [text, setText] = useState('1');
 
@@ -82,9 +82,7 @@ export default function UtilElement() {
         </Button>
       </Box>
       <Box mt={2}>
-        <ScrollPaper
-          props={{ border: '1px solid red', borderRadius: '8px', padding: 1, height: '200px' }}
-        >
+        <ScrollPaper border="1px solid red" borderRadius="8px" padding={1} height="200px">
           {Array(100)
             .fill(0)
             .map((_, index) => (

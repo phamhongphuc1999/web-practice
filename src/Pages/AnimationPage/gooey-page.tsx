@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { GooeyBox } from 'src/components/animation-component/Gooey';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { sleep } from 'src/services';
 import Item from './item';
 
 export default function GooeyPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const [amount, setAmount] = useState('4');
   const [sMin, setSMin] = useState('0.25');
   const [numberOfItems, setNumberOfItems] = useState(4);

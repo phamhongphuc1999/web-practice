@@ -26,7 +26,7 @@
     "@mui/utils": "^5.10.9",
     "@noble/secp256k1": "1.6.3",
     "@okwallet/aptos-wallet-adapter": "^0.0.7",
-    "@peter-present/react-hook-utils": "^0.0.13",
+    "@peter-present/react-hook-utils": "0.0.132",
     "@pontem/wallet-adapter-plugin": "^0.2.1",
     "@reduxjs/toolkit": "^1.8.6",
     "@scure/bip39": "^1.1.0",

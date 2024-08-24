@@ -2,14 +2,14 @@ import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
 import { useCallback } from 'react';
 import AreaChart from 'src/components/Charts/AreaChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 import { hexToRgb, numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
 import { getBasicLineChart, getThresholdLineChart } from '../config';
 
 export default function AreaChartOverview(props: BoxProps) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const themeMode = useAppSelector((state) => state.user.theme.mode);
 
   const zoneFn = useCallback(

@@ -2,7 +2,7 @@ import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/materi
 import { Fragment } from 'ethers/lib/utils';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface Props {
   fragment: Array<Fragment> | undefined;
@@ -15,7 +15,7 @@ interface ReadItemProps {
 }
 
 function ReadItem({ index, isOpen = false, item }: ReadItemProps) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const [open, setOpen] = useState(isOpen);
 
   return (
@@ -42,7 +42,7 @@ function ReadItem({ index, isOpen = false, item }: ReadItemProps) {
 
 export default function ReadFunction(param: Props) {
   const { fragment } = param;
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Box>

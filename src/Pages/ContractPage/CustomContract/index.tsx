@@ -3,12 +3,12 @@ import { ethers } from 'ethers';
 import { useMemo, useState } from 'react';
 import GroupButton from 'src/components/Button/group-button';
 import { EtherFragment } from 'src/global';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import ReadFunction from './ReadFunction';
 import WriteFunction from './WriteFunction';
 
 export default function CustomContract() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const [active, setActive] = useState('viewFunction');
   const [abi, setAbi] = useState('');
 

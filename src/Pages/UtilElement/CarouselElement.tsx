@@ -14,7 +14,7 @@ import GroupButton from 'src/components/Button/group-button';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import Carousel from 'src/components/carousel';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface Props {
   number: number;
@@ -29,7 +29,7 @@ function Item({ number }: Props) {
 }
 
 export default function CarouselElement() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const [mode, setMode] = useState('normal');
   const [location, setLocation] = useState(0);
   const [isArrow, setIsArrow] = useState(true);

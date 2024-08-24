@@ -2,11 +2,11 @@ import { Box } from '@mui/material';
 import { useEffect, useRef } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import * as THREE from 'three';
 
 export default function ThreePage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

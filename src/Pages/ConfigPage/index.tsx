@@ -1,12 +1,30 @@
+import { Box, Typography } from '@mui/material';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import useTranslate from 'src/hooks/useTranslate';
+import ThemeButton from 'src/components/Button/ThemeButton';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import { useAppSelector } from 'src/redux/store';
+
+function useStyle() {
+  return {
+    box: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+  };
+}
 
 export default function ConfigPage() {
-  const { t } = useTranslate();
+  const cls = useStyle();
+  const { t } = useLocalTranslate();
+  const { label } = useAppSelector((state) => state.user.theme);
 
   return (
     <>
       <CssBreadcrumbs configs={[{ label: t('config') }]} mb={2} />
+      <Box sx={cls.box}>
+        <Typography>{t(label)}</Typography>
+        <ThemeButton />
+      </Box>
     </>
   );
 }

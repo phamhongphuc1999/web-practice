@@ -8,7 +8,7 @@ import CopyIcon, { TextCopy } from 'src/components/Icons/CopyIcon';
 import ExploreIcon from 'src/components/Icons/ExploreIcon';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import { CHAINS, CHAIN_ALIASES } from 'src/configs/networkConfig';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { formatAddress, numberWithCommas } from 'src/services';
 import { useImmer } from 'use-immer';
 import ReadMethods from './ReadMethods';
@@ -29,7 +29,7 @@ export default function Bep20Contract() {
     owner: '',
     totalSupply: '',
   });
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   const NetworkList = Object.values(CHAIN_ALIASES).map((element, _) => ({
     id: element.toString(),

@@ -1,10 +1,10 @@
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import TailwindOnly from './TailwindOnly';
 import ScrollComponent from './ScrollComponent';
 
 export default function AntDesignPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { Button, ButtonProps } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppDispatch, useAppSelector } from 'src/redux/store';
 import { connectMetamask, disconnect } from 'src/wallet-connection/action';
 import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
@@ -8,7 +8,7 @@ import { ConnectedWalletIcon, DisconnectedWalletIcon } from '../Icons';
 export default function ConnectedButton(props: ButtonProps) {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const accountAddress = useAppSelector((state) => state.wallet.accountAddress);
 
   function onClick() {

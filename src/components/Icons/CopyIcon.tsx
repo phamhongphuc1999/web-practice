@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export interface CopyIconProps extends IconButtonProps {
   copyText?: string;
@@ -21,7 +21,7 @@ export interface CopyIconProps extends IconButtonProps {
 }
 
 export default function CopyIcon(params: CopyIconProps) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const {
     copyText = '',
     defaultText = t('copy'),

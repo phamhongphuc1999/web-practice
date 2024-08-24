@@ -1,11 +1,11 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
 import BarChart from 'src/components/Charts/BarChart';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { Item } from '../components';
 import { BarChartCategories, BarChartData } from '../config';
 
 export default function BarChartOverview(props: BoxProps) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Box {...props}>

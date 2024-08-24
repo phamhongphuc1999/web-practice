@@ -17,11 +17,11 @@ import { CircleDotBox } from 'src/components/animation-component/circle-dot-load
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
 
 export default function AnimationPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const history = useHistory();
   const { page } = useParams<{ page?: string }>();
 

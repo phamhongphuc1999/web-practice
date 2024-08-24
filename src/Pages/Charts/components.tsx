@@ -2,7 +2,7 @@ import LaunchOutlinedIcon from '@mui/icons-material/LaunchOutlined';
 import { Box, Grid, GridProps, Tooltip, Typography } from '@mui/material';
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 function useStyle() {
   return {
@@ -24,7 +24,7 @@ interface ItemProps extends GridProps {
 
 export function Item({ label, detailLink, Chart, ...props }: ItemProps) {
   const cls = useStyle();
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Grid item sm={6} xs={12} {...props}>

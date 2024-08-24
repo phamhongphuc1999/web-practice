@@ -3,13 +3,12 @@ import { Box, BoxProps, darken } from '@mui/material';
 import { ReactNode } from 'react';
 import { mergeSx } from 'src/services';
 
-interface Props {
+interface Props extends BoxProps {
   children: ReactNode;
   scrollProps?: BoxProps;
-  props?: BoxProps;
 }
 
-export default function ScrollPaper({ children, scrollProps, props }: Props) {
+export default function ScrollPaper({ children, scrollProps, ...props }: Props) {
   return (
     <Box
       {...props}

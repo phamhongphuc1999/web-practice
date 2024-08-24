@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import { ClockLoaderBox } from 'src/components/animation-component/ClockLoader';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
 
 export default function ClockPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const { page } = useParams<{ page?: string }>();
 
   return (

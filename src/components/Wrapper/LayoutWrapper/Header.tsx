@@ -1,10 +1,10 @@
 import { alpha, Box, Button } from '@mui/material';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function Header() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Box

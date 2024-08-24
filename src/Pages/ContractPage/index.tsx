@@ -3,14 +3,14 @@ import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import GroupButton, { GroupButtonItem } from 'src/components/Button/group-button';
 import useQueryUrl from 'src/hooks/useQueryUrl';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Bep20Contract from './Bep20Contract';
 import CustomContract from './CustomContract';
 
 export default function ContractPage() {
   const { action } = useQueryUrl();
   const history = useHistory();
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   const defaultActive =
     action == t('custom') ? 1 : action == undefined || action == 'bep20' ? 0 : 2;

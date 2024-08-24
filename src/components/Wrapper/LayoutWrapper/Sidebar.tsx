@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { Layout } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 const useStyle = (theme: Theme) => ({
   drawer: {
@@ -56,7 +56,7 @@ export default function Sidebar() {
   const theme = useTheme();
   const mdUp = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'));
   const cls = useStyle(theme);
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Drawer open variant="permanent" anchor="left" PaperProps={{ sx: cls.drawer }}>

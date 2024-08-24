@@ -1,11 +1,11 @@
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import AreaChartOverview from './AreaChartOverview';
 import BarChartOverview from './BarChartOverview';
 import LineChartOverview from './LineChartOverview';
 
 export default function Overview() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <>

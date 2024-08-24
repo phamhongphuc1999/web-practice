@@ -11,7 +11,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { useMemo, useState } from 'react';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { toFixed } from 'src/services';
 import MainDatePicker, { DateType } from './MainDatePicker';
 
@@ -54,7 +54,7 @@ interface Props extends BoxProps {
 export default function CssDatePicker({ events, ...props }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const [start, setStart] = useState<DateType>(null);
   const [end, setEnd] = useState<DateType>(null);
   const [selected, setSelected] = useState(-1);

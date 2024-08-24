@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function DropPage() {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const { page } = useParams<{ page?: string }>();
   const [amount, setAmount] = useState('50');
   const [numberOfItems, setNumberOfItems] = useState(50);

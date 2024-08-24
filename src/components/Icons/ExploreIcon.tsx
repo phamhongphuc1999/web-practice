@@ -1,7 +1,7 @@
 import useExplorerUrl, { ConfigType } from 'src/hooks/useExplorerUrl';
 import LaunchIcon from '@mui/icons-material/Launch';
 import { IconButton, IconButtonProps, SvgIconProps, Tooltip } from '@mui/material';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface Props extends IconButtonProps {
   hash: string;
@@ -10,7 +10,7 @@ interface Props extends IconButtonProps {
 }
 
 export default function ExploreIcon({ hash, config, iconProps, ...props }: Props) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
   const { link, text } = useExplorerUrl(hash, config);
 
   return (

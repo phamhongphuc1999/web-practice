@@ -4,13 +4,13 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssDatePicker from 'src/components/CssDatePicker';
 import { DateType } from 'src/components/CssDatePicker/MainDatePicker';
 import { ROUTE } from 'src/configs/constance';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function DatePickerElement() {
   const [start, setStart] = useState<DateType>(undefined);
   const [end, setEnd] = useState<DateType>(undefined);
   const [event, setEvent] = useState('');
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   function onPredefinedClick(_: number) {
     setEvent('onPredefined');

@@ -1,13 +1,13 @@
 import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
 import LineChart from 'src/components/Charts/LineChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
-import useTranslate from 'src/hooks/useTranslate';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { numberWithCommas, toFixed } from 'src/services';
 import { Item } from '../components';
 import { getBasicLineChart } from '../config';
 
 export default function LineChartOverview(props: BoxProps) {
-  const { t } = useTranslate();
+  const { t } = useLocalTranslate();
 
   return (
     <Box {...props}>
