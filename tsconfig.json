@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "src/",
-    "typeRoots": ["./node_modules/@types", "src/global.d.ts"],
+    "typeRoots": ["./node_modules/@types", "src/global.ts"],
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

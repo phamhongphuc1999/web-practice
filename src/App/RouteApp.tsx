@@ -9,6 +9,7 @@ import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
 import AntDesignPage from 'src/Pages/AntDesignPage';
 import AptosPage from 'src/Pages/AptosPage';
+import EChart from 'src/Pages/Charts/EChart';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
@@ -62,6 +63,9 @@ export default function RouteApp() {
       </Route>
       <Route path={ROUTE.CHART} exact={true}>
         <Overview />
+      </Route>
+      <Route path={ROUTE.ECHART} exact={true}>
+        <EChart />
       </Route>
       <Route path={ROUTE.UTILS} exact={true}>
         <UtilElement />

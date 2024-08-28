@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import MessageImg from 'src/assets/images/ant-design/message.svg';
-import CaroBox from './caro-box';
+import CaroBox from './CaroBox';
 
 function SimpleMessage() {
   return (
@@ -74,7 +74,7 @@ export default function TailwindOnly() {
         </div>
         <p>Point</p>
       </div>
-      <CaroBox />
+      <CaroBox className="mt-5" />
     </>
   );
 }

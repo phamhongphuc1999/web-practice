@@ -43,6 +43,7 @@ export const ROUTE = {
   METAMASK: '/metamask',
   CONTRACT: '/contract',
   CHART: '/charts',
+  ECHART: '/charts/e-chart',
   UTILS: '/utils',
   UTIL_DATE_PICKER: '/utils/date-picker',
   UTIL_SELECTOR: '/utils/selector',
