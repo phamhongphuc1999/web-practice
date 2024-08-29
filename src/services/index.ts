@@ -84,7 +84,7 @@ export function randomSubGroup(range: number, numberOfSelected: number) {
   return _array.slice(0, numberOfSelected);
 }
 
-export function interpolateMissingValues<T = unknown>(data: Array<T>) {
+export function fillMissingValues<T = unknown>(data: Array<T>) {
   let lastValue: T = data[0];
   return data.map((value) => {
     if (value !== null) {

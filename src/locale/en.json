@@ -10,6 +10,7 @@
   "metamask": "Metamask",
   "contract": "Contract",
   "chart": "Chart",
+  "eChart": "eChart",
   "utils": "Utils",
   "config": "Config",
   "testWalletUtils": "Test wallet utils",
@@ -106,5 +107,6 @@
   "importToken": "Import token",
   "openDetail": "Open detail",
   "english": "English",
-  "vietnamese": "Vietnamese"
+  "vietnamese": "Vietnamese",
+  "goToEChart": "Go to EChart"
 }

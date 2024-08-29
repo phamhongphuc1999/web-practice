@@ -73,5 +73,6 @@ export const color3 = '#82E28E';
 export const color4 = '#927AD1';
 export const color5 = '#FCAE6B';
 export const color6 = '#A5A5A5';
+export const color7 = '#d91c5b';
 
-export const COLOR_ARRAY = [color1, color2, color3, color4, color5, color6];
+export const COLOR_ARRAY = [color1, color2, color3, color4, color5, color6, color7];

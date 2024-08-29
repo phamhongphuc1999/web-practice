@@ -10,6 +10,7 @@
   "metamask": "Metamask",
   "contract": "Hợp đồng",
   "chart": "Đồ thị",
+  "eChart": "Đồ thị eChart",
   "utils": "Tiện ích",
   "config": "Cài đặt",
   "testWalletUtils": "Thử nghiệm tính năng",
@@ -106,5 +107,6 @@
   "importToken": "Thêm tài sản",
   "openDetail": "Xem chi tiết",
   "english": "Tiếng Anh",
-  "vietnamese": "Tiếng Việt"
+  "vietnamese": "Tiếng Việt",
+  "goToEChart": "Đi đến EChart"
 }
