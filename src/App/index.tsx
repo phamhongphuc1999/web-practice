@@ -10,6 +10,7 @@ import ThemeWrapper from 'src/components/Wrapper/ThemeWrapper';
 import useLayout from 'src/hooks/useLayout';
 import store from 'src/redux/store';
 import AptosWrapper from 'src/wallet-connection/aptos-connection/aptos-wrapper';
+import AptosWalletProvider from 'src/wallet-connection/aptos-connection/AptosWalletContext';
 import DocsRouteApp from './DocsRouteApp';
 import RouteApp from './RouteApp';
 
@@ -19,9 +20,11 @@ function WrapperApp() {
   return (
     <AptosWrapper>
       {layout == 'normal' && (
-        <LayoutWrapper>
-          <RouteApp />
-        </LayoutWrapper>
+        <AptosWalletProvider>
+          <LayoutWrapper>
+            <RouteApp />
+          </LayoutWrapper>
+        </AptosWalletProvider>
       )}
       {layout == 'docs' && (
         <DocsWrapper>

@@ -9,6 +9,7 @@ import GooeyPage from 'src/Pages/AnimationPage/gooey-page';
 import GridPage from 'src/Pages/AnimationPage/grid-page';
 import AntDesignPage from 'src/Pages/AntDesignPage';
 import AptosPage from 'src/Pages/AptosPage';
+import AptosSdk from 'src/Pages/AptosPage/sdk';
 import EChart from 'src/Pages/Charts/EChart';
 import Overview from 'src/Pages/Charts/Overview';
 import ConfigPage from 'src/Pages/ConfigPage';
@@ -51,6 +52,9 @@ export default function RouteApp() {
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.APTOS} exact={true}>
         <AptosPage />
+      </Route>
+      <Route path={ROUTE.APTOS_SDK} exact={true}>
+        <AptosSdk />
       </Route>
       <Route path={ROUTE.ANT_DESIGN} exact={true}>
         <AntDesignPage />

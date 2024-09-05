@@ -2,11 +2,15 @@
 import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers/lib/utils';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';
 export type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+export type ButtonHtmlProps = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 export type enqueueSnackbarFunc = (
   message: SnackbarMessage,

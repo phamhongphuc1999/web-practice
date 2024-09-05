@@ -1,4 +1,5 @@
 import { alpha, Box, Button } from '@mui/material';
+import AptosConnectButton from 'src/components/Button/AptosConnectButton';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -31,6 +32,7 @@ export default function Header() {
           <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/docs', '_blank')}>
             {t('launchDocs')}
           </Button>
+          {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
         </Box>
         <LanguageSelector />
       </Box>

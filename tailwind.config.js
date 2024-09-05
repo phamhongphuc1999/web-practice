@@ -11,6 +11,9 @@ module.exports = {
           100: 'var(--text-primary)',
           900: 'var(--very-contrast)',
         },
+        blue: {
+          50: 'var(--primary-main)',
+        },
       },
     },
   },
