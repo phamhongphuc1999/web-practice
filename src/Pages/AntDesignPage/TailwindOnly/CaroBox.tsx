@@ -47,13 +47,29 @@ export default function CaroBox(props: DivProps) {
           className="caro-box"
           rows={rows}
           columns={columns}
-          gridProps={{ className: 'grid-item' }}
-          squares={{
-            'even-even': { style: { backgroundColor: '#f8b500', border: 'none' } },
-            'even-odd': { style: { backgroundColor: '#fceabb', border: 'none' } },
-            'odd-even': { style: { backgroundColor: '#ffde21', border: 'none' } },
-            'odd-odd': { style: { backgroundColor: '#ffea99', border: 'none' } },
-          }}
+          gridProps={() => ({ className: 'grid-item' })}
+          squares={[
+            {
+              xAxis: { $mod: [2, 0] },
+              yAxis: { $mod: [2, 0] },
+              props: { style: { backgroundColor: '#f8b500', border: 'none' } },
+            },
+            {
+              xAxis: { $mod: [2, 0] },
+              yAxis: { $mod: [2, 1] },
+              props: { style: { backgroundColor: '#fceabb', border: 'none' } },
+            },
+            {
+              xAxis: { $mod: [2, 1] },
+              yAxis: { $mod: [2, 0] },
+              props: { style: { backgroundColor: '#ffde21', border: 'none' } },
+            },
+            {
+              xAxis: { $mod: [2, 1] },
+              yAxis: { $mod: [2, 1] },
+              props: { style: { backgroundColor: '#ffea99', border: 'none' } },
+            },
+          ]}
         />
       </div>
     </div>

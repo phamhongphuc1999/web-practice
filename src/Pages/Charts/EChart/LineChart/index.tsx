@@ -1,23 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ReactECharts from 'echarts-for-react';
 import { useMemo, useState } from 'react';
 import { COLOR_ARRAY } from 'src/configs/constance';
-import { TooltipEventType } from 'src/global';
-import { fillMissingValues } from 'src/services';
-import moment from 'moment';
-import { ChartData, KeyChartType, xAxis } from './utils';
+import useData, { getAreaColor, KeyChartType, yAxis } from './use-data';
+
+const DEFAULT_OFFSET = 50;
 
 export default function LineChart() {
-  const [data, setData] = useState<{
-    [key in KeyChartType]: number | null;
-  }>({
-    stakers: null,
-    newStakers: null,
-    aptStaked: null,
-    averageStakedAmt: null,
-    medianStakedAmt: null,
-    'top1%': null,
-    'top10%': null,
-  });
   const [show, setShow] = useState<{
     [key in KeyChartType]: boolean;
   }>({
@@ -26,10 +15,9 @@ export default function LineChart() {
     aptStaked: false,
     averageStakedAmt: false,
     medianStakedAmt: false,
-    'top1%': false,
-    'top10%': false,
+    top1Percent: false,
+    top10Percent: false,
   });
-  const [date, setDate] = useState(0);
 
   function _setShow(key: KeyChartType) {
     setShow((preValue) => {
@@ -49,33 +37,33 @@ export default function LineChart() {
       let offsetAverage = 0;
       let offsetApt = 0;
       if (show.stakers) {
-        left += 60;
-        offsetNewStaked += 60;
+        left += DEFAULT_OFFSET;
+        offsetNewStaked += DEFAULT_OFFSET;
       }
-      if (show.newStakers) left += 60;
-      if (show['top10%']) {
-        right += 60;
-        offsetTop1 += 60;
-        offsetMedian += 60;
-        offsetAverage += 60;
-        offsetApt += 60;
+      if (show.newStakers) left += DEFAULT_OFFSET;
+      if (show['top10Percent']) {
+        right += DEFAULT_OFFSET;
+        offsetTop1 += DEFAULT_OFFSET;
+        offsetMedian += DEFAULT_OFFSET;
+        offsetAverage += DEFAULT_OFFSET;
+        offsetApt += DEFAULT_OFFSET;
       }
-      if (show['top1%']) {
-        right += 60;
-        offsetMedian += 60;
-        offsetAverage += 60;
-        offsetApt += 60;
+      if (show['top1Percent']) {
+        right += DEFAULT_OFFSET;
+        offsetMedian += DEFAULT_OFFSET;
+        offsetAverage += DEFAULT_OFFSET;
+        offsetApt += DEFAULT_OFFSET;
       }
       if (show.medianStakedAmt) {
-        right += 60;
-        offsetAverage += 60;
-        offsetApt += 60;
+        right += DEFAULT_OFFSET;
+        offsetAverage += DEFAULT_OFFSET;
+        offsetApt += DEFAULT_OFFSET;
       }
       if (show.averageStakedAmt) {
-        right += 60;
-        offsetApt += 60;
+        right += DEFAULT_OFFSET;
+        offsetApt += DEFAULT_OFFSET;
       }
-      if (show.aptStaked) right += 60;
+      if (show.aptStaked) right += DEFAULT_OFFSET;
       return {
         left: `${left}px`,
         right: `${right}px`,
@@ -87,27 +75,34 @@ export default function LineChart() {
       };
     }, [show]);
 
+  const { min, max, chartData } = useData(1000);
+  const {
+    stakers,
+    newStakers,
+    aptStaked,
+    averageStakedAmt,
+    medianStakedAmt,
+    top1Percent,
+    top10Percent,
+  } = chartData;
+
   return (
     <div>
       <ReactECharts
         option={{
+          useUTC: true,
           grid: { left, right },
           tooltip: {
             trigger: 'axis',
-            formatter: (params: Array<TooltipEventType>) => {
-              const firstItem = params[0];
-              const dataIndex = firstItem.dataIndex;
-              setData({
-                stakers: ChartData.stakers[dataIndex],
-                newStakers: ChartData.newStakers[dataIndex],
-                aptStaked: ChartData.aptStaked[dataIndex],
-                averageStakedAmt: ChartData.averageStakedAmt[dataIndex],
-                medianStakedAmt: ChartData.medianStakedAmt[dataIndex],
-                'top1%': ChartData['top1%'][dataIndex],
-                'top10%': ChartData['top10%'][dataIndex],
-              });
-              setDate(xAxis[dataIndex]);
+            zIndex: 0,
+            position: ['10px', '600px'],
+            backgroundColor: 'none',
+            borderWidth: '0',
+            padding: 0,
+            textStyle: {
+              color: 'white',
             },
+            extraCssText: 'box-shadow: none;',
           },
           legend: {
             data: [
@@ -122,182 +117,264 @@ export default function LineChart() {
             show: false,
           },
           xAxis: {
-            type: 'category',
-            data: xAxis.map((item) => moment(item * 1000).format('MMM-DD')),
+            type: 'time',
+            boundaryGap: false,
+            min,
+            max,
+            nameTextStyle: {
+              fontFamily: 'sans-serif',
+              fontSize: 14,
+              fontWeight: 400,
+            },
+            scale: true,
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255, 255, 255, 1)',
+                opacity: 0.2,
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                color: '#a1a1aa',
+                opacity: 0.1,
+              },
+            },
           },
           yAxis: [
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'left',
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[0] },
               },
-              splitLine: {
-                show: true,
-                lineStyle: {
-                  width: 0.25,
-                  color: ['rgba(243, 247, 242, 0.7)'],
-                },
-              },
               show: show.stakers,
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'left',
               offset: offsetNewStaked,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[1] },
               },
-              splitLine: {
-                show: false,
-              },
               show: show.newStakers,
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'right',
               offset: offsetApt,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[2] },
               },
-              splitLine: {
-                show: false,
-              },
               show: show.aptStaked,
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'right',
               offset: offsetAverage,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[3] },
               },
-              splitLine: {
-                show: false,
-              },
               show: show.averageStakedAmt,
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'right',
               offset: offsetMedian,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[4] },
               },
-              splitLine: {
-                show: false,
-              },
               show: show.medianStakedAmt,
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'right',
               offset: offsetTop1,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[5] },
               },
-              splitLine: {
-                show: false,
-              },
-              show: show['top1%'],
+              show: show['top1Percent'],
             },
             {
+              ...yAxis,
               type: 'value',
+              scale: true,
               name: '',
               position: 'right',
               offset: 0,
               axisLine: {
                 lineStyle: { color: COLOR_ARRAY[6] },
               },
-              splitLine: {
-                show: false,
-              },
-              show: show['top10%'],
+              show: show['top10Percent'],
             },
           ],
           series: [
             {
               name: 'stakers',
+              data: show.stakers ? stakers : [],
               type: 'line',
-              data: show.stakers ? fillMissingValues(ChartData['stakers']) : [],
               yAxisIndex: 0,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[0] },
               showSymbol: false,
-              label: {
-                show: false,
+              label: { show: false },
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
               },
+              areaStyle: getAreaColor(COLOR_ARRAY[0], true),
             },
             {
               name: 'newStakers',
+              data: show.newStakers ? newStakers : [],
               type: 'line',
-              data: show.newStakers ? fillMissingValues(ChartData['newStakers']) : [],
               yAxisIndex: 1,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[1] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[1], true),
             },
             {
               name: 'aptStaked',
-              type: 'line',
-              data: show.aptStaked ? fillMissingValues(ChartData['aptStaked']) : [],
+              type: 'bar',
+              data: show.aptStaked ? aptStaked : [],
               yAxisIndex: 2,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[2] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[2], true),
             },
             {
               name: 'averageStakedAmt',
-              type: 'line',
-              data: show.averageStakedAmt ? fillMissingValues(ChartData['averageStakedAmt']) : [],
+              type: 'bar',
+              data: show.averageStakedAmt ? averageStakedAmt : [],
               yAxisIndex: 3,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[3] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[3], true),
             },
             {
               name: 'medianStakedAmt',
-              type: 'line',
-              data: show.medianStakedAmt ? fillMissingValues(ChartData['medianStakedAmt']) : [],
+              type: 'bar',
+              data: show.medianStakedAmt ? medianStakedAmt : [],
               yAxisIndex: 4,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[4] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[4], true),
             },
             {
               name: 'top1%',
-              type: 'line',
-              data: show['top1%'] ? fillMissingValues(ChartData['top1%']) : [],
+              type: 'bar',
+              data: show['top1Percent'] ? top1Percent : [],
               yAxisIndex: 5,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[5] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[5], true),
             },
             {
               name: 'top10%',
-              type: 'line',
-              data: show['top10%'] ? fillMissingValues(ChartData['top10%']) : [],
+              type: 'bar',
+              data: show['top10Percent'] ? top10Percent : [],
               yAxisIndex: 6,
               smooth: true,
               itemStyle: { color: COLOR_ARRAY[6] },
               showSymbol: false,
+              emphasis: {
+                focus: 'series',
+                shadowBlur: 10,
+              },
+              areaStyle: getAreaColor(COLOR_ARRAY[6], true),
             },
           ],
           dataZoom: [
-            { type: 'inside', xAxisIndex: [0] },
-            { type: 'slider', xAxisIndex: [0], start: 0, end: 100 },
+            { type: 'inside', start: 0, end: 100 },
+            {
+              type: 'slider',
+              start: 0,
+              end: 100,
+              left: 20,
+              right: 20,
+              textStyle: {
+                color: 'rgba(255, 255, 255, 1)',
+              },
+              borderColor: 'rgba(255, 255, 255, 0.4)',
+              handleStyle: {
+                borderColor: 'rgba(255, 255, 255, 0.9)',
+                color: 'rgba(0, 0, 0, 0.4)',
+              },
+              moveHandleStyle: {
+                color: 'rgba(255, 255, 255, 0.4)',
+              },
+              selectedDataBackground: {
+                lineStyle: {
+                  color: '#2172E5',
+                },
+                areaStyle: {
+                  color: '#2172E5',
+                },
+              },
+              emphasis: {
+                handleStyle: {
+                  borderColor: 'rgba(255, 255, 255, 1)',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                },
+                moveHandleStyle: {
+                  borderColor: 'rgba(255, 255, 255, 1)',
+                  color: 'rgba(255, 255, 255, 0.2)',
+                },
+              },
+              fillerColor: 'rgba(0, 0, 0, 0.1)',
+              labelFormatter: (val: any) => {
+                const date = new Date(val);
+                return date.toLocaleDateString();
+              },
+            },
           ],
         }}
         style={{ width: '100%', height: '500px' }}
       />
       <div className="flex gap-x-3">
-        {Object.keys(ChartData).map((item) => {
+        {Object.keys(chartData).map((item) => {
           const _key = item as KeyChartType;
 
           return (
@@ -311,30 +388,6 @@ export default function LineChart() {
             </div>
           );
         })}
-      </div>
-      <div className="mt-5">
-        <p>{moment(date * 1000).format('YYYY-MMM-DD')}</p>
-        {data.stakers != null && show.stakers && (
-          <p style={{ color: COLOR_ARRAY[0] }}>{`stakers: ${data.stakers}`}</p>
-        )}
-        {data.newStakers != null && show.newStakers && (
-          <p style={{ color: COLOR_ARRAY[1] }}>{`newStakers: ${data.newStakers}`}</p>
-        )}
-        {data.aptStaked != null && show.aptStaked && (
-          <p style={{ color: COLOR_ARRAY[2] }}>{`aptStaked: ${data.aptStaked}`}</p>
-        )}
-        {data.averageStakedAmt != null && show.averageStakedAmt && (
-          <p style={{ color: COLOR_ARRAY[3] }}>{`averageStakedAmt: ${data.averageStakedAmt}`}</p>
-        )}
-        {data.medianStakedAmt != null && show.medianStakedAmt && (
-          <p style={{ color: COLOR_ARRAY[4] }}>{`medianStakedAmt: ${data.medianStakedAmt}`}</p>
-        )}
-        {data['top1%'] != null && show['top1%'] && (
-          <p style={{ color: COLOR_ARRAY[5] }}>{`top1%: ${data['top1%']}`}</p>
-        )}
-        {data['top10%'] != null && show['top10%'] && (
-          <p style={{ color: COLOR_ARRAY[6] }}>{`top10%: ${data['top10%']}`}</p>
-        )}
       </div>
     </div>
   );
