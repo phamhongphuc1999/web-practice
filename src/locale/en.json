@@ -1,4 +1,9 @@
 {
+  "title": {
+    "root": "My Web Practice",
+    "aptos": "Aptos",
+    "aptosSdk": "Aptos SDK"
+  },
   "animation": "Animation",
   "ant-design": "Ant Design",
   "aptos": "Aptos",
@@ -108,5 +113,7 @@
   "openDetail": "Open detail",
   "english": "English",
   "vietnamese": "Vietnamese",
-  "goToEChart": "Go to EChart"
+  "goToEChart": "Go to EChart",
+  "information": "Information",
+  "resources": "Resources"
 }

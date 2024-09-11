@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   AccountAddressInput,
   Aptos,
   AptosConfig,
+  CommittedTransactionResponse,
   Ed25519PublicKey,
   InputEntryFunctionData,
   InputViewFunctionData,
+  MoveValue,
   Network,
   SimpleTransaction,
 } from '@aptos-labs/ts-sdk';
@@ -33,18 +36,28 @@ async function _simulate(
   return response;
 }
 
-type RunType = { sender?: AccountAddressInput; payload: InputEntryFunctionData };
-
 interface AptosWalletContextProps {
   accountAddress: string;
   config: AptosConfig | undefined;
   aptos: Aptos | undefined;
+  fn: {
+    view: (payload: InputViewFunctionData) => Promise<MoveValue[] | undefined>;
+    send: (payload: InputEntryFunctionData) => Promise<CommittedTransactionResponse | undefined>;
+  };
 }
 
 const AptosWalletContext = createContext<AptosWalletContextProps>({
   accountAddress: '',
   config: undefined,
   aptos: undefined,
+  fn: {
+    view: async () => {
+      return undefined;
+    },
+    send: async () => {
+      return undefined;
+    },
+  },
 });
 
 interface Props {
@@ -66,15 +79,14 @@ export default function AptosWalletProvider({ children }: Props) {
 
   const view = useCallback(
     async (payload: InputViewFunctionData) => {
-      if (aptos) await _view(aptos, payload);
+      if (aptos) return await _view(aptos, payload);
     },
     [aptos]
   );
 
   const send = useCallback(
-    async (params: RunType) => {
+    async (payload: InputEntryFunctionData) => {
       if (aptos) {
-        const { payload } = params;
         const realSender = account?.address;
         if (realSender) {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -6,6 +6,7 @@ import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import AreaChartOverview from './AreaChartOverview';
 import BarChartOverview from './BarChartOverview';
 import LineChartOverview from './LineChartOverview';
+import ReactSeo from 'src/components/ReactSeo';
 
 export default function Overview() {
   const { t } = useLocalTranslate();
@@ -13,6 +14,7 @@ export default function Overview() {
 
   return (
     <>
+      <ReactSeo title={t('chart')} />
       <CssBreadcrumbs configs={[{ label: t('chart') }]} mb={2} />
       <Button
         variant="contained"

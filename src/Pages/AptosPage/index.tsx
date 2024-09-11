@@ -37,7 +37,7 @@ export default function AptosPage() {
 
   return (
     <Box>
-      <ReactSeo title="My Web Practice | Aptos" />
+      <ReactSeo title={t('title.aptos')} />
       <CssBreadcrumbs configs={[{ label: t('aptos') }]} mb={2} />
       <Typography variant="h4">Aptos Wallet Connection</Typography>
       <button

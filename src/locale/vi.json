@@ -1,4 +1,9 @@
 {
+  "title": {
+    "root": "Trang web của tôi",
+    "aptos": "Aptos",
+    "aptosSdk": "Aptos SDK"
+  },
   "animation": "Hiệu ứng",
   "ant-design": "Ant Design",
   "aptos": "Aptos",
@@ -108,5 +113,7 @@
   "openDetail": "Xem chi tiết",
   "english": "Tiếng Anh",
   "vietnamese": "Tiếng Việt",
-  "goToEChart": "Đi đến EChart"
+  "goToEChart": "Đi đến EChart",
+  "information": "Thông tin",
+  "resources": "Tài nguyên"
 }

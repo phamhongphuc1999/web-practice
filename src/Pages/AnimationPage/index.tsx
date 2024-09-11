@@ -3,6 +3,7 @@ import { usePagination } from '@peter-present/react-hook-utils';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ReactSeo from 'src/components/ReactSeo';
 import { BlockLoaderBox } from 'src/components/animation-component/BlockLoader';
 import { BounceLoaderBox } from 'src/components/animation-component/BounceLoader';
 import { CircleLoaderBox } from 'src/components/animation-component/CircleLoader';
@@ -142,6 +143,7 @@ export default function AnimationPage() {
 
   return (
     <>
+      <ReactSeo title={t('animation')} />
       <CssBreadcrumbs configs={[{ label: t('animation') }]} mb={2} />
       <Button
         variant="contained"
