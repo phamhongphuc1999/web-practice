@@ -44,13 +44,45 @@ export default function SDK() {
       <ReactSeo title="My Web Practice | Aptos SDK" />
       <CssBreadcrumbs configs={[{ label: t('aptos') }]} mb={2} />
       <p className="text-[24px] text-bold">Information</p>
-      <TitleTypography title="status">
+      <TitleTypography
+        title="status"
+        className="mt-[1rem] items-start"
+        titleProps={{ className: 'w-[120px]' }}
+      >
         <p>{connected ? 'connected' : 'disconnected'}</p>
       </TitleTypography>
-      <TitleTypography title="Network">{String(config?.network)}</TitleTypography>
+      <TitleTypography
+        title="Network"
+        className="mt-[1rem] items-start"
+        titleProps={{ className: 'w-[120px]' }}
+      >
+        {String(config?.network)}
+      </TitleTypography>
       {fund && (
-        <TitleTypography title="Account Fund">
+        <TitleTypography
+          title="Account Fund"
+          className="mt-[1rem] items-start"
+          titleProps={{ className: 'w-[120px]' }}
+        >
           <CssReactJson jsonProps={{ src: fund }} />
+        </TitleTypography>
+      )}
+      {modules && (
+        <TitleTypography
+          title="Modules"
+          className="mt-[1rem] items-start"
+          titleProps={{ className: 'w-[120px]' }}
+        >
+          <CssReactJson jsonProps={{ src: modules }} />
+        </TitleTypography>
+      )}
+      {tokens && (
+        <TitleTypography
+          title="Tokens"
+          className="mt-[1rem] items-start"
+          titleProps={{ className: 'w-[120px]' }}
+        >
+          <CssReactJson jsonProps={{ src: tokens }} />
         </TitleTypography>
       )}
     </div>

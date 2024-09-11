@@ -2,6 +2,14 @@
   "name": "web-practice",
   "version": "2.0.0",
   "private": true,
+  "scripts": {
+    "dev": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "prepare": "husky install",
+    "eslint": "eslint . --ext .ts,.tsx"
+  },
   "dependencies": {
     "@aptos-labs/ts-sdk": "^1.26.0",
     "@aptos-labs/wallet-adapter-react": "^3.5.6",
@@ -116,14 +124,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "scripts": {
-    "dev": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
-    "prepare": "husky install",
-    "eslint": "eslint . --ext .ts,.tsx"
   },
   "eslintConfig": {
     "extends": [

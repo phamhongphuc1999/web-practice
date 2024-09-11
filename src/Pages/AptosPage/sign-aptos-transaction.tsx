@@ -1,12 +1,11 @@
-import { AccountAddress, Aptos, AptosConfig, Network, U64 } from '@aptos-labs/ts-sdk';
+import { AccountAddress, U64 } from '@aptos-labs/ts-sdk';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { Box, Button, Divider, Typography } from '@mui/material';
-
-const config = new AptosConfig({ network: Network.TESTNET });
-const aptos = new Aptos(config);
+import { useAptosWalletContext } from 'src/wallet-connection/aptos-connection/AptosWalletContext';
 
 export default function SignAptosTransaction() {
   const { account, signAndSubmitTransaction } = useWallet();
+  const { aptos } = useAptosWalletContext();
 
   async function onSignAndSubmitTransaction() {
     if (account == null) throw new Error('Unable to find account to sign transaction');
@@ -16,7 +15,7 @@ export default function SignAptosTransaction() {
     });
     // if you want to wait for transaction
     try {
-      await aptos.waitForTransaction({ transactionHash: response.hash });
+      if (aptos) await aptos.waitForTransaction({ transactionHash: response.hash });
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +32,7 @@ export default function SignAptosTransaction() {
     });
     // if you want to wait for transaction
     try {
-      await aptos.waitForTransaction({ transactionHash: response.hash });
+      if (aptos) await aptos.waitForTransaction({ transactionHash: response.hash });
     } catch (error) {
       console.error(error);
     }

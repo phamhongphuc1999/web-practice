@@ -1,45 +1,6 @@
 import { useMemo } from 'react';
+import { DashboardGlobalDataType } from 'src/global';
 import { random } from 'src/services';
-import * as echarts from 'echarts/core';
-
-export type KeyChartType =
-  | 'stakers'
-  | 'newStakers'
-  | 'aptStaked'
-  | 'averageStakedAmt'
-  | 'medianStakedAmt'
-  | 'top1Percent'
-  | 'top10Percent';
-
-export const yAxis = {
-  type: 'value',
-  axisLine: {
-    lineStyle: {
-      color: 'rgba(255, 255, 255, 1)',
-      opacity: 0.1,
-    },
-  },
-  boundaryGap: false,
-  nameTextStyle: {
-    fontFamily: 'sans-serif',
-    fontSize: 14,
-    fontWeight: 400,
-    color: 'rgba(255, 255, 255, 1)',
-  },
-  splitLine: {
-    lineStyle: {
-      color: '#a1a1aa',
-      opacity: 0.1,
-    },
-  },
-};
-
-export const getAreaColor = (color: string, isThemeDark: boolean) => ({
-  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-    { offset: 0, color },
-    { offset: 1, color: isThemeDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)' },
-  ]),
-});
 
 function createXAxis(numberOfPoint: number) {
   const currentTimestamp = Date.now();
@@ -47,7 +8,7 @@ function createXAxis(numberOfPoint: number) {
   for (let i = 0; i < numberOfPoint - 1; i++) {
     result.push(result[i] - 604800000);
   }
-  return { axis: result.reverse(), min: result[0], max: currentTimestamp };
+  return { axis: result.reverse() };
 }
 
 function createYAxis(numberOfPoint: number, beginPoint: number, range: number) {
@@ -70,9 +31,9 @@ function createIncrementYAxis(numberOfPoint: number, beginPoint: number, range: 
   return result;
 }
 
-export default function useData(numberOfPoint: number) {
-  return useMemo(() => {
-    const { axis: xAxis, min, max } = createXAxis(numberOfPoint);
+export default function useOverviewData(numberOfPoint: number) {
+  return useMemo<DashboardGlobalDataType>(() => {
+    const { axis: xAxis } = createXAxis(numberOfPoint);
     const _stakers = createIncrementYAxis(numberOfPoint, 250, 50);
     const _newStakers = createIncrementYAxis(numberOfPoint, 10, 30);
     const _aptStaked = createYAxis(numberOfPoint, 100, 300);
@@ -100,17 +61,13 @@ export default function useData(numberOfPoint: number) {
       counter++;
     }
     return {
-      min,
-      max,
-      chartData: {
-        stakers,
-        newStakers,
-        aptStaked,
-        averageStakedAmt,
-        medianStakedAmt,
-        top1Percent,
-        top10Percent,
-      },
+      stakers,
+      newStakers,
+      aptStaked,
+      averageStakedAmt,
+      medianStakedAmt,
+      top1Percent,
+      top10Percent,
     };
   }, [numberOfPoint]);
 }

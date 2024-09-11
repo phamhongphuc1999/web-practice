@@ -89,7 +89,7 @@ export default function RouteApp() {
       <Route path={DOCS_ROUTE.MAIN_PAGE} exact={true}>
         <DocsPage />
       </Route>
-      <Redirect from="/" to={ROUTE.ANT_DESIGN} />
+      <Redirect from="/" to={ROUTE.ECHART} />
     </Switch>
   );
 }

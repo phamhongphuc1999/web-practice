@@ -54,41 +54,57 @@ export interface ChainType {
 }
 
 // start eCharts
-export type TooltipEventType = {
-  dataIndex: number;
-};
-export type EChartEventType = {
-  // type of the component to which the clicked glyph belongs
-  // i.e., 'series', 'markLine', 'markPoint', 'timeLine'
-  componentType: string;
-  // series type (make sense when componentType is 'series')
-  // i.e., 'line', 'bar', 'pie'
+export type TooltipParamType = {
+  componentType: 'series';
+  // Series type
   seriesType: string;
-  // series index in incoming option.series (make sense when componentType is 'series')
+  // Series index in option.series
   seriesIndex: number;
-  // series name (make sense when componentType is 'series')
+  // Series name
   seriesName: string;
-  // data name, category name
+  // Data name, or category name
   name: string;
-  // data index in incoming data array
+  // Data index in input data array
   dataIndex: number;
-  // incoming rwa data item
-  data: unknown;
-  // Some series, such as sankey or graph, maintains more than
-  // one types of data (nodeData and edgeData), which can be
-  // distinguished from each other by dataType with its value
-  // 'node' and 'edge'.
-  // On the other hand, most series has only one type of data,
-  // where dataType is not needed.
-  dataType: string;
-  // incoming data value
-  value: number | Array<any>;
-  // color of component (make sense when componentType is 'series')
+  // Original data as input
+  data: [number, number];
+  // data dimension index, for example 0 or 1 or 2 ...
+  // Only work in `radar` series.
+  dimensionIndex: number;
+  // Color of data
   color: string;
-  // User info (only available in graphic component
-  // and custom series, if element option has info
-  // property, e.g., {type: 'circle', info: {some: 123}})
-  info: unknown;
-  type: string;
+  // The percentage of current data item in the pie/funnel series
+  percent: number;
+};
+
+export type KeyEChartType =
+  | 'stakers'
+  | 'newStakers'
+  | 'aptStaked'
+  | 'averageStakedAmt'
+  | 'medianStakedAmt'
+  | 'top1Percent'
+  | 'top10Percent';
+
+export type DashboardLineConfigType = {
+  [key in KeyEChartType]: {
+    id: KeyEChartType;
+    title: string;
+    colorIndex: number;
+    position: 'left' | 'right';
+    type: 'line' | 'bar';
+  };
+};
+
+export type DashboardCoreDataType = {
+  [key in KeyEChartType]: number;
+};
+
+export type DashboardGlobalDataType = {
+  [key in KeyEChartType]: Array<[number, number]>;
+};
+
+export type DashboardLegendType = {
+  [key in KeyEChartType]: boolean;
 };
 // end eCharts
