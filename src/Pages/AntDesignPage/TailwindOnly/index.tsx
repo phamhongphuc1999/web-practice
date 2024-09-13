@@ -4,7 +4,7 @@ import CaroBox from './CaroBox';
 
 function SimpleMessage() {
   return (
-    <div className="p-6 max-w-sm bg-grey-100 rounded-xl shadow-lg flex items-center space-x-4">
+    <div className="p-6 max-w-sm bg-grey-50 rounded-xl shadow-lg flex items-center space-x-4">
       <div className="shrink-0">
         <img className="size-12" src={MessageImg} alt="ChitChat Logo" />
       </div>
@@ -18,7 +18,7 @@ function SimpleMessage() {
 
 function Avatar() {
   return (
-    <div className="py-8 px-8 max-w-sm bg-grey-100 rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div className="py-8 px-8 max-w-sm bg-grey-50 rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       <img
         className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
         src={MessageImg}
@@ -44,9 +44,9 @@ export default function TailwindOnly() {
       <div className="mt-2 flex gap-5 flex-wrap">
         <SimpleMessage />
         <Avatar />
-        <div className="cycle w-[100px] h-[100px] bg-grey-100" />
+        <div className="cycle w-[100px] h-[100px] bg-grey-50" />
         <div className="flex items-center w-[50%]">
-          <div className="part-cycle w-[200px] h-[200px] bg-grey-100" />
+          <div className="part-cycle w-[200px] h-[200px] bg-grey-50" />
           <span>
             In this one a circle is created using the shape-outside property. You also have to apply
             a clip-path with the corresponding property for the circle to show up. The clip-path

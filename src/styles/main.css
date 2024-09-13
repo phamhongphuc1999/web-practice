@@ -12,24 +12,40 @@
   shape-outside: circle(50% at 30%);
   clip-path: circle(50% at 0%);
 }
+:root {
+  --gradient-main: linear-gradient(100.42deg, #2c85ee 16.07%, #4fb5ff 79.2%);
+  --primary-main: #1c8cf3;
+  --primary-light: #25a0e226;
+  --success: #49d05a;
+  --warning: #f7a813;
+  --error: #ea6363;
+}
 :root,
 [data-theme='light'] {
   --background-paper: #ffffff;
   --background-default: #f5f7fa;
   --background-primary: #e6ebf4;
   --background-secondary: #ffffff;
-  --text-primary: #566474;
   --very-contrast: #ffffff;
-  --primary-main: #1c8cf3;
+  --secondary-main: #566474;
+  --secondary-dark: #d7dfec;
+  --secondary-light: #566474;
+  --text-primary: #566474;
+  --text-secondary: #131c23;
+  --text-header: #566474cc;
 }
 [data-theme='dark'] {
   --background-paper: #021c39;
   --background-default: #031527;
   --background-primary: #00244d;
   --background-secondary: #07111c;
-  --text-primary: #ffffff;
   --very-contrast: #000000;
-  --primary-main: #1c8cf3;
+  --secondary-main: #7994c1;
+  --secondary-dark: #293c4e;
+  --secondary-light: #abcafe;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-header: #ffffffa6;
 }
 .curve-common {
   background: linear-gradient(to bottom, green 50%, red 50%);

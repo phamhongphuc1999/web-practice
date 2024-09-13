@@ -3,6 +3,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ConnectedButton from 'src/components/Button/ConnectedButton';
 import NetworkButton from 'src/components/Button/NetworkButton';
 import CopyIcon from 'src/components/Icons/CopyIcon';
+import ReactSeo from 'src/components/ReactSeo';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 import { formatAddress } from 'src/services';
@@ -13,6 +14,7 @@ export default function MetamaskPage() {
 
   return (
     <>
+      <ReactSeo title="Metamask" />
       <CssBreadcrumbs configs={[{ label: 'metamask' }]} mb={2} />
       <ConnectedButton variant={'contained'} />
       <NetworkButton butProps={{ sx: { ml: 1 } }} />

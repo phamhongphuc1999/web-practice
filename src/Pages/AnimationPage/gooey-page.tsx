@@ -2,6 +2,7 @@ import { Box, Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ReactSeo from 'src/components/ReactSeo';
 import { GooeyBox } from 'src/components/animation-component/Gooey';
 import { ROUTE } from 'src/configs/constance';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -28,6 +29,7 @@ export default function GooeyPage() {
 
   return (
     <>
+      <ReactSeo title={`${t('animation')} | ${t('animationGooey')}`} />
       <CssBreadcrumbs
         configs={[
           { label: t('animation'), link: `${ROUTE.ANIMATION}/${page}` },

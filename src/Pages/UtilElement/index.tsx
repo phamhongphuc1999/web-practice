@@ -5,6 +5,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import GroupButton from 'src/components/Button/group-button';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
+import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
@@ -20,6 +21,7 @@ export default function UtilElement() {
 
   return (
     <>
+      <ReactSeo title={t('utils')} />
       <CssBreadcrumbs configs={[{ label: t('utils') }]} mb={2} />
       <Box display="flex" flexWrap="wrap">
         <Button

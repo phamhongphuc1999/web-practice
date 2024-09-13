@@ -2,6 +2,7 @@ import { Box, Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ReactSeo from 'src/components/ReactSeo';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import { ROUTE } from 'src/configs/constance';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -25,6 +26,7 @@ export default function CirclePage() {
 
   return (
     <>
+      <ReactSeo title={`${t('animation')} | ${t('animationCircle')}`} />
       <CssBreadcrumbs
         configs={[
           { label: t('animation'), link: `${ROUTE.ANIMATION}/${page}` },

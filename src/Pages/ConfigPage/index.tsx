@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ThemeButton from 'src/components/Button/ThemeButton';
+import ReactSeo from 'src/components/ReactSeo';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 
@@ -20,6 +21,7 @@ export default function ConfigPage() {
 
   return (
     <>
+      <ReactSeo title={t('config')} />
       <CssBreadcrumbs configs={[{ label: t('config') }]} mb={2} />
       <Box sx={cls.box}>
         <Typography>{t(label)}</Typography>

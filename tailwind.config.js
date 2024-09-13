@@ -5,11 +5,14 @@ module.exports = {
     extend: {
       colors: {
         grey: {
-          100: 'var(--background-paper)',
+          50: 'var(--background-paper)',
         },
         black: {
-          100: 'var(--text-primary)',
-          900: 'var(--very-contrast)',
+          50: 'var(--text-primary)',
+          100: 'var(--very-contrast)',
+          150: 'var(--background-default)',
+          200: 'var(--background-primary)',
+          250: 'var(--background-secondary)',
         },
         blue: {
           50: 'var(--primary-main)',

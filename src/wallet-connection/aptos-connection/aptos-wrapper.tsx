@@ -1,23 +1,25 @@
+import { Network } from '@aptos-labs/ts-sdk';
 import { AptosWalletAdapterProvider } from '@aptos-labs/wallet-adapter-react';
 import { BitgetWallet } from '@bitget-wallet/aptos-wallet-adapter';
 import { MartianWallet } from '@martianwallet/aptos-wallet-adapter';
 import { MSafeWalletAdapter } from '@msafe/aptos-wallet-adapter';
 import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
 import { PontemWallet } from '@pontem/wallet-adapter-plugin';
-import { TrustWallet } from '@trustwallet/aptos-wallet-adapter';
+import { BybitWallet } from 'bybit-plugin-wallet-adapter';
 import { FewchaWallet } from 'fewcha-plugin-wallet-adapter';
+import { PetraWallet } from 'petra-plugin-wallet-adapter';
 import { PropsWithChildren } from 'react';
-import { Network } from '@aptos-labs/ts-sdk';
 
 export default function AptosWrapper({ children }: PropsWithChildren) {
   const wallets = [
-    new BitgetWallet(),
-    new FewchaWallet(),
-    new MartianWallet(),
-    new MSafeWalletAdapter(),
-    new PontemWallet(),
-    new TrustWallet(),
+    new PetraWallet(),
     new OKXWallet(),
+    new PontemWallet(),
+    new BitgetWallet(),
+    new MSafeWalletAdapter(),
+    new BybitWallet(),
+    new MartianWallet(),
+    new FewchaWallet(),
   ];
 
   return (
@@ -26,8 +28,7 @@ export default function AptosWrapper({ children }: PropsWithChildren) {
       autoConnect={true}
       dappConfig={{ network: Network.MAINNET }}
       onError={(error) => {
-        // eslint-disable-next-line no-console
-        console.log('error', error);
+        console.error(error);
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ReactSeo from 'src/components/ReactSeo';
 import { ClockLoaderBox } from 'src/components/animation-component/ClockLoader';
 import { ROUTE } from 'src/configs/constance';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -12,6 +13,7 @@ export default function ClockPage() {
 
   return (
     <>
+      <ReactSeo title={`${t('animation')} | ${t('animationClock')}`} />
       <CssBreadcrumbs
         configs={[
           { label: t('animation'), link: `${ROUTE.ANIMATION}/${page}` },

@@ -2,8 +2,9 @@ import { Box } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import GroupButton, { GroupButtonItem } from 'src/components/Button/group-button';
-import useQueryUrl from 'src/hooks/useQueryUrl';
+import ReactSeo from 'src/components/ReactSeo';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import useQueryUrl from 'src/hooks/useQueryUrl';
 import Bep20Contract from './Bep20Contract';
 import CustomContract from './CustomContract';
 
@@ -23,6 +24,7 @@ export default function ContractPage() {
 
   return (
     <>
+      <ReactSeo title={t('contract')} />
       <CssBreadcrumbs configs={[{ label: t('contract') }]} mb={2} />
       <Box display="flex" alignItems="center">
         <GroupButton

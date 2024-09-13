@@ -1,0 +1,15 @@
+.ant-modal-content {
+  background-color: var(--background-paper) !important;
+  padding: 8px !important;
+}
+.ant-modal-header {
+  background-color: var(--background-paper) !important;
+  .ant-modal-title {
+    color: var(--text-primary) !important;
+  }
+}
+.ant-modal-close {
+  top: 4px !important;
+  right: 8px !important;
+  color: var(--text-primary) !important;
+}
