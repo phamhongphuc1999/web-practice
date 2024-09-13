@@ -1,5 +1,5 @@
 import { Box, TextField } from '@mui/material';
-import { ethers } from 'ethers';
+import { Interface } from 'ethers';
 import { useMemo, useState } from 'react';
 import GroupButton from 'src/components/Button/group-button';
 import { EtherFragment } from 'src/global';
@@ -14,7 +14,7 @@ export default function CustomContract() {
 
   const fragments = useMemo(() => {
     if (abi.length > 0) {
-      const _interface = new ethers.utils.Interface(abi);
+      const _interface = new Interface(abi);
       const readList = [];
       const writeList = [];
       const _data = _interface.fragments;

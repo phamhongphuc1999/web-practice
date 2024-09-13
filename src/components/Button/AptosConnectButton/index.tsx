@@ -1,22 +1,14 @@
-import { useWallet, WalletName } from '@aptos-labs/wallet-adapter-react';
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { styleMerge } from '@peter-present/led-caro';
+import { useState } from 'react';
 import { ButtonHtmlProps } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import AptosConnectModal from './AptosConnectModal';
-import { useState } from 'react';
 
 export default function AptosConnectButton(props: ButtonHtmlProps) {
   const { t } = useLocalTranslate();
-  const { connected, connect, disconnect } = useWallet();
+  const { connected, disconnect } = useWallet();
   const [open, setOpen] = useState(false);
-
-  // function onConnect() {
-  //   try {
-  //     connect('Petra' as WalletName<'Petra'>);
-  //   } catch (error) {
-  //     console.error('Failed to connect to wallet:', error);
-  //   }
-  // }
 
   function onConnect() {
     setOpen(true);

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import configSlice from './config-slice';
 import userSlice from './user-slice';
-import walletSlice from './wallet-slice';
 
-const store = configureStore({ reducer: { user: userSlice, wallet: walletSlice } });
+const store = configureStore({ reducer: { config: configSlice, user: userSlice } });
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

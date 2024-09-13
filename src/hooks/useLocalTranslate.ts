@@ -6,7 +6,7 @@ import { useAppSelector } from 'src/redux/store';
 const _locale = { en, vi } as LocaleType;
 
 export default function useLocalTranslate() {
-  const { language } = useAppSelector((state) => state.user);
+  const { language } = useAppSelector((state) => state.config);
   const { t } = useTranslate(_locale, language);
 
   return { t };

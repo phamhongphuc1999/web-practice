@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BoxProps } from '@mui/material';
-import { Fragment } from 'ethers/lib/utils';
+import { Fragment } from 'ethers';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
 
+export type StringListType<T = unknown> = { [key: string]: T };
+
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';
+export type ConnectorType = 'metamask' | 'coinbase';
 export type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 export type ButtonHtmlProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -36,22 +39,26 @@ export interface NativeToken {
   decimals: number;
 }
 
-export interface BaseChain {
-  name: string;
-  isMainnet: boolean;
-  translate: string;
+export interface Connector {
   image: string;
+  type: ConnectorType;
+  name: string;
+}
+export type ConnectorListType = {
+  [id in ConnectorType]: Connector;
+};
+
+export type Chain = {
+  name: string;
   nativeCurrency: NativeToken;
-}
-
-export interface Chain extends BaseChain {
-  blockExplorerUrls: Array<string>;
+  chainId: number;
+  image: string;
+  explorers: Array<string>;
   urls: Array<string>;
-}
+  isMainnet: boolean;
+};
 
-export interface ChainType {
-  [chain: string]: Chain;
-}
+export type ChainList = StringListType<Chain>;
 
 // start eCharts
 export type TooltipParamType = {

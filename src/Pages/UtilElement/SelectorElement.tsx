@@ -5,7 +5,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import MultipleSelector from 'src/components/Selector/MultipleSelector';
 import { ROUTE } from 'src/configs/constance';
-import { CHAINS } from 'src/configs/networkConfig';
+import { CHAINS } from 'src/configs/network-config';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface ExtendItem extends CssSelectItem {
@@ -31,8 +31,8 @@ export default function MultipleSelectorElement() {
     id: element[0].toString(),
     chainId: element[0],
     label: element[1].isMainnet
-      ? `${t('mainnet', { network: element[1].translate })}`
-      : `${t('testnet', { network: element[1].translate })}`,
+      ? `${t('mainnet', { network: element[1].name })}`
+      : `${t('testnet', { network: element[1].name })}`,
   }));
   const [network, setNetwork] = useState(NetworkList[0]);
   function onChooseItem(_: React.MouseEvent<HTMLDivElement, MouseEvent>, item: ExtendItem) {

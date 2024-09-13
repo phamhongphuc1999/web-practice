@@ -99,7 +99,7 @@ const buildVariant = (
 });
 
 export default function ThemeWrapper({ children }: Props) {
-  const mode = useAppSelector<ThemeMode>((state) => state.user.theme.mode);
+  const themeMode = useAppSelector((state) => state.config.themeMode);
 
   const theme = useMemo(() => {
     return createTheme({
@@ -108,12 +108,12 @@ export default function ThemeWrapper({ children }: Props) {
         values: { xs: 0, xsm: 600, sm: 760, md: 960, lg: 1280, xl: 1440, xxl: 1800 },
       },
       palette: {
-        mode,
+        mode: themeMode,
         background: {
-          paper: switchTheme(mode, '#021C39', '#FFFFFF'),
-          default: switchTheme(mode, '#031527', '#F5F7FA'),
-          primary: switchTheme(mode, '#00244D', '#E6EBF4'),
-          secondary: switchTheme(mode, '#07111C', '#FFFFFF'),
+          paper: switchTheme(themeMode, '#021C39', '#FFFFFF'),
+          default: switchTheme(themeMode, '#031527', '#F5F7FA'),
+          primary: switchTheme(themeMode, '#00244D', '#E6EBF4'),
+          secondary: switchTheme(themeMode, '#07111C', '#FFFFFF'),
         },
         gradient: {
           main: 'linear-gradient(100.42deg, #2C85EE 16.07%, #4FB5FF 79.2%)',
@@ -123,9 +123,9 @@ export default function ThemeWrapper({ children }: Props) {
           light: '#25A0E226',
         },
         secondary: {
-          main: switchTheme(mode, '#7994C1', '#566474'),
-          dark: switchTheme(mode, '#293C4E', '#D7DFEC'),
-          light: switchTheme(mode, '#ABCAFE', '#566474'),
+          main: switchTheme(themeMode, '#7994C1', '#566474'),
+          dark: switchTheme(themeMode, '#293C4E', '#D7DFEC'),
+          light: switchTheme(themeMode, '#ABCAFE', '#566474'),
         },
         info: {
           main: '#1C8CF3',
@@ -140,13 +140,13 @@ export default function ThemeWrapper({ children }: Props) {
           main: '#EA6363',
         },
         text: {
-          primary: switchTheme(mode, '#FFFFFF', '#566474'),
-          secondary: switchTheme(mode, '#FFFFFF', '#131C23'),
-          header: switchTheme(mode, '#FFFFFFA6', '#566474CC'),
+          primary: switchTheme(themeMode, '#FFFFFF', '#566474'),
+          secondary: switchTheme(themeMode, '#FFFFFF', '#131C23'),
+          header: switchTheme(themeMode, '#FFFFFFA6', '#566474CC'),
         },
         action: {
-          selected: switchTheme(mode, '#021C39', '#E6EBF4'),
-          hover: switchTheme(mode, '#FFFFFF0F', '#0000000F'),
+          selected: switchTheme(themeMode, '#021C39', '#E6EBF4'),
+          hover: switchTheme(themeMode, '#FFFFFF0F', '#0000000F'),
           hoverOpacity: 0.06,
         },
       },
@@ -168,7 +168,7 @@ export default function ThemeWrapper({ children }: Props) {
         },
       },
     });
-  }, [mode]);
+  }, [themeMode]);
 
   const baseStyle = useMemo(
     () => ({

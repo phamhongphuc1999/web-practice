@@ -1,5 +1,5 @@
 import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/material';
-import { Fragment } from 'ethers/lib/utils';
+import { Fragment } from 'ethers';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -22,7 +22,7 @@ function ReadItem({ index, isOpen = false, item }: ReadItemProps) {
     <Box my={1}>
       <Paper onClick={() => setOpen(!open)} sx={{ cursor: 'pointer' }}>
         <Box mb={1} p="1rem" display="flex" alignItems="center" justifyContent="space-between">
-          <Typography>{`${index}. ${item.name}`}</Typography>
+          <Typography>{`${index}. ${item.type}`}</Typography>
           <ArrowAnimationIcon isTransform={open} />
         </Box>
       </Paper>

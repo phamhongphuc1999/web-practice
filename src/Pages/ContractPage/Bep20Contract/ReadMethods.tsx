@@ -1,7 +1,6 @@
 import { Box, Button, Collapse, Paper, TextField, Typography } from '@mui/material';
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
-import { isAddress } from 'ethers/lib/utils';
+import { ethers, isAddress } from 'ethers';
 import { useState } from 'react';
 import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';

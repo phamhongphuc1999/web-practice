@@ -1,12 +1,12 @@
 import { Link, Theme, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
+import { useEffect } from 'react';
 import ScrollToTop from 'src/components/ScrollToTop';
+import { switchTheme } from 'src/redux/config-slice';
+import { useAppDispatch } from 'src/redux/store';
 import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import { useEffect } from 'react';
-import { useAppDispatch } from 'src/redux/store';
-import { toggleMode } from 'src/redux/user-slice';
 
 export default function LayoutWrapper({ children }: LayoutProps) {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export default function LayoutWrapper({ children }: LayoutProps) {
   const onlyXs = useMediaQuery<Theme>((theme) => theme.breakpoints.only('xs'));
 
   useEffect(() => {
-    dispatch(toggleMode());
+    dispatch(switchTheme());
   }, []);
 
   return (

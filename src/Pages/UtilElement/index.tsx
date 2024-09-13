@@ -16,7 +16,7 @@ import { useAppSelector } from 'src/redux/store';
 export default function UtilElement() {
   const history = useHistory();
   const { t } = useLocalTranslate();
-  const { theme } = useAppSelector((state) => state.user);
+  const { themeLabel } = useAppSelector((state) => state.config);
   const [text, setText] = useState('1');
 
   return (
@@ -41,7 +41,7 @@ export default function UtilElement() {
         </Button>
         <TextCopy ml={1} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
-          <Typography>{t(theme.label)}</Typography>
+          <Typography>{t(themeLabel)}</Typography>
           <ThemeButton />
         </Box>
       </Box>

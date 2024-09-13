@@ -9,6 +9,7 @@ import {
   TaskAlt,
   Wallet,
 } from '@mui/icons-material';
+import BSC from 'src/assets/images/BSC.svg';
 
 export const LS = {
   THEME: 'theme',
@@ -24,6 +25,11 @@ export const WALLET_LS = {
   CHAIN_ID: 'wallet_chain_id',
   TOKEN: 'wallet_token',
 };
+
+export const ChainConfig = [
+  { chainId: 56, image: BSC, name: 'BSC Mainnet' },
+  { chainId: 97, image: BSC, name: 'BSC Testnet' },
+];
 
 export const Layout: Array<{ label: string; link: string; icon: SvgIconComponent }> = [
   { label: 'animation', link: '/animation', icon: Animation },

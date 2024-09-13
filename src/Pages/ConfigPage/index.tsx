@@ -17,14 +17,14 @@ function useStyle() {
 export default function ConfigPage() {
   const cls = useStyle();
   const { t } = useLocalTranslate();
-  const { label } = useAppSelector((state) => state.user.theme);
+  const { themeLabel } = useAppSelector((state) => state.config);
 
   return (
     <>
       <ReactSeo title={t('config')} />
       <CssBreadcrumbs configs={[{ label: t('config') }]} mb={2} />
       <Box sx={cls.box}>
-        <Typography>{t(label)}</Typography>
+        <Typography>{t(themeLabel)}</Typography>
         <ThemeButton />
       </Box>
     </>

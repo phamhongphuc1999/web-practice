@@ -1,44 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LS } from 'src/configs/constance';
-import { LanguageType, ThemeMode } from 'src/global';
 
-export interface UserConfigType {
-  theme: {
-    mode: ThemeMode;
-    label: string;
-  };
-  language: LanguageType;
+export interface UserSliceType {
+  accountAddress: string;
 }
 
-const initialThemeMode = localStorage.getItem(LS.THEME);
-const initialLanguage = localStorage.getItem(LS.LANGUAGE);
-
-const initialState: UserConfigType = {
-  theme: {
-    mode: (initialThemeMode == null ? 'dark' : initialThemeMode) as ThemeMode,
-    label:
-      initialThemeMode == null || initialThemeMode == 'dark' ? 'themeMode.dark' : 'themeMode.light',
-  },
-  language: (initialLanguage == null ? 'en' : initialLanguage) as LanguageType,
+const initialState: UserSliceType = {
+  accountAddress: '',
 };
 
-const userSlice = createSlice({
-  name: 'userSlice',
+const walletSlice = createSlice({
+  name: 'walletSlice',
   initialState: initialState,
   reducers: {
-    toggleMode: (state: UserConfigType) => {
-      const themeMode = state.theme.mode === 'dark' ? 'light' : 'dark';
-      const themeLabel = themeMode === 'dark' ? 'themeMode.dark' : 'themeMode.light';
-      state.theme = { mode: themeMode, label: themeLabel };
-      document.documentElement.setAttribute('data-theme', themeMode);
-      localStorage.setItem(LS.THEME, themeMode);
+    updateAccountConfig: (state: UserSliceType, actions: PayloadAction<Partial<UserSliceType>>) => {
+      const { accountAddress } = actions.payload;
+      if (accountAddress != undefined) state.accountAddress = accountAddress.toLowerCase();
     },
-    setLanguage: (state: UserConfigType, actions: PayloadAction<LanguageType>) => {
-      state.language = actions.payload;
-      localStorage.setItem(LS.LANGUAGE, actions.payload);
+    resetUser: (state: UserSliceType) => {
+      state.accountAddress = '';
     },
   },
 });
 
-export default userSlice.reducer;
-export const { toggleMode, setLanguage } = userSlice.actions;
+export default walletSlice.reducer;
+export const { updateAccountConfig, resetUser } = walletSlice.actions;

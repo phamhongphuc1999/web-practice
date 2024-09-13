@@ -1,17 +1,16 @@
 import { Box, Button, CircularProgress, TextField, Typography } from '@mui/material';
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
-import { isAddress } from 'ethers/lib/utils';
+import { ethers, isAddress, JsonRpcProvider } from 'ethers';
 import { useMemo, useState } from 'react';
 import Bep20 from 'src/assets/abis/BEP20.json';
 import CopyIcon, { TextCopy } from 'src/components/Icons/CopyIcon';
 import ExploreIcon from 'src/components/Icons/ExploreIcon';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
-import { CHAINS, CHAIN_ALIASES } from 'src/configs/networkConfig';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { formatAddress, numberWithCommas } from 'src/services';
 import { useImmer } from 'use-immer';
 import ReadMethods from './ReadMethods';
+import { CHAIN_ALIASES, CHAINS } from 'src/configs/network-config';
 
 interface ExtendItem extends CssSelectItem {
   chainId: number;
@@ -35,15 +34,15 @@ export default function Bep20Contract() {
     id: element.toString(),
     chainId: element,
     label: CHAINS[element].isMainnet
-      ? t('mainnet', { network: CHAINS[element].translate })
-      : t('testnet', { network: CHAINS[element].translate }),
+      ? t('mainnet', { network: CHAINS[element].name })
+      : t('testnet', { network: CHAINS[element].name }),
     url: CHAINS[element].urls[0],
   }));
   const [network, setNetwork] = useState(NetworkList[0]);
 
   const contract = useMemo(() => {
     if (network.url && isAddress(address))
-      return new ethers.Contract(address, Bep20, new ethers.providers.JsonRpcProvider(network.url));
+      return new ethers.Contract(address, Bep20, new JsonRpcProvider(network.url));
     return undefined;
   }, [network.url, address]);
 

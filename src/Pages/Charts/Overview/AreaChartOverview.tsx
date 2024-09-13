@@ -10,7 +10,7 @@ import { getBasicLineChart, getThresholdLineChart } from '../config';
 
 export default function AreaChartOverview(props: BoxProps) {
   const { t } = useLocalTranslate();
-  const themeMode = useAppSelector((state) => state.user.theme.mode);
+  const themeMode = useAppSelector((state) => state.config.themeMode);
 
   const zoneFn = useCallback(
     (color: string) => {

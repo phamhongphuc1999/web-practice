@@ -2,14 +2,14 @@ import { useMemo } from 'react';
 import { languageConfig } from 'src/configs/constance';
 import { LanguageType } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import { setLanguage } from 'src/redux/config-slice';
 import { useAppDispatch, useAppSelector } from 'src/redux/store';
-import { setLanguage } from 'src/redux/user-slice';
 import CssSelector, { CssSelectItem } from './CssSelector';
 
 export default function LanguageSelector() {
   const { t } = useLocalTranslate();
   const dispatch = useAppDispatch();
-  const { language } = useAppSelector((state) => state.user);
+  const { language } = useAppSelector((state) => state.config);
 
   const defaultSelectedItem = useMemo(() => {
     const data = languageConfig[language];

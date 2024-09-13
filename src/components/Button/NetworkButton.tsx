@@ -1,24 +1,24 @@
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Box,
   Button,
   ButtonProps,
+  CircularProgress,
   Dialog,
   DialogContent,
   DialogTitle,
-  List,
-  ListItem,
+  IconButton,
   Theme,
   Typography,
   useTheme,
 } from '@mui/material';
-import { useSnackbar } from 'notistack';
+import { isAddress } from 'ethers';
 import { useState } from 'react';
-import BSC from 'src/assets/images/BSC.svg';
-import ETH from 'src/assets/images/ETH.png';
-import FTM from 'src/assets/images/FTM.svg';
-import { CHAINS } from 'src/configs/networkConfig';
-import { useAppDispatch, useAppSelector } from 'src/redux/store';
-import { switchNetwork } from 'src/wallet-connection/action';
+import { toast } from 'react-toastify';
+import { ChainConfig } from 'src/configs/constance';
+import { CHAINS } from 'src/configs/network-config';
+import { useAppSelector } from 'src/redux/store';
+import { useWalletAction } from 'src/wallet-connection/wagmi-connection/wallet-action';
 
 const useStyle = (theme: Theme) => ({
   title: {
@@ -37,13 +37,6 @@ const useStyle = (theme: Theme) => ({
   },
 });
 
-const chainConfig = [
-  { chainId: 56, image: BSC, name: 'BSC Mainnet', width: '60px' },
-  { chainId: 250, image: FTM, name: 'FTM Mainnet', width: '50px' },
-  { chainId: 1, image: ETH, name: 'ETH Mainnet', width: '60px' },
-  { chainId: 97, image: BSC, name: 'BSC Testnet', width: '60px' },
-];
-
 interface Props {
   butProps?: ButtonProps;
 }
@@ -51,14 +44,18 @@ interface Props {
 export default function NetworkButton({ butProps }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
-  const dispatch = useAppDispatch();
-  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
-  const { chainId } = useAppSelector((state) => state.wallet);
+  const [loading, setLoading] = useState(false);
+  const { chainId } = useAppSelector((state) => state.config);
+  const { accountAddress } = useAppSelector((state) => state.user);
+  const { switchNetwork } = useWalletAction();
 
-  async function changeNetwork(chainId: string) {
-    const isSuccess = await switchNetwork(dispatch, enqueueSnackbar, chainId);
-    if (isSuccess) setOpen(false);
+  async function changeNetwork(chainId: number) {
+    setOpen(false);
+    setLoading(true);
+    const data = await switchNetwork(chainId);
+    if (data.status == 'fail') toast.error(data.error);
+    setLoading(false);
   }
 
   return (
@@ -69,36 +66,53 @@ export default function NetworkButton({ butProps }: Props) {
         {...butProps}
         style={{ minWidth: '150px', ...butProps?.style }}
         onClick={() => setOpen(true)}
+        startIcon={loading ? <CircularProgress size="14px" /> : <></>}
+        disabled={loading}
       >
-        {CHAINS?.[chainId]?.name}
+        {isAddress(accountAddress) ? CHAINS?.[chainId]?.name : 'Network'}
       </Button>
       <Dialog
-        PaperProps={{ elevation: 0, style: { maxWidth: 550, padding: '0px' } }}
         fullWidth
+        maxWidth="xs"
         open={open}
         onClose={() => setOpen(false)}
+        PaperProps={{ elevation: 0, className: 'p-0 rounded-[8px]' }}
       >
         <DialogTitle sx={cls.title}>
-          <Typography variant="h4">Select Network</Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="h5">Select Network</Typography>
+            <IconButton onClick={() => setOpen(false)}>
+              <CloseIcon sx={{ fontSize: '16px' }} />
+            </IconButton>
+          </Box>
         </DialogTitle>
-        <DialogContent sx={cls.content}>
-          <List sx={{ display: 'flex' }} disablePadding>
-            {chainConfig.map((item) => (
-              <ListItem
+        <DialogContent>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 4, mt: 2 }}>
+            {ChainConfig.map((item) => (
+              <Box
                 key={item.chainId}
-                button
-                sx={cls.listItem}
-                onClick={() => changeNetwork(item.chainId.toString())}
+                onClick={() => changeNetwork(item.chainId)}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    opacity: 0.8,
+                  },
+                }}
               >
-                <Box height={70}>
-                  <img src={item.image} height={50} alt={item.name} />
-                </Box>
-                <Typography noWrap variant="subtitle2">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="h-[40px] mb-[0.5rem] rounded-[50%]"
+                />
+                <Typography noWrap color="text.disabled" variant="body3">
                   {item.name}
                 </Typography>
-              </ListItem>
+              </Box>
             ))}
-          </List>
+          </Box>
         </DialogContent>
       </Dialog>
     </>

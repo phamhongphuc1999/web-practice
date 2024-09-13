@@ -10,7 +10,7 @@ interface Props extends BoxProps {
 
 export default function BaseChart({ children, ...props }: Props) {
   const [loading, setLoading] = useState(false);
-  const { theme } = useAppSelector((state) => state.user);
+  const themeMode = useAppSelector((state) => state.config.themeMode);
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +18,7 @@ export default function BaseChart({ children, ...props }: Props) {
       setLoading(false);
     }, 100);
     return () => clearTimeout(timer);
-  }, [theme]);
+  }, [themeMode]);
 
   return loading ? (
     <Box
