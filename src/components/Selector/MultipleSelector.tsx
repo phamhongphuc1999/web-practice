@@ -1,7 +1,7 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import { Box, BoxProps, List, ListItem, Popover, styled, Typography } from '@mui/material';
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import useNotify from 'src/hooks/useNotify';
+import { toast } from 'react-toastify';
 import ArrowAnimationIcon from '../Icons/ArrowAnimationIcon';
 
 const CssBox = styled(Box)(({ theme }) => ({
@@ -63,7 +63,6 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
   const open = Boolean(anchorEl);
   const id = open ? 'multiple-selector-popover' : undefined;
   const [selectedItems, setSelectedItems] = useState(defaultSelectedItems ?? []);
-  const { warnNotify } = useNotify();
 
   useEffect(() => {
     if (selectedItems.length == 0) setSelectedItems(defaultSelectedItems ?? []);
@@ -80,7 +79,7 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
     if (config?.maxItem) {
       if (selectedItems.length >= config.maxItem) {
         setAnchorEl(undefined);
-        return warnNotify(`Selected items is less than ${config.maxItem} items`);
+        return toast.warn(`Selected items is less than ${config.maxItem} items`);
       }
     }
     const _temp = [...selectedItems];

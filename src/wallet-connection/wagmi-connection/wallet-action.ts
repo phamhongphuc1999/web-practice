@@ -18,18 +18,10 @@ export const connectorFns: { [id in ConnectorType]: CreateConnectorFn } = {
   coinbase: coinbaseWallet({ appName: 'My App', appLogoUrl: '' }),
 };
 
-// export const wagmiConfig = createConfig({
-//   chains: [bsc, bscTestnet],
-//   // connectors: [connectorFns.metamask, connectorFns.coinbase],
-//   transports: { [bsc.id]: http(), [bscTestnet.id]: http() },
-// });
-
 export const wagmiConfig = createConfig({
   chains: [bsc, bscTestnet],
-  transports: {
-    [bsc.id]: http(),
-    [bscTestnet.id]: http(),
-  },
+  connectors: [connectorFns.metamask, connectorFns.coinbase],
+  transports: { [bsc.id]: http(), [bscTestnet.id]: http() },
 });
 
 export function useWalletAction() {

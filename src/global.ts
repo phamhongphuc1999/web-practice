@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers';
-import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export type StringListType<T = unknown> = { [key: string]: T };
@@ -14,11 +13,6 @@ export type ButtonHtmlProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
-
-export type enqueueSnackbarFunc = (
-  message: SnackbarMessage,
-  options?: OptionsObject | undefined
-) => SnackbarKey;
 
 export interface EtherFragment extends Fragment {
   stateMutability: string;

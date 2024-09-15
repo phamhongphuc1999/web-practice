@@ -16,7 +16,6 @@ import ConfigPage from 'src/Pages/ConfigPage';
 import ContractPage from 'src/Pages/ContractPage';
 import DocsPage from 'src/Pages/DocsPage';
 import MetamaskPage from 'src/Pages/MetamaskPage';
-import ThreePage from 'src/Pages/three-page';
 import UtilElement from 'src/Pages/UtilElement';
 import CarouselElement from 'src/Pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/Pages/UtilElement/DatePickerElement';
@@ -45,9 +44,6 @@ export default function RouteApp() {
       </Route>
       <Route path={`${ROUTE.ANIMATION}-drop-animation/:page`} exact={true}>
         <DropPage />
-      </Route>
-      <Route path={`${ROUTE.ANIMATION}-3d`} exact={true}>
-        <ThreePage />
       </Route>
       <Redirect from={ROUTE.ANIMATION} to={`${ROUTE.ANIMATION}/1`} />
       <Route path={ROUTE.APTOS} exact={true}>
