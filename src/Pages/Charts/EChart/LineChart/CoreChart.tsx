@@ -35,7 +35,7 @@ export default function CoreChart(params: Props) {
   }
 
   return (
-    <div className="w-full mt-[1rem]">
+    <div className="mt-[1rem] w-full">
       <div className="flex flex-wrap items-center gap-2">
         {selectedSeries.map((item) => {
           const config = DashboardLineConfig[item];
@@ -43,8 +43,8 @@ export default function CoreChart(params: Props) {
           return (
             <div
               key={item}
-              className={`rounded-[8px] inline-block py-[0.5rem] px-[0.5rem] border-[1px] cursor-pointer ${
-                show[item] ? 'bg-[#0066FF] border-[transparent] text-white' : 'border-[#0066FF]'
+              className={`inline-block cursor-pointer rounded-[8px] border-[1px] px-[0.5rem] py-[0.5rem] ${
+                show[item] ? 'border-[transparent] bg-[#0066FF] text-white' : 'border-[#0066FF]'
               }`}
               onClick={() => onShowClick(item)}
             >

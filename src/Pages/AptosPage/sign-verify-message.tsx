@@ -41,14 +41,14 @@ export default function SignVerifyMessage() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter your message here"
-          className="border rounded p-2"
+          className="rounded border p-2"
         />
         <TextField
           type="text"
           value={nonce}
           onChange={(e) => setNonce(e.target.value)}
           placeholder="Enter nonce (random string) here"
-          className="border rounded p-2 mt-2"
+          className="mt-2 rounded border p-2"
         />
         <Button variant="contained" onClick={handleSignMessage}>
           Sign Message

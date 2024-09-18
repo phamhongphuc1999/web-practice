@@ -46,11 +46,11 @@ export default function Information() {
     <div className="mt-[2rem]">
       <p className="text-bold text-[24px]">{t('information')}</p>
       <TitleTypography
-        title="status"
+        title={t('status')}
         className="mt-[1rem] items-start"
         titleProps={{ className: 'w-[120px]' }}
       >
-        <p>{connected ? 'connected' : 'disconnected'}</p>
+        <p>{connected ? t('connected') : t('disconnect')}</p>
       </TitleTypography>
       <TitleTypography
         title={t('network')}

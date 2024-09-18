@@ -42,7 +42,7 @@ export default function AptosPage() {
       <Typography variant="h4">Aptos Wallet Connection</Typography>
       <button
         onClick={() => history.push(ROUTE.APTOS_SDK)}
-        className="border-blue-50 border-[1px] rounded-[8px] px-[0.5rem] py-[0.4rem] text-blue-50 text-[14px] my-[1rem]"
+        className="my-[1rem] rounded-[8px] border-[1px] border-blue-50 px-[0.5rem] py-[0.4rem] text-[14px] text-blue-50"
       >
         Interact to SDK
       </button>

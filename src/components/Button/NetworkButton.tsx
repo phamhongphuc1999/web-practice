@@ -105,7 +105,7 @@ export default function NetworkButton({ butProps }: Props) {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-[40px] mb-[0.5rem] rounded-[50%]"
+                  className="mb-[0.5rem] h-[40px] rounded-[50%]"
                 />
                 <Typography noWrap color="text.disabled" variant="body3">
                   {item.name}

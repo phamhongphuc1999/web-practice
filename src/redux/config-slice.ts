@@ -32,6 +32,7 @@ const userSlice = createSlice({
       if (themeMode) state.themeMode = themeMode;
       state.themeLabel = `themeMode.${themeMode}`;
       if (language) state.language = language;
+      document.documentElement.setAttribute('data-theme', state.themeMode);
     },
     switchTheme: (
       state: ConfigSliceType,
