@@ -32,6 +32,7 @@
   "wallet": "wallet",
   "walletUtils": "Wallet utils",
   "connect": "Connect",
+  "connected": "Connected",
   "disconnect": "disconnect",
   "data": "Data",
   "network": "Network",
@@ -116,5 +117,6 @@
   "vietnamese": "Vietnamese",
   "goToEChart": "Go to EChart",
   "information": "Information",
-  "resources": "Resources"
+  "resources": "Resources",
+  "status": "status"
 }

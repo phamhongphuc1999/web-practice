@@ -2,8 +2,11 @@ import { Link, Theme, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect } from 'react';
 import ScrollToTop from 'src/components/ScrollToTop';
-import { switchTheme } from 'src/redux/config-slice';
+import { LS } from 'src/configs/constance';
+import { LanguageType, ThemeMode } from 'src/global';
+import { initLocalStorage } from 'src/redux/config-slice';
 import { useAppDispatch } from 'src/redux/store';
+import LocalStorage from 'src/services';
 import useLayoutStyle, { LayoutProps } from '../useLayoutStyle';
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -14,7 +17,11 @@ export default function LayoutWrapper({ children }: LayoutProps) {
   const onlyXs = useMediaQuery<Theme>((theme) => theme.breakpoints.only('xs'));
 
   useEffect(() => {
-    dispatch(switchTheme());
+    const themeMode = LocalStorage.get(LS.THEME);
+    const language = LocalStorage.get(LS.LANGUAGE);
+    dispatch(
+      initLocalStorage({ themeMode: themeMode as ThemeMode, language: language as LanguageType })
+    );
   }, []);
 
   return (

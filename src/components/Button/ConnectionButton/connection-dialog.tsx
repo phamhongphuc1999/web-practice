@@ -48,7 +48,7 @@ export default function ConnectionDialog({ open, connect, onClose }: Props) {
                   }}
                 >
                   {connector.image && (
-                    <img src={connector.image} className="w-[25px] h-[25px] mr-[0.5rem]" />
+                    <img src={connector.image} className="mr-[0.5rem] h-[25px] w-[25px]" />
                   )}
                   <Typography variant="body3">{connector.name}</Typography>
                 </Box>

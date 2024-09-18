@@ -13,7 +13,7 @@ export default function CssReactJson({ jsonProps, ...props }: Props) {
       {...props}
       sx={mergeSx([
         {
-          span: { color: '#ffffff !important' },
+          span: { color: 'var(--text-primary) !important' },
           '& .string-value': { color: '#1C8CF3 !important' },
           '& .data-type-label': { color: '#1C8CF3 !important' },
           '& .node-ellipsis': { color: '#1C8CF3 !important' },

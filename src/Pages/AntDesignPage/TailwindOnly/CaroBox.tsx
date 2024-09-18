@@ -26,16 +26,16 @@ export default function CaroBox(props: DivProps) {
           <p>Rows</p>
           <input
             type="integer"
-            className="text-[#000000] h-[2rem] px-2"
+            className="h-[2rem] px-2 text-[#000000]"
             value={rows}
             onChange={(event) => onRowsChange(event.target.value)}
           />
         </div>
-        <div className="flex items-center gap-x-4 mt-4">
+        <div className="mt-4 flex items-center gap-x-4">
           <p>Columns</p>
           <input
             type="integer"
-            className="text-[#000000] h-[2rem] px-2"
+            className="h-[2rem] px-2 text-[#000000]"
             value={columns}
             onChange={(event) => onColumnsChange(event.target.value)}
           />

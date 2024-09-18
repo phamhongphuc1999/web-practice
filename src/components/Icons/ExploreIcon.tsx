@@ -1,6 +1,7 @@
 import LaunchIcon from '@mui/icons-material/Launch';
 import { IconButton, SvgIconProps, Tooltip } from '@mui/material';
-import { ExploreConfigProps, useExplorerUrl } from '@peter-present/react-hook-utils';
+import { ExploreConfigProps } from '@peter-present/react-hook-utils';
+import useExtendExploreUrl from 'src/hooks/useExtendExploreUrl';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 
@@ -14,7 +15,7 @@ export default function ExploreIcon({ hash, config, iconProps, ...props }: Props
   const { t } = useLocalTranslate();
   const { chainId: appChainId } = useAppSelector((state) => state.config);
   const realChainId = appChainId > 0 ? appChainId : config?.chainId ? config.chainId : 56;
-  const { link, text } = useExplorerUrl(hash, { ...config, chainId: realChainId });
+  const { link, text } = useExtendExploreUrl(hash, { ...config, chainId: realChainId });
 
   return (
     <Tooltip title={t('openOn', { location: text })}>

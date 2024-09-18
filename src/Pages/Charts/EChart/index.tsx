@@ -7,7 +7,7 @@ export default function EChart() {
   const { t } = useLocalTranslate();
 
   return (
-    <div className="min-h-screen min-w-screen bg-[#000000]">
+    <div className="min-w-screen min-h-screen bg-[#000000]">
       <ReactSeo title={t('eChart')} />
       <CssBreadcrumbs configs={[{ label: t('eChart') }]} mb={2} />
       <LineChart />

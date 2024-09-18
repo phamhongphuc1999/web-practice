@@ -32,6 +32,7 @@
   "wallet": "Ví",
   "walletUtils": "Tiện ích ví",
   "connect": "Kết nối",
+  "connected": "Đã kết nối",
   "disconnect": "Ngắt kết nối",
   "data": "Dữ liệu",
   "network": "Mạng",
@@ -116,5 +117,6 @@
   "vietnamese": "Tiếng Việt",
   "goToEChart": "Đi đến EChart",
   "information": "Thông tin",
-  "resources": "Tài nguyên"
+  "resources": "Tài nguyên",
+  "status": "trạng thái"
 }

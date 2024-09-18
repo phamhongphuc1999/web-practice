@@ -3,12 +3,15 @@ import { styleMerge } from '@peter-present/led-caro';
 import { useState } from 'react';
 import { ButtonHtmlProps } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import { useAptosWalletContext } from 'src/wallet-connection/aptos-connection/AptosWalletContext';
 import AptosConnectModal from './AptosConnectModal';
+import { formatAddress } from 'src/services';
 
 export default function AptosConnectButton(props: ButtonHtmlProps) {
   const { t } = useLocalTranslate();
-  const { connected, disconnect } = useWallet();
   const [open, setOpen] = useState(false);
+  const { connected, disconnect } = useWallet();
+  const { accountAddress } = useAptosWalletContext();
 
   function onConnect() {
     setOpen(true);
@@ -32,12 +35,14 @@ export default function AptosConnectButton(props: ButtonHtmlProps) {
     <>
       <button
         {...styleMerge(
-          { className: 'border-blue-50 border-[1px] rounded-[4px] px-[8px] py-[7px]' },
+          { className: 'rounded-[4px] border-[1px] border-blue-50 px-[8px] py-[7px]' },
           props
         )}
         onClick={onConnectClick}
       >
-        <p className="text-[14px] text-blue-50">{connected ? t('disconnect') : t('connect')}</p>
+        <p className="text-[14px] text-blue-50">
+          {connected ? formatAddress(accountAddress, 6) : t('connect')}
+        </p>
       </button>
       <AptosConnectModal open={open} onClose={() => setOpen(false)} />
     </>

@@ -87,3 +87,4 @@ export const COLOR_ARRAY = [color1, color2, color3, color4, color5, color6, colo
 
 export const TESTNET_NODE_URL = 'https://api.testnet.aptoslabs.com/v1';
 export const MAINNET_NODE_URL = 'https://api.mainnet.aptoslabs.com/v1';
+export const IGNORE_APTOS_WALLET = ['Continue with Google', 'T wallet', 'Nightly'];
