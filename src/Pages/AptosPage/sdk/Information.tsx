@@ -44,7 +44,7 @@ export default function Information() {
 
   return (
     <div className="mt-[2rem]">
-      <p className="text-[24px] text-bold">{t('information')}</p>
+      <p className="text-bold text-[24px]">{t('information')}</p>
       <TitleTypography
         title="status"
         className="mt-[1rem] items-start"
@@ -65,7 +65,7 @@ export default function Information() {
           className="mt-[1rem] items-start"
           titleProps={{ className: 'w-[120px]' }}
         >
-          <CssReactJson jsonProps={{ src: info }} />
+          <CssReactJson jsonProps={{ src: info, collapsed: true }} />
         </TitleTypography>
       )}
       {modules && (
@@ -74,7 +74,7 @@ export default function Information() {
           className="mt-[1rem] items-start"
           titleProps={{ className: 'w-[120px]' }}
         >
-          <CssReactJson jsonProps={{ src: modules }} />
+          <CssReactJson jsonProps={{ src: modules, collapsed: true }} />
         </TitleTypography>
       )}
       {tokens && (
@@ -83,7 +83,7 @@ export default function Information() {
           className="mt-[1rem] items-start"
           titleProps={{ className: 'w-[120px]' }}
         >
-          <CssReactJson jsonProps={{ src: tokens }} />
+          <CssReactJson jsonProps={{ src: tokens, collapsed: true }} />
         </TitleTypography>
       )}
       {resources && (
@@ -92,7 +92,7 @@ export default function Information() {
           className="mt-[1rem] items-start"
           titleProps={{ className: 'w-[120px]' }}
         >
-          <CssReactJson jsonProps={{ src: resources }} />
+          <CssReactJson jsonProps={{ src: resources, collapsed: true }} />
         </TitleTypography>
       )}
     </div>

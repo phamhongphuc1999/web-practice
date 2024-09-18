@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
 import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers';
 import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
@@ -109,3 +110,20 @@ export type DashboardLegendType = {
   [key in KeyEChartType]: boolean;
 };
 // end eCharts
+
+// start Aptos types
+export type TaskType = {
+  address: string;
+  completed: boolean;
+  content: string;
+  task_id: number;
+};
+export type TasksListType = { [taskId: string]: TaskType };
+export type AptosMoveIdType = {
+  packageName: string;
+  module: string;
+  functionName: string;
+};
+export type AptosViewDataType = Omit<InputViewFunctionData, 'function'> & AptosMoveIdType;
+export type AptosRunDataType = Omit<InputEntryFunctionData, 'function'> & AptosMoveIdType;
+// end Aptos types

@@ -26,7 +26,7 @@ const userSlice = createSlice({
   reducers: {
     initLocalStorage: (
       state: ConfigSliceType,
-      actions: PayloadAction<Partial<Omit<ConfigSliceType, 'chainId' | 'connector' | 'themeLabel'>>>
+      actions: PayloadAction<Partial<{ themeMode: ThemeMode; language: LanguageType }>>
     ) => {
       const { themeMode, language } = actions.payload;
       if (themeMode) state.themeMode = themeMode;
@@ -47,6 +47,7 @@ const userSlice = createSlice({
         LocalStorage.set(LS.THEME, newTheme);
       }
       state.themeLabel = `themeMode.${state.themeMode}`;
+      document.documentElement.setAttribute('data-theme', state.themeMode);
     },
     setLanguage: (state: ConfigSliceType, actions: PayloadAction<LanguageType>) => {
       state.language = actions.payload;
