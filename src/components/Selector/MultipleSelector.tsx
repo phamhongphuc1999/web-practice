@@ -37,7 +37,7 @@ interface Props<T> extends BoxProps {
   defaultSelectedItems?: Array<T>;
   events?: {
     onSelectItem?: (
-      e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+      e: React.MouseEvent<HTMLLIElement, MouseEvent>,
       item: T,
       items: Array<T>
     ) => void;
@@ -75,7 +75,7 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
 
   const selectedLabel = selectedItems.map((item) => item.label);
 
-  function onSelectItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) {
+  function onSelectItem(e: React.MouseEvent<HTMLLIElement, MouseEvent>, item: T) {
     if (config?.maxItem) {
       if (selectedItems.length >= config.maxItem) {
         setAnchorEl(undefined);
@@ -131,7 +131,6 @@ export default function MultipleSelector<T extends MultipleSelectorItem>(params:
               return (
                 <ListItem
                   key={item.id}
-                  button
                   onClick={(e) => onSelectItem(e, item)}
                   sx={{ borderRadius: '6px' }}
                 >

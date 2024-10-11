@@ -3,9 +3,9 @@ import { styleMerge } from '@peter-present/led-caro';
 import { useState } from 'react';
 import { ButtonHtmlProps } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
-import { useAptosWalletContext } from 'src/wallet-connection/aptos-connection/AptosWalletContext';
-import AptosConnectModal from './AptosConnectModal';
 import { formatAddress } from 'src/services';
+import { useAptosWalletContext } from 'src/WalletConnection/aptos-connection/AptosWalletContext';
+import AptosConnectModal from './AptosConnectModal';
 
 export default function AptosConnectButton(props: ButtonHtmlProps) {
   const { t } = useLocalTranslate();

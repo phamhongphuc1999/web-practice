@@ -24,7 +24,7 @@ interface Props<T> extends BoxProps {
   defaultSelectedItem?: T;
   width?: number;
   events?: {
-    onChooseItem: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) => void;
+    onChooseItem: (e: React.MouseEvent<HTMLLIElement, MouseEvent>, item: T) => void;
   };
   value?: string;
 }
@@ -48,7 +48,7 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
     else return 'auto';
   }, [rootRef?.current]);
 
-  function onItemClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: T) {
+  function onItemClick(e: React.MouseEvent<HTMLLIElement, MouseEvent>, item: T) {
     setSelectedItem(item);
     if (events?.onChooseItem) events.onChooseItem(e, item);
     setAnchorEl(undefined);
@@ -68,7 +68,7 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
       <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(undefined)}>
         <List sx={{ width: rootWidth }}>
           {items.map((item, _) => (
-            <ListItem key={item.id} button={true} onClick={(e) => onItemClick(e, item)}>
+            <ListItem key={item.id} onClick={(e) => onItemClick(e, item)}>
               {item.label}
             </ListItem>
           ))}

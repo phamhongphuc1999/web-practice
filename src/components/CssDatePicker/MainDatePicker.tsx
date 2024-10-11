@@ -69,30 +69,25 @@ const datepicker = (theme: Theme) => ({
   },
 });
 
-export type DateType = Date | null | undefined;
-
 interface Props extends BoxProps {
-  start?: DateType;
-  setStart: (date: DateType) => void;
-  end?: DateType;
-  setEnd: (date: DateType) => void;
+  start?: Date;
+  setStart: (date?: Date) => void;
+  end?: Date;
+  setEnd: (date?: Date) => void;
   monthsShow?: number;
 }
 
 export default function MainDatePicker(params: Props) {
   const { start, setStart, end, setEnd, monthsShow = 24, ...props } = params;
 
-  function onChange(
-    date: DateType | [DateType, DateType],
-    _: React.SyntheticEvent<any> | undefined
-  ) {
+  function onChange(date: [Date | null, Date | null], _: React.SyntheticEvent<any> | undefined) {
     if (Array.isArray(date)) {
       const [start, end] = date;
-      setStart(start);
-      setEnd(end);
+      setStart(start ?? undefined);
+      setEnd(end ?? undefined);
     } else {
       setStart(date);
-      setEnd(null);
+      setEnd(undefined);
     }
   }
 
