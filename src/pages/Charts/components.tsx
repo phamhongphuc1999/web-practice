@@ -1,5 +1,5 @@
 import LaunchOutlinedIcon from '@mui/icons-material/LaunchOutlined';
-import { Box, Grid, GridProps, Tooltip, Typography } from '@mui/material';
+import { Box, Grid2, Grid2Props, Tooltip, Typography } from '@mui/material';
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -16,7 +16,7 @@ function useStyle() {
   };
 }
 
-interface ItemProps extends GridProps {
+interface ItemProps extends Grid2Props {
   label: string;
   detailLink?: string;
   Chart: ReactElement;
@@ -27,7 +27,7 @@ export function Item({ label, detailLink, Chart, ...props }: ItemProps) {
   const { t } = useLocalTranslate();
 
   return (
-    <Grid item sm={6} xs={12} {...props}>
+    <Grid2 size={{ sm: 6, xs: 12 }} {...props}>
       <Box sx={cls.itemBox}>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
@@ -43,6 +43,6 @@ export function Item({ label, detailLink, Chart, ...props }: ItemProps) {
           {Chart}
         </Box>
       </Box>
-    </Grid>
+    </Grid2>
   );
 }

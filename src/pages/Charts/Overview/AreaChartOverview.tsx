@@ -1,4 +1,4 @@
-import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
+import { Box, BoxProps, Divider, Grid2, Typography } from '@mui/material';
 import { useCallback } from 'react';
 import AreaChart from 'src/components/Charts/AreaChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
@@ -40,7 +40,7 @@ export default function AreaChartOverview(props: BoxProps) {
     <Box {...props}>
       <Typography variant="h4">{t('areaCharts')}</Typography>
       <Divider sx={{ marginY: 1 }} />
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         <Item
           label={t('basicAreaChart')}
           Chart={
@@ -100,7 +100,7 @@ export default function AreaChartOverview(props: BoxProps) {
             />
           }
         />
-      </Grid>
+      </Grid2>
     </Box>
   );
 }

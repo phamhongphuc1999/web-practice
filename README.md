@@ -5,13 +5,13 @@
 - Install
 
 ```shell
-yarn install
+bun install
 ```
 
 - Start
 
 ```shell
-yarn dev
+bun dev
 ```
 
 ### Purpose

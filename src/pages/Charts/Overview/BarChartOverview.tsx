@@ -1,4 +1,4 @@
-import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
+import { Box, BoxProps, Divider, Grid2, Typography } from '@mui/material';
 import BarChart from 'src/components/Charts/BarChart';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { Item } from '../components';
@@ -11,10 +11,9 @@ export default function BarChartOverview(props: BoxProps) {
     <Box {...props}>
       <Typography variant="h4">{t('barCharts')}</Typography>
       <Divider sx={{ marginY: 1 }} />
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         <Item
-          sm={12}
-          xs={12}
+          size={{ sm: 12, xs: 12 }}
           label={t('basicBarChart')}
           Chart={
             <BarChart
@@ -34,7 +33,7 @@ export default function BarChartOverview(props: BoxProps) {
             />
           }
         />
-      </Grid>
+      </Grid2>
     </Box>
   );
 }

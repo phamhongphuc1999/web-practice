@@ -26,3 +26,4 @@ dist-ssr
 # build
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+.eslintcache

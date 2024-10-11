@@ -1,4 +1,4 @@
-import { Box, BoxProps, Divider, Grid, Typography } from '@mui/material';
+import { Box, BoxProps, Divider, Grid2, Typography } from '@mui/material';
 import LineChart from 'src/components/Charts/LineChart';
 import { beautifulTooltip } from 'src/components/Charts/tool-utils/BeautifulTooltip';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -13,7 +13,7 @@ export default function LineChartOverview(props: BoxProps) {
     <Box {...props}>
       <Typography variant="h4">{t('lineChart')}</Typography>
       <Divider sx={{ marginY: 1 }} />
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         <Item
           label={t('basicLineChart')}
           Chart={
@@ -36,7 +36,7 @@ export default function LineChartOverview(props: BoxProps) {
             />
           }
         />
-      </Grid>
+      </Grid2>
     </Box>
   );
 }
