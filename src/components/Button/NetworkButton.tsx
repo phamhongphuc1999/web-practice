@@ -18,7 +18,7 @@ import { toast } from 'react-toastify';
 import { ChainConfig } from 'src/configs/constance';
 import { CHAINS } from 'src/configs/network-config';
 import { useAppSelector } from 'src/redux/store';
-import { useWalletAction } from 'src/wallet-connection/wagmi-connection/wallet-action';
+import { useWalletAction } from 'src/WalletConnection/wagmi-connection/wallet-action';
 
 const useStyle = (theme: Theme) => ({
   title: {

@@ -13,7 +13,7 @@ import {
 import { useMemo, useState } from 'react';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { toFixed } from 'src/services';
-import MainDatePicker, { DateType } from './MainDatePicker';
+import MainDatePicker from './MainDatePicker';
 
 const DATE_PICKER_PREDEFINED = [
   { text: 'Last 7 days', value: 7 },
@@ -47,7 +47,7 @@ interface Props extends BoxProps {
   events?: {
     onPredefinedClick?: (value: number) => void;
     onCancelClick?: () => void;
-    onContinueClick?: (start: DateType, end: DateType) => void;
+    onContinueClick?: (start: Date, end: Date) => void;
   };
 }
 
@@ -55,8 +55,8 @@ export default function CssDatePicker({ events, ...props }: Props) {
   const theme = useTheme();
   const cls = useStyle(theme);
   const { t } = useLocalTranslate();
-  const [start, setStart] = useState<DateType>(null);
-  const [end, setEnd] = useState<DateType>(null);
+  const [start, setStart] = useState<Date | undefined>(undefined);
+  const [end, setEnd] = useState<Date | undefined>(undefined);
   const [selected, setSelected] = useState(-1);
   const match = useMediaQuery<Theme>((theme) => theme.breakpoints.only('xs'));
 
@@ -79,13 +79,13 @@ export default function CssDatePicker({ events, ...props }: Props) {
   }
 
   function onCancelClick() {
-    setStart(null);
-    setEnd(null);
+    setStart(undefined);
+    setEnd(undefined);
     if (events?.onCancelClick) events.onCancelClick();
   }
 
   function onContinueClick() {
-    if (events?.onContinueClick) events.onContinueClick(start, end);
+    if (events?.onContinueClick) events.onContinueClick(start ?? new Date(), end ?? new Date());
   }
 
   return (

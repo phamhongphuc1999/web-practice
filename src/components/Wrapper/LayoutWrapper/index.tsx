@@ -1,7 +1,6 @@
 import { Link, Theme, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect } from 'react';
-import ScrollToTop from 'src/components/ScrollToTop';
 import { LS } from 'src/configs/constance';
 import { LanguageType, ThemeMode } from 'src/global';
 import { initLocalStorage } from 'src/redux/config-slice';
@@ -44,7 +43,6 @@ export default function LayoutWrapper({ children }: LayoutProps) {
           </Box>
         </Box>
       </Box>
-      <ScrollToTop />
     </Box>
   );
 }

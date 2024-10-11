@@ -16,7 +16,7 @@ export default function LanguageSelector() {
     return { id: data.id, label: t(data.label) };
   }, [language]);
 
-  function onChooseItem(e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: CssSelectItem) {
+  function onChooseItem(_: React.MouseEvent<HTMLLIElement, MouseEvent>, item: CssSelectItem) {
     dispatch(setLanguage(item.id as LanguageType));
   }
 

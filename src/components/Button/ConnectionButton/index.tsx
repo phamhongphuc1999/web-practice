@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ConnectedWalletIcon, DisconnectedWalletIcon } from 'src/components/Icons';
 import { useAppSelector } from 'src/redux/store';
 import { formatAddress } from 'src/services';
-import { useWalletAction } from 'src/wallet-connection/wagmi-connection/wallet-action';
+import { useWalletAction } from 'src/WalletConnection/wagmi-connection/wallet-action';
 import ConnectedDialog from './connected-dialog';
 import ConnectionDialog from './connection-dialog';
 

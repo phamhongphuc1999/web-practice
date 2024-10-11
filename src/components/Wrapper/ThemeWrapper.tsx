@@ -116,7 +116,7 @@ export default function ThemeWrapper({ children }: Props) {
           secondary: switchTheme(themeMode, '#07111C', '#FFFFFF'),
         },
         gradient: {
-          main: 'linear-gradient(100.42deg, #2C85EE 16.07%, #4FB5FF 79.2%)',
+          main: '#2C85EE',
         },
         primary: {
           main: '#1C8CF3',
