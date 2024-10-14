@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Keyframes } from '@emotion/react';
 import { Box, BoxProps, keyframes, styled } from '@mui/material';
 import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';

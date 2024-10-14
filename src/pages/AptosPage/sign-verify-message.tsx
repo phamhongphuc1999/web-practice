@@ -37,7 +37,7 @@ export default function SignVerifyMessage() {
       <Typography variant="h4">Aptos Sign and Verify Message</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 1 }}>
         <TextField
-          InputProps={{ multiline: true }}
+          slotProps={{ input: { multiline: true } }}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter your message here"

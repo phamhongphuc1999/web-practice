@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 import { Box, BoxProps, keyframes } from '@mui/material';
 import { useMemo } from 'react';
 import BluePiece from 'src/assets/images/pieces/blue-piece.svg';

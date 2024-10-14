@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 import { Box, BoxProps } from '@mui/material';
 import ReactJson, { ReactJsonViewProps } from 'react-json-view';
 import { mergeSx } from 'src/services';

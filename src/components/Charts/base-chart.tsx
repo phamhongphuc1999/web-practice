@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+ 
 import { Box, BoxProps, CircularProgress } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import { useAppSelector } from 'src/redux/store';

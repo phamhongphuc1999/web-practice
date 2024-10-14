@@ -85,7 +85,7 @@ export function decimalAdjust(type: 'ceil' | 'round' | 'floor', value: any, exp?
 export function formatAddress(address: string, fractionDigits?: number) {
   try {
     return address.slice(0, fractionDigits ?? 3) + '...' + address.slice(-(fractionDigits ?? 3));
-  } catch (error) {
+  } catch {
     return undefined;
   }
 }

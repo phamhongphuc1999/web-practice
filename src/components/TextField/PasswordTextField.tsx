@@ -9,12 +9,14 @@ export default function PasswordTextField(props: TextFieldProps) {
     <TextField
       {...props}
       type={isPassword ? 'password' : 'text'}
-      InputProps={{
-        endAdornment: (
-          <IconButton onClick={() => setIsPassword(!isPassword)}>
-            {isPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
-        ),
+      slotProps={{
+        input: {
+          endAdornment: (
+            <IconButton onClick={() => setIsPassword(!isPassword)}>
+              {isPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          ),
+        },
       }}
     />
   );
