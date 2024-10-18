@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 const useStyle = (theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.primary,
+    overflow: 'hidden',
   },
   container: {
     transition: 'margin 0.5s linear',

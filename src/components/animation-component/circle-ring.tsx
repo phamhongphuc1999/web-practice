@@ -60,7 +60,6 @@ function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & Bo
           top: `calc(${size} / 6)`,
           height: `calc(${size} / 3)`,
         },
-        props?.sx,
       ])}
     >
       <Box sx={{ position: 'relative', height: '100%' }}>

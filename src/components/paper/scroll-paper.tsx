@@ -1,4 +1,3 @@
- 
 import { Box, BoxProps, darken } from '@mui/material';
 import { ReactNode } from 'react';
 import { mergeSx } from 'src/services';
@@ -12,7 +11,7 @@ export default function ScrollPaper({ children, scrollProps, ...props }: Props) 
   return (
     <Box
       {...props}
-      sx={mergeSx([
+      sx={mergeSx(
         {
           width: '100%',
           overflow: 'auto scroll',
@@ -27,12 +26,12 @@ export default function ScrollPaper({ children, scrollProps, ...props }: Props) 
             backgroundColor: darken('#DADDE1', 0.4),
           },
         },
-        props?.sx,
-      ])}
+        props?.sx
+      )}
     >
       <Box
         {...scrollProps}
-        sx={mergeSx([{ width: 'calc(100% - 8px)', height: 'calc(100% - 8px)' }, scrollProps?.sx])}
+        sx={mergeSx({ width: 'calc(100% - 8px)', height: 'calc(100% - 8px)' }, scrollProps?.sx)}
       >
         {children}
       </Box>

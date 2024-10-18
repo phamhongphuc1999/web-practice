@@ -1,4 +1,3 @@
- 
 import { Box, BoxProps, keyframes } from '@mui/material';
 import { useMemo } from 'react';
 import BluePiece from 'src/assets/images/pieces/blue-piece.svg';
@@ -46,7 +45,7 @@ function Piece({ image, duration, animation, ...props }: PieceProps) {
   return (
     <Box
       {...props}
-      sx={mergeSx([
+      sx={mergeSx(
         {
           backgroundImage: `url(${PieceImage})`,
           backgroundSize: 'cover',
@@ -58,8 +57,8 @@ function Piece({ image, duration, animation, ...props }: PieceProps) {
             animation.final
           )} ${duration}s linear infinite`,
         },
-        props?.sx,
-      ])}
+        props?.sx
+      )}
     />
   );
 }
@@ -133,10 +132,7 @@ export default function PieceDropAnimation({ numberOfPieces = 50, metadata, ...p
   return (
     <Box
       {...props}
-      sx={mergeSx([
-        { display: 'inline-block', position: 'relative', overflow: 'hidden' },
-        props?.sx,
-      ])}
+      sx={mergeSx({ display: 'inline-block', position: 'relative', overflow: 'hidden' }, props?.sx)}
     >
       {config.map((item, index) => {
         return <Piece key={index} {...item} />;

@@ -1,4 +1,3 @@
- 
 import { Box, BoxProps } from '@mui/material';
 import ReactJson, { ReactJsonViewProps } from 'react-json-view';
 import { mergeSx } from 'src/services';
@@ -11,7 +10,7 @@ export default function CssReactJson({ jsonProps, ...props }: Props) {
   return (
     <Box
       {...props}
-      sx={mergeSx([
+      sx={mergeSx(
         {
           span: { color: 'var(--text-primary) !important' },
           '& .string-value': { color: '#1C8CF3 !important' },
@@ -21,8 +20,8 @@ export default function CssReactJson({ jsonProps, ...props }: Props) {
           '& .collapsed-icon': { svg: { color: '#1C8CF3 !important' } },
           '& .copy-icon': { svg: { color: '#1C8CF3 !important' } },
         },
-        props?.sx,
-      ])}
+        props?.sx
+      )}
     >
       <ReactJson {...jsonProps} />
     </Box>

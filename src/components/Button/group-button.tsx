@@ -1,4 +1,3 @@
- 
 import {
   Box,
   BoxProps,
@@ -51,11 +50,11 @@ export default function GroupButton(params: Props) {
   return (
     <ButtonGroup
       {...props}
-      sx={mergeSx([{ position: 'relative', borderRadius: '4px', overflow: 'hidden' }, props?.sx])}
+      sx={mergeSx({ position: 'relative', borderRadius: '4px', overflow: 'hidden' }, props?.sx)}
     >
       <Box
         {...slideProps}
-        sx={mergeSx([
+        sx={mergeSx(
           {
             left: `${left}%`,
             right: `${right}%`,
@@ -65,8 +64,8 @@ export default function GroupButton(params: Props) {
             bottom: 0,
             transitionDuration: '0.25s',
           },
-          slideProps?.sx,
-        ])}
+          slideProps?.sx
+        )}
       />
       {items.map((item) => {
         return (
@@ -84,11 +83,11 @@ export default function GroupButton(params: Props) {
               {typeof item.content == 'string' ? (
                 <Typography
                   {...textProps}
-                  sx={mergeSx([
+                  sx={mergeSx(
                     { fontSize: '15px', fontWeight: 600, color: '#22CBFB' },
                     selectedId == item.id && { color: '#ffffff' },
-                    selectedId != item.id && textProps?.sx,
-                  ])}
+                    selectedId != item.id && textProps?.sx
+                  )}
                 >
                   {item.content}
                 </Typography>

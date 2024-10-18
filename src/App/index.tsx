@@ -1,6 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import { ROUTE } from 'src/configs/constance';
 import Animation from 'src/pages/animation';
+import Animation3d from 'src/pages/animation-3d';
 import BouncePage from 'src/pages/animation/bounce-page';
 import CirclePage from 'src/pages/animation/circle-page';
 import ClockPage from 'src/pages/animation/clock-page';
@@ -62,6 +63,11 @@ export default function App() {
       children: [{ path: '', element: <DropPage /> }],
     },
     {
+      path: `${ROUTE.ANIMATION}-3d`,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <Animation3d /> }],
+    },
+    {
       path: ROUTE.APTOS,
       element: <ProviderApp />,
       children: [{ path: '', element: <AptosPage /> }],
@@ -120,6 +126,11 @@ export default function App() {
       path: ROUTE.THEME,
       element: <ProviderApp />,
       children: [{ path: '', element: <ConfigPage /> }],
+    },
+    {
+      path: '/',
+      element: <ProviderApp />,
+      children: [{ path: '', element: <Navigate to={`${ROUTE.ANIMATION}/1`} /> }],
     },
   ]);
 }

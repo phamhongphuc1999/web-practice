@@ -29,9 +29,6 @@ export default function Header() {
           >
             {t('launchWallet')}
           </Button>
-          <Button variant="outlined" sx={{ ml: 1 }} onClick={() => window.open('/docs', '_blank')}>
-            {t('launchDocs')}
-          </Button>
           {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
         </Box>
         <LanguageSelector />

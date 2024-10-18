@@ -1,4 +1,3 @@
- 
 import { Box, BoxProps, CircularProgress } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import { useAppSelector } from 'src/redux/store';
@@ -23,7 +22,7 @@ export default function BaseChart({ children, ...props }: Props) {
   return loading ? (
     <Box
       {...props}
-      sx={mergeSx([
+      sx={mergeSx(
         {
           width: '100%',
           height: '100%',
@@ -31,13 +30,13 @@ export default function BaseChart({ children, ...props }: Props) {
           alignItems: 'center',
           justifyContent: 'center',
         },
-        props?.sx,
-      ])}
+        props?.sx
+      )}
     >
       <CircularProgress />
     </Box>
   ) : (
-    <Box {...props} sx={mergeSx([{ width: '100%' }, props?.sx])}>
+    <Box {...props} sx={mergeSx({ width: '100%' }, props?.sx)}>
       {children}
     </Box>
   );

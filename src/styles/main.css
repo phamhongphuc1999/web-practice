@@ -56,3 +56,37 @@
 .curve-shape2 {
   background: linear-gradient(to left, transparent 50%, green 50%);
 }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate1 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.rotate-animation {
+  background: repeating-conic-gradient(
+    from 45deg at 50% 50%,
+    #ffffff 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  opacity: 0.01;
+  animation: rotate 120s infinite linear;
+}
+.rotate-animation1 {
+  background: repeating-conic-gradient(
+    from 45deg at 50% 50%,
+    #f7a813 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  opacity: 0.1;
+  animation: rotate1 60s infinite linear;
+}
