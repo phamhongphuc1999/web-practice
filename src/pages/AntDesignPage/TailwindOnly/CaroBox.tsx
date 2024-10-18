@@ -1,6 +1,5 @@
-import { BasicCaro, GridCaro } from '@peter-present/led-caro';
+import { BasicCaro, DivProps, GridCaro } from '@peter-present/led-caro';
 import { useState } from 'react';
-import { DivProps } from 'src/global';
 import './CaroBox.style.css';
 
 export default function CaroBox(props: DivProps) {

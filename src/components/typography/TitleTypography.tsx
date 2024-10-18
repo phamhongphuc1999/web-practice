@@ -1,5 +1,4 @@
-import { styleMerge } from '@peter-present/led-caro';
-import { DivProps } from 'src/global';
+import { DivProps, styleMerge } from '@peter-present/led-caro';
 
 interface Props extends DivProps {
   title: string;

@@ -3,6 +3,7 @@ import { usePagination } from '@peter-present/react-hook-utils';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ColorfulBox from 'src/components/Button/ColorfulBox';
 import ReactSeo from 'src/components/ReactSeo';
 import { BlockLoaderBox } from 'src/components/animation-component/BlockLoader';
 import { BounceLoaderBox } from 'src/components/animation-component/BounceLoader';
@@ -43,13 +44,9 @@ export default function Animation() {
       label: 'Bounce Loader',
       icon: <BounceLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate(`${ROUTE.ANIMATION}-bounce/${page}`)}
-        >
-          see more
-        </Button>
+        <ColorfulBox onClick={() => navigate(`${ROUTE.ANIMATION}-bounce/${page}`)}>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
     {
@@ -60,26 +57,18 @@ export default function Animation() {
       label: 'Clock Loader',
       icon: <ClockLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate(`${ROUTE.ANIMATION}-clock/${page}`)}
-        >
-          see more
-        </Button>
+        <ColorfulBox color="gray" onClick={() => navigate(`${ROUTE.ANIMATION}-clock/${page}`)}>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
     {
       label: 'Grid Circle Loader',
       icon: <GridLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate(`${ROUTE.ANIMATION}-grid/${page}`)}
-        >
-          see more
-        </Button>
+        <ColorfulBox color="blue" onClick={() => navigate(`${ROUTE.ANIMATION}-grid/${page}`)}>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
     {
@@ -90,26 +79,18 @@ export default function Animation() {
       label: 'Gooey',
       icon: <GooeyBox mt={2} iconProps={{ opposite: false, size: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate(`${ROUTE.ANIMATION}-gooey/${page}`)}
-        >
-          see more
-        </Button>
+        <ColorfulBox onClick={() => navigate(`${ROUTE.ANIMATION}-gooey/${page}`)}>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
     {
       label: 'Ring',
       icon: <CircleRingBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate(`${ROUTE.ANIMATION}-circle/${page}`)}
-        >
-          see more
-        </Button>
+        <ColorfulBox color="gray" onClick={() => navigate(`${ROUTE.ANIMATION}-circle/${page}`)}>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
     { label: 'Blocks', icon: <BlockLoaderBox mt={2} /> },
@@ -121,13 +102,12 @@ export default function Animation() {
       label: 'Drop Animation',
       icon: <PieceDropAnimation sx={{ width: '100%', height: '150px' }} />,
       componentEnd: (
-        <Button
-          variant="contained"
-          color="primary"
+        <ColorfulBox
+          color="blue"
           onClick={() => navigate(`${ROUTE.ANIMATION}-drop-animation/${page}`)}
         >
-          see more
-        </Button>
+          {t('seeMore')}
+        </ColorfulBox>
       ),
     },
   ];

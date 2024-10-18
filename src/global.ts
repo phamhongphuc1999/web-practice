@@ -1,14 +1,13 @@
 import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
 import { BoxProps } from '@mui/material';
 import { Fragment } from 'ethers';
-import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';
 export type ConnectorType = 'metamask' | 'coinbase';
-export type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 export type ButtonHtmlProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement

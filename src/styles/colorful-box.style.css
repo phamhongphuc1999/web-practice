@@ -1,0 +1,192 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes translate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.glowing-box-animations {
+  opacity: 1;
+  pointer-events: none;
+  transition: 1s ease opacity;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 100%;
+}
+.glowing-box-animations * {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.glowing-box-animations::before {
+  padding-top: 100%;
+  content: '';
+  float: left;
+}
+.glowing-box-animations::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+.glowing-box-purple-bg {
+  background-image: conic-gradient(
+    from 0 at 50% 50%,
+    #c778dd 0deg,
+    rgba(199, 120, 221, 0) 60deg,
+    rgba(199, 120, 221, 0) 310deg,
+    #c778dd 360deg
+  );
+}
+.glowing-box-white-bg {
+  background-image: conic-gradient(
+    from 0 at 50% 50%,
+    rgba(255, 255, 255, 0.5) 0deg,
+    rgba(255, 255, 255, 0) 60deg,
+    rgba(255, 255, 255, 0) 310deg,
+    rgba(255, 255, 255, 0.5) 360deg
+  );
+}
+.glowing-box-blue-bg {
+  background-image: conic-gradient(
+    from 0 at 50% 50%,
+    rgba(28, 140, 243, 0.5) 0deg,
+    rgba(28, 140, 243, 0) 60deg,
+    rgba(28, 140, 243, 0) 310deg,
+    rgba(28, 140, 243, 0.5) 360deg
+  );
+}
+.glowing-box-glow {
+  filter: blur(8px);
+  opacity: 0.12;
+  animation: rotate 2s infinite linear;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.glowing-box-stars-masker {
+  mask: url(../../public/dark-sky.svg);
+  mask-repeat: repeat;
+  mask-size: auto;
+}
+.glowing-box-stars {
+  animation: rotate 2s infinite linear;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.glowing-box-borders-masker {
+  opacity: 1;
+  content: '';
+  inset: 0;
+  left: 0;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: 1s ease opacity;
+  height: 100%;
+  width: 100%;
+}
+.glowing-box-borders {
+  animation: translate 2s infinite linear;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.glowing-box-borders::before {
+  content: '';
+  float: left;
+  padding-top: 100%;
+}
+.glowing-box-borders::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+.glowing-box-button {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 7px 24px;
+  position: relative;
+  z-index: 1;
+}
+.glowing-box-button-purple-bg {
+  background: radial-gradient(
+      107.5% 107.5% at 50% 215%,
+      rgba(199, 120, 221, 0.48) 0%,
+      rgba(199, 120, 221, 0) 100%
+    ),
+    rgba(199, 120, 221, 0.08);
+  border: 1px solid rgb(199, 120, 221, 0.2);
+}
+.glowing-box-button-purple-bg::after {
+  background: radial-gradient(
+    85% 120% at 50% 120%,
+    rgba(199, 120, 221, 0.48) 0%,
+    rgba(199, 120, 221, 0) 100%
+  );
+}
+.glowing-box-button-white-bg {
+  background: radial-gradient(
+      107.5% 107.5% at 50% 215%,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glowing-box-button-white-bg::after {
+  background: radial-gradient(
+    85% 120% at 50% 120%,
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.glowing-box-button-blue-bg {
+  background: radial-gradient(
+      107.5% 107.5% at 50% 215%,
+      rgba(28, 140, 243, 0.24) 0%,
+      rgba(28, 140, 243, 0) 100%
+    ),
+    rgba(28, 140, 243, 0.04);
+  border: 1px solid rgba(28, 140, 243, 0.1);
+}
+.glowing-box-button-blue-bg::after {
+  background: radial-gradient(
+    85% 120% at 50% 120%,
+    rgba(28, 140, 243, 0.24) 0%,
+    rgba(28, 140, 243, 0) 100%
+  );
+}
+.glowing-box-button::after {
+  content: '';
+  height: calc(100% + 4px);
+  left: -2px;
+  opacity: 0;
+  position: absolute;
+  top: -2px;
+  transition: 1s all;
+  width: calc(100% + 4px);
+}
