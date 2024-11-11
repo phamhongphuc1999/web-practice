@@ -2,8 +2,10 @@ import { Box, Typography } from '@mui/material';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import ReactSeo from 'src/components/ReactSeo';
+import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
+import { mergeSx } from 'src/services';
 
 function useStyle() {
   return {
@@ -26,6 +28,10 @@ export default function ConfigPage() {
       <Box sx={cls.box}>
         <Typography>{t(themeLabel)}</Typography>
         <ThemeButton />
+      </Box>
+      <Box sx={mergeSx(cls.box, { marginTop: 2 })}>
+        <Typography>{t('language')}</Typography>
+        <LanguageSelector />
       </Box>
     </>
   );

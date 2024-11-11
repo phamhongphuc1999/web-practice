@@ -1,10 +1,12 @@
 import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
 import { BoxProps } from '@mui/material';
-import { Fragment } from 'ethers';
+import { Signature } from 'circomlibjs';
+import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
+export type HexType = 'normal' | 'hex';
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';
 export type ConnectorType = 'metamask' | 'coinbase';
@@ -12,6 +14,17 @@ export type ButtonHtmlProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
+
+export type JubProofType = { A: bigint[]; R8: bigint[]; S: bigint[]; msg: bigint[] };
+
+export type ProofPoint = [BigNumberish, BigNumberish];
+
+export interface ProofCallDataType {
+  pA: ProofPoint;
+  pB: [ProofPoint, ProofPoint];
+  pC: ProofPoint;
+  pubSignals: ProofPoint;
+}
 
 export interface EtherFragment extends Fragment {
   stateMutability: string;
@@ -125,3 +138,30 @@ export type AptosMoveIdType = {
 export type AptosViewDataType = Omit<InputViewFunctionData, 'function'> & AptosMoveIdType;
 export type AptosRunDataType = Omit<InputEntryFunctionData, 'function'> & AptosMoveIdType;
 // end Aptos types
+
+/* hash system wallet types */
+export type SignatureScheme = 'ecdsa' | 'ed25519' | 'babyjub';
+
+export type PrivateKey = Uint8Array;
+export type PublicKey = string;
+
+export type AccountSignature = {
+  raw: Uint8Array;
+  r: Buffer;
+  s: Buffer;
+  v?: bigint;
+};
+
+export type SerializedHdKeyringState = {
+  mnemonic: Array<number>;
+  numberOfKeys: number;
+  hdPath?: string;
+};
+export type HashWalletType = {
+  schema: SignatureScheme;
+  mnemonic: string;
+  numberOfKeys: number;
+  hdPath?: string;
+};
+export type JubSignatureType = { raw: Signature; p: Uint8Array; u: Signature };
+/* end hash system wallet types */

@@ -27,3 +27,7 @@ dist-ssr
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
 .eslintcache
+
+# circom
+public/circom
+src/services/verification_key.json

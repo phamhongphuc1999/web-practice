@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SxProps, Theme } from '@mui/material';
 import { SystemStyleObject } from '@mui/system';
+import { HexType } from 'src/global';
 
 type SBase = {
   toString: () => string;
@@ -126,6 +127,24 @@ export function randomSubGroup(range: number, numberOfSelected: number) {
     [_array[i], _array[j]] = [_array[j], _array[i]];
   }
   return _array.slice(0, numberOfSelected);
+}
+
+export function convertBigIntsToNumber(_in: bigint[], _len: number, mode: HexType = 'normal') {
+  let result: bigint = BigInt('0');
+  let e2 = BigInt('1');
+  for (let i = 0; i < _len; i++) {
+    result += _in[i] * e2;
+    e2 = e2 + e2;
+  }
+  return mode == 'normal' ? result.toString(16) : `0x${result.toString(16)}`;
+}
+
+export function convertUint8ToString(_in: Uint8Array) {
+  return Buffer.from(_in).toString('hex');
+}
+
+export function convertStringToUint8(_in: string) {
+  return Uint8Array.from(Buffer.from(_in, 'hex'));
 }
 
 export function mergeSx(...sxs: Array<boolean | SxProps<Theme> | undefined>): SxProps<Theme> {

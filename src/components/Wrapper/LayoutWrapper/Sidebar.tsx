@@ -1,6 +1,7 @@
 import {
   alpha,
   Box,
+  Collapse,
   Drawer,
   List,
   ListItem,
@@ -10,8 +11,10 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Layout } from 'src/configs/constance';
+import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
+import { Layout, MoreLayout } from 'src/configs/constance';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 const useStyle = (theme: Theme) => ({
@@ -57,6 +60,7 @@ export default function Sidebar() {
   const mdUp = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'));
   const cls = useStyle(theme);
   const { t } = useLocalTranslate();
+  const [isMore, setIsMore] = useState(false);
 
   return (
     <Drawer open variant="permanent" anchor="left" PaperProps={{ sx: cls.drawer }}>
@@ -80,6 +84,43 @@ export default function Sidebar() {
           );
         })}
       </List>
+      <Collapse in={isMore}>
+        <List sx={{ paddingBottom: 0 }}>
+          {MoreLayout.map((element, index) => {
+            const Icon = element.icon;
+
+            return (
+              <ListItem key={index} sx={{ paddingY: 0 }}>
+                <CssNavLink to={element.link} sx={cls.navLink}>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent={mdUp ? 'flex-start' : 'center'}
+                  >
+                    <Icon fontSize="small" sx={{ marginRight: '0.5rem' }} />
+                    {mdUp && <Typography>{t(element.label)}</Typography>}
+                  </Box>
+                </CssNavLink>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Collapse>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'pointer',
+          mt: 1,
+        }}
+        onClick={() => setIsMore((preValue) => !preValue)}
+      >
+        <Typography variant="button" color="secondary">
+          {t('seeMore')}
+        </Typography>
+        <ArrowAnimationIcon isTransform={isMore} />
+      </Box>
     </Drawer>
   );
 }

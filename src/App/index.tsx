@@ -15,12 +15,14 @@ import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
 import ContractPage from 'src/pages/ContractPage';
+import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ProviderApp from './ProviderApp';
+import CircomPage from 'src/pages/cryptography/circom-page';
 
 export default function App() {
   return useRoutes([
@@ -123,9 +125,19 @@ export default function App() {
       children: [{ path: '', element: <CarouselElement /> }],
     },
     {
-      path: ROUTE.THEME,
+      path: ROUTE.CONFIG,
       element: <ProviderApp />,
       children: [{ path: '', element: <ConfigPage /> }],
+    },
+    {
+      path: ROUTE.HASH_FUNCTION,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <HashFunction /> }],
+    },
+    {
+      path: ROUTE.CIRCOM,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <CircomPage /> }],
     },
     {
       path: '/',

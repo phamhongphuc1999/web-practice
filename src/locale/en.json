@@ -118,5 +118,9 @@
   "information": "Information",
   "resources": "Resources",
   "status": "status",
-  "seeMore": "See more"
+  "seeMore": "See more",
+  "message": "Message",
+  "hash": "Hash",
+  "hashFunction": "Hash function",
+  "createHash": "Create hash"
 }
