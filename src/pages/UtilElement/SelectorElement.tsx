@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssSelector, { CssSelectItem } from 'src/components/Selector/CssSelector';
 import MultipleSelector from 'src/components/Selector/MultipleSelector';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import { CHAINS } from 'src/configs/network-config';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 

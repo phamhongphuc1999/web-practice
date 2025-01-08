@@ -9,7 +9,7 @@ import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 

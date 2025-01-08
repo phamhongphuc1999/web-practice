@@ -18,7 +18,7 @@ import { ZCircleLoaderBox } from 'src/components/animation-component/ZCircleLoad
 import { CircleDotBox } from 'src/components/animation-component/circle-dot-loader';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
 

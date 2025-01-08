@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import * as THREE from 'three';
 

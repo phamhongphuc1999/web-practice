@@ -119,8 +119,12 @@
   "resources": "Resources",
   "status": "status",
   "seeMore": "See more",
+  "seeLess": "See less",
   "message": "Message",
   "hash": "Hash",
   "hashFunction": "Hash function",
-  "createHash": "Create hash"
+  "createHash": "Create hash",
+  "academy": "Academy",
+  "encryption": "Encryption",
+  "component": "Component"
 }

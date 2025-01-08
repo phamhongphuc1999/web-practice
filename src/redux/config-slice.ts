@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LS } from 'src/configs/constance';
 import { AllowedNetwork } from 'src/configs/network-config';
-import { ConnectorType, LanguageType, ThemeMode } from 'src/global';
+import { AppReferenceId, ConnectorType, LanguageType, ThemeMode } from 'src/global';
 import LocalStorage from 'src/services';
 
 export interface ConfigSliceType {
@@ -10,6 +10,7 @@ export interface ConfigSliceType {
   chainId: number;
   connector: ConnectorType | null;
   language: LanguageType;
+  referenceId: AppReferenceId | undefined;
 }
 
 const initialState: ConfigSliceType = {
@@ -18,6 +19,7 @@ const initialState: ConfigSliceType = {
   chainId: -1,
   connector: null,
   language: 'en',
+  referenceId: undefined,
 };
 
 const userSlice = createSlice({
@@ -54,6 +56,9 @@ const userSlice = createSlice({
       state.language = actions.payload;
       localStorage.setItem(LS.LANGUAGE, actions.payload);
     },
+    setReferenceId: (state: ConfigSliceType, action: PayloadAction<AppReferenceId | undefined>) => {
+      state.referenceId = action.payload;
+    },
     setNetworkConfig: (
       state: ConfigSliceType,
       actions: PayloadAction<{ chainId: number; connector?: ConnectorType }>
@@ -70,5 +75,11 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { initLocalStorage, switchTheme, setLanguage, setNetworkConfig, resetConfig } =
-  userSlice.actions;
+export const {
+  initLocalStorage,
+  switchTheme,
+  setLanguage,
+  setReferenceId,
+  setNetworkConfig,
+  resetConfig,
+} = userSlice.actions;

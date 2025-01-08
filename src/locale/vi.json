@@ -119,8 +119,12 @@
   "resources": "Tài nguyên",
   "status": "trạng thái",
   "seeMore": "Xem thêm",
+  "seeLess": "Đóng lại",
   "message": "Tin nhắn",
   "hash": "Băm",
   "hashFunction": "Hàm băm",
-  "createHash": "Tạo mã băm"
+  "createHash": "Tạo mã băm",
+  "academy": "Học thuật",
+  "encryption": "Mã hoá",
+  "component": "Thành phần"
 }

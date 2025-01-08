@@ -1,12 +1,14 @@
 import { Link, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { ReactNode, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { LS } from 'src/configs/constance';
-import { LanguageType, ThemeMode } from 'src/global';
-import { initLocalStorage } from 'src/redux/config-slice';
+import { ReferenceMapping } from 'src/configs/layout';
+import { AppReferenceId, LanguageType, ThemeMode } from 'src/global';
+import { initLocalStorage, setReferenceId } from 'src/redux/config-slice';
 import { useAppDispatch } from 'src/redux/store';
 import LocalStorage from 'src/services';
-import Header from './Header';
+import Header from './header';
 import Sidebar from './Sidebar';
 
 const useStyle = (theme: Theme) => ({
@@ -21,14 +23,9 @@ const useStyle = (theme: Theme) => ({
   mainContainer: {
     minHeight: 'calc(100vh - 80px)',
     height: '100%',
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(0, 1),
-    },
-    [theme.breakpoints.only('sm')]: {
-      marginLeft: '80px',
-    },
-    [theme.breakpoints.only('xs')]: {
-      marginLeft: 0,
+    marginLeft: '220px',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0px',
     },
   },
 });
@@ -41,7 +38,8 @@ export default function LayoutWrapper({ children }: Props) {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const cls = useStyle(theme);
-  const onlyXs = useMediaQuery<Theme>((theme) => theme.breakpoints.only('xs'));
+  const mdDown = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
+  const location = useLocation();
 
   useEffect(() => {
     const themeMode = LocalStorage.get(LS.THEME);
@@ -51,11 +49,23 @@ export default function LayoutWrapper({ children }: Props) {
     );
   }, []);
 
+  useEffect(() => {
+    let result: AppReferenceId | undefined = undefined;
+    const pathname = location.pathname;
+    for (const item of ReferenceMapping) {
+      if (pathname.includes(item.pathname)) {
+        result = item.id;
+        break;
+      }
+    }
+    dispatch(setReferenceId(result));
+  }, [location.pathname]);
+
   return (
     <Box position="relative" sx={cls.root}>
       <Header />
       <Box sx={cls.container}>
-        {!onlyXs && <Sidebar />}
+        {!mdDown && <Sidebar />}
         <Box
           display="flex"
           justifyContent="space-between"

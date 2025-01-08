@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
 import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function DropPage() {

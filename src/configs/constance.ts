@@ -1,16 +1,3 @@
-import {
-  Animation,
-  BarChart,
-  BlenderOutlined,
-  CurrencyBitcoin,
-  EnhancedEncryptionOutlined,
-  LinkOutlined,
-  LocalFireDepartmentOutlined,
-  Settings,
-  SvgIconComponent,
-  TaskAlt,
-  Wallet,
-} from '@mui/icons-material';
 import BSC from 'src/assets/images/BSC.svg';
 
 export const LS = {
@@ -32,45 +19,6 @@ export const ChainConfig = [
   { chainId: 56, image: BSC, name: 'BSC Mainnet' },
   { chainId: 97, image: BSC, name: 'BSC Testnet' },
 ];
-
-export const ROUTE = {
-  ANIMATION: '/animation',
-  ANT_DESIGN: '/ant-design',
-  APTOS: '/aptos',
-  APTOS_SDK: '/aptos/sdk',
-  METAMASK: '/metamask',
-  CONTRACT: '/contract',
-  CHART: '/charts',
-  ECHART: '/charts/e-chart',
-  UTILS: '/utils',
-  UTIL_DATE_PICKER: '/utils/date-picker',
-  UTIL_SELECTOR: '/utils/selector',
-  UTIL_CAROUSEL: '/utils/carousel',
-  CONFIG: '/config',
-  HASH_FUNCTION: '/hash-function',
-  CIRCOM: '/circom',
-};
-
-export const Layout: Array<{ label: string; link: string; icon: SvgIconComponent }> = [
-  { label: 'animation', link: ROUTE.ANIMATION, icon: Animation },
-  { label: 'ant-design', link: ROUTE.ANT_DESIGN, icon: LocalFireDepartmentOutlined },
-  { label: 'aptos', link: ROUTE.APTOS, icon: LinkOutlined },
-  { label: 'chart', link: ROUTE.CHART, icon: BarChart },
-  { label: 'contract', link: ROUTE.CONTRACT, icon: CurrencyBitcoin },
-  { label: 'metamask', link: ROUTE.METAMASK, icon: Wallet },
-  { label: 'utils', link: ROUTE.UTILS, icon: TaskAlt },
-  { label: 'config', link: ROUTE.CONFIG, icon: Settings },
-];
-
-export const MoreLayout: Array<{ label: string; link: string; icon: SvgIconComponent }> = [
-  { label: 'hashFunction', link: ROUTE.HASH_FUNCTION, icon: BlenderOutlined },
-  { label: 'Circom', link: ROUTE.CIRCOM, icon: EnhancedEncryptionOutlined },
-];
-
-export const DOCS_ROUTE = {
-  MAIN_PAGE: '/docs',
-  GAS_PRICE: '/docs/gas-and-price',
-};
 
 export const languageConfig = {
   en: { id: 'en', label: 'english' },

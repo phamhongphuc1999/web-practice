@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import Animation from 'src/pages/animation';
 import Animation3d from 'src/pages/animation-3d';
 import BouncePage from 'src/pages/animation/bounce-page';
@@ -15,6 +15,7 @@ import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
 import ContractPage from 'src/pages/ContractPage';
+import CircomPage from 'src/pages/cryptography/circom-page';
 import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
 import UtilElement from 'src/pages/UtilElement';
@@ -22,7 +23,7 @@ import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ProviderApp from './ProviderApp';
-import CircomPage from 'src/pages/cryptography/circom-page';
+import Academy from 'src/pages/academy';
 
 export default function App() {
   return useRoutes([
@@ -138,6 +139,11 @@ export default function App() {
       path: ROUTE.CIRCOM,
       element: <ProviderApp />,
       children: [{ path: '', element: <CircomPage /> }],
+    },
+    {
+      path: ROUTE.ACADEMY,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <Academy /> }],
     },
     {
       path: '/',

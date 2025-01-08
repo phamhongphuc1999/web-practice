@@ -13,7 +13,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import GroupButton from 'src/components/Button/group-button';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
 import Carousel from 'src/components/carousel';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 interface Props {

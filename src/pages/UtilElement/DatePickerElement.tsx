@@ -2,7 +2,7 @@ import { Grid2, Typography } from '@mui/material';
 import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CssDatePicker from 'src/components/CssDatePicker';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function DatePickerElement() {

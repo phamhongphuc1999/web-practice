@@ -1,4 +1,5 @@
 import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
+import { SvgIconComponent } from '@mui/icons-material';
 import { BoxProps } from '@mui/material';
 import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
@@ -65,6 +66,24 @@ export type Chain = {
 };
 
 export type ChainList = StringListType<Chain>;
+
+export type AppReferenceItemType = {
+  id: string;
+  title: string;
+  link: string;
+  description: string;
+  icon: SvgIconComponent;
+};
+
+export type AppReferenceId = 'component' | 'chart' | 'web3' | 'encryption' | 'academy';
+
+export type AppReferenceType = {
+  id: AppReferenceId;
+  title: string;
+  link?: string;
+  icon?: SvgIconComponent;
+  items?: Array<AppReferenceItemType>;
+};
 
 // start eCharts
 export type TooltipParamType = {

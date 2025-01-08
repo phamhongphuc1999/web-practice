@@ -26,8 +26,8 @@ export default function ConfigPage() {
       <ReactSeo title={t('config')} />
       <CssBreadcrumbs configs={[{ label: t('config') }]} mb={2} />
       <Box sx={cls.box}>
-        <Typography>{t(themeLabel)}</Typography>
         <ThemeButton />
+        <Typography>{t(themeLabel)}</Typography>
       </Box>
       <Box sx={mergeSx(cls.box, { marginTop: 2 })}>
         <Typography>{t('language')}</Typography>

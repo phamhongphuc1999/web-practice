@@ -1,30 +1,24 @@
 import {
   alpha,
   Box,
-  Collapse,
   Drawer,
   List,
   ListItem,
-  styled,
   Theme,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import ArrowAnimationIcon from 'src/components/Icons/ArrowAnimationIcon';
-import { Layout, MoreLayout } from 'src/configs/constance';
+import { CssNavLink } from 'src/components/utils';
+import { AppReferenceConfig } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import { useAppSelector } from 'src/redux/store';
 
 const useStyle = (theme: Theme) => ({
   drawer: {
     marginTop: '55px',
     width: '220px',
     borderRadius: '0px',
-    [theme.breakpoints.only('sm')]: {
-      width: '80px',
-    },
   },
   navLink: {
     display: 'flex',
@@ -53,19 +47,18 @@ const useStyle = (theme: Theme) => ({
   },
 });
 
-const CssNavLink = styled(NavLink)(() => ({}));
-
 export default function Sidebar() {
   const theme = useTheme();
   const mdUp = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'));
   const cls = useStyle(theme);
   const { t } = useLocalTranslate();
-  const [isMore, setIsMore] = useState(false);
+  const { referenceId } = useAppSelector((state) => state.config);
+  const Layout = referenceId ? AppReferenceConfig[referenceId].items : [];
 
   return (
     <Drawer open variant="permanent" anchor="left" PaperProps={{ sx: cls.drawer }}>
       <List sx={{ paddingBottom: 0 }}>
-        {Layout.map((element, index) => {
+        {(Layout ?? []).map((element, index) => {
           const Icon = element.icon;
 
           return (
@@ -77,50 +70,13 @@ export default function Sidebar() {
                   justifyContent={mdUp ? 'flex-start' : 'center'}
                 >
                   <Icon fontSize="small" sx={{ marginRight: '0.5rem' }} />
-                  {mdUp && <Typography>{t(element.label)}</Typography>}
+                  {mdUp && <Typography>{t(element.title)}</Typography>}
                 </Box>
               </CssNavLink>
             </ListItem>
           );
         })}
       </List>
-      <Collapse in={isMore}>
-        <List sx={{ paddingBottom: 0 }}>
-          {MoreLayout.map((element, index) => {
-            const Icon = element.icon;
-
-            return (
-              <ListItem key={index} sx={{ paddingY: 0 }}>
-                <CssNavLink to={element.link} sx={cls.navLink}>
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent={mdUp ? 'flex-start' : 'center'}
-                  >
-                    <Icon fontSize="small" sx={{ marginRight: '0.5rem' }} />
-                    {mdUp && <Typography>{t(element.label)}</Typography>}
-                  </Box>
-                </CssNavLink>
-              </ListItem>
-            );
-          })}
-        </List>
-      </Collapse>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          cursor: 'pointer',
-          mt: 1,
-        }}
-        onClick={() => setIsMore((preValue) => !preValue)}
-      >
-        <Typography variant="button" color="secondary">
-          {t('seeMore')}
-        </Typography>
-        <ArrowAnimationIcon isTransform={isMore} />
-      </Box>
     </Drawer>
   );
 }

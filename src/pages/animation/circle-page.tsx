@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
 import { CircleRingBox } from 'src/components/animation-component/circle-ring';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { sleep } from 'src/services';
 import Item from './item';

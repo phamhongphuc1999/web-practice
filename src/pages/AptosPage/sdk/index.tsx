@@ -2,7 +2,7 @@ import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import CopyIcon from 'src/components/Icons/CopyIcon';
 import ExploreIcon from 'src/components/Icons/ExploreIcon';
 import ReactSeo from 'src/components/ReactSeo';
-import { ROUTE } from 'src/configs/constance';
+import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { formatAddress } from 'src/services';
 import { useAptosWalletContext } from 'src/WalletConnection/aptos-connection/AptosWalletContext';

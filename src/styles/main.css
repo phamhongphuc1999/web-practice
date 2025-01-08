@@ -90,3 +90,37 @@
   opacity: 0.1;
   animation: rotate1 60s infinite linear;
 }
+
+/* header */
+.header-box {
+  .header-box-item {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
+  }
+}
+.header-box:hover {
+  .header-box-item {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.main-header-reference {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  @media screen and (max-width: 959px) {
+    display: none;
+  }
+}
+.header-close-icon {
+  display: none;
+  @media screen and (max-width: 959px) {
+    display: flex;
+  }
+}
+/* end header */
