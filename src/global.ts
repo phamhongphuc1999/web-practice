@@ -16,6 +16,13 @@ export type ButtonHtmlProps = DetailedHTMLProps<
   HTMLButtonElement
 >;
 
+export interface TimeType {
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+}
+
 export type JubProofType = { A: bigint[]; R8: bigint[]; S: bigint[]; msg: bigint[] };
 
 export type ProofPoint = [BigNumberish, BigNumberish];

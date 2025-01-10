@@ -1,5 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import { ROUTE } from 'src/configs/layout';
+import Academy from 'src/pages/academy';
+import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
 import Animation3d from 'src/pages/animation-3d';
 import BouncePage from 'src/pages/animation/bounce-page';
@@ -23,7 +25,6 @@ import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ProviderApp from './ProviderApp';
-import Academy from 'src/pages/academy';
 
 export default function App() {
   return useRoutes([
@@ -143,7 +144,10 @@ export default function App() {
     {
       path: ROUTE.ACADEMY,
       element: <ProviderApp />,
-      children: [{ path: '', element: <Academy /> }],
+      children: [
+        { path: '', element: <Academy /> },
+        { path: 'transition-delay', element: <TransitionDelay /> },
+      ],
     },
     {
       path: '/',

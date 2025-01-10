@@ -1,4 +1,4 @@
-import { Box, BoxProps, Typography, useTheme } from '@mui/material';
+import { Box, BoxProps, useTheme } from '@mui/material';
 import { CssNavLink } from 'src/components/utils';
 import { AppReferenceItemType } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -34,10 +34,12 @@ function MainHeaderBox({ index, item, dataProps }: MainHeaderBoxPRops) {
         dataProps?.sx
       )}
     >
-      <Icon className="h-auto w-[40px]" />
+      <div className="flex items-center justify-center rounded-[8px] border-[1px] border-[#e5e7eb] px-[1rem] py-[1rem]">
+        <Icon className="h-auto w-[40px]" />
+      </div>
       <Box>
-        <Typography className="text-[14px] font-[500] leading-[18px]">{t(item.title)}</Typography>
-        <Typography className="text-[12px] leading-[18px]">{item.description}</Typography>
+        <p className="text-[14px] font-[500] leading-[18px]">{t(item.title)}</p>
+        <p className="text-[12px] leading-[18px]">{t(item.description)}</p>
       </Box>
     </Box>
   );
@@ -45,15 +47,15 @@ function MainHeaderBox({ index, item, dataProps }: MainHeaderBoxPRops) {
 
 interface HeaderBoxProps extends BoxProps {
   config: Array<AppReferenceItemType>;
-  dataProps?: BoxProps;
+  onLinkClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
 }
 
-export function HeaderBox({ config, dataProps, ...props }: HeaderBoxProps) {
+export function HeaderBox({ config, onLinkClick, ...props }: HeaderBoxProps) {
   return (
     <Box {...props}>
       {config.map((item, index) => {
         return (
-          <CssNavLink key={item.title} to={item.link}>
+          <CssNavLink key={item.title} to={item.link} onClick={onLinkClick}>
             <MainHeaderBox index={index} item={item} />
           </CssNavLink>
         );

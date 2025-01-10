@@ -1,6 +1,7 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { Box, Collapse, Popover, PopoverProps, Typography, useTheme } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppReferenceConfig } from 'src/configs/layout';
 import { AppReferenceId } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
@@ -16,6 +17,15 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
   const { t } = useLocalTranslate();
   const theme = useTheme();
   const isLight = theme.palette.mode == 'light';
+  const navigate = useNavigate();
+
+  function onBigLinkClick(id: AppReferenceId, link: string | undefined) {
+    setReferenceId(id);
+    if (link) {
+      navigate(link);
+      setEl(null);
+    }
+  }
 
   return (
     <>
@@ -51,7 +61,7 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
             return (
               <Box
                 sx={{
-                  backgroundColor: '#F8F9FB',
+                  backgroundColor: isLight ? '#F8F9FB' : 'rgba(63, 63, 63, 0.56)',
                   borderRadius: '16px',
                   padding: '1rem',
                   marginTop: '1rem',
@@ -59,19 +69,21 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
               >
                 <Box
                   sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-                  onClick={() => setReferenceId(item.id)}
+                  onClick={() => onBigLinkClick(item.id, item.link)}
                 >
-                  <Typography className="font-[500] text-[#363C53]">{t(item.title)}</Typography>
-                  <ArrowForwardIosOutlinedIcon
-                    className="text-[14px] text-[#A7B3CF] transition-all"
-                    sx={[referenceId == item.id && { transform: 'rotate(90deg)' }]}
-                  />
+                  <Typography className="font-[500]">{t(item.title)}</Typography>
+                  {item.items && (
+                    <ArrowForwardIosOutlinedIcon
+                      className="text-[14px] text-[#A7B3CF] transition-all"
+                      sx={[referenceId == item.id && { transform: 'rotate(90deg)' }]}
+                    />
+                  )}
                 </Box>
                 {item.items && (
                   <Collapse in={referenceId == item.id}>
                     <HeaderBox
                       config={item.items}
-                      dataProps={{ sx: { padding: '0px' } }}
+                      onLinkClick={() => setEl(null)}
                       sx={{ paddingTop: '2rem' }}
                     />
                   </Collapse>

@@ -1,20 +1,17 @@
-import { Settings } from '@mui/icons-material';
-import { alpha, Box, Button } from '@mui/material';
+import { CloseOutlined, MenuOutlined, Settings } from '@mui/icons-material';
+import { Box, Container } from '@mui/material';
+import { useState } from 'react';
 import AptosConnectButton from 'src/components/Button/AptosConnectButton';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import { CssNavLink } from 'src/components/utils';
 import { AppReferenceConfig, ROUTE } from 'src/configs/layout';
-import useLocalTranslate from 'src/hooks/useLocalTranslate';
+import { AppReferenceId } from 'src/global';
 import HeaderDetailItem from './HeaderDetailItem';
 import HeaderText from './HeaderText';
-import { CloseOutlined, MenuOutlined } from '@mui/icons-material';
-import { useState } from 'react';
-import { AppReferenceId } from 'src/global';
 import SmallPopover from './SmallPopover';
 
 export default function Header() {
-  const { t } = useLocalTranslate();
   const [referenceId, setReferenceId] = useState<AppReferenceId>('academy');
   const [smallEl, setSmallEl] = useState<SVGSVGElement | null>(null);
   const smallOpen = Boolean(smallEl);
@@ -26,16 +23,9 @@ export default function Header() {
 
   return (
     <div>
-      <Box
-        position="fixed"
-        sx={(theme) => ({
-          background: theme.palette.background.paper,
-          zIndex: 1205,
-          width: '100%',
-          height: 55,
-          borderBottom: `1px solid ${alpha(theme.palette.mode === 'dark' ? '#fff' : '#000', 0.12)}`,
-          padding: theme.spacing(0, 2),
-        })}
+      <Container
+        maxWidth="md"
+        className="fixed left-[50%] top-[1rem] z-[1205] h-[65px] translate-x-[-50%] rounded-[999px] bg-grey-50"
       >
         <Box
           sx={{
@@ -47,13 +37,6 @@ export default function Header() {
         >
           <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
             <ThemeButton />
-            <Button
-              variant="outlined"
-              sx={{ ml: 1 }}
-              onClick={() => window.open('/my-wallet', '_blank')}
-            >
-              {t('launchWallet')}
-            </Button>
             {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
           </Box>
           <div className="main-header-reference">
@@ -105,7 +88,7 @@ export default function Header() {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Container>
       <SmallPopover
         id="small-header-popover"
         anchorEl={smallEl}

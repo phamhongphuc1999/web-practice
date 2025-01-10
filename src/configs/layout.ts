@@ -52,14 +52,14 @@ const Component: AppReferenceType = {
       id: 'animation',
       title: 'animation',
       link: ROUTE.ANIMATION,
-      description: '',
+      description: 'header-description.animation',
       icon: Animation,
     },
     {
       id: 'ant-design',
       title: 'ant-design',
       link: ROUTE.ANT_DESIGN,
-      description: '',
+      description: 'header-description.ant-design',
       icon: LocalFireDepartmentOutlined,
     },
     { id: 'utils', title: 'utils', link: ROUTE.UTILS, description: '', icon: TaskAlt },
@@ -119,3 +119,7 @@ export const AppReferenceConfig: { [key in AppReferenceId]: AppReferenceType } =
   encryption: Encryption,
   academy: { id: 'academy', title: 'academy', link: ROUTE.ACADEMY, icon: School },
 };
+
+export const AcademyConfig: Array<{ title: string; link: string }> = [
+  { title: 'academy-item.transition', link: `${ROUTE.ACADEMY}/transition-delay` },
+];

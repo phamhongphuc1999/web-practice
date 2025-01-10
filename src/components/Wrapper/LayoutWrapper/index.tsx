@@ -1,5 +1,4 @@
-import { Link, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Box } from '@mui/system';
+import { Container } from '@mui/material';
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { LS } from 'src/configs/constance';
@@ -8,37 +7,15 @@ import { AppReferenceId, LanguageType, ThemeMode } from 'src/global';
 import { initLocalStorage, setReferenceId } from 'src/redux/config-slice';
 import { useAppDispatch } from 'src/redux/store';
 import LocalStorage from 'src/services';
+import Footer from './Footer';
 import Header from './header';
-import Sidebar from './Sidebar';
-
-const useStyle = (theme: Theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.primary,
-    overflow: 'hidden',
-  },
-  container: {
-    transition: 'margin 0.5s linear',
-    padding: theme.spacing(10, 2, 5, 2),
-  },
-  mainContainer: {
-    minHeight: 'calc(100vh - 80px)',
-    height: '100%',
-    marginLeft: '220px',
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '0px',
-    },
-  },
-});
 
 interface Props {
   children: ReactNode;
 }
 
 export default function LayoutWrapper({ children }: Props) {
-  const theme = useTheme();
   const dispatch = useAppDispatch();
-  const cls = useStyle(theme);
-  const mdDown = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
   const location = useLocation();
 
   useEffect(() => {
@@ -62,25 +39,15 @@ export default function LayoutWrapper({ children }: Props) {
   }, [location.pathname]);
 
   return (
-    <Box position="relative" sx={cls.root}>
+    <div className="bg-black-200">
       <Header />
-      <Box sx={cls.container}>
-        {!mdDown && <Sidebar />}
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          flexDirection="column"
-          sx={[cls.mainContainer, { marginLeft: '220px' }]}
-        >
-          <Box>{children}</Box>
-          <Box height="20px" display="flex" mt={2}>
-            <Typography>COPYRIGHT © {new Date().getFullYear()}&nbsp;</Typography>
-            <Link href="https://github.com/phamhongphuc1999/web-practice" target="_blank">
-              Main page
-            </Link>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+      <Container
+        maxWidth="lg"
+        className="mb-[50px] flex h-full min-h-[calc(100vh-55px)] flex-col justify-between pt-[100px]"
+      >
+        <div>{children}</div>
+      </Container>
+      <Footer />
+    </div>
   );
 }
