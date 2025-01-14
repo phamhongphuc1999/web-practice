@@ -29,6 +29,7 @@ export const ROUTE = {
   HASH_FUNCTION: '/hash-function',
   CIRCOM: '/circom',
   ACADEMY: '/academy',
+  NO_ROUTE: '/no-page',
 };
 
 export const ReferenceMapping: Array<{ pathname: string; id: AppReferenceId }> = [
@@ -122,4 +123,5 @@ export const AppReferenceConfig: { [key in AppReferenceId]: AppReferenceType } =
 
 export const AcademyConfig: Array<{ title: string; link: string }> = [
   { title: 'academy-item.transition', link: `${ROUTE.ACADEMY}/transition-delay` },
+  { title: 'academy-item.scroll-page', link: `${ROUTE.ACADEMY}/animation-scroll` },
 ];

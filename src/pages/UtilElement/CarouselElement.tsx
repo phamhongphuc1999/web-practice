@@ -50,13 +50,13 @@ export default function CarouselElement() {
       />
       <Typography>{location + 1}</Typography>
       <GroupButton
-        items={[
-          { id: 'normal', content: 'normal' },
-          { id: 'linear', content: 'linear' },
-          { id: 'circle', content: 'circle' },
-        ]}
         selectedId={mode}
-        events={{ onClick: (item) => setMode(item.id) }}
+        options={[
+          { id: 'normal', content: 'normal', width: 60 },
+          { id: 'linear', content: 'linear', width: 80 },
+          { id: 'circle', content: 'circle', width: 70 },
+        ]}
+        events={{ onOptionChange: (id) => setMode(id) }}
       />
       <FormGroup onSubmit={onSubmit}>
         <FormControlLabel

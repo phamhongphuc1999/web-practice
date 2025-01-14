@@ -98,7 +98,8 @@
   "encryption": "Encryption",
   "component": "Component",
   "academy-item": {
-    "transition": "Recall API after a few delay"
+    "transition": "Recall API after a few delay",
+    "scroll-page": "Scroll page with some animation"
   },
   "header-description": {
     "animation": "Animations coded by raw CSS with the MUIs' supporting",
@@ -106,5 +107,9 @@
   },
   "value": "Value",
   "delay-value": "Delay value",
-  "time-left": "Time left"
+  "time-left": "Time left",
+  "no-route": {
+    "title": "Page not found",
+    "goBack": "Go back to Homepage"
+  }
 }

@@ -17,7 +17,7 @@ export default function UtilElement() {
   const navigate = useNavigate();
   const { t } = useLocalTranslate();
   const { themeLabel } = useAppSelector((state) => state.config);
-  const [text, setText] = useState('1');
+  const [selectedId, setSelectedId] = useState('1');
 
   return (
     <>
@@ -39,6 +39,14 @@ export default function UtilElement() {
         >
           {t('multipleSelector')}
         </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => navigate(ROUTE.UTIL_CAROUSEL)}
+          sx={{ marginLeft: '0.5rem' }}
+        >
+          {t('datePicker.title')}
+        </Button>
         <TextCopy ml={1} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(themeLabel)}</Typography>
@@ -49,40 +57,6 @@ export default function UtilElement() {
         <LanguageSelector />
         <PasswordTextField sx={{ ml: 2, width: '40%' }} placeholder={t('enterPassword')} />
       </Box>
-      <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
-        <Typography>{text}</Typography>
-        <GroupButton
-          sx={{
-            transform: 'skewX(-20deg)',
-            borderRadius: '4px',
-            boxShadow: '2px 3px 0px #1841B5',
-            minWidth: '170px',
-            ml: 1,
-          }}
-          items={[
-            { id: '1', content: '1' },
-            { id: '2', content: '2' },
-            { id: '3', content: '3' },
-            { id: '4', content: '4' },
-            { id: '5', content: '5' },
-            { id: '6', content: '6' },
-            { id: '7', content: '7' },
-            { id: '8', content: '8' },
-            { id: '9', content: '9' },
-            { id: '10', content: '10' },
-          ]}
-          selectedId={text}
-          events={{ onClick: (item) => setText(item.id) }}
-        />
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => navigate(ROUTE.UTIL_CAROUSEL)}
-          sx={{ marginLeft: '1rem' }}
-        >
-          Carousel
-        </Button>
-      </Box>
       <Box mt={2}>
         <ScrollPaper border="1px solid red" borderRadius="8px" padding={1} height="200px">
           {Array(100)
@@ -92,6 +66,20 @@ export default function UtilElement() {
             ))}
         </ScrollPaper>
       </Box>
+      <GroupButton
+        className="mt-[1rem]"
+        options={[
+          { id: '1', content: 'item1', width: 60 },
+          { id: '2', content: 'item2', width: 65 },
+          { id: '3', content: 'item3', width: 70 },
+          { id: '4', content: 'item4', width: 75 },
+          { id: '5', content: 'item5', width: 80 },
+          { id: '6', content: 'item6', width: 85 },
+          { id: '7', content: 'item7', width: 90 },
+        ]}
+        selectedId={selectedId}
+        events={{ onOptionChange: (id) => setSelectedId(id) }}
+      />
     </>
   );
 }

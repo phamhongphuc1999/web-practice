@@ -38,12 +38,12 @@ export default function CustomContract() {
         onChange={(e) => setAbi(e.target.value)}
       />
       <GroupButton
-        items={[
+        options={[
           { id: 'viewFunction', content: t('viewFunction') },
           { id: 'sendFunction', content: t('sendFunction') },
         ]}
-        selectedId="viewFunction"
-        events={{ onClick: (item) => setActive(item.id) }}
+        selectedId={active}
+        events={{ onOptionChange: (id) => setActive(id) }}
       />
       {active == 'viewFunction' ? (
         <ReadFunction fragment={fragments[0]} />

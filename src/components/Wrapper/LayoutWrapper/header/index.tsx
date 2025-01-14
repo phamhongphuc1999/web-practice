@@ -35,10 +35,12 @@ export default function Header() {
             height: '100%',
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-            <ThemeButton />
-            {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
-          </Box>
+          {!location.pathname.includes(ROUTE.CONFIG) && (
+            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+              <ThemeButton />
+              {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
+            </Box>
+          )}
           <div className="main-header-reference">
             {Object.values(AppReferenceConfig).map((item) => {
               if (item.items)

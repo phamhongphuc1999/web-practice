@@ -123,7 +123,7 @@ export default function Animation() {
 
   return (
     <>
-      <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center">
+      <div className="fixed bottom-0 left-0 right-0 top-0 flex items-center justify-center">
         <div className="relative h-full w-full">
           <div className="rotate-animation absolute bottom-[-100vw] left-[-100vh] right-[-100vh] top-[-100vw]" />
           <div className="rotate-animation1 absolute left-0 top-0 aspect-square w-full rounded-[50%]" />

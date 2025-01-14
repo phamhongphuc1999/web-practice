@@ -1,6 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import { ROUTE } from 'src/configs/layout';
 import Academy from 'src/pages/academy';
+import AnimationScroll from 'src/pages/academy/animation-scroll';
 import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
 import Animation3d from 'src/pages/animation-3d';
@@ -20,6 +21,7 @@ import ContractPage from 'src/pages/ContractPage';
 import CircomPage from 'src/pages/cryptography/circom-page';
 import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
+import NoRoute from 'src/pages/no-route';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
@@ -147,12 +149,21 @@ export default function App() {
       children: [
         { path: '', element: <Academy /> },
         { path: 'transition-delay', element: <TransitionDelay /> },
+        { path: 'animation-scroll', element: <AnimationScroll /> },
       ],
+    },
+    {
+      path: ROUTE.NO_ROUTE,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <NoRoute /> }],
     },
     {
       path: '/',
       element: <ProviderApp />,
-      children: [{ path: '', element: <Navigate to={`${ROUTE.ANIMATION}/1`} /> }],
+      children: [
+        { path: '', element: <Navigate to={`${ROUTE.ANIMATION}/1`} /> },
+        { path: '/*', element: <Navigate to={ROUTE.NO_ROUTE} /> },
+      ],
     },
   ]);
 }

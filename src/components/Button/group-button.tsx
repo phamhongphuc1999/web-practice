@@ -1,103 +1,75 @@
-import {
-  Box,
-  BoxProps,
-  Button,
-  ButtonGroup,
-  ButtonGroupProps,
-  Typography,
-  TypographyProps,
-} from '@mui/material';
+import { DivProps, twMerge } from '@peter-present/led-caro';
 import { ReactNode, useMemo } from 'react';
-import { mergeSx } from 'src/services';
 
-export interface GroupButtonItem {
+export interface GroupButtonItemProps {
   id: string;
   content: ReactNode;
+  width?: number;
 }
 
-interface Props extends ButtonGroupProps {
-  items: Array<GroupButtonItem>;
+export interface StickyGroupButtonItemProps {
+  id: string;
+  content: ReactNode;
+  width: number;
+  position: number;
+}
+
+interface Props extends DivProps {
   selectedId: string;
+  selectedClassname?: string;
+  options: Array<GroupButtonItemProps>;
   events?: {
-    onClick?: (item: GroupButtonItem) => void;
+    onOptionChange?: (id: string) => void;
   };
-  slideProps?: BoxProps;
-  textProps?: TypographyProps;
 }
 
 export default function GroupButton(params: Props) {
-  const { items, selectedId, events, slideProps, textProps, ...props } = params;
-  const active = useMemo(() => {
-    let counter = 0;
-    for (const item of items) {
-      if (item.id == selectedId) return counter;
-      counter++;
+  const { selectedId, options, events, selectedClassname, ...props } = params;
+
+  const jsonOptions = useMemo(() => {
+    const result: { [key: string]: StickyGroupButtonItemProps } = {};
+    let position = 0;
+    for (const option of options) {
+      result[option.id] = { ...option, position, width: option.width ?? 40 };
+      position += option.width ?? 40;
     }
-    return 0;
-  }, [items, selectedId]);
+    return result;
+  }, [options]);
 
-  const { left, right } = useMemo(() => {
-    const baseUnit = 100 / items.length;
-    const left = baseUnit * active;
-    const right = 100 - baseUnit - left;
-    return { left, right };
-  }, [active, items.length]);
-
-  function onClick(item: GroupButtonItem) {
-    if (events?.onClick) events.onClick(item);
+  function onOptionChange(id: string) {
+    if (events?.onOptionChange) events.onOptionChange(id);
   }
 
   return (
-    <ButtonGroup
+    <div
       {...props}
-      sx={mergeSx({ position: 'relative', borderRadius: '4px', overflow: 'hidden' }, props?.sx)}
+      className={twMerge(
+        'relative inline-flex cursor-pointer items-center rounded-[8px] bg-blue-100',
+        props?.className
+      )}
     >
-      <Box
-        {...slideProps}
-        sx={mergeSx(
-          {
-            left: `${left}%`,
-            right: `${right}%`,
-            backgroundImage: 'linear-gradient(360deg, #29A3F8 -6.94%, #21D0FB 100%)',
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            transitionDuration: '0.25s',
-          },
-          slideProps?.sx
-        )}
+      <div
+        className="absolute h-full rounded-[8px] bg-blue-50 opacity-25 transition-all"
+        style={{
+          width: `${jsonOptions[selectedId].width}px`,
+          left: `${jsonOptions[selectedId].position}px`,
+        }}
       />
-      {items.map((item) => {
+      {Object.values(options).map((item) => {
         return (
-          <Button
+          <div
             key={item.id}
-            onClick={() => onClick(item)}
-            sx={{
-              border: 'none',
-              verticalAlign: 'center',
-              height: '100%',
-              '&:hover': { border: 'none' },
-            }}
+            className={twMerge(
+              'flex items-center justify-center px-[8px] py-[16px] text-center',
+              selectedId && selectedClassname
+            )}
+            style={{ width: `${item.width ?? 40}px` }}
+            onClick={() => onOptionChange(item.id)}
           >
-            <>
-              {typeof item.content == 'string' ? (
-                <Typography
-                  {...textProps}
-                  sx={mergeSx(
-                    { fontSize: '15px', fontWeight: 600, color: '#22CBFB' },
-                    selectedId == item.id && { color: '#ffffff' },
-                    selectedId != item.id && textProps?.sx
-                  )}
-                >
-                  {item.content}
-                </Typography>
-              ) : (
-                <>{item.content}</>
-              )}
-            </>
-          </Button>
+            {item.content}
+          </div>
         );
       })}
-    </ButtonGroup>
+    </div>
   );
 }

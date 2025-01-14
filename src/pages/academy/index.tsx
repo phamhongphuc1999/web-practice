@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
@@ -15,9 +15,11 @@ export default function Academy() {
       <div className="mt-[1rem]">
         {AcademyConfig.map((item, index) => {
           return (
-            <Link to={item.link}>
-              <Typography>{`${index + 1}: ${t(item.title)}`}</Typography>
-            </Link>
+            <Box sx={{ marginTop: '8px' }}>
+              <Link to={item.link}>
+                <Typography>{`${index + 1}: ${t(item.title)}`}</Typography>
+              </Link>
+            </Box>
           );
         })}
       </div>

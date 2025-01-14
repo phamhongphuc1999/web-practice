@@ -124,3 +124,26 @@
   }
 }
 /* end header */
+
+.scrollable-item {
+  border: 1px solid #f6f7fb;
+  border-radius: 20px;
+  padding: 40px 48px;
+}
+.scroll-academy-item {
+  cursor: pointer;
+  width: 200px;
+  height: 52px;
+  color: #7d88a6;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.scroll-academy-item-active {
+  background-color: #f6f7fb;
+  .scroll-academy-item-tag {
+    background-color: #2069fa;
+  }
+}

@@ -98,7 +98,8 @@
   "encryption": "Mã hoá",
   "component": "Thành phần",
   "academy-item": {
-    "transition": "Gọi lại API sau một khoảng trễ"
+    "transition": "Gọi lại API sau một khoảng trễ",
+    "scroll-page": "Cuộn trang với vài hiệu ứng"
   },
   "header-description": {
     "animation": "Hiệu ứng được viết hoàn toàn bằng CSS và MUI",
@@ -106,5 +107,9 @@
   },
   "value": "Giá trị",
   "delay-value": "Gia trị trễ",
-  "time-left": "Thời gian còn lại"
+  "time-left": "Thời gian còn lại",
+  "no-route": {
+    "title": "Không tìm thấy trang",
+    "goBack": "Quay về trang chủ"
+  }
 }
