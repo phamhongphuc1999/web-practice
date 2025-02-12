@@ -26,8 +26,8 @@ export default function Carousel({ location, items, events, metadata, ...props }
     metadata?.interval == undefined
       ? 0
       : metadata.interval < defaultInterval
-      ? defaultInterval
-      : metadata.interval;
+        ? defaultInterval
+        : metadata.interval;
   const mode = metadata?.mode == undefined ? 'normal' : metadata.mode;
   const len = items.length;
 

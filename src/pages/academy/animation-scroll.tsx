@@ -1,7 +1,12 @@
 import { Typography } from '@mui/material';
 import { useCallback, useEffect } from 'react';
+import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import { ROUTE } from 'src/configs/layout';
+import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function AnimationScroll() {
+  const { t } = useLocalTranslate();
+
   function onScrollClick(id: string) {
     const element = document.getElementById(id);
     const position = element?.getBoundingClientRect();
@@ -45,39 +50,47 @@ export default function AnimationScroll() {
   }, [onScroll]);
 
   return (
-    <div className="flex justify-between">
-      <div className="sticky top-[10rem] h-fit w-[440px]">
-        <div className="scroll-academy-item" onClick={() => onScrollClick('option1')}>
-          <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
-          Option1
+    <>
+      <CssBreadcrumbs
+        configs={[
+          { label: t('academy'), link: ROUTE.ACADEMY },
+          { label: t('academy-item.scroll-page'), isRemain: true },
+        ]}
+      />
+      <div className="flex justify-between">
+        <div className="sticky top-[10rem] h-fit w-[440px]">
+          <div className="scroll-academy-item" onClick={() => onScrollClick('option1')}>
+            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            Option1
+          </div>
+          <div className="scroll-academy-item" onClick={() => onScrollClick('option2')}>
+            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            Option2
+          </div>
+          <div className="scroll-academy-item" onClick={() => onScrollClick('option3')}>
+            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            Option3
+          </div>
+          <div className="scroll-academy-item" onClick={() => onScrollClick('option4')}>
+            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            Option4
+          </div>
         </div>
-        <div className="scroll-academy-item" onClick={() => onScrollClick('option2')}>
-          <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
-          Option2
-        </div>
-        <div className="scroll-academy-item" onClick={() => onScrollClick('option3')}>
-          <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
-          Option3
-        </div>
-        <div className="scroll-academy-item" onClick={() => onScrollClick('option4')}>
-          <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
-          Option4
+        <div id="scrollable-board" className="w-[calc(100%-480px)]">
+          <div id="option1" className="scrollable-item h-[300px]">
+            <Typography variant="h2">Option1</Typography>
+          </div>
+          <div id="option2" className="scrollable-item mt-[12px] h-[600px]">
+            <Typography variant="h2">Option2</Typography>
+          </div>
+          <div id="option3" className="scrollable-item mt-[12px] h-[900px]">
+            <Typography variant="h2">Option3</Typography>
+          </div>
+          <div id="option4" className="scrollable-item mt-[12px] h-[1200px]">
+            <Typography variant="h2">Option4</Typography>
+          </div>
         </div>
       </div>
-      <div id="scrollable-board" className="w-[calc(100%-480px)]">
-        <div id="option1" className="scrollable-item h-[300px]">
-          <Typography variant="h2">Option1</Typography>
-        </div>
-        <div id="option2" className="scrollable-item mt-[12px] h-[600px]">
-          <Typography variant="h2">Option2</Typography>
-        </div>
-        <div id="option3" className="scrollable-item mt-[12px] h-[900px]">
-          <Typography variant="h2">Option3</Typography>
-        </div>
-        <div id="option4" className="scrollable-item mt-[12px] h-[1200px]">
-          <Typography variant="h2">Option4</Typography>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

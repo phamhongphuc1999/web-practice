@@ -3,11 +3,17 @@ import { Box, BoxProps, Breadcrumbs, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface Props extends BoxProps {
-  configs: Array<{ link?: string; label: string; formatter?: (label: string) => string }>;
+  configs: Array<{
+    link?: string;
+    label: string;
+    formatter?: (label: string) => string;
+    isRemain?: boolean;
+  }>;
 }
 
 export default function CssBreadcrumbs({ configs, ...props }: Props) {
-  function DefaultFormatter(label: string) {
+  function _formatter(label: string) {
+    if (label.length == 0) return label;
     const textArray = label.split(' ');
     let result = '';
     for (const subText of textArray)
@@ -19,7 +25,8 @@ export default function CssBreadcrumbs({ configs, ...props }: Props) {
     <Box {...props}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
         {configs.map((item, index) => {
-          const formatter = item?.formatter;
+          const formatter = item.isRemain ? (label: string) => label : item?.formatter;
+
           return item.link ? (
             <Link
               key={index}
@@ -28,12 +35,12 @@ export default function CssBreadcrumbs({ configs, ...props }: Props) {
               style={{ textDecoration: 'none' }}
             >
               <Typography color="textSecondary">
-                {formatter ? formatter(item.label) : DefaultFormatter(item.label)}
+                {formatter ? formatter(item.label) : _formatter(item.label)}
               </Typography>
             </Link>
           ) : (
             <Typography color="textSecondary" key={index}>
-              {formatter ? formatter(item.label) : DefaultFormatter(item.label)}
+              {formatter ? formatter(item.label) : _formatter(item.label)}
             </Typography>
           );
         })}

@@ -40,7 +40,7 @@ export default function TransitionDelay() {
       <CssBreadcrumbs
         configs={[
           { label: t('academy'), link: ROUTE.ACADEMY },
-          { label: t('academy-item.transition') },
+          { label: t('academy-item.transition'), isRemain: true },
         ]}
         mb={2}
       />
