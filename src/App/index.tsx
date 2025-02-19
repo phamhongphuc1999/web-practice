@@ -22,6 +22,7 @@ import CircomPage from 'src/pages/cryptography/circom-page';
 import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
 import NoRoute from 'src/pages/no-route';
+import ShadcnUi from 'src/pages/shadcn-ui';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
@@ -87,6 +88,11 @@ export default function App() {
       path: ROUTE.ANT_DESIGN,
       element: <ProviderApp />,
       children: [{ path: '', element: <AntDesignPage /> }],
+    },
+    {
+      path: ROUTE.SHADCN_UI,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <ShadcnUi /> }],
     },
     {
       path: ROUTE.METAMASK,

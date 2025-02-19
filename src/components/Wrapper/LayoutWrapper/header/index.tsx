@@ -46,6 +46,7 @@ export default function Header() {
               if (item.items)
                 return (
                   <Box
+                    key={item.id}
                     className="header-box"
                     sx={{
                       height: '100%',
@@ -63,7 +64,7 @@ export default function Header() {
                 );
               else
                 return (
-                  <CssNavLink to={item.link ?? ''}>
+                  <CssNavLink key={item.id} to={item.link ?? ''}>
                     <HeaderText title={item.title} />
                   </CssNavLink>
                 );

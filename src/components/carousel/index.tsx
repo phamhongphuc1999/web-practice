@@ -77,6 +77,7 @@ export default function Carousel({ location, items, events, metadata, ...props }
       }, defaultInterval);
     }
     if (fn || interval < defaultInterval) return () => clearInterval(fn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, interval, mode]);
 
   return (

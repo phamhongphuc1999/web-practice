@@ -103,7 +103,8 @@
   },
   "header-description": {
     "animation": "Hiệu ứng được viết hoàn toàn bằng CSS và MUI",
-    "ant-design": "Ant design với Tailwind"
+    "ant-design": "Ant design với Tailwind",
+    "shadcn-ui": "SHADCN/UI với Tailwind"
   },
   "value": "Giá trị",
   "delay-value": "Gia trị trễ",

@@ -33,7 +33,7 @@ export default function WalletEffect() {
         }
       }
     },
-    [account.isConnected, account.connector]
+    [account.isConnected, account.connector, _setReader, setSigner]
   );
 
   // switch chain event
@@ -42,7 +42,7 @@ export default function WalletEffect() {
       _updateAccount(account.chainId);
       dispatch(setNetworkConfig({ chainId: account.chainId }));
     }
-  }, [account.chainId, account.isConnected, _updateAccount]);
+  }, [account.chainId, account.isConnected, dispatch, _updateAccount]);
 
   // disconnect
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function WalletEffect() {
       dispatch(resetUser());
       dispatch(resetConfig());
     }
-  }, [account.isDisconnected]);
+  }, [account.isDisconnected, dispatch]);
 
   // detect errors
   useEffect(() => {

@@ -4,6 +4,7 @@ import { BoxProps } from '@mui/material';
 import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { SvgComponent } from './components/Icons';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
@@ -79,7 +80,7 @@ export type AppReferenceItemType = {
   title: string;
   link: string;
   description: string;
-  icon: SvgIconComponent;
+  icon: SvgIconComponent | SvgComponent;
 };
 
 export type AppReferenceId = 'component' | 'chart' | 'web3' | 'encryption' | 'academy';

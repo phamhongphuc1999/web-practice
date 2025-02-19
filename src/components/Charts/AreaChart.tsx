@@ -76,7 +76,7 @@ export default function AreaChart({ series, option, metadata, ...props }: Props)
       },
       option
     );
-  }, [realSeries, option]);
+  }, [realSeries, option, isMakeSeries, themeMode]);
 
   return (
     <BaseChart {...props}>

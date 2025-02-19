@@ -10,11 +10,13 @@ import {
   TaskAlt,
   Wallet,
 } from '@mui/icons-material';
+import { ShadcnIcon } from 'src/components/Icons';
 import { AppReferenceId, AppReferenceType } from 'src/global';
 
 export const ROUTE = {
   ANIMATION: '/animation',
   ANT_DESIGN: '/ant-design',
+  SHADCN_UI: '/shadcn-ui',
   APTOS: '/aptos',
   APTOS_SDK: '/aptos/sdk',
   METAMASK: '/metamask',
@@ -62,6 +64,13 @@ const Component: AppReferenceType = {
       link: ROUTE.ANT_DESIGN,
       description: 'header-description.ant-design',
       icon: LocalFireDepartmentOutlined,
+    },
+    {
+      id: 'shadcn-ui',
+      title: 'SHADCN/UI',
+      link: ROUTE.SHADCN_UI,
+      description: 'header-description.shadcn-ui',
+      icon: ShadcnIcon,
     },
     { id: 'utils', title: 'utils', link: ROUTE.UTILS, description: '', icon: TaskAlt },
   ],

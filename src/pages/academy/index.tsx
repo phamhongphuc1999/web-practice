@@ -15,7 +15,7 @@ export default function Academy() {
       <div className="mt-[1rem]">
         {AcademyConfig.map((item, index) => {
           return (
-            <Box sx={{ marginTop: '8px' }}>
+            <Box key={index} sx={{ marginTop: '8px' }}>
               <Link to={item.link}>
                 <Typography>{`${index + 1}: ${t(item.title)}`}</Typography>
               </Link>

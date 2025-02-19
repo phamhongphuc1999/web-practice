@@ -103,7 +103,8 @@
   },
   "header-description": {
     "animation": "Animations coded by raw CSS with the MUIs' supporting",
-    "ant-design": "Ant design practice with Tailwind"
+    "ant-design": "Ant design practice with Tailwind",
+    "shadcn-ui": "SHADCN/UI practice with Tailwind"
   },
   "value": "Value",
   "delay-value": "Delay value",

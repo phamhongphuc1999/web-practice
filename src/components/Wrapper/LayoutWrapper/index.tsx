@@ -24,7 +24,7 @@ export default function LayoutWrapper({ children }: Props) {
     dispatch(
       initLocalStorage({ themeMode: themeMode as ThemeMode, language: language as LanguageType })
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let result: AppReferenceId | undefined = undefined;
@@ -36,7 +36,7 @@ export default function LayoutWrapper({ children }: Props) {
       }
     }
     dispatch(setReferenceId(result));
-  }, [location.pathname]);
+  }, [location.pathname, dispatch]);
 
   return (
     <div className="bg-black-200">

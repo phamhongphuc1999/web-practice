@@ -36,7 +36,7 @@ export default function Information() {
       setTokens(undefined);
       setResources([]);
     }
-  }, [aptos]);
+  }, [aptos, accountAddress]);
 
   useEffect(() => {
     _fetch();

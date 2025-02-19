@@ -41,12 +41,12 @@ export default function CssSelector<T extends CssSelectItem>(param: Props<T>) {
 
   useEffect(() => {
     if (!selectedItem?.label) setSelectedItem(defaultSelectedItem);
-  }, [defaultSelectedItem]);
+  }, [defaultSelectedItem, selectedItem?.label]);
 
   const rootWidth = useMemo(() => {
     if (rootRef?.current) return rootRef.current.offsetWidth;
     else return 'auto';
-  }, [rootRef?.current]);
+  }, []);
 
   function onItemClick(e: React.MouseEvent<HTMLLIElement, MouseEvent>, item: T) {
     setSelectedItem(item);

@@ -60,6 +60,7 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
           {Object.values(AppReferenceConfig).map((item) => {
             return (
               <Box
+                key={item.id}
                 sx={{
                   backgroundColor: isLight ? '#F8F9FB' : 'rgba(63, 63, 63, 0.56)',
                   borderRadius: '16px',

@@ -12,23 +12,24 @@ import { useAptosWalletContext } from 'src/WalletConnection/aptos-connection/Apt
 export default function MoveContract() {
   const { t } = useLocalTranslate();
   const { fn, accountAddress } = useAptosWalletContext();
+  const { view } = fn;
   const [contractMessage, setContractMessage] = useState('');
   const [contractTasks, setContractTasks] = useState<TasksListType | undefined>(undefined);
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState<CommittedTransactionResponse | undefined>(undefined);
 
   const _getMessage = useCallback(async () => {
-    const _message = await fn.view<Array<string>>({
+    const _message = await view<Array<string>>({
       packageName: Testnet.MainContract,
       module: 'message',
       functionName: 'get_message',
       functionArguments: [accountAddress],
     });
     if (_message) setContractMessage(_message[0]);
-  }, [fn.view]);
+  }, [view, accountAddress]);
 
   const _getTasks = useCallback(async () => {
-    const _counter = await fn.view<Array<number>>({
+    const _counter = await view<Array<number>>({
       packageName: Testnet.MainContract,
       module: 'message',
       functionName: 'get_task_counter',
@@ -38,7 +39,7 @@ export default function MoveContract() {
       const awaitFn: Array<Promise<TaskType[] | undefined>> = [];
       for (let i = 1; i <= _counter[0]; i++) {
         awaitFn.push(
-          fn.view<Array<TaskType>>({
+          view<Array<TaskType>>({
             packageName: Testnet.MainContract,
             module: 'message',
             functionName: 'get_task',
@@ -53,7 +54,7 @@ export default function MoveContract() {
       }
       setContractTasks(_contractTasks);
     }
-  }, [fn.view]);
+  }, [view, accountAddress]);
 
   useEffect(() => {
     _getMessage();

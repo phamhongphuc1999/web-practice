@@ -115,7 +115,7 @@ export default function Animation() {
 
   useEffect(() => {
     jump(Number(page));
-  }, [page]);
+  }, [page, jump]);
 
   function onPageChange(page: number) {
     navigate(`${ROUTE.ANIMATION}/${page}`);

@@ -5,13 +5,6 @@ import { useEffect, useRef } from 'react';
 export default function ScrollToTop() {
   const scrollRef = useRef<HTMLDivElement>();
 
-  useEffect(() => {
-    if (scrollRef?.current) window.addEventListener('scroll', listenToScroll);
-    return function cleanup() {
-      window.removeEventListener('scroll', listenToScroll);
-    };
-  }, [scrollRef]);
-
   const listenToScroll = () => {
     if (scrollRef?.current) {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -24,6 +17,13 @@ export default function ScrollToTop() {
       }
     }
   };
+
+  useEffect(() => {
+    if (scrollRef?.current) window.addEventListener('scroll', listenToScroll);
+    return function cleanup() {
+      window.removeEventListener('scroll', listenToScroll);
+    };
+  }, [scrollRef]);
 
   function onIconClick() {
     window.scroll({ top: 0, behavior: 'smooth' });

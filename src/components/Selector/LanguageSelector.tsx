@@ -14,7 +14,7 @@ export default function LanguageSelector() {
   const defaultSelectedItem = useMemo(() => {
     const data = languageConfig[language];
     return { id: data.id, label: t(data.label) };
-  }, [language]);
+  }, [language, t]);
 
   function onChooseItem(_: React.MouseEvent<HTMLLIElement, MouseEvent>, item: CssSelectItem) {
     dispatch(setLanguage(item.id as LanguageType));

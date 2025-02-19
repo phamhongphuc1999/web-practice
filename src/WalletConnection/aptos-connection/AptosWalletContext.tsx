@@ -82,7 +82,7 @@ export default function AptosWalletProvider({ children }: Props) {
         return contractRun(aptos, payload, realSender, signAndSubmitTransaction);
       }
     },
-    [account?.address, aptos]
+    [account?.address, aptos, signAndSubmitTransaction]
   );
 
   const contextData = useMemo<AptosWalletContextProps>(() => {

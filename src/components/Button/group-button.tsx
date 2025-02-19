@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { DivProps, twMerge } from '@peter-present/led-caro';
 import { ReactNode, useMemo } from 'react';
 

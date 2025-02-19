@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import MessageImg from 'src/assets/images/ant-design/message.svg';
 import CaroBox from './CaroBox';
 
