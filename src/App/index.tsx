@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import { ROUTE } from 'src/configs/layout';
 import Academy from 'src/pages/academy';
 import AnimationScroll from 'src/pages/academy/animation-scroll';
+import HorizontalScroll from 'src/pages/academy/horizontal-scroll';
 import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
 import Animation3d from 'src/pages/animation-3d';
@@ -156,6 +157,7 @@ export default function App() {
         { path: '', element: <Academy /> },
         { path: 'transition-delay', element: <TransitionDelay /> },
         { path: 'animation-scroll', element: <AnimationScroll /> },
+        { path: 'horizontal-scroll', element: <HorizontalScroll /> },
       ],
     },
     {

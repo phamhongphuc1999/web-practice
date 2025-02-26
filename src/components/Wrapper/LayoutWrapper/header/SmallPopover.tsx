@@ -50,11 +50,7 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
         {...props}
         anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
         transformOrigin={{ vertical: 'center', horizontal: 'center' }}
-        slotProps={{
-          paper: {
-            sx: { borderRadius: '24px', width: '100%', marginTop: '85px' },
-          },
-        }}
+        slotProps={{ paper: { sx: { borderRadius: '24px', width: '100%', marginTop: '85px' } } }}
       >
         <Box sx={{ boxShadow: '0px 4px 16px 0px #D7D8E380', padding: '0.75rem' }}>
           {Object.values(AppReferenceConfig).map((item) => {

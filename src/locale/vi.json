@@ -99,7 +99,8 @@
   "component": "Thành phần",
   "academy-item": {
     "transition": "Gọi lại API sau một khoảng trễ",
-    "scroll-page": "Cuộn trang với vài hiệu ứng"
+    "scroll-page": "Cuộn trang với vài hiệu ứng",
+    "horizontal-scroll": "tạo một thanh cuộn ngang đơn giản"
   },
   "header-description": {
     "animation": "Hiệu ứng được viết hoàn toàn bằng CSS và MUI",

@@ -47,7 +47,7 @@ export const DisconnectedWalletIcon: SvgComponent = (props) => (
 export const ShadcnIcon: SvgComponent = (props) => {
   return (
     <svg {...props} viewBox="0 0 256 256">
-      <rect width="256" height="256" fill="none" />
+      <rect fill="none" />
       <line
         x1="208"
         y1="128"
