@@ -134,4 +134,8 @@ export const AcademyConfig: Array<{ title: string; link: string }> = [
   { title: 'academy-item.transition', link: `${ROUTE.ACADEMY}/transition-delay` },
   { title: 'academy-item.scroll-page', link: `${ROUTE.ACADEMY}/animation-scroll` },
   { title: 'academy-item.horizontal-scroll', link: `${ROUTE.ACADEMY}/horizontal-scroll` },
+  {
+    title: 'academy-item.horizontal-scroll-animation',
+    link: `${ROUTE.ACADEMY}/horizontal-scroll-animation`,
+  },
 ];

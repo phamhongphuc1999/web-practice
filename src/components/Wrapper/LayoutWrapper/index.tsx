@@ -41,12 +41,16 @@ export default function LayoutWrapper({ children }: Props) {
   return (
     <div className="bg-black-200">
       <Header />
-      <Container
-        maxWidth="lg"
-        className="mb-[50px] flex h-full min-h-[calc(100vh-55px)] flex-col justify-between pt-[100px]"
-      >
-        <div>{children}</div>
-      </Container>
+      {location.pathname == '/academy/horizontal-scroll-animation' ? (
+        <>{children}</>
+      ) : (
+        <Container
+          maxWidth="lg"
+          className="mb-[50px] flex h-full min-h-[calc(100vh-55px)] flex-col justify-between pt-[100px]"
+        >
+          <div>{children}</div>
+        </Container>
+      )}
       <Footer />
     </div>
   );

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .cycle {
   shape-outside: circle();
   clip-path: circle();
@@ -145,5 +151,54 @@
   background-color: #f6f7fb;
   .scroll-academy-item-tag {
     background-color: #2069fa;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100% - 100vw));
+  }
+}
+
+.horizontal-scroll-animation {
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .horizontal-scroll-animation-wrapper {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+
+    animation: slide auto linear;
+    animation-timeline: scroll();
+  }
+  .horizontal-scroll-animation-wrapper figure {
+    margin: 0;
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100vw;
+  }
+  section {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .section-container {
+    min-height: 100vh;
+    background-color: rgba(38, 33, 120, 0.108);
+  }
+  .section-container .content {
+    padding: 2rem;
+  }
+  .section-container .content h2,
+  p {
+    color: #000000;
   }
 }
