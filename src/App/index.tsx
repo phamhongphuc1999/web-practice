@@ -23,6 +23,7 @@ import ContractPage from 'src/pages/ContractPage';
 import CircomPage from 'src/pages/cryptography/circom-page';
 import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
+import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
 import ShadcnUi from 'src/pages/shadcn-ui';
 import UtilElement from 'src/pages/UtilElement';
@@ -162,6 +163,7 @@ export default function App() {
         { path: 'horizontal-scroll-animation', element: <HorizontalScrollAnimation /> },
       ],
     },
+    { path: ROUTE.MOBX, element: <ProviderApp />, children: [{ path: '', element: <MobXPage /> }] },
     {
       path: ROUTE.NO_ROUTE,
       element: <ProviderApp />,

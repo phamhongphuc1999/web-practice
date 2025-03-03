@@ -147,6 +147,10 @@ export function convertStringToUint8(_in: string) {
   return Uint8Array.from(Buffer.from(_in, 'hex'));
 }
 
+export function delay(ms: number) {
+  return new Promise((res) => setTimeout(res, ms));
+}
+
 export function mergeSx(...sxs: Array<boolean | SxProps<Theme> | undefined>): SxProps<Theme> {
   let result: Array<
     boolean | SystemStyleObject<Theme> | ((theme: Theme) => SystemStyleObject<Theme>)

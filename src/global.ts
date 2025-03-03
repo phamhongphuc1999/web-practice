@@ -8,6 +8,7 @@ import { SvgComponent } from './components/Icons';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
+export type AppFetchStatus = 'initial' | 'execute' | 'pending' | 'success' | 'fail';
 export type HexType = 'normal' | 'hex';
 export type LanguageType = 'en' | 'vi';
 export type ThemeMode = 'dark' | 'light';

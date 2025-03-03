@@ -31,6 +31,7 @@ export const ROUTE = {
   HASH_FUNCTION: '/hash-function',
   CIRCOM: '/circom',
   ACADEMY: '/academy',
+  MOBX: '/mobx',
   NO_ROUTE: '/no-page',
 };
 
