@@ -100,7 +100,8 @@
   "academy-item": {
     "transition": "Recall API after a few delay",
     "scroll-page": "Scroll page with some animation",
-    "horizontal-scroll": "Make a simple horizontal scroll"
+    "horizontal-scroll": "Make a simple horizontal scroll",
+    "position-preserve": "A bit understanding about position preserve in react"
   },
   "header-description": {
     "animation": "Animations coded by raw CSS with the MUIs' supporting",

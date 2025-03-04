@@ -139,4 +139,8 @@ export const AcademyConfig: Array<{ title: string; link: string }> = [
     title: 'academy-item.horizontal-scroll-animation',
     link: `${ROUTE.ACADEMY}/horizontal-scroll-animation`,
   },
+  {
+    title: 'academy-item.position-preserve',
+    link: `${ROUTE.ACADEMY}/position-preserve`,
+  },
 ];

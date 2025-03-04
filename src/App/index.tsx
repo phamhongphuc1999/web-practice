@@ -31,6 +31,7 @@ import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ProviderApp from './ProviderApp';
+import PositionPreservesState from 'src/pages/academy/position-preserves-state';
 
 export default function App() {
   return useRoutes([
@@ -161,6 +162,7 @@ export default function App() {
         { path: 'animation-scroll', element: <AnimationScroll /> },
         { path: 'horizontal-scroll', element: <HorizontalScroll /> },
         { path: 'horizontal-scroll-animation', element: <HorizontalScrollAnimation /> },
+        { path: 'position-preserve', element: <PositionPreservesState /> },
       ],
     },
     { path: ROUTE.MOBX, element: <ProviderApp />, children: [{ path: '', element: <MobXPage /> }] },
