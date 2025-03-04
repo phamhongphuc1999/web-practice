@@ -76,7 +76,7 @@ export default function NetworkButton({ butProps }: Props) {
         maxWidth="xs"
         open={open}
         onClose={() => setOpen(false)}
-        PaperProps={{ elevation: 0, className: 'p-0 rounded-[8px]' }}
+        slotProps={{ paper: { elevation: 0, className: 'p-0 rounded-[8px]' } }}
       >
         <DialogTitle sx={cls.title}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

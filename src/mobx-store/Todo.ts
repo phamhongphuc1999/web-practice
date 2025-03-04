@@ -1,14 +1,18 @@
 import { makeAutoObservable } from 'mobx';
 import { AppFetchStatus } from 'src/global';
 import { delay } from 'src/services';
+import * as uuid from 'uuid';
 
-export type TodoItemType = {
-  id: string;
-  createAt: string;
-  updateAt: string;
+export type CoreTodoItemType = {
   title: string;
   quantity: number;
 };
+
+export interface TodoItemType extends CoreTodoItemType {
+  id: string;
+  createAt: string;
+  updateAt: string;
+}
 
 export type TodoListType = { [id: string]: TodoItemType };
 
@@ -44,6 +48,20 @@ class Todo {
     await delay(5000);
     this.todos = defaultData;
     this.status = 'success';
+  }
+
+  addNewTodo(item: CoreTodoItemType) {
+    const createAt = new Date().toString();
+    const id = uuid.v4();
+    this.todos = {
+      ...this.todos,
+      [id]: { id, createAt, updateAt: createAt, title: item.title, quantity: item.quantity },
+    };
+  }
+
+  editTodo(item: TodoItemType) {
+    const updateAt = new Date().toString();
+    this.todos = { ...this.todos, [item.id]: { ...item, updateAt } };
   }
 }
 
