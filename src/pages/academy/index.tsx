@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
@@ -7,6 +8,17 @@ import useLocalTranslate from 'src/hooks/useLocalTranslate';
 
 export default function Academy() {
   const { t } = useLocalTranslate();
+  const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    if (number > 0) {
+      const abc = setTimeout(() => {
+        alert(number);
+      }, 3000);
+
+      return () => clearTimeout(abc);
+    }
+  }, [number]);
 
   return (
     <div>
@@ -23,6 +35,9 @@ export default function Academy() {
           );
         })}
       </div>
+
+      <h1>{number}</h1>
+      <button onClick={() => setNumber((prev) => prev + 5)}>+5</button>
     </div>
   );
 }

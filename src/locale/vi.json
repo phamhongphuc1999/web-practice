@@ -101,7 +101,8 @@
     "transition": "Gọi lại API sau một khoảng trễ",
     "scroll-page": "Cuộn trang với vài hiệu ứng",
     "horizontal-scroll": "tạo một thanh cuộn ngang đơn giản",
-    "position-preserve": "Một chút hiểu biết về vị trí của các thành phần trong react"
+    "position-preserve": "Một chút hiểu biết về vị trí của các thành phần trong react",
+    "flex-layout": "Thực hành với flex"
   },
   "header-description": {
     "animation": "Hiệu ứng được viết hoàn toàn bằng CSS và MUI",

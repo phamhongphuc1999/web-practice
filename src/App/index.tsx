@@ -2,8 +2,10 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import { ROUTE } from 'src/configs/layout';
 import Academy from 'src/pages/academy';
 import AnimationScroll from 'src/pages/academy/animation-scroll';
+import FlexLayout from 'src/pages/academy/flex-layout';
 import HorizontalScroll from 'src/pages/academy/horizontal-scroll';
 import HorizontalScrollAnimation from 'src/pages/academy/horizontal-scroll-animation';
+import PositionPreservesState from 'src/pages/academy/position-preserves-state';
 import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
 import Animation3d from 'src/pages/animation-3d';
@@ -31,7 +33,6 @@ import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ProviderApp from './ProviderApp';
-import PositionPreservesState from 'src/pages/academy/position-preserves-state';
 
 export default function App() {
   return useRoutes([
@@ -163,6 +164,7 @@ export default function App() {
         { path: 'horizontal-scroll', element: <HorizontalScroll /> },
         { path: 'horizontal-scroll-animation', element: <HorizontalScrollAnimation /> },
         { path: 'position-preserve', element: <PositionPreservesState /> },
+        { path: 'flex-layout', element: <FlexLayout /> },
       ],
     },
     { path: ROUTE.MOBX, element: <ProviderApp />, children: [{ path: '', element: <MobXPage /> }] },
