@@ -7,6 +7,7 @@ import {
   LinkOutlined,
   LocalFireDepartmentOutlined,
   School,
+  Storefront,
   TaskAlt,
   Wallet,
 } from '@mui/icons-material';
@@ -123,12 +124,27 @@ const Encryption: AppReferenceType = {
   ],
 };
 
+const Academy: AppReferenceType = {
+  id: 'academy',
+  title: 'academy',
+  items: [
+    { id: 'academy', title: 'academy', link: ROUTE.ACADEMY, description: '', icon: School },
+    {
+      id: 'mobX',
+      title: 'mobX',
+      link: ROUTE.MOBX,
+      description: '',
+      icon: Storefront,
+    },
+  ],
+};
+
 export const AppReferenceConfig: { [key in AppReferenceId]: AppReferenceType } = {
   component: Component,
   chart: Chart,
   web3: Web3,
   encryption: Encryption,
-  academy: { id: 'academy', title: 'academy', link: ROUTE.ACADEMY, icon: School },
+  academy: Academy,
 };
 
 export const AcademyConfig: Array<{ title: string; link: string }> = [

@@ -49,7 +49,6 @@ class Todo {
     this.todos = defaultData;
     this.status = 'success';
   }
-
   addNewTodo(item: CoreTodoItemType) {
     const createAt = new Date().toString();
     const id = uuid.v4();
@@ -58,10 +57,13 @@ class Todo {
       [id]: { id, createAt, updateAt: createAt, title: item.title, quantity: item.quantity },
     };
   }
-
   editTodo(item: TodoItemType) {
     const updateAt = new Date().toString();
     this.todos = { ...this.todos, [item.id]: { ...item, updateAt } };
+  }
+  deleteTodo(id: string) {
+    delete this.todos[id];
+    this.todos = { ...this.todos };
   }
 }
 

@@ -9,15 +9,15 @@ import {
   TextField,
 } from '@mui/material';
 import { useFormik } from 'formik';
-import { CoreTodoItemType, MobxTodoStoreType, TodoItemType } from 'src/mobx-store/Todo';
+import { MobxTodoStoreType, TodoItemType } from 'src/mobx-store/Todo';
 
 interface Props extends DialogProps {
-  todo: MobxTodoStoreType['todo'];
   item: TodoItemType;
+  todo: MobxTodoStoreType['todo'];
 }
 
 export default function EditItemDialog({ todo, item, ...props }: Props) {
-  function validate(value: CoreTodoItemType) {
+  function validate(value: TodoItemType) {
     const errors: Partial<{ title: string; quantity: string }> = {};
     if (!value.title) errors.title = 'Title is required';
     if (!value.quantity) errors.quantity = 'Quantity is required';
@@ -25,11 +25,12 @@ export default function EditItemDialog({ todo, item, ...props }: Props) {
     return errors;
   }
 
-  const formik = useFormik<CoreTodoItemType>({
-    initialValues: { title: item.title, quantity: item.quantity },
-    onSubmit: (value) => {
-      todo.addNewTodo(value);
+  const formik = useFormik<TodoItemType>({
+    initialValues: item,
+    onSubmit: (value, formikHelpers) => {
+      todo.editTodo(value);
       if (props.onClose) props.onClose({}, 'backdropClick');
+      formikHelpers.resetForm();
     },
     validate,
   });
@@ -74,7 +75,7 @@ export default function EditItemDialog({ todo, item, ...props }: Props) {
           />
           <div className="mt-[1rem] flex justify-end">
             <Button variant="contained" size="large" type="submit">
-              Submit
+              Confirm
             </Button>
           </div>
         </form>
