@@ -1,3 +1,4 @@
+import '@mysten/dapp-kit/dist/index.css';
 import '@peter-present/led-caro/dist/assets/style.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

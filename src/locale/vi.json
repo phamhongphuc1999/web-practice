@@ -19,6 +19,7 @@
   "utils": "Tiện ích",
   "config": "Cài đặt",
   "connect": "Kết nối",
+  "connect-sui": "Kết nối với ví SUI",
   "connected": "Đã kết nối",
   "disconnect": "Ngắt kết nối",
   "data": "Dữ liệu",

@@ -28,6 +28,7 @@ import MetamaskPage from 'src/pages/MetamaskPage';
 import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
 import ShadcnUi from 'src/pages/shadcn-ui';
+import Sui from 'src/pages/sui';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
@@ -104,6 +105,7 @@ export default function App() {
       element: <ProviderApp />,
       children: [{ path: '', element: <MetamaskPage /> }],
     },
+    { path: ROUTE.SUI, element: <ProviderApp />, children: [{ path: '', element: <Sui /> }] },
     {
       path: ROUTE.CONTRACT,
       element: <ProviderApp />,

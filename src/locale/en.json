@@ -19,6 +19,7 @@
   "utils": "Utils",
   "config": "Config",
   "connect": "Connect",
+  "connect-sui": "Connect SUI Wallet",
   "connected": "Connected",
   "disconnect": "disconnect",
   "data": "Data",

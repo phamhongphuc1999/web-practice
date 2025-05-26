@@ -20,6 +20,7 @@ export const ROUTE = {
   SHADCN_UI: '/shadcn-ui',
   APTOS: '/aptos',
   APTOS_SDK: '/aptos/sdk',
+  SUI: '/sui',
   METAMASK: '/metamask',
   CONTRACT: '/contract',
   CHART: '/charts',
@@ -100,6 +101,7 @@ const Web3: AppReferenceType = {
       icon: CurrencyBitcoin,
     },
     { id: 'aptos', title: 'aptos', link: ROUTE.APTOS, description: '', icon: LinkOutlined },
+    { id: 'sui', title: 'sui', link: ROUTE.SUI, description: '', icon: School },
   ],
 };
 

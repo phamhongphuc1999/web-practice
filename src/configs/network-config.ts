@@ -1,3 +1,5 @@
+import { createNetworkConfig } from '@mysten/dapp-kit';
+import { getFullnodeUrl } from '@mysten/sui/client';
 import BnbImg from 'src/assets/images/BSC.svg';
 import CoinbaseImage from 'src/assets/images/wallets/coinbase.png';
 import MetamaskImage from 'src/assets/images/wallets/metamask.png';
@@ -59,3 +61,8 @@ export const CONNECTORS: ConnectorListType = {
     name: 'CoinBase',
   },
 };
+
+export const suiNetworkConfig = createNetworkConfig({
+  localnet: { url: getFullnodeUrl('localnet') },
+  mainnet: { url: getFullnodeUrl('mainnet') },
+});
