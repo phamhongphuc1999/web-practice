@@ -34,6 +34,7 @@ export const ROUTE = {
   CIRCOM: '/circom',
   ACADEMY: '/academy',
   MOBX: '/mobx',
+  ZUSTAND: '/zustand',
   NO_ROUTE: '/no-page',
 };
 
@@ -138,6 +139,7 @@ const Academy: AppReferenceType = {
       description: '',
       icon: Storefront,
     },
+    { id: 'zustand', title: 'Zustand', link: ROUTE.ZUSTAND, description: '', icon: Storefront },
   ],
 };
 

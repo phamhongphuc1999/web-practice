@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { DivProps, twMerge } from '@peter-present/led-caro';
+import { DivProps } from '@peter-present/led-caro';
 import { ReactNode, useMemo } from 'react';
+import { cn } from 'src/lib/utils';
 
 export interface GroupButtonItemProps {
   id: string;
@@ -44,7 +45,7 @@ export default function GroupButton(params: Props) {
   return (
     <div
       {...props}
-      className={twMerge(
+      className={cn(
         'relative inline-flex cursor-pointer items-center rounded-[8px] bg-blue-100',
         props?.className
       )}
@@ -60,7 +61,7 @@ export default function GroupButton(params: Props) {
         return (
           <div
             key={item.id}
-            className={twMerge(
+            className={cn(
               'flex items-center justify-center px-[8px] py-[16px] text-center',
               selectedId && selectedClassname
             )}

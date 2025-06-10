@@ -1,4 +1,5 @@
-import { DivProps, styleMerge, twMerge } from '@peter-present/led-caro';
+import { DivProps, styleMerge } from '@peter-present/led-caro';
+import { cn } from 'src/lib/utils';
 
 interface Props extends DivProps {
   color?: 'purple' | 'gray' | 'blue';
@@ -14,7 +15,7 @@ export default function ColorfulBox({ color = 'purple', ...props }: Props) {
     >
       <div className="glowing-box-animations">
         <div
-          className={twMerge(
+          className={cn(
             'glowing-box-glow',
             color == 'purple'
               ? 'glowing-box-purple-bg'
@@ -25,7 +26,7 @@ export default function ColorfulBox({ color = 'purple', ...props }: Props) {
         />
         <div className="glowing-box-stars-masker">
           <div
-            className={twMerge(
+            className={cn(
               'glowing-box-stars',
               color == 'purple'
                 ? 'glowing-box-purple-bg'
@@ -38,7 +39,7 @@ export default function ColorfulBox({ color = 'purple', ...props }: Props) {
       </div>
       <div className="glowing-box-borders-masker">
         <div
-          className={twMerge(
+          className={cn(
             'glowing-box-borders',
             color == 'purple'
               ? 'glowing-box-purple-bg'
@@ -49,7 +50,7 @@ export default function ColorfulBox({ color = 'purple', ...props }: Props) {
         />
       </div>
       <div
-        className={twMerge(
+        className={cn(
           'glowing-box-button text-white',
           color == 'purple'
             ? 'glowing-box-button-purple-bg'

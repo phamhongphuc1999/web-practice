@@ -33,6 +33,7 @@ import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
+import ZustandPage from 'src/pages/zustand-page';
 import ProviderApp from './ProviderApp';
 
 export default function App() {
@@ -170,6 +171,11 @@ export default function App() {
       ],
     },
     { path: ROUTE.MOBX, element: <ProviderApp />, children: [{ path: '', element: <MobXPage /> }] },
+    {
+      path: ROUTE.ZUSTAND,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <ZustandPage /> }],
+    },
     {
       path: ROUTE.NO_ROUTE,
       element: <ProviderApp />,
