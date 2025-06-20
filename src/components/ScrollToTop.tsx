@@ -3,7 +3,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { useEffect, useRef } from 'react';
 
 export default function ScrollToTop() {
-  const scrollRef = useRef<HTMLDivElement>();
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const listenToScroll = () => {
     if (scrollRef?.current) {

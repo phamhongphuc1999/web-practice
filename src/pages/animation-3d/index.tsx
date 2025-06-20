@@ -1,39 +1,57 @@
-import { useEffect, useRef } from 'react';
+import { animate, createDraggable, createScope, createSpring, Scope } from 'animejs';
+import { useEffect, useRef, useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ReactSeo from 'src/components/ReactSeo';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
-import * as THREE from 'three';
 
 export default function Animation3d() {
-  const refContainer = useRef<HTMLDivElement>(null);
   const { t } = useLocalTranslate();
+  const root = useRef(null);
+  const scope = useRef<Scope>(null);
+  const [rotations, setRotations] = useState(0);
 
   useEffect(() => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    if (refContainer.current) refContainer.current.appendChild(renderer.domElement);
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    camera.position.z = 5;
+    scope.current = createScope({ root }).add((self) => {
+      // Every anime.js instances declared here are now scopped to <div ref={root}>
 
-    function animate() {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    }
-    animate();
+      // Created a bounce animation loop
+      animate('.logo', {
+        scale: [
+          { to: 1.25, ease: 'inOut(3)', duration: 200 },
+          { to: 1, ease: createSpring({ stiffness: 300 }) },
+        ],
+        loop: true,
+        loopDelay: 250,
+      });
+
+      // Make the logo draggable around its center
+      createDraggable('.logo', {
+        container: [0, 0, 0, 0],
+        releaseEase: createSpring({ stiffness: 200 }),
+      });
+
+      // Register function methods to be used outside the useEffect
+      self.add('rotateLogo', (i) => {
+        animate('.logo', {
+          rotate: i * 360,
+          ease: 'out(4)',
+          duration: 1500,
+        });
+      });
+    });
+
+    // Properly cleanup all anime.js instances declared inside the scope
+    return () => scope?.current?.revert();
   }, []);
+
+  const handleClick = () => {
+    setRotations((prev) => {
+      const newRotations = prev + 1;
+      scope?.current?.methods.rotateLogo(newRotations);
+      return newRotations;
+    });
+  };
 
   return (
     <>
@@ -45,7 +63,16 @@ export default function Animation3d() {
         ]}
         mb={2}
       />
-      <div ref={refContainer} />
+      <div ref={root}>
+        <div className="large centered row">
+          <img src="/vite.svg" className="logo react" alt="React logo" />
+        </div>
+        <div className="medium row">
+          <fieldset className="controls">
+            <button onClick={handleClick}>rotations: {rotations}</button>
+          </fieldset>
+        </div>
+      </div>
     </>
   );
 }
