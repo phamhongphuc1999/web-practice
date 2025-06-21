@@ -8,7 +8,7 @@ export default function CircleLoader({
 }: AnimationComponentProps) {
   return (
     <div
-      className="rounded-1/2 perspective-[800] relative inline-block"
+      className="perspective-[800] relative inline-block rounded-[50%]"
       style={{ width: size, height: size }}
     >
       <div

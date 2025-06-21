@@ -1,72 +1,63 @@
-import { Box, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
-
-const rotate = keyframes`
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
-`;
-
-const Clock = styled('div')`
-  position: absolute;
-  box-sizing: border-box;
-  width: 0.5px;
-  transform-origin: bottom;
-`;
+import { CSSProperties } from 'react';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
 interface ClockLoaderProps extends AnimationComponentProps {
   isReverse?: boolean;
 }
 
-export default function ClockLoader({ color, size, isReverse }: ClockLoaderProps) {
-  const _sx = { backgroundColor: color, animationDirection: isReverse ? 'reverse' : 'normal' };
-
+export default function ClockLoader({
+  color = 'var(--primary-main)',
+  size = 80,
+  isReverse = false,
+}: ClockLoaderProps) {
   return (
-    <Box
-      sx={{
-        display: 'inline-block',
-        width: size,
-        height: size,
-        borderRadius: '50%',
-        border: '1px solid',
-        borderColor: color,
-        perspective: 800,
-      }}
+    <div
+      className="perspective-[800] ClockLoader_root relative inline-block rounded-[50%] border-[1px]"
+      style={
+        {
+          width: size,
+          height: size,
+          '--color': color,
+          animationDirection: isReverse ? 'reverse' : 'normal',
+        } as CSSProperties
+      }
     >
-      <Clock
-        sx={[
-          { animation: `${rotate} 2s linear infinite`, height: '45%', top: '5%', right: '50%' },
-          _sx,
-        ]}
+      <div
+        className="ClockLoader_item ClockLoader right-[50%] top-[5%] h-[45%]"
+        style={
+          {
+            '--animation-time': '2s',
+            '--color': color,
+            animationDirection: isReverse ? 'reverse' : 'normal',
+          } as CSSProperties
+        }
       />
-      <Clock
-        sx={[
-          { animation: `${rotate} 10s linear infinite`, height: '35%', top: '15%', right: '50%' },
-          _sx,
-        ]}
+      <div
+        className="ClockLoader_item ClockLoader right-[50%] top-[15%] h-[35%]"
+        style={
+          {
+            '--animation-time': '10s',
+            '--color': color,
+            animationDirection: isReverse ? 'reverse' : 'normal',
+          } as CSSProperties
+        }
       />
-      <Clock
-        sx={[
-          { animation: `${rotate} 20s linear infinite`, height: '25%', top: '25%', right: '50%' },
-          _sx,
-        ]}
+      <div
+        className="ClockLoader_item ClockLoader right-[50%] top-[25%] h-[25%]"
+        style={{ '--animation-time': '20s', '--color': color } as CSSProperties}
       />
-    </Box>
+    </div>
   );
 }
-
-ClockLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-  isReverse: false,
-};
 
 export function ClockLoaderBox({
   iconProps,
   ...props
-}: AnimationComponentBoxProps<ClockLoaderProps>) {
+}: AnimationComponentDivProps<ClockLoaderProps>) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <div {...props} className={cn('flex justify-center', props.className)}>
       <ClockLoader {...iconProps} />
-    </Box>
+    </div>
   );
 }

@@ -7,17 +7,17 @@ import ColorfulBox from 'src/components/Button/ColorfulBox';
 import ReactSeo from 'src/components/ReactSeo';
 import { BlockLoaderBox } from 'src/components/animation-component/BlockLoader';
 import { BounceLoaderBox } from 'src/components/animation-component/BounceLoader';
+import { CircleDotBox } from 'src/components/animation-component/CircleDotLoader';
 import { CircleLoaderBox } from 'src/components/animation-component/CircleLoader';
+import { CircleRingBox } from 'src/components/animation-component/CircleRing';
 import { ClockLoaderBox } from 'src/components/animation-component/ClockLoader';
 import { EllipsisLoaderBox } from 'src/components/animation-component/EllipsisLoader';
 import { FadeLoaderBox } from 'src/components/animation-component/FadeLoader';
 import { GooeyBox } from 'src/components/animation-component/Gooey';
 import { GridLoaderBox } from 'src/components/animation-component/GridLoader';
+import PieceDropAnimation from 'src/components/animation-component/PieceDropAnimation';
 import { PuffLoaderBox } from 'src/components/animation-component/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/animation-component/ZCircleLoader';
-import { CircleDotBox } from 'src/components/animation-component/circle-dot-loader';
-import { CircleRingBox } from 'src/components/animation-component/circle-ring';
-import PieceDropAnimation from 'src/components/animation-component/piece-drop-animation';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
@@ -55,7 +55,7 @@ export default function Animation() {
     },
     {
       label: 'Clock Loader',
-      icon: <ClockLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <ClockLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
       componentEnd: (
         <ColorfulBox color="gray" onClick={() => navigate(`${ROUTE.ANIMATION}-clock/${page}`)}>
           {t('seeMore')}
@@ -64,7 +64,7 @@ export default function Animation() {
     },
     {
       label: 'Grid Circle Loader',
-      icon: <GridLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <GridLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
       componentEnd: (
         <ColorfulBox color="orange" onClick={() => navigate(`${ROUTE.ANIMATION}-grid/${page}`)}>
           {t('seeMore')}
@@ -73,11 +73,11 @@ export default function Animation() {
     },
     {
       label: 'Puff Loader',
-      icon: <PuffLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <PuffLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Gooey',
-      icon: <GooeyBox mt={2} iconProps={{ opposite: false, size: '150px' }} />,
+      icon: <GooeyBox className="mt-2" iconProps={{ opposite: false, size: '150px' }} />,
       componentEnd: (
         <ColorfulBox onClick={() => navigate(`${ROUTE.ANIMATION}-gooey/${page}`)}>
           {t('seeMore')}

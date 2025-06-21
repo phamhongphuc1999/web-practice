@@ -11,7 +11,7 @@ import {
 import { useState } from 'react';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import GroupButton from 'src/components/Button/group-button';
-import { CircleRingBox } from 'src/components/animation-component/circle-ring';
+import { CircleRingBox } from 'src/components/animation-component/CircleRing';
 import Carousel from 'src/components/carousel';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';

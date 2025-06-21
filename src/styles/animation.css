@@ -321,3 +321,125 @@
   background-color: var(--color);
 }
 /* FadeLoader */
+
+/* ClockLoader */
+@keyframes ClockLoader_keyframes {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+.ClockLoader_root {
+  border-color: var(--color);
+}
+.ClockLoader {
+  position: absolute;
+  box-sizing: border-box;
+  width: 0.5px;
+  transform-origin: bottom;
+}
+.ClockLoader_item {
+  animation: ClockLoader_keyframes var(--animation-time) linear infinite;
+  background-color: var(--color);
+}
+/* ClockLoader */
+
+/* GridLoader */
+@keyframes GridLoader_keyframes_point {
+  0% {
+    width: 15%;
+    height: 15%;
+  }
+  100% {
+    width: 25%;
+    height: 25%;
+  }
+}
+@keyframes GridLoader_keyframes_block {
+  0% {
+    width: 33.333333%;
+    height: 33.333333%;
+  }
+  100% {
+    width: 15%;
+    height: 15%;
+  }
+}
+@keyframes GridLoader_keyframes_gooeyBlock {
+  0% {
+    width: 33.333333%;
+    height: 33.333333%;
+    border-radius: 50%;
+  }
+  100% {
+    width: 15%;
+    height: 15%;
+    border-radius: 5%;
+  }
+}
+.GridLoader_point {
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 15%;
+  height: 15%;
+  transform: translate(-50%, -50%);
+}
+.GridLoader_block {
+  position: absolute;
+  box-sizing: border-box;
+  width: 33.333333%;
+  height: 33.333333%;
+  transform: translate(-50%, -50%);
+}
+/* GridLoader */
+
+/* PuffLoader */
+@keyframes PuffLoader_keyframes {
+  0% {
+    width: 0%;
+    height: 0%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
+}
+.PuffLoader_item {
+  border: 4px solid;
+  border-color: var(--color);
+  animation: PuffLoader_keyframes 2s ease-in infinite;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+/* PuffLoader */
+
+/* Gooey */
+@keyframes Gooey_keyframes {
+  0% {
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    border-radius: 5%;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  100% {
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.Gooey {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+/* Gooey */
