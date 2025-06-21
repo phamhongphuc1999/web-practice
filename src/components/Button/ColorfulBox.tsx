@@ -1,11 +1,25 @@
 import { DivProps, styleMerge } from '@peter-present/led-caro';
-import { cn } from 'src/lib/utils';
+import { CSSProperties } from 'react';
+import { ButtonColorfulType } from 'src/global';
+
+const ColorConfig: { [key1 in ButtonColorfulType]: { r: number; g: number; b: number } } = {
+  purple: { r: 199, g: 120, b: 221 },
+  gray: { r: 255, g: 255, b: 255 },
+  orange: { r: 173, g: 102, b: 54 },
+};
 
 interface Props extends DivProps {
-  color?: 'purple' | 'gray' | 'blue';
+  color?: ButtonColorfulType;
+  rgb?: { r: number; g: number; b: number };
 }
 
-export default function ColorfulBox({ color = 'purple', ...props }: Props) {
+export default function ColorfulBox({ color = 'purple', rgb, ...props }: Props) {
+  const _color = {
+    '--r': rgb?.r || ColorConfig[color].r,
+    '--g': rgb?.g || ColorConfig[color].g,
+    '--b': rgb?.b || ColorConfig[color].b,
+  } as CSSProperties;
+
   return (
     <div
       {...styleMerge(
@@ -14,50 +28,17 @@ export default function ColorfulBox({ color = 'purple', ...props }: Props) {
       )}
     >
       <div className="glowing-box-animations">
-        <div
-          className={cn(
-            'glowing-box-glow',
-            color == 'purple'
-              ? 'glowing-box-purple-bg'
-              : color == 'blue'
-                ? 'glowing-box-blue-bg'
-                : 'glowing-box-white-bg'
-          )}
-        />
+        <div className="glowing-box-glow glowing-box-base-color-bg" style={_color} />
         <div className="glowing-box-stars-masker">
-          <div
-            className={cn(
-              'glowing-box-stars',
-              color == 'purple'
-                ? 'glowing-box-purple-bg'
-                : color == 'blue'
-                  ? 'glowing-box-button-blue-bg'
-                  : 'glowing-box-white-bg'
-            )}
-          />
+          <div className="glowing-box-stars glowing-box-base-color-bg" style={_color} />
         </div>
       </div>
       <div className="glowing-box-borders-masker">
-        <div
-          className={cn(
-            'glowing-box-borders',
-            color == 'purple'
-              ? 'glowing-box-purple-bg'
-              : color == 'blue'
-                ? 'glowing-box-blue-bg'
-                : 'glowing-box-white-bg'
-          )}
-        />
+        <div className="glowing-box-borders glowing-box-base-color-bg" style={_color} />
       </div>
       <div
-        className={cn(
-          'glowing-box-button text-white',
-          color == 'purple'
-            ? 'glowing-box-button-purple-bg'
-            : color == 'blue'
-              ? 'glowing-box-button-blue-bg'
-              : 'glowing-box-button-white-bg'
-        )}
+        className="glowing-box-button glowing-box-button-base-color-bg text-white"
+        style={_color}
       >
         {props.children}
       </div>

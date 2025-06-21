@@ -1,78 +1,37 @@
-import { Box } from '@mui/material';
-import { keyframes, styled } from '@mui/system';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
+import { CSSProperties } from 'react';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
-const ellipsis1 = keyframes`
-  from { top: 50%; height: 0; width: 0; };
-  to { top: 41.25%; height: 16.25%; width: 16.25%; };
-`;
-const ellipsis2 = keyframes`
-  from { left: 10%; };
-  to { left: 40%; };
-`;
-const ellipsis3 = keyframes`
-  from { left: 40%; };
-  to { left: 70%; };
-`;
-const ellipsis4 = keyframes`
-  from { top: 41.25%; height: 16.25%; width: 16.25%; };
-  to { top: 50%; height: 0; width: 0; };
-`;
-
-const Ellipsis = styled('div')`
-  position: absolute;
-  box-sizing: border-box;
-  border-radius: 50%;
-`;
-
-export default function EllipsisLoader({ size, color }: AnimationComponentProps) {
+export default function EllipsisLoader({
+  color = 'var(--primary-main)',
+  size = 80,
+}: AnimationComponentProps) {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        display: 'inline-block',
-        boxSizing: 'border-box',
-        height: size,
-        width: size,
-      }}
-    >
-      <Ellipsis
-        sx={{ backgroundColor: color, left: '10%', animation: `${ellipsis1} 0.6s linear infinite` }}
+    <div className="relative box-border inline-block" style={{ width: size, height: size }}>
+      <div
+        className="EllipsisLoader_Ellipsis EllipsisLoader_ellipsis1"
+        style={{ '--color': color } as CSSProperties}
       />
-      <Ellipsis
-        sx={{
-          backgroundColor: color,
-          top: '41.25%',
-          height: '16.25%',
-          width: '16.25%',
-          animation: `${ellipsis2} 0.6s linear infinite`,
-        }}
+      <div
+        className="EllipsisLoader_Ellipsis EllipsisLoader_ellipsis2"
+        style={{ '--color': color } as CSSProperties}
       />
-      <Ellipsis
-        sx={{
-          backgroundColor: color,
-          top: '41.25%',
-          height: '16.25%',
-          width: '16.25%',
-          animation: `${ellipsis3} 0.6s linear infinite`,
-        }}
+      <div
+        className="EllipsisLoader_Ellipsis EllipsisLoader_ellipsis3"
+        style={{ '--color': color } as CSSProperties}
       />
-      <Ellipsis
-        sx={{ backgroundColor: color, left: '70%', animation: `${ellipsis4} 0.6s linear infinite` }}
+      <div
+        className="EllipsisLoader_Ellipsis EllipsisLoader_ellipsis4"
+        style={{ '--color': color } as CSSProperties}
       />
-    </Box>
+    </div>
   );
 }
 
-EllipsisLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-};
-
-export function EllipsisLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
+export function EllipsisLoaderBox({ iconProps, ...props }: AnimationComponentDivProps) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <div {...props} className={cn('flex justify-center', props.className)}>
       <EllipsisLoader {...iconProps} />
-    </Box>
+    </div>
   );
 }

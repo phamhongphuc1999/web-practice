@@ -1,80 +1,40 @@
-import { Box, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
+import { CSSProperties } from 'react';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
-const circle = keyframes`
-  0% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg); }
-  100% { transform: rotateX(0deg) rotateY(-15deg) rotateZ(360deg); }
-`;
-
-const Circle = styled('div')`
-  position: absolute;
-  box-sizing: border-box;
-  border-radius: 50%;
-`;
-
-export default function CircleLoader({ color, size }: AnimationComponentProps) {
+export default function CircleLoader({
+  color = 'var(--primary-main)',
+  size = 80,
+}: AnimationComponentProps) {
   return (
-    <Box
-      sx={{
-        display: 'inline-block',
-        width: size,
-        height: size,
-        borderRadius: '50%',
-        perspective: 800,
-      }}
+    <div
+      className="rounded-1/2 perspective-[800] relative inline-block"
+      style={{ width: size, height: size }}
     >
-      <Circle
-        sx={{
-          width: '100%',
-          height: '100%',
-          animation: `${circle} 1.2s linear infinite`,
-          borderBottom: '1px solid',
-          borderColor: color,
-        }}
+      <div
+        className="CircleLoader_keyframes_circle h-full w-full border-b-[1px]"
+        style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
-      <Circle
-        sx={{
-          width: '80%',
-          height: '80%',
-          animation: `${circle} 1.2s linear infinite`,
-          borderRight: '1px solid',
-          borderColor: color,
-          right: '10%',
-        }}
+      <div
+        className="CircleLoader_keyframes_circle right-[10%] h-[80%] w-[80%] border-r-[1px]"
+        style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
-      <Circle
-        sx={{
-          width: '60%',
-          height: '60%',
-          animation: `${circle} 1.2s linear infinite`,
-          borderTop: '1px solid',
-          borderColor: color,
-          right: '25%',
-        }}
+      <div
+        className="CircleLoader_keyframes_circle right-[25%] h-[60%] w-[60%] border-t-[1px]"
+        style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
-      <Circle
-        sx={{
-          width: '40%',
-          height: '40%',
-          animation: `${circle} 1.4s linear infinite`,
-          borderLeft: '1px solid',
-          borderColor: color,
-          right: '35%',
-        }}
+      <div
+        className="CircleLoader_keyframes_circle right-[35%] h-[40%] w-[40%] border-l-[1px]"
+        style={{ '--animation-time': '1.4s', '--color': color } as CSSProperties}
       />
-    </Box>
+    </div>
   );
 }
 
-CircleLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-};
-
-export function CircleLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
+export function CircleLoaderBox({ iconProps, ...props }: AnimationComponentDivProps) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <div {...props} className={cn('flex justify-center', props.className)}>
       <CircleLoader {...iconProps} />
-    </Box>
+    </div>
   );
 }

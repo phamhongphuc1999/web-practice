@@ -5,9 +5,11 @@ import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { SvgComponent } from './components/Icons';
+import { DivProps } from '@peter-present/led-caro';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
+export type ButtonColorfulType = 'purple' | 'gray' | 'orange';
 export type AppFetchStatus = 'initial' | 'execute' | 'pending' | 'success' | 'fail';
 export type HexType = 'normal' | 'hex';
 export type LanguageType = 'en' | 'vi';
@@ -46,6 +48,10 @@ export interface AnimationComponentProps {
 }
 
 export interface AnimationComponentBoxProps<T = AnimationComponentProps> extends BoxProps {
+  iconProps?: T;
+}
+
+export interface AnimationComponentDivProps<T = AnimationComponentProps> extends DivProps {
   iconProps?: T;
 }
 

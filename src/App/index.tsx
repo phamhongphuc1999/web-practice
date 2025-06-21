@@ -34,6 +34,9 @@ import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ZustandPage from 'src/pages/zustand-page';
+import '../styles/animation.css';
+import '../styles/ant.style.css';
+import '../styles/colorful-box.style.css';
 import ProviderApp from './ProviderApp';
 
 export default function App() {

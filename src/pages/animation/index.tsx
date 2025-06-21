@@ -30,19 +30,19 @@ export default function Animation() {
   const ComponentList = [
     {
       label: '3D Circle Loader',
-      icon: <ZCircleLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <ZCircleLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Ellipsis Loader',
-      icon: <EllipsisLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <EllipsisLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Circle Loader',
-      icon: <CircleLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <CircleLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Bounce Loader',
-      icon: <BounceLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <BounceLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
       componentEnd: (
         <ColorfulBox onClick={() => navigate(`${ROUTE.ANIMATION}-bounce/${page}`)}>
           {t('seeMore')}
@@ -51,7 +51,7 @@ export default function Animation() {
     },
     {
       label: 'Fade Loader',
-      icon: <FadeLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <FadeLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Clock Loader',
@@ -66,7 +66,7 @@ export default function Animation() {
       label: 'Grid Circle Loader',
       icon: <GridLoaderBox mt={2} iconProps={{ size: '150px' }} />,
       componentEnd: (
-        <ColorfulBox color="blue" onClick={() => navigate(`${ROUTE.ANIMATION}-grid/${page}`)}>
+        <ColorfulBox color="orange" onClick={() => navigate(`${ROUTE.ANIMATION}-grid/${page}`)}>
           {t('seeMore')}
         </ColorfulBox>
       ),
@@ -93,7 +93,10 @@ export default function Animation() {
         </ColorfulBox>
       ),
     },
-    { label: 'Blocks', icon: <BlockLoaderBox mt={2} /> },
+    {
+      label: 'Blocks',
+      icon: <BlockLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+    },
     {
       label: 'Circle Dot Loader',
       icon: <CircleDotBox mt={2} iconProps={{ size: '150px' }} />,
@@ -103,7 +106,7 @@ export default function Animation() {
       icon: <PieceDropAnimation sx={{ width: '100%', height: '150px' }} />,
       componentEnd: (
         <ColorfulBox
-          color="blue"
+          color="orange"
           onClick={() => navigate(`${ROUTE.ANIMATION}-drop-animation/${page}`)}
         >
           {t('seeMore')}

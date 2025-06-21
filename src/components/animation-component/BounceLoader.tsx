@@ -1,65 +1,42 @@
-import { Box, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
-
-const bounce = keyframes`
-  from {width: 100%; height: 100%; opacity: 0.1;};
-  to {width: 0%; height: 0%; opacity: 1;};
-`;
-
-const bounce1 = keyframes`
-  0% {border-radius: 50%; width: 100%; height: 100%; opacity: 0.1;};
-  50% {border-radius: 0%; width: 50%; height: 50%; opacity: 0.5;};
-  100% {border-radius: 50%; width: 0%; height: 0%; opacity: 1;};
-`;
-
-const Inner = styled('div')`
-  position: absolute;
-  box-sizing: border-box;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
+import { CSSProperties } from 'react';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
 interface Props extends AnimationComponentProps {
   mode?: 'normal' | 'square' | 'dynamic';
 }
 
-export default function BounceLoader({ color, size, mode }: Props) {
-  const _sx =
-    mode == 'dynamic'
-      ? { backgroundColor: color, animation: `${bounce1} 1.2s linear infinite` }
-      : { backgroundColor: color, animation: `${bounce} 1.2s linear infinite` };
-
+export default function BounceLoader({
+  color = 'var(--primary-main)',
+  size = 80,
+  mode = 'normal',
+}: Props) {
   return (
-    <Box sx={{ display: 'inline-block', width: size, height: size, perspective: 800 }}>
-      <Inner
-        sx={[
-          _sx,
-          mode == 'square' && { borderRadius: 0 },
-          { width: '100%', height: '100%', opacity: 0.1 },
-        ]}
+    <div className="perspective-[800] relative inline-block" style={{ width: size, height: size }}>
+      <div
+        className={cn(
+          mode == 'dynamic' ? 'BounceLoader1' : 'BounceLoader2',
+          mode == 'square' && 'rounded-0',
+          'BounceLoader h-full w-full opacity-10'
+        )}
+        style={{ '--color': color } as CSSProperties}
       />
-      <Inner
-        sx={[
-          _sx,
-          mode == 'square' && { borderRadius: 0 },
-          { width: '0%', height: '0%', opacity: 1, animationDirection: 'reverse' },
-        ]}
+      <div
+        className={cn(
+          mode == 'dynamic' ? 'BounceLoader1' : 'BounceLoader2',
+          mode == 'square' && 'rounded-0',
+          'BounceLoader h-0 w-0 opacity-100'
+        )}
+        style={{ animationDirection: 'reverse', '--color': color } as CSSProperties}
       />
-    </Box>
+    </div>
   );
 }
 
-BounceLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-};
-
-export function BounceLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps<Props>) {
+export function BounceLoaderBox({ iconProps, ...props }: AnimationComponentDivProps<Props>) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <div {...props} className={cn('flex justify-center', props.className)}>
       <BounceLoader {...iconProps} />
-    </Box>
+    </div>
   );
 }
