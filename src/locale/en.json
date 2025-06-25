@@ -116,5 +116,8 @@
   "no-route": {
     "title": "Page not found",
     "goBack": "Go back to Homepage"
+  },
+  "colorfulBox": {
+    "title": "Colorful Box"
   }
 }

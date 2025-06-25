@@ -2,6 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
+import ColorfulBox from 'src/components/Button/ColorfulBox';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import GroupButton from 'src/components/Button/group-button';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
@@ -47,6 +48,9 @@ export default function UtilElement() {
         >
           {t('datePicker.title')}
         </Button>
+        <ColorfulBox className="ml-2" onClick={() => navigate(ROUTE.UTIL_COLORFUL_BOX)}>
+          {t('colorfulBox.title')}
+        </ColorfulBox>
         <TextCopy ml={1} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(themeLabel)}</Typography>

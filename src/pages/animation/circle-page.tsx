@@ -53,19 +53,14 @@ export default function CirclePage() {
         <Box display="flex" flexWrap="wrap">
           <Item
             label={`Ring${numberOfItems}`}
-            Icon={
-              <CircleRingBox
-                mt={2}
-                iconProps={{ size: '150px', numberOfItems, color: '#1C8CF3' }}
-              />
-            }
+            Icon={<CircleRingBox className="mt-2" iconProps={{ size: '150px', numberOfItems }} />}
           />
           <Item
             label={`Square${numberOfItems}`}
             Icon={
               <CircleRingBox
-                mt={2}
-                iconProps={{ size: '150px', mode: 'square', numberOfItems, color: '#1C8CF3' }}
+                className="mt-2"
+                iconProps={{ size: '150px', mode: 'square', numberOfItems }}
               />
             }
           />
@@ -73,8 +68,8 @@ export default function CirclePage() {
             label={`Dynamic${numberOfItems}`}
             Icon={
               <CircleRingBox
-                mt={2}
-                iconProps={{ size: '150px', mode: 'dynamic', numberOfItems, color: '#1C8CF3' }}
+                className="mt-2"
+                iconProps={{ size: '150px', mode: 'dynamic', numberOfItems }}
               />
             }
           />

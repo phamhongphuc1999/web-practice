@@ -116,5 +116,8 @@
   "no-route": {
     "title": "Không tìm thấy trang",
     "goBack": "Quay về trang chủ"
+  },
+  "colorfulBox": {
+    "title": "Hộp sặc sỡ"
   }
 }

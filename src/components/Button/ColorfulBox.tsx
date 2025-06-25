@@ -8,9 +8,11 @@ const ColorConfig: { [key1 in ButtonColorfulType]: { r: number; g: number; b: nu
   orange: { r: 173, g: 102, b: 54 },
 };
 
+export type ColorfulBoxRgbType = { r?: number; g?: number; b?: number };
+
 interface Props extends DivProps {
   color?: ButtonColorfulType;
-  rgb?: { r: number; g: number; b: number };
+  rgb?: ColorfulBoxRgbType;
 }
 
 export default function ColorfulBox({ color = 'purple', rgb, ...props }: Props) {

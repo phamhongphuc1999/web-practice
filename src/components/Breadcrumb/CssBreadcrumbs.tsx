@@ -21,6 +21,7 @@ export default function CssBreadcrumbs({ configs, ...props }: Props) {
     const _len = result.length;
     return result.slice(0, _len - 1);
   }
+
   return (
     <Box {...props}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>

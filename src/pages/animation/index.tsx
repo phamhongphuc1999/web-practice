@@ -86,7 +86,7 @@ export default function Animation() {
     },
     {
       label: 'Ring',
-      icon: <CircleRingBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <CircleRingBox className="mt-2" iconProps={{ size: '150px' }} />,
       componentEnd: (
         <ColorfulBox color="gray" onClick={() => navigate(`${ROUTE.ANIMATION}-circle/${page}`)}>
           {t('seeMore')}
@@ -95,11 +95,11 @@ export default function Animation() {
     },
     {
       label: 'Blocks',
-      icon: <BlockLoaderBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <BlockLoaderBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Circle Dot Loader',
-      icon: <CircleDotBox mt={2} iconProps={{ size: '150px' }} />,
+      icon: <CircleDotBox className="mt-2" iconProps={{ size: '150px' }} />,
     },
     {
       label: 'Drop Animation',

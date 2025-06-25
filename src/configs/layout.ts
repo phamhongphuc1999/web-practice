@@ -29,6 +29,7 @@ export const ROUTE = {
   UTIL_DATE_PICKER: '/utils/date-picker',
   UTIL_SELECTOR: '/utils/selector',
   UTIL_CAROUSEL: '/utils/carousel',
+  UTIL_COLORFUL_BOX: '/utils/colorful-box',
   CONFIG: '/config',
   HASH_FUNCTION: '/hash-function',
   CIRCOM: '/circom',

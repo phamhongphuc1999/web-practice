@@ -1,5 +1,6 @@
 import { Box, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
 const loader = keyframes`
   0% { background: #1C8CF3; }
@@ -14,7 +15,10 @@ const Dot = styled('div')`
   border-radius: 50%;
 `;
 
-export default function CircleDotLoader({ color, size }: AnimationComponentProps) {
+export default function CircleDotLoader({
+  size = 80,
+  color = 'var(--primary-main)',
+}: AnimationComponentProps) {
   const _sx = { animation: `${loader} 2s linear infinite` };
   return (
     <Box
@@ -40,14 +44,9 @@ export default function CircleDotLoader({ color, size }: AnimationComponentProps
   );
 }
 
-CircleDotLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-};
-
-export function CircleDotBox({ iconProps, ...props }: AnimationComponentBoxProps) {
+export function CircleDotBox({ iconProps, ...props }: AnimationComponentDivProps) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <Box {...props} className={cn('flex justify-center', props.className)}>
       <CircleDotLoader {...iconProps} />
     </Box>
   );

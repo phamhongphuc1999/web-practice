@@ -1,5 +1,6 @@
 import { Box, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
 const block = keyframes`
   0% {transform: rotate(0deg) scale(1); animation-timing-function: ease-in;}
@@ -16,7 +17,10 @@ const Block = styled('div')`
   height: 33.333333%;
 `;
 
-export default function BlockLoader({ color, size }: AnimationComponentProps) {
+export default function BlockLoader({
+  size = 80,
+  color = 'var(--primary-main)',
+}: AnimationComponentProps) {
   const baseSize = 0.33333333 * Number(size);
   const _sx = {
     backgroundColor: color,
@@ -37,14 +41,9 @@ export default function BlockLoader({ color, size }: AnimationComponentProps) {
   );
 }
 
-BlockLoader.defaultProps = {
-  size: 80,
-  color: 'primary.main',
-};
-
-export function BlockLoaderBox({ iconProps, ...props }: AnimationComponentBoxProps) {
+export function BlockLoaderBox({ iconProps, ...props }: AnimationComponentDivProps) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <Box {...props} className={cn('flex justify-center', props.className)}>
       <BlockLoader {...iconProps} />
     </Box>
   );

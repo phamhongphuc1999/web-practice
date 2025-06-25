@@ -1,11 +1,10 @@
 import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
 import { SvgIconComponent } from '@mui/icons-material';
-import { BoxProps } from '@mui/material';
+import { DivProps } from '@peter-present/led-caro';
 import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { SvgComponent } from './components/Icons';
-import { DivProps } from '@peter-present/led-caro';
 
 export type StringListType<T = unknown> = { [key: string]: T };
 
@@ -45,10 +44,6 @@ export interface EtherFragment extends Fragment {
 export interface AnimationComponentProps {
   size?: number | string;
   color?: string;
-}
-
-export interface AnimationComponentBoxProps<T = AnimationComponentProps> extends BoxProps {
-  iconProps?: T;
 }
 
 export interface AnimationComponentDivProps<T = AnimationComponentProps> extends DivProps {

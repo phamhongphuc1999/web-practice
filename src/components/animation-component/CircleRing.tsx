@@ -1,6 +1,8 @@
 import { Keyframes } from '@emotion/react';
-import { Box, BoxProps, keyframes, styled } from '@mui/material';
-import { AnimationComponentBoxProps, AnimationComponentProps } from 'src/global';
+import { Box, keyframes, styled } from '@mui/material';
+import { DivProps } from '@peter-present/led-caro';
+import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 import { mergeSx } from 'src/services';
 
 function getRotate(beginDeg: number) {
@@ -47,7 +49,7 @@ interface Props extends AnimationComponentProps {
   numberOfItems?: number;
 }
 
-function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & BoxProps) {
+function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & DivProps) {
   return (
     <Box
       {...props}
@@ -62,7 +64,7 @@ function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & Bo
         },
       ])}
     >
-      <Box sx={{ position: 'relative', height: '100%' }}>
+      <div className="relative h-full">
         <Wheel
           sx={[
             {
@@ -78,23 +80,21 @@ function Line({ size, color, mode, ...props }: Omit<Props, 'numberOfItems'> & Bo
               : { animation: `${rotateItem} 1.5s linear infinite` },
           ]}
         />
-      </Box>
+      </div>
     </Box>
   );
 }
 
-export default function CircleRing({ size, color, mode, numberOfItems = 4 }: Props) {
+export default function CircleRing({
+  size = 80,
+  color = 'var(--primary-main)',
+  mode,
+  numberOfItems = 4,
+}: Props) {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        display: 'inline-block',
-        boxSizing: 'border-box',
-        height: size,
-        width: size,
-        borderRadius: '50%',
-        perspective: 800,
-      }}
+    <div
+      className="perspective-[800] relative box-border inline-block rounded-[50%]"
+      style={{ height: size, width: size }}
     >
       {getConfig(numberOfItems).map((item, index) => {
         return (
@@ -103,26 +103,21 @@ export default function CircleRing({ size, color, mode, numberOfItems = 4 }: Pro
             size={size}
             color={color}
             mode={mode}
-            sx={{
+            style={{
               animation: `${item.rotate} 4.5s linear infinite`,
               transform: `translateX(50%) rotate(${item.deg}deg)`,
             }}
           />
         );
       })}
-    </Box>
+    </div>
   );
 }
 
-CircleRing.defaultProps = {
-  size: '80px',
-  color: 'primary.main',
-};
-
-export function CircleRingBox({ iconProps, ...props }: AnimationComponentBoxProps<Props>) {
+export function CircleRingBox({ iconProps, ...props }: AnimationComponentDivProps<Props>) {
   return (
-    <Box display="flex" justifyContent="center" {...props}>
+    <div {...props} className={cn('flex justify-center', props.className)}>
       <CircleRing {...iconProps} />
-    </Box>
+    </div>
   );
 }

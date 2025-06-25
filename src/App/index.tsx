@@ -31,6 +31,7 @@ import ShadcnUi from 'src/pages/shadcn-ui';
 import Sui from 'src/pages/sui';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
+import ColorfulBoxElement from 'src/pages/UtilElement/ColorfulBoxElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ZustandPage from 'src/pages/zustand-page';
@@ -144,6 +145,11 @@ export default function App() {
       path: ROUTE.UTIL_CAROUSEL,
       element: <ProviderApp />,
       children: [{ path: '', element: <CarouselElement /> }],
+    },
+    {
+      path: ROUTE.UTIL_COLORFUL_BOX,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <ColorfulBoxElement /> }],
     },
     {
       path: ROUTE.CONFIG,

@@ -23,7 +23,7 @@ interface Props {
 function Item({ number }: Props) {
   return (
     <Box sx={{ border: '1px solid red' }}>
-      <CircleRingBox mt={2} iconProps={{ size: '150px', numberOfItems: number }} />
+      <CircleRingBox className="mt-2" iconProps={{ size: '150px', numberOfItems: number }} />
     </Box>
   );
 }
