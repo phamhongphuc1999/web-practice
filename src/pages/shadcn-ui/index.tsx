@@ -13,6 +13,8 @@ import {
   AlertDialogTrigger,
 } from 'src/components/shadcn-ui/alert-dialog';
 import { Button } from 'src/components/shadcn-ui/button';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from 'src/components/shadcn-ui/hover-card';
+import { Popover, PopoverContent, PopoverTrigger } from 'src/components/shadcn-ui/popover';
 
 export default function ShadcnUi() {
   return (
@@ -26,28 +28,43 @@ export default function ShadcnUi() {
         <Button variant={'secondary'}>secondary</Button>
       </div>
       <Alert className="mt-[1rem]">
-        {/* <Terminal className="h-4 w-4" /> */}
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>
           You can add components and dependencies to your app using the cli.
         </AlertDescription>
       </Alert>
-      <AlertDialog>
-        <AlertDialogTrigger className="mt-[1rem]">Open</AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your account and remove
-              your data from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <div>
+        <AlertDialog>
+          <AlertDialogTrigger className="mt-[1rem]">Open Dialog</AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your account and remove
+                your data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+      <div>
+        <Popover>
+          <PopoverTrigger>Open Popup</PopoverTrigger>
+          <PopoverContent>Place content for the popover here.</PopoverContent>
+        </Popover>
+      </div>
+      <div>
+        <HoverCard openDelay={0}>
+          <HoverCardTrigger>Hover Card</HoverCardTrigger>
+          <HoverCardContent>
+            The React Framework - created and maintained by @vercel.
+          </HoverCardContent>
+        </HoverCard>
+      </div>
     </>
   );
 }
