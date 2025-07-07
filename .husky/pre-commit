@@ -1,2 +1,2 @@
 bun run build
-npx eslint src --config ./eslint.config.js --cache --fix
+npx eslint --config ./eslint.config.js --cache --fix

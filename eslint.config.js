@@ -48,7 +48,7 @@ export default tseslint.config([
     settings: {
       'import/resolver': {
         typescript: {
-          project: './tsconfig.json', // or point to your actual tsconfig path
+          project: './tsconfig.json',
         },
       },
     },
