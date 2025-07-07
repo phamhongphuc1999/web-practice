@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import MuiSvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 import React from 'react';
 

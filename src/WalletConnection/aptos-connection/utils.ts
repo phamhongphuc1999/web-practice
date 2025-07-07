@@ -75,7 +75,7 @@ export async function contractRun(
       transactionHash: pendingTransaction.hash,
     });
     return response;
-  } catch (error) {
+  } catch {
     return undefined;
   }
 }
