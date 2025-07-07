@@ -1,2 +1,2 @@
 bun run build
-npx eslint --config ./.eslintrc-staged.cjs --cache --fix
+npx eslint --config ./eslint.config.js --cache --fix

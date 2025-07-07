@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { DivProps } from '@peter-present/led-caro';
 import { ReactNode, useMemo } from 'react';
 import { cn } from 'src/lib/utils';

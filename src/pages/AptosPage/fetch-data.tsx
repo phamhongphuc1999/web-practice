@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Aptos, AptosConfig, Network } from '@aptos-labs/ts-sdk';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { Box, Divider, Typography } from '@mui/material';
@@ -21,7 +20,7 @@ export default function FetchData() {
         resourceType: `${moduleAddress}::todolist::TodoList`,
       });
       setAccountHasList(true);
-    } catch (e: any) {
+    } catch {
       setAccountHasList(false);
     }
   }, [account]);

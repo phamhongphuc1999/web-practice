@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useRef, useState } from 'react';
 import Counter from './Counter';
 
