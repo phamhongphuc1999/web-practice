@@ -27,7 +27,7 @@ export default function HeaderText({ title, ...props }: Props) {
         },
       }}
     >
-      <Typography className="header-title text-[14px] font-[500] leading-[18px]">
+      <Typography className="header-title text-[14px] leading-[18px] font-[500]">
         {t(title)}
       </Typography>
     </Box>

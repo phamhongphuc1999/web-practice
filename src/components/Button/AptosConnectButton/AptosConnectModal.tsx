@@ -54,9 +54,9 @@ export default function AptosConnectModal(params: Props) {
             >
               <div className="flex items-center gap-x-[1rem]">
                 <img src={wallet.icon} className="h-[30px] w-[30px]" />
-                <p className="font-semibold text-black-50">{wallet.name}</p>
+                <p className="text-black-50 font-semibold">{wallet.name}</p>
               </div>
-              <p className="font-semibold text-black-50">
+              <p className="text-black-50 font-semibold">
                 {wallet.readyState == WalletReadyState.Installed ? 'Installed' : ''}
               </p>
             </div>

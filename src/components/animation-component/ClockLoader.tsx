@@ -13,7 +13,7 @@ export default function ClockLoader({
 }: ClockLoaderProps) {
   return (
     <div
-      className="perspective-[800] ClockLoader_root relative inline-block rounded-[50%] border-[1px]"
+      className="ClockLoader_root relative inline-block rounded-[50%] border-[1px] perspective-[800]"
       style={
         {
           width: size,
@@ -24,7 +24,7 @@ export default function ClockLoader({
       }
     >
       <div
-        className="ClockLoader_item ClockLoader right-[50%] top-[5%] h-[45%]"
+        className="ClockLoader_item ClockLoader top-[5%] right-[50%] h-[45%]"
         style={
           {
             '--animation-time': '2s',
@@ -34,7 +34,7 @@ export default function ClockLoader({
         }
       />
       <div
-        className="ClockLoader_item ClockLoader right-[50%] top-[15%] h-[35%]"
+        className="ClockLoader_item ClockLoader top-[15%] right-[50%] h-[35%]"
         style={
           {
             '--animation-time': '10s',
@@ -44,7 +44,7 @@ export default function ClockLoader({
         }
       />
       <div
-        className="ClockLoader_item ClockLoader right-[50%] top-[25%] h-[25%]"
+        className="ClockLoader_item ClockLoader top-[25%] right-[50%] h-[25%]"
         style={{ '--animation-time': '20s', '--color': color } as CSSProperties}
       />
     </div>

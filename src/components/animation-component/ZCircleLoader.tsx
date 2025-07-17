@@ -8,7 +8,7 @@ export default function ZCircleLoader({
 }: AnimationComponentProps) {
   return (
     <div
-      className="perspective-[800] relative inline-block rounded-[50%]"
+      className="relative inline-block rounded-[50%] perspective-[800]"
       style={{ width: size, height: size }}
     >
       <div

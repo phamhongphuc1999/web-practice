@@ -93,7 +93,7 @@ export default function CircleRing({
 }: Props) {
   return (
     <div
-      className="perspective-[800] relative box-border inline-block rounded-[50%]"
+      className="relative box-border inline-block rounded-[50%] perspective-[800]"
       style={{ height: size, width: size }}
     >
       {getConfig(numberOfItems).map((item, index) => {

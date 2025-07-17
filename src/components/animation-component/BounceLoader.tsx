@@ -12,7 +12,7 @@ export default function BounceLoader({
   mode = 'normal',
 }: Props) {
   return (
-    <div className="perspective-[800] relative inline-block" style={{ width: size, height: size }}>
+    <div className="relative inline-block perspective-[800]" style={{ width: size, height: size }}>
       <div
         className={cn(
           mode == 'dynamic' ? 'BounceLoader1' : 'BounceLoader2',

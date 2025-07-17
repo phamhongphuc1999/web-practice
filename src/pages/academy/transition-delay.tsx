@@ -46,7 +46,7 @@ export default function TransitionDelay() {
       />
       <div className="mt-[1rem]">
         <input
-          className="h-[55px] rounded-[16px] border-[1px] border-blue-50 bg-black-200 px-[1rem]"
+          className="bg-black-200 h-[55px] rounded-[16px] border-[1px] border-blue-50 px-[1rem]"
           onChange={onTextChange}
         />
         <div className="mt-[2rem] flex flex-col">

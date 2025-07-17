@@ -8,7 +8,7 @@ export default function PositionPreservesState() {
 
   return (
     <div>
-      <p className="italic text-[green]">
+      <p className="text-[green] italic">
         Counter has key to identify exact component position. As you see, when switching fancy, the
         counter's state is reset. It cause because we label key for each counter (uncheck counter
         and check counter that are represent uncheck and check fancy respectively), so DOM recognize
@@ -16,7 +16,7 @@ export default function PositionPreservesState() {
       </p>
       {isFancy ? <Counter key={1} isFancy={true} /> : <Counter key={2} isFancy={false} />}
       <div className="my-[1rem] h-[1px] w-[3rem] bg-[red]" />
-      <p className="italic text-[red]">
+      <p className="text-[red] italic">
         Counter without key is identified as a same component when switching fancy state. Thus, when
         you change check state, you see the state is not reset.
       </p>
@@ -33,7 +33,7 @@ export default function PositionPreservesState() {
         Use fancy styling
       </label>
 
-      <p className="mt-[1rem] italic text-[yellow]">
+      <p className="mt-[1rem] text-[yellow] italic">
         In many case (in particular, you want to display a array of items), the key is critical
         factor. Sometimes, you cause nowhere errors if you mark key as index of array that can
         change value. It causes DOM see the item as a new component, can be caused some unexpected
@@ -54,7 +54,7 @@ export default function PositionPreservesState() {
         >
           change ref counter
         </button>
-        <p className="mt-[1rem] italic text-[yellow]">
+        <p className="mt-[1rem] text-[yellow] italic">
           The above example illustrate the different between state and ref in react. When you press
           'change state counter' button, the state is triggered and application change user's scene.
           In additionally, when you press 'change ref counter', nothing happens, it is because ref

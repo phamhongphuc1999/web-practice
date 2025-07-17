@@ -15,7 +15,7 @@ export default function Footer() {
               key={item.id}
               className="w-[calc(50%-16px)] md:w-[calc(20%-32px)] md:border-r-[1px] md:border-r-[#3F3F3F]"
             >
-              <p className="text-[20px] font-[600] uppercase text-[#FFFFFF]">{t(item.title)}</p>
+              <p className="text-[20px] font-[600] text-[#FFFFFF] uppercase">{t(item.title)}</p>
               {item.items && (
                 <div className="mt-[1.5rem] flex flex-col items-start">
                   {item.items.map((info, index) => {

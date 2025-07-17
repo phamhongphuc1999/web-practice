@@ -25,7 +25,7 @@ export default function Header() {
     <div>
       <Container
         maxWidth="md"
-        className="fixed left-[50%] top-[1rem] z-[1205] h-[65px] translate-x-[-50%] rounded-[999px] bg-grey-50"
+        className="bg-grey-50 fixed top-[1rem] left-[50%] z-[1205] h-[65px] translate-x-[-50%] rounded-[999px]"
       >
         <Box
           sx={{
@@ -58,7 +58,7 @@ export default function Header() {
                     <HeaderText title={item.title} />
                     <HeaderDetailItem
                       config={item.items}
-                      className="header-box-item absolute left-[50%] top-[68px] w-[340px] translate-x-[-50%] pt-[1rem]"
+                      className="header-box-item absolute top-[68px] left-[50%] w-[340px] translate-x-[-50%] pt-[1rem]"
                     />
                   </Box>
                 );

@@ -38,7 +38,7 @@ function MainHeaderBox({ index, item, dataProps }: MainHeaderBoxPRops) {
         <Icon style={{ width: '30px', height: '30px' }} />
       </div>
       <Box>
-        <p className="text-[14px] font-[500] leading-[18px]">{t(item.title)}</p>
+        <p className="text-[14px] leading-[18px] font-[500]">{t(item.title)}</p>
         <p className="text-[12px] leading-[18px]">{t(item.description)}</p>
       </Box>
     </Box>

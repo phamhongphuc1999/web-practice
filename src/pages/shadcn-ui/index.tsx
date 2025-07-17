@@ -15,6 +15,12 @@ import {
 import { Button } from 'src/components/shadcn-ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from 'src/components/shadcn-ui/hover-card';
 import { Popover, PopoverContent, PopoverTrigger } from 'src/components/shadcn-ui/popover';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from 'src/components/shadcn-ui/tooltip';
 
 export default function ShadcnUi() {
   return (
@@ -65,6 +71,16 @@ export default function ShadcnUi() {
           </HoverCardContent>
         </HoverCard>
       </div>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline">Hover</Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Add to library</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </>
   );
 }
