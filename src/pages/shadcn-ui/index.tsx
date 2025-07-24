@@ -21,6 +21,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'src/components/shadcn-ui/tooltip';
+import AceternityUI from './aceternity-ui';
 
 export default function ShadcnUi() {
   return (
@@ -81,6 +82,7 @@ export default function ShadcnUi() {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
+      <AceternityUI />
     </>
   );
 }
