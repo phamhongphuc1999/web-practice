@@ -1,5 +1,4 @@
 import MessageImg from 'src/assets/images/ant-design/message.svg';
-import CaroBox from './CaroBox';
 
 function SimpleMessage() {
   return (
@@ -73,7 +72,6 @@ export default function TailwindOnly() {
         </div>
         <p>Point</p>
       </div>
-      <CaroBox className="mt-5" />
     </>
   );
 }

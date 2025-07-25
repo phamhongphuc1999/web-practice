@@ -1,12 +1,9 @@
 {
   "title": {
-    "root": "Trang web của tôi",
-    "aptos": "Aptos",
-    "aptosSdk": "Aptos SDK"
+    "root": "Trang web của tôi"
   },
   "animation": "Hiệu ứng",
   "ant-design": "Ant Design",
-  "aptos": "Aptos",
   "animationCircle": "Vòng tròn",
   "animationGooey": "Nhớt",
   "animationGrid": "Lưới",
@@ -19,7 +16,6 @@
   "utils": "Tiện ích",
   "config": "Cài đặt",
   "connect": "Kết nối",
-  "connect-sui": "Kết nối với ví SUI",
   "connected": "Đã kết nối",
   "disconnect": "Ngắt kết nối",
   "data": "Dữ liệu",

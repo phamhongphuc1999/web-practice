@@ -1,5 +1,5 @@
-import { DivProps } from '@peter-present/led-caro';
 import { ReactNode, useMemo } from 'react';
+import { DivProps } from 'src/global';
 import { cn } from 'src/lib/utils';
 
 export interface GroupButtonItemProps {

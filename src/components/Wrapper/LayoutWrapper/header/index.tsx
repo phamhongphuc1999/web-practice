@@ -1,7 +1,6 @@
 import { CloseOutlined, MenuOutlined, Settings } from '@mui/icons-material';
 import { Box, Container } from '@mui/material';
 import { useState } from 'react';
-import AptosConnectButton from 'src/components/Button/AptosConnectButton';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import { CssNavLink } from 'src/components/utils';
@@ -38,7 +37,6 @@ export default function Header() {
           {!location.pathname.includes(ROUTE.CONFIG) && (
             <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
               <ThemeButton />
-              {location.pathname.includes('/aptos') && <AptosConnectButton className="ml-[8px]" />}
             </Box>
           )}
           <div className="main-header-reference">

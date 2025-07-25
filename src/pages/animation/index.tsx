@@ -1,5 +1,4 @@
 import { Box, Button, Pagination } from '@mui/material';
-import { usePagination } from '@peter-present/react-hook-utils';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
@@ -19,6 +18,7 @@ import PieceDropAnimation from 'src/components/animation-component/PieceDropAnim
 import { PuffLoaderBox } from 'src/components/animation-component/PuffLoader';
 import { ZCircleLoaderBox } from 'src/components/animation-component/ZCircleLoader';
 import { ROUTE } from 'src/configs/layout';
+import { usePagination } from 'src/hooks/use-pagination';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import Item from './item';
 

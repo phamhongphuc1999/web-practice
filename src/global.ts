@@ -1,11 +1,10 @@
-import { InputEntryFunctionData, InputViewFunctionData } from '@aptos-labs/ts-sdk';
 import { SvgIconComponent } from '@mui/icons-material';
-import { DivProps } from '@peter-present/led-caro';
 import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ButtonHTMLAttributes, ComponentProps, DetailedHTMLProps } from 'react';
 import { SvgComponent } from './components/Icons';
 
+export type DivProps = ComponentProps<'div'>;
 export type StringListType<T = unknown> = { [key: string]: T };
 
 export type ButtonColorfulType = 'purple' | 'gray' | 'orange';
@@ -150,23 +149,6 @@ export type DashboardLegendType = {
   [key in KeyEChartType]: boolean;
 };
 // end eCharts
-
-// start Aptos types
-export type TaskType = {
-  address: string;
-  completed: boolean;
-  content: string;
-  task_id: number;
-};
-export type TasksListType = { [taskId: string]: TaskType };
-export type AptosMoveIdType = {
-  packageName: string;
-  module: string;
-  functionName: string;
-};
-export type AptosViewDataType = Omit<InputViewFunctionData, 'function'> & AptosMoveIdType;
-export type AptosRunDataType = Omit<InputEntryFunctionData, 'function'> & AptosMoveIdType;
-// end Aptos types
 
 /* hash system wallet types */
 export type SignatureScheme = 'ecdsa' | 'ed25519' | 'babyjub';

@@ -1,7 +1,7 @@
-import { LocaleType, useTranslate } from '@peter-present/react-hook-utils';
 import en from 'src/locale/en.json';
 import vi from 'src/locale/vi.json';
 import { useAppSelector } from 'src/redux/store';
+import { LocaleType, useTranslate } from './use-translate';
 
 const _locale = { en, vi } as LocaleType;
 

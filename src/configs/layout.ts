@@ -4,7 +4,6 @@ import {
   BlenderOutlined,
   CurrencyBitcoin,
   EnhancedEncryptionOutlined,
-  LinkOutlined,
   LocalFireDepartmentOutlined,
   School,
   Storefront,
@@ -18,9 +17,6 @@ export const ROUTE = {
   ANIMATION: '/animation',
   ANT_DESIGN: '/ant-design',
   SHADCN_UI: '/shadcn-ui',
-  APTOS: '/aptos',
-  APTOS_SDK: '/aptos/sdk',
-  SUI: '/sui',
   METAMASK: '/metamask',
   CONTRACT: '/contract',
   CHART: '/charts',
@@ -42,7 +38,6 @@ export const ROUTE = {
 export const ReferenceMapping: Array<{ pathname: string; id: AppReferenceId }> = [
   { pathname: ROUTE.ANIMATION, id: 'component' },
   { pathname: ROUTE.ANT_DESIGN, id: 'component' },
-  { pathname: ROUTE.APTOS, id: 'web3' },
   { pathname: ROUTE.METAMASK, id: 'web3' },
   { pathname: ROUTE.CONTRACT, id: 'web3' },
   { pathname: ROUTE.CHART, id: 'chart' },
@@ -102,8 +97,6 @@ const Web3: AppReferenceType = {
       description: '',
       icon: CurrencyBitcoin,
     },
-    { id: 'aptos', title: 'aptos', link: ROUTE.APTOS, description: '', icon: LinkOutlined },
-    { id: 'sui', title: 'sui', link: ROUTE.SUI, description: '', icon: School },
   ],
 };
 

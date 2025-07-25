@@ -1,6 +1,6 @@
-import { DivProps, styleMerge } from '@peter-present/led-caro';
 import { CSSProperties } from 'react';
-import { ButtonColorfulType } from 'src/global';
+import { ButtonColorfulType, DivProps } from 'src/global';
+import { cn } from 'src/lib/utils';
 
 const ColorConfig: { [key1 in ButtonColorfulType]: { r: number; g: number; b: number } } = {
   purple: { r: 199, g: 120, b: 221 },
@@ -24,9 +24,10 @@ export default function ColorfulBox({ color = 'purple', rgb, ...props }: Props) 
 
   return (
     <div
-      {...styleMerge(
-        { className: 'relative isolate inline-block cursor-pointer overflow-hidden' },
-        props
+      {...props}
+      className={cn(
+        'relative isolate inline-block cursor-pointer overflow-hidden',
+        props.className
       )}
     >
       <div className="glowing-box-animations">

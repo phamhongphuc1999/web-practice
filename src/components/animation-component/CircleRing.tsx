@@ -1,7 +1,6 @@
 import { Keyframes } from '@emotion/react';
 import { Box, keyframes, styled } from '@mui/material';
-import { DivProps } from '@peter-present/led-caro';
-import { AnimationComponentDivProps, AnimationComponentProps } from 'src/global';
+import { AnimationComponentDivProps, AnimationComponentProps, DivProps } from 'src/global';
 import { cn } from 'src/lib/utils';
 import { mergeSx } from 'src/services';
 

@@ -8,7 +8,6 @@ import HorizontalScrollAnimation from 'src/pages/academy/horizontal-scroll-anima
 import PositionPreservesState from 'src/pages/academy/position-preserves-state';
 import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
-import Animation3d from 'src/pages/animation-3d';
 import BouncePage from 'src/pages/animation/bounce-page';
 import CirclePage from 'src/pages/animation/circle-page';
 import ClockPage from 'src/pages/animation/clock-page';
@@ -16,8 +15,6 @@ import DropPage from 'src/pages/animation/drop-page';
 import GooeyPage from 'src/pages/animation/gooey-page';
 import GridPage from 'src/pages/animation/grid-page';
 import AntDesignPage from 'src/pages/AntDesignPage';
-import AptosPage from 'src/pages/AptosPage';
-import AptosSdk from 'src/pages/AptosPage/sdk';
 import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
@@ -28,7 +25,6 @@ import MetamaskPage from 'src/pages/MetamaskPage';
 import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
 import ShadcnUi from 'src/pages/shadcn-ui';
-import Sui from 'src/pages/sui';
 import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import ColorfulBoxElement from 'src/pages/UtilElement/ColorfulBoxElement';
@@ -81,21 +77,6 @@ export default function App() {
       children: [{ path: '', element: <DropPage /> }],
     },
     {
-      path: `${ROUTE.ANIMATION}-3d`,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <Animation3d /> }],
-    },
-    {
-      path: ROUTE.APTOS,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <AptosPage /> }],
-    },
-    {
-      path: ROUTE.APTOS_SDK,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <AptosSdk /> }],
-    },
-    {
       path: ROUTE.ANT_DESIGN,
       element: <ProviderApp />,
       children: [{ path: '', element: <AntDesignPage /> }],
@@ -110,7 +91,6 @@ export default function App() {
       element: <ProviderApp />,
       children: [{ path: '', element: <MetamaskPage /> }],
     },
-    { path: ROUTE.SUI, element: <ProviderApp />, children: [{ path: '', element: <Sui /> }] },
     {
       path: ROUTE.CONTRACT,
       element: <ProviderApp />,
