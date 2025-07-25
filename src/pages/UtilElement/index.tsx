@@ -13,6 +13,7 @@ import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
+import XSS from './xss';
 
 export default function UtilElement() {
   const navigate = useNavigate();
@@ -84,6 +85,7 @@ export default function UtilElement() {
         selectedId={selectedId}
         events={{ onOptionChange: (id) => setSelectedId(id) }}
       />
+      <XSS />
     </>
   );
 }
