@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
-import React from 'react';
+import { DivProps } from 'src/global';
 import { cn } from 'src/lib/utils';
 
-export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
+export default function BackgroundBoxes(props: DivProps) {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
   const colors = [
@@ -28,9 +28,9 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       }}
       className={cn(
         'absolute -top-1/4 left-1/4 z-0 flex h-full w-full -translate-x-1/2 -translate-y-1/2 p-4',
-        className
+        props.className
       )}
-      {...rest}
+      {...props}
     >
       {rows.map((_, i) => (
         <motion.div key={'row' + i} className="relative h-8 w-16 border-l border-slate-700">
@@ -64,6 +64,4 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       ))}
     </div>
   );
-};
-
-export const Boxes = React.memo(BoxesCore);
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from 'src/lib/utils';
 
 interface ShootingStar {
@@ -23,7 +23,7 @@ interface ShootingStarsProps {
   className?: string;
 }
 
-const getRandomStartPoint = () => {
+function getRandomStartPoint() {
   const side = Math.floor(Math.random() * 4);
   const offset = Math.random() * window.innerWidth;
 
@@ -39,8 +39,8 @@ const getRandomStartPoint = () => {
     default:
       return { x: 0, y: 0, angle: 45 };
   }
-};
-export const ShootingStars: React.FC<ShootingStarsProps> = ({
+}
+export default function ShootingStars({
   minSpeed = 10,
   maxSpeed = 30,
   minDelay = 1200,
@@ -50,7 +50,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   starWidth = 10,
   starHeight = 1,
   className,
-}) => {
+}: ShootingStarsProps) {
   const [star, setStar] = useState<ShootingStar | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -132,4 +132,4 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
       </defs>
     </svg>
   );
-};
+}

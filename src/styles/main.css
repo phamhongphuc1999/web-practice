@@ -241,11 +241,6 @@
   }
 }
 .main-header-reference {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   @media screen and (max-width: 959px) {
     display: none;
   }

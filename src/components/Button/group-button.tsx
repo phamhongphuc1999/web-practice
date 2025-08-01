@@ -45,12 +45,12 @@ export default function GroupButton(params: Props) {
     <div
       {...props}
       className={cn(
-        'relative inline-flex cursor-pointer items-center rounded-[8px] bg-blue-100',
+        'bg-grey-100 relative inline-flex cursor-pointer items-center rounded-[8px]',
         props?.className
       )}
     >
       <div
-        className="absolute h-full rounded-[8px] bg-blue-50 opacity-25 transition-all"
+        className="bg-black-50 absolute h-full rounded-[8px] opacity-25 transition-all"
         style={{
           width: `${jsonOptions[selectedId].width}px`,
           left: `${jsonOptions[selectedId].position}px`,

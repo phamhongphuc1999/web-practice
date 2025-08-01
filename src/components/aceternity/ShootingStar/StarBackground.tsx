@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from 'src/lib/utils';
 
 interface StarProps {
@@ -19,14 +19,14 @@ interface StarBackgroundProps {
   className?: string;
 }
 
-export const StarsBackground: React.FC<StarBackgroundProps> = ({
+export default function StarsBackground({
   starDensity = 0.00015,
   allStarsTwinkle = true,
   twinkleProbability = 0.7,
   minTwinkleSpeed = 0.5,
   maxTwinkleSpeed = 1,
   className,
-}) => {
+}: StarBackgroundProps) {
   const [stars, setStars] = useState<StarProps[]>([]);
   const canvasRef: RefObject<HTMLCanvasElement | null> = useRef<HTMLCanvasElement>(null);
 
@@ -118,4 +118,4 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   }, [stars]);
 
   return <canvas ref={canvasRef} className={cn('absolute inset-0 h-full w-full', className)} />;
-};
+}

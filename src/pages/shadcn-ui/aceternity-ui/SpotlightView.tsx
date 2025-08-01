@@ -1,4 +1,4 @@
-import { Spotlight } from 'src/components/aceternity/Spotlight';
+import Spotlight from 'src/components/aceternity/Spotlight';
 import { cn } from 'src/lib/utils';
 
 export default function SpotlightView() {

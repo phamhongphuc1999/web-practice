@@ -8,7 +8,7 @@ import { initLocalStorage, setReferenceId } from 'src/redux/config-slice';
 import { useAppDispatch } from 'src/redux/store';
 import LocalStorage from 'src/services';
 import Footer from './Footer';
-import Header from './header';
+import HeaderV2 from './HeaderV2';
 
 interface Props {
   children: ReactNode;
@@ -39,8 +39,8 @@ export default function LayoutWrapper({ children }: Props) {
   }, [location.pathname, dispatch]);
 
   return (
-    <div className="bg-black-200">
-      <Header />
+    <div className="bg-background">
+      <HeaderV2 />
       {location.pathname == '/academy/horizontal-scroll-animation' ? (
         <>{children}</>
       ) : (
