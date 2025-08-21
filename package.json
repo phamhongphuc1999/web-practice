@@ -12,6 +12,9 @@
     "prettier": "npx prettier --write ."
   },
   "dependencies": {
+    "@amcharts/amcharts5": "^5.13.5",
+    "@amcharts/amcharts5-fonts": "^5.0.1",
+    "@amcharts/amcharts5-geodata": "^5.1.5",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@ethereumjs/util": "8.0.6",
@@ -35,6 +38,7 @@
     "circomlibjs": "^0.1.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "d3": "^7.9.0",
     "dompurify": "^3.2.6",
     "echarts": "^5.5.1",
     "echarts-for-react": "^3.0.2",
@@ -75,6 +79,7 @@
     "@eslint/js": "^9.29.0",
     "@tailwindcss/vite": "^4.1.11",
     "@types/circomlibjs": "^0.1.6",
+    "@types/d3": "^7.4.3",
     "@types/lodash.clonedeep": "^4.5.9",
     "@types/react": "^19.0.0",
     "@types/react-copy-to-clipboard": "^5.0.7",

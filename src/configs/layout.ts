@@ -21,6 +21,7 @@ export const ROUTE = {
   CONTRACT: '/contract',
   CHART: '/charts',
   ECHART: '/charts/e-chart',
+  BUBBLE_CHART: '/chart/bubble',
   UTILS: '/utils',
   UTIL_DATE_PICKER: '/utils/date-picker',
   UTIL_SELECTOR: '/utils/selector',
@@ -82,6 +83,13 @@ const Chart: AppReferenceType = {
   items: [
     { id: 'chart', title: 'chart', link: ROUTE.CHART, description: '', icon: BarChart },
     { id: 'eChart', title: 'echart', link: ROUTE.ECHART, description: '', icon: BarChart },
+    {
+      id: 'bubbleChart',
+      title: 'Bubble chart',
+      link: ROUTE.BUBBLE_CHART,
+      description: '',
+      icon: BlenderOutlined,
+    },
   ],
 };
 

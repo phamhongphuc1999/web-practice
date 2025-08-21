@@ -15,6 +15,7 @@ import DropPage from 'src/pages/animation/drop-page';
 import GooeyPage from 'src/pages/animation/gooey-page';
 import GridPage from 'src/pages/animation/grid-page';
 import AntDesignPage from 'src/pages/AntDesignPage';
+import BubbleChart from 'src/pages/Charts/bubble-chart';
 import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
@@ -105,6 +106,11 @@ export default function App() {
       path: ROUTE.ECHART,
       element: <ProviderApp />,
       children: [{ path: '', element: <EChart /> }],
+    },
+    {
+      path: ROUTE.BUBBLE_CHART,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <BubbleChart /> }],
     },
     {
       path: ROUTE.UTILS,
