@@ -1,5 +1,4 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import { Signature } from 'circomlibjs';
 import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, ComponentProps, DetailedHTMLProps } from 'react';
 import { SvgComponent } from './components/Icons';
@@ -149,30 +148,3 @@ export type DashboardLegendType = {
   [key in KeyEChartType]: boolean;
 };
 // end eCharts
-
-/* hash system wallet types */
-export type SignatureScheme = 'ecdsa' | 'ed25519' | 'babyjub';
-
-export type PrivateKey = Uint8Array;
-export type PublicKey = string;
-
-export type AccountSignature = {
-  raw: Uint8Array;
-  r: Buffer;
-  s: Buffer;
-  v?: bigint;
-};
-
-export type SerializedHdKeyringState = {
-  mnemonic: Array<number>;
-  numberOfKeys: number;
-  hdPath?: string;
-};
-export type HashWalletType = {
-  schema: SignatureScheme;
-  mnemonic: string;
-  numberOfKeys: number;
-  hdPath?: string;
-};
-export type JubSignatureType = { raw: Signature; p: Uint8Array; u: Signature };
-/* end hash system wallet types */

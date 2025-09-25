@@ -36,6 +36,7 @@ export default function GroupButton(params: Props) {
     }
     return result;
   }, [options]);
+  console.log('🚀 ~ GroupButton ~ jsonOptions:', jsonOptions);
 
   function onOptionChange(id: string) {
     if (events?.onOptionChange) events.onOptionChange(id);

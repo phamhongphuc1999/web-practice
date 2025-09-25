@@ -20,8 +20,6 @@ import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
 import ContractPage from 'src/pages/ContractPage';
-import CircomPage from 'src/pages/cryptography/circom-page';
-import HashFunction from 'src/pages/cryptography/hash-function';
 import MetamaskPage from 'src/pages/MetamaskPage';
 import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
@@ -141,16 +139,6 @@ export default function App() {
       path: ROUTE.CONFIG,
       element: <ProviderApp />,
       children: [{ path: '', element: <ConfigPage /> }],
-    },
-    {
-      path: ROUTE.HASH_FUNCTION,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <HashFunction /> }],
-    },
-    {
-      path: ROUTE.CIRCOM,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <CircomPage /> }],
     },
     {
       path: ROUTE.ACADEMY,

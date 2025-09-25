@@ -43,8 +43,6 @@ export const ReferenceMapping: Array<{ pathname: string; id: AppReferenceId }> =
   { pathname: ROUTE.CONTRACT, id: 'web3' },
   { pathname: ROUTE.CHART, id: 'chart' },
   { pathname: ROUTE.UTILS, id: 'component' },
-  { pathname: ROUTE.HASH_FUNCTION, id: 'encryption' },
-  { pathname: ROUTE.CIRCOM, id: 'encryption' },
   { pathname: ROUTE.ACADEMY, id: 'academy' },
 ];
 

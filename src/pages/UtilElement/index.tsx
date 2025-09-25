@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ColorfulBox from 'src/components/Button/ColorfulBox';
@@ -13,13 +13,24 @@ import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
-import XSS from './xss';
 
 export default function UtilElement() {
   const navigate = useNavigate();
   const { t } = useLocalTranslate();
   const { themeLabel } = useAppSelector((state) => state.config);
   const [selectedId, setSelectedId] = useState('1');
+  const [countdown, setCountdown] = useState(0);
+  const _id = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    _id.current = setInterval(() => {
+      setCountdown((prev) => prev + 0.3);
+    }, 1000);
+
+    return () => {
+      if (_id.current) clearInterval(_id.current);
+    };
+  }, [countdown]);
 
   return (
     <>
@@ -85,7 +96,6 @@ export default function UtilElement() {
         selectedId={selectedId}
         events={{ onOptionChange: (id) => setSelectedId(id) }}
       />
-      <XSS />
     </>
   );
 }

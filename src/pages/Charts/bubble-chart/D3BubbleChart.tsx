@@ -21,12 +21,12 @@ interface Props {
 
 const data: { nodes: NodeType[]; links: LinkType[] } = {
   nodes: [
-    { id: 'Alice', group: 1, value: 1 },
-    { id: 'Bob', group: 1, value: 1 },
+    { id: 'Alice', group: 1, value: 11 },
+    { id: 'Bob', group: 1, value: 21 },
     { id: 'Charlie', group: 2, value: 1 },
     { id: 'Diana', group: 2, value: 1 },
-    { id: 'Eve', group: 3, value: 1 },
-    { id: 'Frank', group: 3, value: 1 },
+    { id: 'Eve', group: 3, value: 10 },
+    { id: 'Frank', group: 3, value: 5 },
   ],
   links: [
     { source: 'Alice', target: 'Bob', value: 2 },
@@ -165,7 +165,7 @@ export default function D3BubbleChart({ width = 928, height = 600 }: Props) {
           .style('left', `${event.pageX + 10}px`) // place near mouse click
           .style('top', `${event.pageY - 20}px`) // offset a little above
           .html(`
-      <button style="position:absolute;top:6px;right:10px;border:none;background:transparent;font-size:16px;cursor:pointer" id="close-popup">×</button>
+      <button style="position:absolute;top:6px;right:10px;border:none;background:transparent;font-size:16px;cursor:pointer" id="close-popup">x</button>
       <h3 style="margin:0">${d.id}</h3>
       <p style="margin:4px 0">Value: ${d.value || 'N/A'}</p>
     `);
