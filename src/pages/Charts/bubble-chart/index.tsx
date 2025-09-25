@@ -16,6 +16,12 @@ export default function BubbleChart() {
 
   return (
     <>
+      <div className="relative size-[var(--size)]">
+        <div className="glow" aria-hidden="true"></div>
+        <div className="sphere" role="img" aria-label="Glowing sphere">
+          <div className="stroke" aria-hidden="true"></div>
+        </div>
+      </div>
       <GroupButton
         options={[
           { id: 'd3', content: 'd3', width: 100 },

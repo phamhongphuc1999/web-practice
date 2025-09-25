@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import * as venn from 'venn.js';
 
-export default function VennChart() {
+export default function D3Venn() {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -17,6 +17,9 @@ export default function VennChart() {
       { sets: ['B'], size: 2500 },
       { sets: ['C'], size: 2000 },
       { sets: ['D'], size: 1800 },
+      { sets: ['E'], size: 2200 },
+      { sets: ['F'], size: 3300 },
+      { sets: ['G'], size: 500 },
 
       { sets: ['A', 'B'], size: 600 },
       { sets: ['A', 'C'], size: 1000 },
