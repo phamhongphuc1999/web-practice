@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroupButton from 'src/components/Button/group-button';
+import { Button } from 'src/components/shadcn-ui/button';
 import { ROUTE } from 'src/configs/layout';
 import useQueryUrl from 'src/hooks/useQueryUrl';
 import AmBubbleChart from './AmBubbleChart';
@@ -9,6 +11,7 @@ import D3Venn from './D3Venn';
 export default function BubbleChart() {
   const navigate = useNavigate();
   const { type } = useQueryUrl();
+  const [isPolygon, setIsPolygon] = useState(false);
 
   function onClick(id: string) {
     navigate(`${ROUTE.BUBBLE_CHART}?type=${id}`);
@@ -16,11 +19,10 @@ export default function BubbleChart() {
 
   return (
     <>
-      <div className="relative size-[var(--size)]">
-        <div className="glow" aria-hidden="true"></div>
-        <div className="sphere" role="img" aria-label="Glowing sphere">
-          <div className="stroke" aria-hidden="true"></div>
-        </div>
+      <div>
+        <Button onClick={() => setIsPolygon((preValue) => !preValue)}>
+          {isPolygon ? 'polygon' : 'circle'}
+        </Button>
       </div>
       <GroupButton
         options={[
@@ -32,7 +34,7 @@ export default function BubbleChart() {
         events={{ onOptionChange: onClick }}
       />
       {type == 'amChart' && <AmBubbleChart />}
-      {type == 'd3-venn' ? <D3Venn /> : <D3BubbleChart />}
+      {type == 'd3-venn' ? <D3Venn /> : <D3BubbleChart isPolygon={isPolygon} />}
     </>
   );
 }

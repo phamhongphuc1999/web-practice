@@ -1,227 +1,293 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as d3 from 'd3';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-interface NodeType extends d3.SimulationNodeDatum {
-  id: string;
-  group: number;
-  value: number;
-}
+export type NodeDatum = { id: string; value: number };
+export type LinkDatum = { source: string; target: string };
 
-interface LinkType extends d3.SimulationLinkDatum<NodeType> {
-  source: string | NodeType;
-  target: string | NodeType;
-  value: number;
-}
+const _nodes = [
+  { id: 'A', value: 40 },
+  { id: 'B', value: 20 },
+  { id: 'C', value: 25 },
+  { id: 'D', value: 52 },
+  { id: 'E', value: 60 },
+  { id: 'F', value: 20 },
+];
 
-interface Props {
+const _links = [
+  { source: 'A', target: 'B', value: 1 },
+  { source: 'A', target: 'C' },
+  { source: 'B', target: 'D' },
+  { source: 'C', target: 'D' },
+  { source: 'A', target: 'E' },
+  { source: 'E', target: 'F' },
+];
+
+type Props = {
   width?: number;
   height?: number;
-}
-
-const data: { nodes: NodeType[]; links: LinkType[] } = {
-  nodes: [
-    { id: 'Alice', group: 1, value: 11 },
-    { id: 'Bob', group: 1, value: 21 },
-    { id: 'Charlie', group: 2, value: 1 },
-    { id: 'Diana', group: 2, value: 1 },
-    { id: 'Eve', group: 3, value: 10 },
-    { id: 'Frank', group: 3, value: 5 },
-  ],
-  links: [
-    { source: 'Alice', target: 'Bob', value: 2 },
-    { source: 'Alice', target: 'Charlie', value: 1 },
-    { source: 'Bob', target: 'Diana', value: 3 },
-    { source: 'Charlie', target: 'Diana', value: 2 },
-    { source: 'Diana', target: 'Eve', value: 1 },
-    { source: 'Eve', target: 'Frank', value: 2 },
-    { source: 'Charlie', target: 'Frank', value: 1 },
-  ],
+  nodes?: NodeDatum[];
+  links?: LinkDatum[];
+  isPolygon?: boolean;
 };
 
-export default function D3BubbleChart({ width = 928, height = 600 }: Props) {
+export default function D3BubbledChart({
+  width = 800,
+  height = 600,
+  nodes = _nodes,
+  links = _links,
+  isPolygon = false,
+}: Props) {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const [node, setNode] = useState<NodeDatum | undefined>(undefined);
 
   useEffect(() => {
-    const nodes: NodeType[] = data.nodes.map((d) => ({ ...d }));
-    const links: LinkType[] = data.links.map((d) => ({ ...d }));
-
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    if (!svgRef.current) return;
 
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
 
-    // Arrow marker
-    svg
-      .append('defs')
+    const g = svg.append('g');
+
+    svg.on('click', () => {
+      setNode(undefined);
+    });
+
+    svg.call(
+      d3
+        .zoom<SVGSVGElement, unknown>()
+        .scaleExtent([0.2, 4])
+        .on('zoom', (event) => {
+          g.attr('transform', event.transform);
+        })
+    );
+
+    const rScale = d3
+      .scaleSqrt()
+      .domain(d3.extent(nodes, (d) => d.value) as [number, number])
+      .range([15, 40]);
+
+    const defs = svg.append('defs');
+
+    defs
       .append('marker')
       .attr('id', 'arrowhead')
-      .attr('viewBox', '0 -5 10 10')
-      .attr('refX', 30) // depends on node radius
+      .attr('viewBox', '-0 -5 10 10')
+      .attr('refX', 10)
       .attr('refY', 0)
+      .attr('orient', 'auto')
       .attr('markerWidth', 6)
       .attr('markerHeight', 6)
-      .attr('orient', 'auto')
       .append('path')
       .attr('d', 'M0,-5L10,0L0,5')
-      .attr('fill', '#999');
-
-    const link = svg
-      .append('g')
-      .attr('stroke', '#999')
-      .attr('stroke-opacity', 0.6)
-      .selectAll('line')
-      .data(links)
-      .enter()
-      .append('line')
-      .attr('stroke-width', (d) => Math.sqrt(d.value))
-      .attr('marker-end', 'url(#arrowhead)');
+      .attr('fill', '#9ca3af');
 
     const tooltip = d3
       .select('body')
       .append('div')
       .style('position', 'absolute')
-      .style('background', 'white') // white background
-      .style('color', 'black') // black text
-      .style('padding', '6px 12px')
-      .style('border', '1px solid #ccc')
-      .style('border-radius', '8px')
+      .style('padding', '6px 10px')
+      .style('background', 'rgba(0,0,0,0.8)')
+      .style('color', '#fff')
+      .style('border-radius', '6px')
+      .style('font-size', '12px')
       .style('pointer-events', 'none')
-      .style('font-size', '14px')
-      .style('box-shadow', '0px 2px 6px rgba(0,0,0,0.2)')
       .style('opacity', 0);
 
-    const popup = d3
-      .select('body')
-      .append('div')
-      .attr('id', 'node-popup')
-      .style('position', 'fixed')
-      .style('top', '20%')
-      .style('left', '50%')
-      .style('transform', 'translateX(-50%)')
-      .style('background', 'white')
-      .style('color', 'black')
-      .style('padding', '16px 20px')
-      .style('border', '1px solid #ccc')
-      .style('border-radius', '10px')
-      .style('box-shadow', '0px 4px 12px rgba(0,0,0,0.3)')
-      .style('opacity', 0)
-      .style('pointer-events', 'auto');
-
-    // Add a close button
-    popup
-      .append('button')
-      .text('x')
-      .style('position', 'absolute')
-      .style('top', '8px')
-      .style('right', '12px')
-      .style('border', 'none')
-      .style('background', 'transparent')
-      .style('font-size', '18px')
-      .style('cursor', 'pointer')
-      .on('click', () => popup.style('opacity', 0));
-
-    const sizeScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(nodes, (d) => d.value) as number])
-      .range([4, 20]);
-
-    // create nodes
-    const node = svg
+    const link = g
       .append('g')
-      .attr('stroke', '#fff')
+      .attr('class', 'links')
+      .selectAll('line')
+      .data(links)
+      .join('line')
+      .attr('stroke-opacity', 0.6)
       .attr('stroke-width', 1.5)
-      .selectAll('circle')
+      .attr('stroke', '#9ca3af')
+      .attr('marker-end', 'url(#arrowhead)');
+
+    const node = g
+      .append('g')
+      .attr('class', 'nodes')
+      .selectAll('g')
       .data(nodes)
-      .join('circle')
-      .attr('r', 5)
-      .attr('fill', (d) => color(d.group.toString()) as string)
-      .attr('r', (d) => sizeScale(d.value))
-      .call(
+      .join('g')
+      .style('cursor', 'grab');
+
+    if (isPolygon) {
+      node
+        .append('polygon')
+        .attr('points', (d) => {
+          const r = rScale(d.value);
+          return d3
+            .range(6)
+            .map((i) => {
+              const angle = (Math.PI / 3) * i - Math.PI / 6; // flat-top hexagon
+              const x = r * Math.cos(angle);
+              const y = r * Math.sin(angle);
+              return `${x},${y}`;
+            })
+            .join(' ');
+        })
+        .attr('fill', '#2563eb')
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 1.5);
+    } else {
+      node
+        .append('circle')
+        .attr('r', (d) => rScale(d.value))
+        .attr('fill', '#2563eb')
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 1.5);
+    }
+
+    node.append('title').text((d) => `${d.id} — value: ${d.value}`);
+
+    node
+      .append('text')
+      .attr('dy', 4)
+      .attr('fill', 'white')
+      .attr('font-size', 12)
+      .attr('text-anchor', 'middle')
+      .text((d) => d.id);
+
+    const simulation = d3
+      .forceSimulation(nodes as any)
+      .force(
+        'link',
         d3
-          .drag<SVGCircleElement, NodeType>()
-          .on('start', dragstarted as any)
-          .on('drag', dragged as any)
-          .on('end', dragended as any) as any
+          .forceLink(links as any)
+          .id((d: any) => d.id)
+          .distance(80)
+          .strength(0.8)
       )
-      .on('mouseover', (_, d) => {
-        tooltip.style('opacity', 1).html(`
-          <p style={color:black;}>
-            <b>${d.id}</b><br/>Value: ${d.value}
-          </p>`);
+      .force('charge', d3.forceManyBody().strength(-250))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force(
+        'collision',
+        d3.forceCollide().radius((d: any) => rScale(d.value) + 6)
+      )
+      .on('tick', ticked);
+
+    function intersectPolygon(x1: number, y1: number, x2: number, y2: number, r: number) {
+      const hex = d3.range(6).map((i) => {
+        const angle = (Math.PI / 3) * i - Math.PI / 6;
+        return [r * Math.cos(angle) + x2, r * Math.sin(angle) + y2];
+      });
+
+      for (let i = 0; i < 6; i++) {
+        const [xA, yA] = hex[i];
+        const [xB, yB] = hex[(i + 1) % 6];
+        const denom = (x1 - x2) * (yA - yB) - (y1 - y2) * (xA - xB);
+        if (denom === 0) continue;
+
+        const t = ((x1 - xA) * (yA - yB) - (y1 - yA) * (xA - xB)) / denom;
+        const u = -((x1 - x2) * (y1 - yA) - (y1 - y2) * (x1 - xA)) / denom;
+
+        if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
+          return [x1 + t * (x2 - x1), y1 + t * (y2 - y1)];
+        }
+      }
+      return [x2, y2];
+    }
+
+    function ticked() {
+      link
+        .attr('x1', (d: any) => (d.source as any).x)
+        .attr('y1', (d: any) => (d.source as any).y)
+        .attr('x2', (d: any) => {
+          const sx = (d.source as any).x;
+          const sy = (d.source as any).y;
+          const tx = (d.target as any).x;
+          const ty = (d.target as any).y;
+          const r = rScale((d.target as any).value);
+
+          if (isPolygon) {
+            return intersectPolygon(sx, sy, tx, ty, r)[0];
+          } else {
+            const dx = tx - sx;
+            const dy = ty - sy;
+            const len = Math.sqrt(dx * dx + dy * dy);
+            return tx - (dx * r) / len;
+          }
+        })
+        .attr('y2', (d: any) => {
+          const sx = (d.source as any).x;
+          const sy = (d.source as any).y;
+          const tx = (d.target as any).x;
+          const ty = (d.target as any).y;
+          const r = rScale((d.target as any).value);
+
+          if (isPolygon) {
+            return intersectPolygon(sx, sy, tx, ty, r)[1];
+          } else {
+            const dx = tx - sx;
+            const dy = ty - sy;
+            const len = Math.sqrt(dx * dx + dy * dy);
+            return ty - (dy * r) / len;
+          }
+        });
+
+      node.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+    }
+
+    const dragBehavior = d3
+      .drag<SVGGElement, NodeDatum>()
+      .on('start', (event, d: any) => {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      })
+      .on('drag', (event: any, d: any) => {
+        d.fx = event.x;
+        d.fy = event.y;
+      })
+      .on('end', (event, d: any) => {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      });
+
+    node.call(dragBehavior as any);
+
+    node
+      .on('mouseover', (_, d: any) => {
+        tooltip
+          .style('opacity', 1)
+          .html(
+            ` <div><strong>ID:</strong> ${d.id}</div> <div><strong>Value:</strong> ${d.value}</div> `
+          );
       })
       .on('mousemove', (event) => {
-        tooltip.style('left', event.pageX + 15 + 'px').style('top', event.pageY + 'px');
+        tooltip.style('left', event.pageX + 12 + 'px').style('top', event.pageY + 12 + 'px');
       })
       .on('mouseout', () => {
         tooltip.style('opacity', 0);
       })
-      .on('click', (_, d) => {
-        alert(`You clicked ${d.id}`);
-      })
       .on('click', (event, d) => {
-        popup
-          .style('opacity', 1)
-          .style('left', `${event.pageX + 10}px`) // place near mouse click
-          .style('top', `${event.pageY - 20}px`) // offset a little above
-          .html(`
-      <button style="position:absolute;top:6px;right:10px;border:none;background:transparent;font-size:16px;cursor:pointer" id="close-popup">x</button>
-      <h3 style="margin:0">${d.id}</h3>
-      <p style="margin:4px 0">Value: ${d.value || 'N/A'}</p>
-    `);
-
-        // re-bind close button
-        d3.select('#close-popup').on('click', () => popup.style('opacity', 0));
+        event.stopPropagation();
+        console.error('ddd', d);
+        setNode(d);
       });
-
-    node.append('title').text((d) => d.id);
-
-    const simulation = d3
-      .forceSimulation<NodeType>(nodes)
-      .force(
-        'link',
-        d3
-          .forceLink<NodeType, LinkType>(links)
-          .id((d) => d.id)
-          .distance(100)
-      )
-      .force('charge', d3.forceManyBody().strength(-200))
-      .force('center', d3.forceCenter(width / 2, height / 2))
-      .on('tick', ticked);
-
-    function ticked() {
-      link
-        .attr('x1', (d) => (d.source as NodeType).x!)
-        .attr('y1', (d) => (d.source as NodeType).y!)
-        .attr('x2', (d) => (d.target as NodeType).x!)
-        .attr('y2', (d) => (d.target as NodeType).y!);
-
-      node.attr('cx', (d) => d.x!).attr('cy', (d) => d.y!);
-    }
-
-    function dragstarted(event: d3.D3DragEvent<SVGCircleElement, NodeType, NodeType>) {
-      if (!event.active) simulation.alphaTarget(0.3).restart();
-      event.subject.fx = event.subject.x;
-      event.subject.fy = event.subject.y;
-    }
-
-    function dragged(event: d3.D3DragEvent<SVGCircleElement, NodeType, NodeType>) {
-      event.subject.fx = event.x;
-      event.subject.fy = event.y;
-    }
-
-    function dragended(event: d3.D3DragEvent<SVGCircleElement, NodeType, NodeType>) {
-      if (!event.active) simulation.alphaTarget(0);
-      event.subject.fx = null;
-      event.subject.fy = null;
-    }
 
     return () => {
       simulation.stop();
     };
-  }, [width, height]);
+  }, [svgRef, nodes, links, width, height, isPolygon]);
 
   return (
-    <svg ref={svgRef} width={width} height={height} style={{ maxWidth: '100%', height: 'auto' }} />
+    <div className="relative">
+      <svg
+        ref={svgRef}
+        viewBox={`0 0 ${width} ${height}`}
+        style={{ width: '100%', height: '100%', background: '#0f1724' }}
+      />
+      {node && (
+        <div className="absolute top-2 right-2 bottom-2 w-1/4">
+          <p>
+            Click on {node?.id}: {node?.value}
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
