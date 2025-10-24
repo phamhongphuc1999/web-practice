@@ -1,43 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
+import data from './data.json';
 
-export type NodeDatum = { id: string; value: number };
-export type LinkDatum = { source: string; target: string };
+export type NodeDatum = { id: string; group: number };
+export type LinkDatum = { source: string; target: string; value: number };
 
-const _nodes = [
-  { id: 'A', value: 40 },
-  { id: 'B', value: 20 },
-  { id: 'C', value: 25 },
-  { id: 'D', value: 52 },
-  { id: 'E', value: 60 },
-  { id: 'F', value: 20 },
-];
-
-const _links = [
-  { source: 'A', target: 'B', value: 1 },
-  { source: 'A', target: 'C' },
-  { source: 'B', target: 'D' },
-  { source: 'C', target: 'D' },
-  { source: 'A', target: 'E' },
-  { source: 'E', target: 'F' },
-];
+const nodes: Array<NodeDatum> = data.nodes;
+const links: Array<LinkDatum> = data.links;
 
 type Props = {
   width?: number;
   height?: number;
-  nodes?: NodeDatum[];
-  links?: LinkDatum[];
   isPolygon?: boolean;
 };
 
-export default function D3BubbledChart({
-  width = 800,
-  height = 600,
-  nodes = _nodes,
-  links = _links,
-  isPolygon = false,
-}: Props) {
+export default function D3BubbledChart({ width = 800, height = 600, isPolygon = false }: Props) {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [node, setNode] = useState<NodeDatum | undefined>(undefined);
 
@@ -64,7 +42,7 @@ export default function D3BubbledChart({
 
     const rScale = d3
       .scaleSqrt()
-      .domain(d3.extent(nodes, (d) => d.value) as [number, number])
+      .domain(d3.extent(nodes, (d) => d.group) as [number, number])
       .range([15, 40]);
 
     const defs = svg.append('defs');
@@ -117,7 +95,7 @@ export default function D3BubbledChart({
       node
         .append('polygon')
         .attr('points', (d) => {
-          const r = rScale(d.value);
+          const r = rScale(d.group);
           return d3
             .range(6)
             .map((i) => {
@@ -134,13 +112,13 @@ export default function D3BubbledChart({
     } else {
       node
         .append('circle')
-        .attr('r', (d) => rScale(d.value))
+        .attr('r', (d) => rScale(d.group))
         .attr('fill', '#2563eb')
         .attr('stroke', '#fff')
         .attr('stroke-width', 1.5);
     }
 
-    node.append('title').text((d) => `${d.id} — value: ${d.value}`);
+    node.append('title').text((d) => `${d.id} — value: ${d.group}`);
 
     node
       .append('text')
@@ -272,7 +250,7 @@ export default function D3BubbledChart({
     return () => {
       simulation.stop();
     };
-  }, [svgRef, nodes, links, width, height, isPolygon]);
+  }, [svgRef, width, height, isPolygon]);
 
   return (
     <div className="relative">
@@ -284,7 +262,7 @@ export default function D3BubbledChart({
       {node && (
         <div className="absolute top-2 right-2 bottom-2 w-1/4">
           <p>
-            Click on {node?.id}: {node?.value}
+            Click on {node.id}: {node.group}
           </p>
         </div>
       )}

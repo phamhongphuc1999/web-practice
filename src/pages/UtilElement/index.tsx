@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ColorfulBox from 'src/components/Button/ColorfulBox';
+import GradientTabs from 'src/components/Button/GradientTabs';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import GroupButton from 'src/components/Button/group-button';
+import { AnalyticIcon, ScoreIcon } from 'src/components/Icons';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
@@ -20,6 +22,7 @@ export default function UtilElement() {
   const { themeLabel } = useAppSelector((state) => state.config);
   const [selectedId, setSelectedId] = useState('1');
   const [countdown, setCountdown] = useState(0);
+  const [activeTab, setActiveTab] = useState('score');
   const _id = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -96,6 +99,33 @@ export default function UtilElement() {
         selectedId={selectedId}
         events={{ onOptionChange: (id) => setSelectedId(id) }}
       />
+      <div className="bg-[#111113]">
+        <GradientTabs
+          className="mt-2"
+          events={{ onClick: (tab) => setActiveTab(tab) }}
+          tabs={[
+            {
+              id: 'score',
+              children: (
+                <div className="flex flex-col items-center gap-1">
+                  Score
+                  <ScoreIcon />
+                </div>
+              ),
+            },
+            {
+              id: 'analytic',
+              children: (
+                <div className="flex flex-col items-center gap-1">
+                  Analytic
+                  <AnalyticIcon />
+                </div>
+              ),
+            },
+          ]}
+          activeTabs={activeTab}
+        />
+      </div>
     </>
   );
 }

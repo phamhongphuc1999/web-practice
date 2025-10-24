@@ -324,3 +324,9 @@
     color: #000000;
   }
 }
+
+.gradient-tabs-border {
+  background:
+    radial-gradient(circle at top left, white 0%, transparent 25%),
+    radial-gradient(circle at bottom right, white 0%, transparent 25%);
+}
