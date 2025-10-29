@@ -327,6 +327,7 @@
 
 .gradient-tabs-border {
   background:
-    radial-gradient(circle at top left, white 0%, transparent 25%),
-    radial-gradient(circle at bottom right, white 0%, transparent 25%);
+    radial-gradient(circle at 15% 0%, white 0%, transparent 30%),
+    radial-gradient(circle at 85% 110%, white 0%, transparent 30%),
+    radial-gradient(circle at center, white 0%, transparent 50%);
 }

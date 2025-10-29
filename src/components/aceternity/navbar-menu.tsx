@@ -39,11 +39,11 @@ export function MenuItem({ setActive, active, item, children, ...props }: MenuIt
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 -translate-x-1/2 transform pt-4">
+            <div className="absolute top-[calc(100%+1.2rem)] left-1/2 -translate-x-1/2 transform pt-4">
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="overflow-hidden rounded-2xl border border-black/[0.2] bg-white shadow-xl backdrop-blur-sm dark:border-white/[0.2] dark:bg-black"
+                className="overflow-hidden rounded-2xl border border-black/20 bg-white shadow-xl backdrop-blur-sm dark:border-white/20 dark:bg-black"
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -71,7 +71,7 @@ export function Menu({ setActive, children, ...props }: MenuProps) {
       {...props}
       onMouseLeave={() => setActive(null)} // resets the state
       className={cn(
-        'shadow-input relative flex justify-center space-x-4 rounded-full border border-transparent bg-white px-4 py-2 dark:border-white/[0.2] dark:bg-black',
+        'shadow-input relative flex justify-center space-x-4 rounded-full border border-transparent bg-white px-4 py-2 dark:border-white/20 dark:bg-black',
         props.className
       )}
     >

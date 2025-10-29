@@ -12,19 +12,19 @@ export default function CircleLoader({
       style={{ width: size, height: size }}
     >
       <div
-        className="CircleLoader_keyframes_circle h-full w-full border-b-[1px]"
+        className="CircleLoader_keyframes_circle h-full w-full border-b"
         style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
       <div
-        className="CircleLoader_keyframes_circle right-[10%] h-[80%] w-[80%] border-r-[1px]"
+        className="CircleLoader_keyframes_circle right-[10%] h-[80%] w-[80%] border-r"
         style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
       <div
-        className="CircleLoader_keyframes_circle right-[25%] h-[60%] w-[60%] border-t-[1px]"
+        className="CircleLoader_keyframes_circle right-[25%] h-[60%] w-[60%] border-t"
         style={{ '--animation-time': '1.2s', '--color': color } as CSSProperties}
       />
       <div
-        className="CircleLoader_keyframes_circle right-[35%] h-[40%] w-[40%] border-l-[1px]"
+        className="CircleLoader_keyframes_circle right-[35%] h-[40%] w-[40%] border-l"
         style={{ '--animation-time': '1.4s', '--color': color } as CSSProperties}
       />
     </div>

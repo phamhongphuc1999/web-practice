@@ -102,11 +102,7 @@ export default function NetworkButton({ butProps }: Props) {
                   },
                 }}
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="mb-[0.5rem] h-[40px] rounded-[50%]"
-                />
+                <img src={item.image} alt={item.name} className="mb-2 h-10 rounded-[50%]" />
                 <Typography noWrap color="text.disabled" variant="body3">
                   {item.name}
                 </Typography>

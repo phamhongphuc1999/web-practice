@@ -45,12 +45,12 @@ export default function GroupButton(params: Props) {
     <div
       {...props}
       className={cn(
-        'bg-grey-100 relative inline-flex cursor-pointer items-center rounded-[8px]',
+        'bg-grey-100 relative inline-flex cursor-pointer items-center rounded-xl',
         props?.className
       )}
     >
       <div
-        className="bg-black-50 absolute h-full rounded-[8px] opacity-25 transition-all"
+        className="bg-black-50 absolute h-full rounded-xl opacity-25 transition-all"
         style={{
           width: `${jsonOptions[selectedId].width}px`,
           left: `${jsonOptions[selectedId].position}px`,
@@ -61,7 +61,7 @@ export default function GroupButton(params: Props) {
           <div
             key={item.id}
             className={cn(
-              'flex items-center justify-center px-[8px] py-[16px] text-center',
+              'flex items-center justify-center px-2 py-4 text-center',
               selectedId && selectedClassname
             )}
             style={{ width: `${item.width ?? 40}px` }}
