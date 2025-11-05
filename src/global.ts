@@ -1,5 +1,4 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import { BigNumberish, Fragment } from 'ethers';
 import { ButtonHTMLAttributes, ComponentProps, DetailedHTMLProps } from 'react';
 import { SvgComponent } from './components/Icons';
 
@@ -25,19 +24,6 @@ export interface TimeType {
 }
 
 export type JubProofType = { A: bigint[]; R8: bigint[]; S: bigint[]; msg: bigint[] };
-
-export type ProofPoint = [BigNumberish, BigNumberish];
-
-export interface ProofCallDataType {
-  pA: ProofPoint;
-  pB: [ProofPoint, ProofPoint];
-  pC: ProofPoint;
-  pubSignals: ProofPoint;
-}
-
-export interface EtherFragment extends Fragment {
-  stateMutability: string;
-}
 
 export interface AnimationComponentProps {
   size?: number | string;
@@ -83,7 +69,7 @@ export type AppReferenceItemType = {
   icon: SvgIconComponent | SvgComponent;
 };
 
-export type AppReferenceId = 'component' | 'chart' | 'web3' | 'encryption' | 'academy';
+export type AppReferenceId = 'component' | 'chart' | 'encryption' | 'academy';
 
 export type AppReferenceType = {
   id: AppReferenceId;

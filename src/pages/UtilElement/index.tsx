@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ColorfulBox from 'src/components/Button/ColorfulBox';
@@ -12,9 +12,11 @@ import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
+import SemiCircleGauge from 'src/components/SemiCircleGauge';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
+import AppCounterElement from './AppCounterElement';
 
 export default function UtilElement() {
   const navigate = useNavigate();
@@ -86,7 +88,7 @@ export default function UtilElement() {
         </ScrollPaper>
       </Box>
       <GroupButton
-        className="mt-[1rem]"
+        className="mt-4"
         options={[
           { id: '1', content: 'item1', width: 60 },
           { id: '2', content: 'item2', width: 65 },
@@ -125,6 +127,18 @@ export default function UtilElement() {
           ]}
           activeTabs={activeTab}
         />
+      </div>
+      <AppCounterElement />
+      <div className="border-ring mt-2 flex items-center justify-center border p-2">
+        <SemiCircleGauge percent={0.8} scoreText="1234" />
+      </div>
+      <div
+        className="gauge"
+        style={{ width: '200px', '--rotation': '83deg', '--color': '#5cb85c' } as CSSProperties}
+      >
+        <div className="percentage"></div>
+        <div className="mask"></div>
+        <span className="value">46%</span>
       </div>
     </>
   );

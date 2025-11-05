@@ -19,8 +19,6 @@ import BubbleChart from 'src/pages/Charts/bubble-chart';
 import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
-import ContractPage from 'src/pages/ContractPage';
-import MetamaskPage from 'src/pages/MetamaskPage';
 import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
 import ShadcnUi from 'src/pages/shadcn-ui';
@@ -84,16 +82,6 @@ export default function App() {
       path: ROUTE.SHADCN_UI,
       element: <ProviderApp />,
       children: [{ path: '', element: <ShadcnUi /> }],
-    },
-    {
-      path: ROUTE.METAMASK,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <MetamaskPage /> }],
-    },
-    {
-      path: ROUTE.CONTRACT,
-      element: <ProviderApp />,
-      children: [{ path: '', element: <ContractPage /> }],
     },
     {
       path: ROUTE.CHART,

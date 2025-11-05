@@ -2,13 +2,11 @@ import {
   Animation,
   BarChart,
   BlenderOutlined,
-  CurrencyBitcoin,
   EnhancedEncryptionOutlined,
   LocalFireDepartmentOutlined,
   School,
   Storefront,
   TaskAlt,
-  Wallet,
 } from '@mui/icons-material';
 import { ShadcnIcon } from 'src/components/Icons';
 import { AppReferenceId, AppReferenceType } from 'src/global';
@@ -17,8 +15,6 @@ export const ROUTE = {
   ANIMATION: '/animation',
   ANT_DESIGN: '/ant-design',
   SHADCN_UI: '/shadcn-ui',
-  METAMASK: '/metamask',
-  CONTRACT: '/contract',
   CHART: '/charts',
   ECHART: '/charts/e-chart',
   BUBBLE_CHART: '/chart/bubble',
@@ -39,8 +35,6 @@ export const ROUTE = {
 export const ReferenceMapping: Array<{ pathname: string; id: AppReferenceId }> = [
   { pathname: ROUTE.ANIMATION, id: 'component' },
   { pathname: ROUTE.ANT_DESIGN, id: 'component' },
-  { pathname: ROUTE.METAMASK, id: 'web3' },
-  { pathname: ROUTE.CONTRACT, id: 'web3' },
   { pathname: ROUTE.CHART, id: 'chart' },
   { pathname: ROUTE.UTILS, id: 'component' },
   { pathname: ROUTE.ACADEMY, id: 'academy' },
@@ -91,21 +85,6 @@ const Chart: AppReferenceType = {
   ],
 };
 
-const Web3: AppReferenceType = {
-  id: 'web3',
-  title: 'Web3',
-  items: [
-    { id: 'metamask', title: 'metamask', link: ROUTE.METAMASK, description: '', icon: Wallet },
-    {
-      id: 'contract',
-      title: 'contract',
-      link: ROUTE.CONTRACT,
-      description: '',
-      icon: CurrencyBitcoin,
-    },
-  ],
-};
-
 const Encryption: AppReferenceType = {
   id: 'encryption',
   title: 'encryption',
@@ -146,7 +125,6 @@ const Academy: AppReferenceType = {
 export const AppReferenceConfig: { [key in AppReferenceId]: AppReferenceType } = {
   component: Component,
   chart: Chart,
-  web3: Web3,
   encryption: Encryption,
   academy: Academy,
 };
