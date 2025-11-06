@@ -10,22 +10,34 @@ import { AnalyticIcon, ScoreIcon } from 'src/components/Icons';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
+import GradientSemiCircleGauge from 'src/components/SemiCircleGauge/GradientSemiCircleGauge';
+import SemiCircleGauge from 'src/components/SemiCircleGauge/SemiCircleGauge';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
-import SemiCircleGauge from 'src/components/SemiCircleGauge';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 import AppCounterElement from './AppCounterElement';
 
 export default function UtilElement() {
+  const _id = useRef<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
   const { t } = useLocalTranslate();
   const { themeLabel } = useAppSelector((state) => state.config);
   const [selectedId, setSelectedId] = useState('1');
   const [countdown, setCountdown] = useState(0);
   const [activeTab, setActiveTab] = useState('score');
-  const _id = useRef<NodeJS.Timeout | null>(null);
+  const [percent, setPercent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomPercent = Math.random();
+      setPercent(randomPercent);
+    }, 2000);
+
+    // clear interval khi component unmount
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     _id.current = setInterval(() => {
@@ -129,12 +141,13 @@ export default function UtilElement() {
         />
       </div>
       <AppCounterElement />
-      <div className="border-ring mt-2 flex items-center justify-center border p-2">
-        <SemiCircleGauge percent={0.8} scoreText="1234" />
+      <div className="border-ring mt-2 flex items-center justify-center gap-3 border p-2">
+        <GradientSemiCircleGauge percent={1 - percent} />
+        <SemiCircleGauge percent={percent} />
       </div>
       <div
         className="gauge"
-        style={{ width: '200px', '--rotation': '83deg', '--color': '#5cb85c' } as CSSProperties}
+        style={{ width: '200px', '--rotation': '135deg', '--color': '#5cb85c' } as CSSProperties}
       >
         <div className="percentage"></div>
         <div className="mask"></div>
