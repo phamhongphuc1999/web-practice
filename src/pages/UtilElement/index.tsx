@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CssBreadcrumbs from 'src/components/Breadcrumb/CssBreadcrumbs';
 import ColorfulBox from 'src/components/Button/ColorfulBox';
@@ -35,7 +35,6 @@ export default function UtilElement() {
       setPercent(randomPercent);
     }, 2000);
 
-    // clear interval khi component unmount
     return () => clearInterval(interval);
   }, []);
 
@@ -144,14 +143,6 @@ export default function UtilElement() {
       <div className="border-ring mt-2 flex items-center justify-center gap-3 border p-2">
         <GradientSemiCircleGauge percent={1 - percent} />
         <SemiCircleGauge percent={percent} />
-      </div>
-      <div
-        className="gauge"
-        style={{ width: '200px', '--rotation': '135deg', '--color': '#5cb85c' } as CSSProperties}
-      >
-        <div className="percentage"></div>
-        <div className="mask"></div>
-        <span className="value">46%</span>
       </div>
     </>
   );

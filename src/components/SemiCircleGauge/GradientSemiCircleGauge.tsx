@@ -29,8 +29,9 @@ export default function GradientSemiCircleGauge({ size = 100, percent, ...props 
         viewBox="0 0 185 93"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ filter: 'drop-shadow(-10px 10px 15px rgba(175, 74, 243, 0.4))' }}
+        style={{ overflow: 'visible' }}
       >
+        <path d={path} fill="url(#gradient_gauge)" filter="url(#glowFilter)" opacity="0.9" />
         <path d={path} fill="url(#gradient_gauge)" />
         <defs>
           <linearGradient
@@ -41,12 +42,22 @@ export default function GradientSemiCircleGauge({ size = 100, percent, ...props 
             y2={`${y2}%`}
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset={0.5} stopColor="#AF4AF3" />
-            <stop offset={0.7} stopColor="#EAFDFE" stopOpacity={0.85} />
-            <stop offset="100%" stopColor="#EAFDFE" stopOpacity={0.85} />
+            <stop offset={0.45} stopColor="#AF4AF3" />
+            <stop offset={0.55} stopColor="#EAFDFE" stopOpacity={0.75} />
+            <stop offset="100%" stopColor="#EAFDFE" stopOpacity={0.75} />
           </linearGradient>
+          <filter id="glowFilter" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="12" result="blur1" />
+            <feGaussianBlur stdDeviation="20" result="blur2" />
+            <feMerge>
+              <feMergeNode in="blur1" />
+              <feMergeNode in="blur2" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
       </svg>
+
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
         <p className="text-xl font-bold">{toFixed(percent * 100, 2)}%</p>
       </div>
