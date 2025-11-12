@@ -10,13 +10,13 @@ import { AnalyticIcon, ScoreIcon } from 'src/components/Icons';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import ReactSeo from 'src/components/ReactSeo';
 import LanguageSelector from 'src/components/Selector/LanguageSelector';
-import GradientSemiCircleGauge from 'src/components/SemiCircleGauge/GradientSemiCircleGauge';
-import SemiCircleGauge from 'src/components/SemiCircleGauge/SemiCircleGauge';
+import SmoothGauge from 'src/components/SemiCircleGauge/SmoothGauge';
 import PasswordTextField from 'src/components/TextField/PasswordTextField';
 import ScrollPaper from 'src/components/paper/scroll-paper';
 import { ROUTE } from 'src/configs/layout';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
+import { toFixed } from 'src/services';
 import AppCounterElement from './AppCounterElement';
 
 export default function UtilElement() {
@@ -140,9 +140,11 @@ export default function UtilElement() {
         />
       </div>
       <AppCounterElement />
-      <div className="border-ring mt-2 flex items-center justify-center gap-3 border p-2">
-        <GradientSemiCircleGauge percent={1 - percent} />
-        <SemiCircleGauge percent={percent} />
+      <div className="border-ring relative mt-3 h-[150px] w-60 overflow-hidden border">
+        <SmoothGauge percent={1 - percent} className="absolute -bottom-4" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+          <p className="text-xl font-bold">{toFixed(percent * 100, 2)}%</p>
+        </div>
       </div>
     </>
   );

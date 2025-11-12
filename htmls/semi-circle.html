@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pure SVG Smooth Gauge</title>
+    <style>
+      body {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      svg {
+        overflow: visible;
+      }
+      .arc-bg {
+        stroke: #eee;
+      }
+      .arc-fill {
+        /* transform: rotate(-180deg); */
+        transform-origin: center;
+        transition: stroke-dashoffset 0.8s ease-in-out;
+      }
+      .label {
+        fill: #e74c3c;
+        font-size: 48px;
+        text-anchor: middle;
+        dominant-baseline: middle;
+      }
+      .sub {
+        fill: #888;
+        font-size: 20px;
+        text-anchor: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="400" height="250" viewBox="0 0 400 250">
+      <!-- Background semicircle -->
+      <path
+        class="arc-bg"
+        d="M50,200 A150,150 0 0,1 350,200"
+        fill="none"
+        stroke="#eee"
+        stroke-width="20"
+        stroke-linecap="round"
+      />
+      <!-- Active semicircle -->
+      <path
+        id="arc"
+        class="arc-fill"
+        d="M50,200 A150,150 0 0,1 350,200"
+        fill="none"
+        stroke="url(#gradient)"
+        stroke-width="20"
+        stroke-linecap="round"
+        stroke-dasharray="471"
+        stroke-dashoffset="471"
+      />
+
+      <!-- Gradient -->
+      <defs>
+        <linearGradient
+          id="gradient"
+          gradientUnits="userSpaceOnUse"
+          x1="50"
+          y1="200"
+          x2="350"
+          y2="200"
+        >
+          <stop offset="0%" stop-color="#00ff6a" />
+          <stop offset="50%" stop-color="#ffd700" />
+          <stop offset="100%" stop-color="#ff4d4d" />
+        </linearGradient>
+      </defs>
+
+      <!-- Value text -->
+      <text id="valueText" x="200" y="120" class="label">0.0</text>
+      <text x="200" y="160" class="sub">kW</text>
+    </svg>
+
+    <script>
+      const arc = document.getElementById('arc');
+      const text = document.getElementById('valueText');
+      const fullLength = 471; // arc length (approx semicircle perimeter)
+
+      function setValue(value) {
+        const offset = fullLength * (1 - value / 100);
+        arc.style.strokeDashoffset = offset;
+        text.textContent = value.toFixed(1);
+        text.setAttribute('fill', getColor(value));
+      }
+
+      function getColor(value) {
+        if (value < 40) return '#00ff6a';
+        if (value < 70) return '#ffd700';
+        return '#ff4d4d';
+      }
+
+      function updateRandom() {
+        const v = Math.random() * 100;
+        setValue(v);
+      }
+
+      setInterval(updateRandom, 1200);
+      updateRandom();
+    </script>
+  </body>
+</html>
