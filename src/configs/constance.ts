@@ -1,4 +1,5 @@
 import BSC from 'src/assets/images/BSC.svg';
+import { DataItem } from 'src/global';
 
 export const LS = {
   THEME: 'theme',
@@ -45,3 +46,61 @@ export const color8 = '#7700ff';
 export const COLOR_ARRAY = [color1, color2, color3, color4, color5, color6, color7, color8];
 
 export const STORAGE_BASE_URL = 'http://localhost:9090';
+
+export const CARD_WIDTH = 280;
+export const CARD_GAP = 32;
+export const SCROLL_SPEED = 1.5; // Pixels per frame
+
+export const MOCK_DATA: DataItem[] = [
+  {
+    id: 'u_001',
+    title: 'Sarah Connor',
+    role: 'System Architect',
+    imageUrl: 'https://picsum.photos/400/400?random=1',
+    clearanceLevel: 5,
+  },
+  {
+    id: 'u_002',
+    title: 'John Anderson',
+    role: 'Software Engineer',
+    imageUrl: 'https://picsum.photos/400/400?random=2',
+    clearanceLevel: 3,
+  },
+  {
+    id: 'f_003',
+    title: 'Project Bluebook',
+    role: 'Classified Document',
+    imageUrl: 'https://picsum.photos/400/400?random=3',
+    clearanceLevel: 9,
+  },
+  {
+    id: 'u_004',
+    title: 'Elliot Alderson',
+    role: 'Cybersecurity Analyst',
+    imageUrl: 'https://picsum.photos/400/400?random=4',
+    clearanceLevel: 4,
+  },
+  {
+    id: 'd_005',
+    title: 'Network Schema',
+    role: 'Technical Diagram',
+    imageUrl: 'https://picsum.photos/400/400?random=5',
+    clearanceLevel: 2,
+  },
+  {
+    id: 'u_006',
+    title: 'Trinity',
+    role: 'Operator',
+    imageUrl: 'https://picsum.photos/400/400?random=6',
+    clearanceLevel: 8,
+  },
+  {
+    id: 'f_007',
+    title: 'Payload.exe',
+    role: 'Executable',
+    imageUrl: 'https://picsum.photos/400/400?random=7',
+    clearanceLevel: 10,
+  },
+];
+
+export const ENCRYPTION_CHARS = '01010101@#$%&[]{}<>/\\|;:';

@@ -6,6 +6,7 @@ import ColorfulBox from 'src/components/Button/ColorfulBox';
 import GradientTabs from 'src/components/Button/GradientTabs';
 import ThemeButton from 'src/components/Button/ThemeButton';
 import GroupButton from 'src/components/Button/group-button';
+import CryptoSlice from 'src/components/CryptoSlice/CryptoSlice';
 import { AnalyticIcon, ScoreIcon } from 'src/components/Icons';
 import { TextCopy } from 'src/components/Icons/CopyIcon';
 import ReactSeo from 'src/components/ReactSeo';
@@ -141,11 +142,12 @@ export default function UtilElement() {
       </div>
       <AppCounterElement />
       <div className="border-ring relative mt-3 h-[150px] w-60 overflow-hidden border">
-        <SmoothGauge percent={1 - percent} className="absolute -bottom-4" />
+        <SmoothGauge percent={percent} className="absolute -bottom-4" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
           <p className="text-xl font-bold">{toFixed(percent * 100, 2)}%</p>
         </div>
       </div>
+      <CryptoSlice />
     </>
   );
 }

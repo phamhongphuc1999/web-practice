@@ -134,3 +134,22 @@ export type DashboardLegendType = {
   [key in KeyEChartType]: boolean;
 };
 // end eCharts
+
+export interface DataItem {
+  id: string;
+  title: string;
+  role: string;
+  imageUrl: string;
+  clearanceLevel: number;
+}
+
+export enum EncryptionState {
+  CLEARTEXT = 'CLEARTEXT',
+  ENCRYPTING = 'ENCRYPTING',
+  ENCRYPTED = 'ENCRYPTED',
+}
+
+export interface CardProps {
+  data: DataItem;
+  distanceFromGate: number; // Pixels from center. Positive = Right (Entering), Negative = Left (Exiting)
+}
