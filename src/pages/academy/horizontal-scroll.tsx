@@ -33,7 +33,7 @@ export default function HorizontalScroll() {
         ]}
       />
       <div
-        className="bg-black-100 mt-8 flex h-[100px] items-center gap-4 overflow-auto rounded-[16px] px-[1rem] whitespace-nowrap"
+        className="bg-black-100 mt-8 flex h-[100px] items-center gap-4 overflow-auto rounded-2xl px-4 whitespace-nowrap"
         onWheel={onWheel}
       >
         {items.map((item) => {

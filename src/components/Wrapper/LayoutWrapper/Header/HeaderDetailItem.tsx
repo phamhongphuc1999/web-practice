@@ -34,11 +34,11 @@ function MainHeaderBox({ index, item, dataProps }: MainHeaderBoxPRops) {
         dataProps?.sx
       )}
     >
-      <div className="flex items-center justify-center rounded-[8px] border-[1px] border-[#e5e7eb] px-[8px] py-[8px]">
+      <div className="flex items-center justify-center rounded-xl border border-[#e5e7eb] px-2 py-2">
         <Icon style={{ width: '30px', height: '30px' }} />
       </div>
       <Box>
-        <p className="text-[14px] leading-[18px] font-[500]">{t(item.title)}</p>
+        <p className="text-[14px] leading-[18px] font-medium">{t(item.title)}</p>
         <p className="text-[12px] leading-[18px]">{t(item.description)}</p>
       </Box>
     </Box>

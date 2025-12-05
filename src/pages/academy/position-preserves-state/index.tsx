@@ -15,7 +15,7 @@ export default function PositionPreservesState() {
         they are two distinguished components.
       </p>
       {isFancy ? <Counter key={1} isFancy={true} /> : <Counter key={2} isFancy={false} />}
-      <div className="my-[1rem] h-[1px] w-[3rem] bg-[red]" />
+      <div className="my-4 h-px w-12 bg-[red]" />
       <p className="text-[red] italic">
         Counter without key is identified as a same component when switching fancy state. Thus, when
         you change check state, you see the state is not reset.
@@ -23,7 +23,7 @@ export default function PositionPreservesState() {
       {isFancy ? <Counter isFancy={true} /> : <Counter isFancy={false} />}
       <label>
         <input
-          className="mt-[1rem]"
+          className="mt-4"
           type="checkbox"
           checked={isFancy}
           onChange={(e) => {
@@ -33,28 +33,25 @@ export default function PositionPreservesState() {
         Use fancy styling
       </label>
 
-      <p className="mt-[1rem] text-[yellow] italic">
+      <p className="mt-4 text-[yellow] italic">
         In many case (in particular, you want to display a array of items), the key is critical
         factor. Sometimes, you cause nowhere errors if you mark key as index of array that can
         change value. It causes DOM see the item as a new component, can be caused some unexpected
         errors.
       </p>
-      <div className="mt-[1rem]">
+      <div className="mt-4">
         <p>{`State counter: ${counter}`}</p>
         <p>{`Ref counter: ${ref.current}`}</p>
         <button
-          className="border-[1px] border-[green]"
+          className="border border-[green]"
           onClick={() => setCounter((preValue) => preValue + 1)}
         >
           change state counter
         </button>
-        <button
-          className="ml-[0.5rem] border-[1px] border-[green]"
-          onClick={() => (ref.current += 1)}
-        >
+        <button className="ml-2 border border-[green]" onClick={() => (ref.current += 1)}>
           change ref counter
         </button>
-        <p className="mt-[1rem] text-[yellow] italic">
+        <p className="mt-4 text-[yellow] italic">
           The above example illustrate the different between state and ref in react. When you press
           'change state counter' button, the state is triggered and application change user's scene.
           In additionally, when you press 'change ref counter', nothing happens, it is because ref

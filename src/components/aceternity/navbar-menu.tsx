@@ -69,7 +69,7 @@ export function Menu({ setActive, children, ...props }: MenuProps) {
   return (
     <nav
       {...props}
-      onMouseLeave={() => setActive(null)} // resets the state
+      onMouseLeave={() => setActive(null)}
       className={cn(
         'shadow-input relative flex justify-center space-x-4 rounded-full border border-transparent bg-white px-4 py-2 dark:border-white/20 dark:bg-black',
         props.className

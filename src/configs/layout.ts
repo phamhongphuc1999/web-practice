@@ -23,6 +23,7 @@ export const ROUTE = {
   UTIL_SELECTOR: '/utils/selector',
   UTIL_CAROUSEL: '/utils/carousel',
   UTIL_COLORFUL_BOX: '/utils/colorful-box',
+  UTIL_GLOWING_CARD: '/utils/glowing-card',
   CONFIG: '/config',
   HASH_FUNCTION: '/hash-function',
   CIRCOM: '/circom',

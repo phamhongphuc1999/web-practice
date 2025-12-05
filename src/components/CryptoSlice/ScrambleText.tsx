@@ -15,13 +15,11 @@ export default function ScrambleText({ text, state, className = '' }: Props) {
     return text
       .split('')
       .map((char, _) => {
-        // If fully encrypted, scramble everything
         if (state === EncryptionState.ENCRYPTED) {
           if (char === ' ') return ' ';
           return ENCRYPTION_CHARS[Math.floor(Math.random() * ENCRYPTION_CHARS.length)];
         }
 
-        // If encrypting (transition), 50/50 chance
         if (state === EncryptionState.ENCRYPTING) {
           return Math.random() > 0.5
             ? ENCRYPTION_CHARS[Math.floor(Math.random() * ENCRYPTION_CHARS.length)]
@@ -31,7 +29,7 @@ export default function ScrambleText({ text, state, className = '' }: Props) {
         return char;
       })
       .join('');
-  }, [text, state]); // Re-calculates on render which gives the "glitch" effect naturally if parent re-renders rapidly
+  }, [text, state]);
 
   return <span className={`${className} font-mono transition-all duration-75`}>{displayText}</span>;
 }

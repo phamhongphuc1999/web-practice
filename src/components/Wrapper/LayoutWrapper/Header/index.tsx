@@ -9,7 +9,7 @@ import { AppReferenceId } from 'src/global';
 import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import SmallPopover from './SmallPopover';
 
-export default function HeaderV2() {
+export default function Header() {
   const { t } = useLocalTranslate();
   const [active, setActive] = useState<string | null>(null);
   const [smallEl, setSmallEl] = useState<SVGSVGElement | null>(null);
@@ -46,11 +46,11 @@ export default function HeaderV2() {
                     return (
                       <a href={subItem.link}>
                         <div className="rounded-4 hover:bg-popover mb-4 flex cursor-pointer items-center gap-2 p-2">
-                          <div className="flex items-center justify-center rounded-[8px] border-[1px] border-[#e5e7eb] px-[8px] py-[8px]">
+                          <div className="flex items-center justify-center rounded-xl border border-[#e5e7eb] px-2 py-2">
                             <Icon style={{ width: '30px', height: '30px' }} />
                           </div>
                           <div>
-                            <p className="text-[14px] leading-[18px] font-[500]">
+                            <p className="text-[14px] leading-[18px] font-medium">
                               {t(subItem.title)}
                             </p>
                             <p className="text-[12px] leading-[18px]">{t(subItem.description)}</p>
@@ -72,12 +72,12 @@ export default function HeaderV2() {
                 </CssNavLink>
               </>
             )}
-            <div className="header-close-icon ml-[8px] h-[35px] w-[35px] items-center justify-center rounded-[50%]">
+            <div className="header-close-icon ml-2 h-[35px] w-[35px] items-center justify-center rounded-[50%]">
               {smallOpen ? (
-                <CloseOutlined className="h-[16px] w-[16px]" onClick={onSmallPopoverClose} />
+                <CloseOutlined className="h-4 w-4" onClick={onSmallPopoverClose} />
               ) : (
                 <MenuOutlined
-                  className="h-[16px] w-[16px]"
+                  className="h-4 w-4"
                   onClick={(event) => setSmallEl(event.currentTarget)}
                 />
               )}

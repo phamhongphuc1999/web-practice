@@ -44,28 +44,28 @@ export default function TransitionDelay() {
         ]}
         mb={2}
       />
-      <div className="mt-[1rem]">
+      <div className="mt-4">
         <input
-          className="bg-black-200 h-[55px] rounded-[16px] border-[1px] border-blue-50 px-[1rem]"
+          className="bg-black-200 h-[55px] rounded-2xl border border-blue-50 px-4"
           onChange={onTextChange}
         />
-        <div className="mt-[2rem] flex flex-col">
+        <div className="mt-8 flex flex-col">
           <TitleTypography
-            className="border-t-[1px] border-blue-50 pt-[8px]"
+            className="border-t border-blue-50 pt-2"
             title={t('value')}
             titleProps={{ className: 'w-[120px]' }}
           >
             <p>{value}</p>
           </TitleTypography>
           <TitleTypography
-            className="mt-[1rem] border-t-[1px] border-blue-50 pt-[8px]"
+            className="mt-4 border-t border-blue-50 pt-2"
             title={t('delay-value')}
             titleProps={{ className: 'w-[120px]' }}
           >
             <p>{transitionValue}</p>
           </TitleTypography>
           <TitleTypography
-            className="mt-[1rem] border-t-[1px] border-blue-50 pt-[8px]"
+            className="mt-4 border-t border-blue-50 pt-2"
             title={t('time-left')}
             titleProps={{ className: 'w-[120px]' }}
           >

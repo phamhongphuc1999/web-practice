@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Snowfall with Wind</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #0a0f29; /* dark blue sky */
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="snow"></canvas>
+
+    <script>
+      const canvas = document.getElementById('snow');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const flakes = [];
+      const totalFlakes = 200;
+
+      // adjustable wind
+      let wind = 1; // positive = blowing to the right, negative = left
+
+      class Flake {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 3 + 1;
+          this.speed = Math.random() * 1 + 0.5;
+          this.vx = Math.random() * 0.5 - 0.25; // slight random horizontal sway
+        }
+
+        update() {
+          this.x += this.vx + wind * 0.5;
+          this.y += this.speed;
+
+          if (this.y > canvas.height) {
+            this.y = -5;
+            this.x = Math.random() * canvas.width;
+          }
+
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'white';
+          ctx.fill();
+        }
+      }
+
+      // init snowflakes
+      for (let i = 0; i < totalFlakes; i++) {
+        flakes.push(new Flake());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let flake of flakes) {
+          flake.update();
+          flake.draw();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // Update wind with arrow keys ← →
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') wind += 0.2;
+        if (e.key === 'ArrowLeft') wind -= 0.2;
+      });
+
+      // Resize
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

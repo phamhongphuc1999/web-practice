@@ -80,6 +80,13 @@ export default function UtilElement() {
         <ColorfulBox className="ml-2" onClick={() => navigate(ROUTE.UTIL_COLORFUL_BOX)}>
           {t('colorfulBox.title')}
         </ColorfulBox>
+        <ColorfulBox
+          className="ml-2"
+          color="gray"
+          onClick={() => navigate(ROUTE.UTIL_GLOWING_CARD)}
+        >
+          {t('glowingCard')}
+        </ColorfulBox>
         <TextCopy ml={1} title={t('copyHere')} iconProps={{ copyText: t('copyHere') }} />
         <Box ml={1} display="flex" alignItems="center">
           <Typography>{t(themeLabel)}</Typography>

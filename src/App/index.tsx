@@ -26,6 +26,7 @@ import UtilElement from 'src/pages/UtilElement';
 import CarouselElement from 'src/pages/UtilElement/CarouselElement';
 import ColorfulBoxElement from 'src/pages/UtilElement/ColorfulBoxElement';
 import DatePickerElement from 'src/pages/UtilElement/DatePickerElement';
+import GlowingCard from 'src/pages/UtilElement/GlowingCard';
 import SelectorElement from 'src/pages/UtilElement/SelectorElement';
 import ZustandPage from 'src/pages/zustand-page';
 import '../styles/animation.css';
@@ -122,6 +123,11 @@ export default function App() {
       path: ROUTE.UTIL_COLORFUL_BOX,
       element: <ProviderApp />,
       children: [{ path: '', element: <ColorfulBoxElement /> }],
+    },
+    {
+      path: ROUTE.UTIL_GLOWING_CARD,
+      element: <ProviderApp />,
+      children: [{ path: '', element: <GlowingCard /> }],
     },
     {
       path: ROUTE.CONFIG,

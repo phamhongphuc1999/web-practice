@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Snowfalls from 'src/components/Snowfalls';
 import { LS } from 'src/configs/constance';
 import { ReferenceMapping } from 'src/configs/layout';
 import { AppReferenceId, LanguageType, ThemeMode } from 'src/global';
@@ -8,7 +9,7 @@ import { initLocalStorage, setReferenceId } from 'src/redux/config-slice';
 import { useAppDispatch } from 'src/redux/store';
 import LocalStorage from 'src/services';
 import Footer from './Footer';
-import HeaderV2 from './HeaderV2';
+import Header from './Header';
 
 interface Props {
   children: ReactNode;
@@ -39,8 +40,9 @@ export default function LayoutWrapper({ children }: Props) {
   }, [location.pathname, dispatch]);
 
   return (
-    <div className="bg-background">
-      <HeaderV2 />
+    <div className="bg-background relative">
+      <Snowfalls wind={1} flakeCount={100} />
+      <Header />
       {location.pathname == '/academy/horizontal-scroll-animation' ? (
         <>{children}</>
       ) : (

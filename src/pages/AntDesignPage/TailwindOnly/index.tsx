@@ -58,13 +58,13 @@ export default function TailwindOnly() {
         <p>Point</p>
         <div className="curve-common inline-flex">
           <div className="relative h-[250px] w-[50px]">
-            <div className="absolute top-0 right-[0%] bottom-0 left-[-100%] flex flex-col">
+            <div className="absolute top-0 right-[0%] bottom-0 -left-full flex flex-col">
               <div className="curve-shape1 aspect-square rounded-tr-[50%]" />
               <div className="curve-shape1 h-full" />
             </div>
           </div>
           <div className="relative h-[250px] w-[50px]">
-            <div className="absolute top-0 right-[-100%] bottom-0 left-[0%] flex flex-col">
+            <div className="absolute top-0 -right-full bottom-0 left-[0%] flex flex-col">
               <div className="curve-shape2 h-full" />
               <div className="curve-shape2 aspect-square rounded-bl-[50%]" />
             </div>

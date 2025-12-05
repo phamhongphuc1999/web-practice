@@ -68,7 +68,7 @@ export default function SmallPopover({ referenceId, setReferenceId, setEl, ...pr
                   sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
                   onClick={() => onBigLinkClick(item.id, item.link)}
                 >
-                  <Typography className="font-[500]">{t(item.title)}</Typography>
+                  <Typography className="font-medium">{t(item.title)}</Typography>
                   {item.items && (
                     <ArrowForwardIosOutlinedIcon
                       className="text-[14px] text-[#A7B3CF] transition-all"

@@ -58,21 +58,21 @@ export default function AnimationScroll() {
         ]}
       />
       <div className="flex justify-between">
-        <div className="sticky top-[10rem] h-fit w-[440px]">
+        <div className="sticky top-40 h-fit w-[440px]">
           <div className="scroll-academy-item" onClick={() => onScrollClick('option1')}>
-            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            <div className="scroll-academy-item-tag mr-4 h-7 w-1 rounded-r-xl" />
             Option1
           </div>
           <div className="scroll-academy-item" onClick={() => onScrollClick('option2')}>
-            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            <div className="scroll-academy-item-tag mr-4 h-7 w-1 rounded-r-xl" />
             Option2
           </div>
           <div className="scroll-academy-item" onClick={() => onScrollClick('option3')}>
-            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            <div className="scroll-academy-item-tag mr-4 h-7 w-1 rounded-r-xl" />
             Option3
           </div>
           <div className="scroll-academy-item" onClick={() => onScrollClick('option4')}>
-            <div className="scroll-academy-item-tag mr-[16px] h-[28px] w-[4px] rounded-r-[8px]" />
+            <div className="scroll-academy-item-tag mr-4 h-7 w-1 rounded-r-xl" />
             Option4
           </div>
         </div>
@@ -80,13 +80,13 @@ export default function AnimationScroll() {
           <div id="option1" className="scrollable-item h-[300px]">
             <Typography variant="h2">Option1</Typography>
           </div>
-          <div id="option2" className="scrollable-item mt-[12px] h-[600px]">
+          <div id="option2" className="scrollable-item mt-3 h-[600px]">
             <Typography variant="h2">Option2</Typography>
           </div>
-          <div id="option3" className="scrollable-item mt-[12px] h-[900px]">
+          <div id="option3" className="scrollable-item mt-3 h-[900px]">
             <Typography variant="h2">Option3</Typography>
           </div>
-          <div id="option4" className="scrollable-item mt-[12px] h-[1200px]">
+          <div id="option4" className="scrollable-item mt-3 h-[1200px]">
             <Typography variant="h2">Option4</Typography>
           </div>
         </div>

@@ -6,7 +6,7 @@ import StarsBackground from 'src/components/aceternity/ShootingStar/StarBackgrou
 
 export default function GlowingEffectView() {
   return (
-    <ul className="relative grid grid-cols-1 grid-rows-none gap-4 border border-gray-50 p-10 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+    <ul className="relative grid grid-cols-1 grid-rows-none gap-4 border border-gray-50 p-10 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-136 xl:grid-rows-2">
       <BackgroundBeams />
       <ShootingStars />
       <StarsBackground />
@@ -53,7 +53,7 @@ interface GridItemProps {
 
 function GridItem({ area, icon, title, description }: GridItemProps) {
   return (
-    <li className={`min-h-[14rem] list-none ${area}`}>
+    <li className={`min-h-56 list-none ${area}`}>
       <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
         <GlowingEffect
           spread={40}
