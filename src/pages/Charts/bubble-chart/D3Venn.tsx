@@ -286,7 +286,7 @@ export default function D3Venn() {
       .selectAll('path')
       .style('fill-opacity', 0.3)
       .style('stroke', '#fff')
-      .style('stroke-width', 0.5);
+      .style('strokeWidth', 0.5);
 
     d3.select(container)
       .selectAll('g')

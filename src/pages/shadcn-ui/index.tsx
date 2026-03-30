@@ -34,7 +34,7 @@ export default function ShadcnUi() {
         <Button variant={'ghost'}>ghost</Button>
         <Button variant={'secondary'}>secondary</Button>
       </div>
-      <Alert className="mt-[1rem]">
+      <Alert className="mt-41rem]">
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>
           You can add components and dependencies to your app using the cli.
@@ -42,7 +42,7 @@ export default function ShadcnUi() {
       </Alert>
       <div>
         <AlertDialog>
-          <AlertDialogTrigger className="mt-[1rem]">Open Dialog</AlertDialogTrigger>
+          <AlertDialogTrigger className="mt-41rem]">Open Dialog</AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

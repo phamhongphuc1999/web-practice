@@ -6,6 +6,7 @@ import FlexLayout from 'src/pages/academy/flex-layout';
 import HorizontalScroll from 'src/pages/academy/horizontal-scroll';
 import HorizontalScrollAnimation from 'src/pages/academy/horizontal-scroll-animation';
 import PositionPreservesState from 'src/pages/academy/position-preserves-state';
+import ReactCore from 'src/pages/academy/ReactCore';
 import TransitionDelay from 'src/pages/academy/transition-delay';
 import Animation from 'src/pages/animation';
 import BouncePage from 'src/pages/animation/bounce-page';
@@ -145,6 +146,7 @@ export default function App() {
         { path: 'horizontal-scroll-animation', element: <HorizontalScrollAnimation /> },
         { path: 'position-preserve', element: <PositionPreservesState /> },
         { path: 'flex-layout', element: <FlexLayout /> },
+        { path: 'react-core', element: <ReactCore /> },
       ],
     },
     { path: ROUTE.MOBX, element: <ProviderApp />, children: [{ path: '', element: <MobXPage /> }] },

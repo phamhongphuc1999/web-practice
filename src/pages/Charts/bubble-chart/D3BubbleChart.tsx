@@ -79,7 +79,7 @@ export default function D3BubbledChart({ width = 800, height = 600, isPolygon = 
       .data(links)
       .join('line')
       .attr('stroke-opacity', 0.6)
-      .attr('stroke-width', 1.5)
+      .attr('strokeWidth', 1.5)
       .attr('stroke', '#9ca3af')
       .attr('marker-end', 'url(#arrowhead)');
 
@@ -108,14 +108,14 @@ export default function D3BubbledChart({ width = 800, height = 600, isPolygon = 
         })
         .attr('fill', '#2563eb')
         .attr('stroke', '#fff')
-        .attr('stroke-width', 1.5);
+        .attr('strokeWidth', 1.5);
     } else {
       node
         .append('circle')
         .attr('r', (d) => rScale(d.group))
         .attr('fill', '#2563eb')
         .attr('stroke', '#fff')
-        .attr('stroke-width', 1.5);
+        .attr('strokeWidth', 1.5);
     }
 
     node.append('title').text((d) => `${d.id} — value: ${d.group}`);

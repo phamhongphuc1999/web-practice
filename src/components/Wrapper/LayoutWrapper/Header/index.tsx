@@ -44,7 +44,7 @@ export default function Header() {
                     const Icon = subItem.icon;
 
                     return (
-                      <a href={subItem.link}>
+                      <a key={subItem.id} href={subItem.link}>
                         <div className="rounded-4 hover:bg-popover mb-4 flex cursor-pointer items-center gap-2 p-2">
                           <div className="flex items-center justify-center rounded-xl border border-[#e5e7eb] px-2 py-2">
                             <Icon style={{ width: '30px', height: '30px' }} />

@@ -142,4 +142,8 @@ export const AcademyConfig: Array<{ title: string; link: string }> = [
     title: 'academy-item.position-preserve',
     link: `${ROUTE.ACADEMY}/position-preserve`,
   },
+  {
+    title: 'academy-item.react-core',
+    link: `${ROUTE.ACADEMY}/react-core`,
+  },
 ];

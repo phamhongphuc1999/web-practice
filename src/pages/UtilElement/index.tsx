@@ -19,6 +19,7 @@ import useLocalTranslate from 'src/hooks/useLocalTranslate';
 import { useAppSelector } from 'src/redux/store';
 import { toFixed } from 'src/services';
 import AppCounterElement from './AppCounterElement';
+import SoundComponent from './SoundComponent';
 
 export default function UtilElement() {
   const _id = useRef<NodeJS.Timeout | null>(null);
@@ -155,6 +156,7 @@ export default function UtilElement() {
         </div>
       </div>
       <CryptoSlice />
+      <SoundComponent />
     </>
   );
 }

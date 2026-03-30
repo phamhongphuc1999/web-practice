@@ -153,3 +153,10 @@ export interface CardProps {
   data: DataItem;
   distanceFromGate: number; // Pixels from center. Positive = Right (Entering), Negative = Left (Exiting)
 }
+
+export interface Car {
+  id: number;
+  make: string;
+  model: string;
+  price: number;
+}

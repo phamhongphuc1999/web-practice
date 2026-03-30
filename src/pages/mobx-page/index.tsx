@@ -29,7 +29,7 @@ function TodoList({ todo }: { todo: MobXRootType['todo'] }) {
 
   return (
     <>
-      <div className="mt-[1rem] flex items-center gap-4">
+      <div className="mt-41rem] flex items-center gap-4">
         <Button variant="outlined" color="primary" onClick={() => todo.loadTodo()}>
           Load todo list
         </Button>

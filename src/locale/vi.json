@@ -99,7 +99,8 @@
     "scroll-page": "Cuộn trang với vài hiệu ứng",
     "horizontal-scroll": "tạo một thanh cuộn ngang đơn giản",
     "position-preserve": "Một chút hiểu biết về vị trí của các thành phần trong react",
-    "flex-layout": "Thực hành với flex"
+    "flex-layout": "Thực hành với flex",
+    "react-core": "Hiểu react sâu hơn"
   },
   "header-description": {
     "animation": "Hiệu ứng được viết hoàn toàn bằng CSS và MUI",

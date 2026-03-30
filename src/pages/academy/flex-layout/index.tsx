@@ -27,13 +27,13 @@ export default function FlexLayout() {
         ]}
       />
       <div
-        className="mt-[1rem] flex cursor-pointer items-center gap-1"
+        className="mt-4 flex cursor-pointer items-center gap-1"
         onClick={() => setOpen((preValue) => !preValue)}
       >
         <p>Config</p>
         <ArrowAnimationIcon isTransform={open} />
       </div>
-      <Collapse in={open} className="mt-[0.5rem]">
+      <Collapse in={open} className="mt-2">
         <Button variant="outlined" onClick={() => setOrderOpen(true)}>
           Order config
         </Button>

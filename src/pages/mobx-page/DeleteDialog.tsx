@@ -22,7 +22,7 @@ export default function DeleteDialog({ deleteId, todo, ...props }: Props) {
       </DialogTitle>
       <DialogContent>
         <p>Are you sure want to delete item with id {deleteId}</p>
-        <div className="mt-[1rem] flex justify-end gap-[1rem]">
+        <div className="mt-41rem] flex justify-end gap-[1rem]">
           <Button variant="outlined" size="large" onClick={onClose}>
             Cancel
           </Button>

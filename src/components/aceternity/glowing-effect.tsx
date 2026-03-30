@@ -1,5 +1,5 @@
-import { memo, useCallback, useEffect, useRef } from 'react';
 import { animate } from 'motion/react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 import { cn } from 'src/lib/utils';
 
 interface GlowingEffectProps {
@@ -173,4 +173,5 @@ const GlowingEffect = memo(
   }
 );
 
+GlowingEffect.displayName = 'GlowingEffect';
 export default GlowingEffect;

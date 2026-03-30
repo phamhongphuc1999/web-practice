@@ -47,7 +47,7 @@ export default function FlexGrowDialog(props: DialogProps) {
             helperText={formik.errors.flexGrow}
             sx={{ mt: '1rem' }}
           />
-          <div className="mt-[1rem] flex justify-end">
+          <div className="mt-4 flex justify-end">
             <Button variant="contained" size="large" type="submit">
               Submit
             </Button>
