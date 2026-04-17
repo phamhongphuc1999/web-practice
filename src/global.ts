@@ -160,3 +160,12 @@ export interface Car {
   model: string;
   price: number;
 }
+
+export enum FishStatusEnum {
+  HEALTHY = 0,
+  NORMAL = 1,
+  HUNGRY = 2,
+  WEAK = 3,
+  DEAD = 4,
+  GENERATING = 5,
+}

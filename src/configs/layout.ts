@@ -31,6 +31,7 @@ export const ROUTE = {
   MOBX: '/mobx',
   ZUSTAND: '/zustand',
   NO_ROUTE: '/no-page',
+  FISHES: '/fishes',
 };
 
 export const ReferenceMapping: Array<{ pathname: string; id: AppReferenceId }> = [

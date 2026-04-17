@@ -20,6 +20,7 @@ import BubbleChart from 'src/pages/Charts/bubble-chart';
 import EChart from 'src/pages/Charts/EChart';
 import Overview from 'src/pages/Charts/Overview';
 import ConfigPage from 'src/pages/ConfigPage';
+import Fishes from 'src/pages/fishes';
 import MobXPage from 'src/pages/mobx-page';
 import NoRoute from 'src/pages/no-route';
 import ShadcnUi from 'src/pages/shadcn-ui';
@@ -75,6 +76,7 @@ export default function App() {
       element: <ProviderApp />,
       children: [{ path: '', element: <DropPage /> }],
     },
+    { path: ROUTE.FISHES, element: <ProviderApp />, children: [{ path: '', element: <Fishes /> }] },
     {
       path: ROUTE.ANT_DESIGN,
       element: <ProviderApp />,

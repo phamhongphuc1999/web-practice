@@ -9,6 +9,8 @@ export default defineConfig({
   resolve: {
     alias: {
       src: path.resolve(__dirname, 'src'),
+      events: 'events',
+      inherits: 'inherits',
     },
   },
 });

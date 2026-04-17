@@ -13,8 +13,6 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -31,3 +29,4 @@ tsconfig.node.tsbuildinfo
 # circom
 public/circom
 src/services/verification_key.json
+src/pages/fishes/config.ts
